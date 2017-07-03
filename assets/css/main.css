@@ -1,0 +1,117 @@
+/*
+	ESN official colors :
+	blue: rgb(39, 171, 226)
+	darkblue: rgb(45, 53, 145)
+	green: rgb(122, 192, 67)
+	orange: rgb(243, 123, 32) 
+	pink: rgb(235, 10, 141)
+*/
+
+* {
+	-webkit-transition: all 200ms ease-out;
+	-moz-transition: all 200ms ease-out;
+	-ms-transition: all 200ms ease-out;
+	-o-transition: all 200ms ease-out;
+	transition: all 200ms ease-out;
+	
+	user-select: none;
+}
+
+
+#main_wrapper {
+	position: fixed;
+	left: 70px;
+	right: 0;
+	padding: 20px;
+	top: 0;
+	bottom: 0;
+	
+	overflow: auto;
+	background-color: #e0e0e0;
+}
+
+#main_wrapper:hover {
+	cursor: default;
+}
+
+/*
+	Side menu containing all items
+*/
+#side_menu {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 70px;
+	
+	background-color: rgb(45, 53, 145);
+}
+
+#side_menu li {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+	
+	background-color: rgb(68, 200, 255);
+	border-radius: 10px;
+	list-style: none;
+	
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: cover;
+}
+
+#side_menu li:hover {
+	background-color: lightblue;
+	cursor: pointer;
+	
+	transform: scale(0.9);
+}
+
+
+#home_btn {
+	background-image: url('../img/sections/star.png');
+}
+#tuto_btn {
+	background-image: url('../img/sections/star.png');
+}
+#faucon_btn {
+	background-image: url('../img/sections/new/faucondor.png');
+}
+#logoinserter_btn {
+	background-image: url('../img/sections/new/logoinserter.png');
+}
+#wiki_btn {
+	background-image: url('../img/sections/new/wiki.png');
+}
+#galaxy_btn {
+	background-image: url('../img/sections/new/galaxy.png');
+}
+#buddysystem_btn {
+	background-image: url('../img/sections/new/buddysystem.png');
+}
+
+hr {
+	border: 1px solid #e0e0e0;
+}
+
+
+.sideinfo {
+	color: #a0a0a0;
+}
+
+
+.img_center {
+	width: 50%;
+	margin: 0 25% 0 25%;
+}
+
+.category {
+	background-color: white;
+	padding: 20px;
+	border: 1px solid #c0c0c0;
+	/* 
+		ajouter une ombre
+	*/
+}

@@ -1,0 +1,14 @@
+{
+  "name": "esnbang",
+  "version": "1.0.0",
+  "description": "An application made to gather all ESN information.",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "Rémy Raes",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^1.6.11"
+  }
+}
