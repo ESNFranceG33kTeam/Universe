@@ -25,6 +25,7 @@ app.on('activate', () => {
 });
 
 
+
 function createWindow () {
 	
 	// notification icon
@@ -54,31 +55,34 @@ function createWindow () {
 				app.quit();
 			}
 		}
+
 	]);
+
 	tray.setContextMenu(menu);
 	tray.on('click', () => {
 		mainWindow.show();
 	});
 	
 	
-	
 	// main window
 	mainWindow = new BrowserWindow({
-								title: 'ESN bang!',
+								title: 'ESNbang!',
 								icon: 'assets/img/star.png',
 								width: 920, 
-								height: 550,
+								height: 535,
 								
 								minWidth: 920,
-								minHeight: 550,
+								minHeight: 535,
 								
 								center: true});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
+    // mainWindow.webContents.openDevTools();
 
 	// hide the main window when the user clicks the 'close' button
 	mainWindow.on('close', (event) => {
 		event.preventDefault();
+		// TODO send a notification to inform the application is still running
 		mainWindow.hide();
 	});
 	
