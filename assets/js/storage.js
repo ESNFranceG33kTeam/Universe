@@ -12,6 +12,7 @@ var parameters = {
 */
 
 function save_parameters(params) {
+	console.log(params.size);
 	localStorage.setItem('parameters', JSON.stringify(params));
 }
 
@@ -21,6 +22,7 @@ function get_parameters() {
 	
 	// first start
 	if(params === null) {
+		
 		var parameters = {
 			size : {
 				width: 920,
@@ -29,6 +31,7 @@ function get_parameters() {
 			
 			sites: []
 		};
+		
 		return parameters;
 		
 	} else {

@@ -8,7 +8,6 @@ const BrowserWindow = electron.BrowserWindow;
 var mainWindow;
 var parameters = {};
 
-
 // create the display window as soon as the application is ready
 app.on('ready', createWindow);
 
@@ -70,17 +69,20 @@ function createWindow () {
 	mainWindow = new BrowserWindow({
 								title: 'ESNbang!',
 								icon: 'assets/img/star.png',
+								backgroundColor: '#e0e0e0',
+								
 								width: 920, 
 								height: 535,
-								
 								minWidth: 920,
 								minHeight: 535,
-								center: true,
 								
-								show:false});
+								show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
     // mainWindow.webContents.openDevTools();
+	
+	const session = mainWindow.webContents.session
+	session.clearCache(function(){});
 	
 	// show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
@@ -88,25 +90,39 @@ function createWindow () {
 		mainWindow.webContents.send('get-params');
 		ipcMain.on('send_params', function(event , data){ 
 			parameters = data;
+			console.log('parameters received:');
+			console.log(data);
 			mainWindow.setSize(parameters.size.width, parameters.size.height);
+			mainWindow.center();
+			mainWindow.show();
 		});
-		mainWindow.show();
 	});
+	
 	
 	// hide the main window when the user clicks the 'close' button
 	mainWindow.on('close', (event) => {
 		event.preventDefault();		
 		// TODO send a notification to inform the application is still running
+		save_parameters();
 		mainWindow.hide();
 	});
 	
+	
 	// save window size
+	
 	mainWindow.on('resize', () => {
-		// TODO code a timer to avoid too much function calls in a short period of time
-		let { width, height } = mainWindow.getBounds();
-		parameters.size.width = width;
-		parameters.size.height = height;
-		mainWindow.webContents.send('save', parameters);
+		save_parameters();
 	});
 	
+	
+}
+
+
+function save_parameters() {
+	// TODO code a timer to avoid too much function calls in a short period of time
+	let { width, height } = mainWindow.getBounds();
+	parameters.size.width = width;
+	parameters.size.height = height;
+	console.log(parameters);
+	mainWindow.webContents.send('save', parameters);
 }
