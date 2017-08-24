@@ -2,9 +2,11 @@ const electron = require('electron');
 const app = electron.app;
 const Tray = electron.Tray;
 const Menu = electron.Menu;
+const ipcMain = electron.ipcMain;
 
 const BrowserWindow = electron.BrowserWindow;
 var mainWindow;
+var parameters = {};
 
 
 // create the display window as soon as the application is ready
@@ -62,7 +64,7 @@ function createWindow () {
 	tray.on('click', () => {
 		mainWindow.show();
 	});
-	
+
 	
 	// main window
 	mainWindow = new BrowserWindow({
@@ -73,17 +75,38 @@ function createWindow () {
 								
 								minWidth: 920,
 								minHeight: 535,
+								center: true,
 								
-								center: true});
+								show:false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
     // mainWindow.webContents.openDevTools();
-
+	
+	// show the window only when it's rendered
+	mainWindow.once('ready-to-show', () => {
+		// initializing parameters
+		mainWindow.webContents.send('get-params');
+		ipcMain.on('send_params', function(event , data){ 
+			parameters = data;
+			mainWindow.setSize(parameters.size.width, parameters.size.height);
+		});
+		mainWindow.show();
+	});
+	
 	// hide the main window when the user clicks the 'close' button
 	mainWindow.on('close', (event) => {
-		event.preventDefault();
+		event.preventDefault();		
 		// TODO send a notification to inform the application is still running
 		mainWindow.hide();
+	});
+	
+	// save window size
+	mainWindow.on('resize', () => {
+		// TODO code a timer to avoid too much function calls in a short period of time
+		let { width, height } = mainWindow.getBounds();
+		parameters.size.width = width;
+		parameters.size.height = height;
+		mainWindow.webContents.send('save', parameters);
 	});
 	
 }

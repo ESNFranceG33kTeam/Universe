@@ -52,16 +52,7 @@
 
 	<footer>
 		<script type="text/javascript" src="assets/js/main.js"></script>
-		<script>
-            document.addEventListener("keydown", function (e) {
-                if (e.which === 123) {
-                    require('remote').getCurrentWindow().toggleDevTools();
-                    mainWindow.webContents.openDevTools()
-                } else if (e.which === 116) {
-                    location.reload();
-                }
-            });
-		</script>
+		<script type="text/javascript" src="assets/js/storage.js"></script>
 	</footer>
 
 </html>
