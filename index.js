@@ -31,7 +31,7 @@ function createWindow () {
 	
 	// notification icon
 	tray = new Tray('assets/img/star.png');
-	tray.setToolTip('ESN bang!');
+	tray.setToolTip('ESNbang!');
 	
 	// context menu on the icon
 	const menu = Menu.buildFromTemplate([
@@ -92,6 +92,7 @@ function createWindow () {
 			parameters = data;
 			console.log('parameters received:');
 			console.log(data);
+			console.log('---------------------');
 			mainWindow.setSize(parameters.size.width, parameters.size.height);
 			mainWindow.center();
 			mainWindow.show();
@@ -101,19 +102,17 @@ function createWindow () {
 	
 	// hide the main window when the user clicks the 'close' button
 	mainWindow.on('close', (event) => {
-		event.preventDefault();		
-		// TODO send a notification to inform the application is still running
+		event.preventDefault();
+		mainWindow.webContents.send('exit-notification');
 		save_parameters();
 		mainWindow.hide();
 	});
 	
 	
 	// save window size
-	
 	mainWindow.on('resize', () => {
 		save_parameters();
 	});
-	
 	
 }
 

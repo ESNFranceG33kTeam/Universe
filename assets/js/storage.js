@@ -12,7 +12,6 @@ var parameters = {
 */
 
 function save_parameters(params) {
-	console.log(params.size);
 	localStorage.setItem('parameters', JSON.stringify(params));
 }
 
