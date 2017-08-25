@@ -3,7 +3,15 @@ const Menu = require('electron').remote.Menu;
 
 const frames_count = 3;
 var frames_loaded = 0;
+var DOMisReady = false;
+var sites_added = 0;
 
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	DOMisReady = true;
+});
+
+var menu = document.getElementById('side_menu');
 var loading_screen = document.getElementById('loading');
 var loading_logo = document.getElementById('loading_logo');
 var home = document.getElementById('home');
@@ -77,4 +85,24 @@ function show_buddysystem() {
 function show_home() {
     hide_all();
     home.style.display = 'block';
+}
+
+function create_site_menu_component(url) {
+
+	if(sites_added === 0)
+		create_site_menu_separation();
+	sites_added++;
+
+	var button = document.createElement('LI');
+	button.className = 'section added_site';
+	
+	var tooltip = document.createElement('SPAN');
+	tooltip.innerText = url;
+	button.appendChild(tooltip);
+
+	menu.appendChild(button);
+}
+
+function create_site_menu_separation(){
+	menu.appendChild(document.createElement('HR'));
 }

@@ -59,6 +59,8 @@
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: cover;
+
+	background-image: url('../img/sections/star.png');
 }
 
 .section:hover {
@@ -88,6 +90,8 @@
 	display: block;
 	transform: none;
 }
+
+
 
 #home_btn {
 	background-image: url('../img/sections/star.png');

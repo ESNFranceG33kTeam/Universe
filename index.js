@@ -79,7 +79,7 @@ function createWindow () {
 								show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 	
 	const session = mainWindow.webContents.session
 	session.clearCache(function(){});
@@ -93,9 +93,14 @@ function createWindow () {
 			console.log('parameters received:');
 			console.log(data);
 			console.log('---------------------');
+			
+			// centering the window
 			mainWindow.setSize(parameters.size.width, parameters.size.height);
 			mainWindow.center();
 			mainWindow.show();
+			
+			// adding the websites
+			var sites = parameters.sites;
 		});
 	});
 	
@@ -113,6 +118,23 @@ function createWindow () {
 	mainWindow.on('resize', () => {
 		save_parameters();
 	});
+
+
+	// adding a site
+	ipcMain.on('add_new_site', function(event , url){
+		
+		// checking if the site isn't already registered
+		for(var i=0; i<parameters.sites.length; i++) 
+			if(parameters.sites[i] == url) {
+				console.log('déjà abonné au site');
+				mainWindow.webContents.send('site_already_registered', true);
+				return ;
+			}
+				
+		mainWindow.webContents.send('site_already_registered', false, url);	
+        parameters.sites.push(url);
+        mainWindow.webContents.send('save', parameters);
+    });
 	
 }
 
