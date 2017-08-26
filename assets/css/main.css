@@ -72,7 +72,7 @@
 
 .section span {
 	display: none;
-	background-color: rgb(122, 192, 67);
+	background-color: rgb(235, 10, 141);
 	color: #fff;
 	text-align: center;
 	padding: 5px 10px;
@@ -83,7 +83,7 @@
 	z-index: 2;
 	
 	top: 12px;
-    left: 105%; 
+    left: 110%; 
 }
 
 .section:hover span {
@@ -92,6 +92,42 @@
 }
 
 
+.subscribe {
+	background-color: #c0c0c0;;
+	background-image: url('../img/plus.png');
+	
+	width: 40px;
+	height: 40px;
+	margin: 20px 15px 15px 15px;
+}
+
+#home_btn span {
+	background-color: rgb(122, 192, 67);
+}
+
+.added_site {
+	opacity: 0;
+	animation-name: bounceIn;
+	animation-duration: 450ms;
+	animation-timing-function: linear;
+	
+	
+	/* TODO this disables the hovering effect of .section */
+	animation-fill-mode: forwards;
+}
+.added_site span {
+	background-color: rgb(243, 123, 32);
+}
+
+
+.subscribe:hover {
+	background-color: lightgray;
+}
+
+.subscribe span {
+	top: 6px;
+	background-color: gray;
+}
 
 #home_btn {
 	background-image: url('../img/sections/star.png');
@@ -190,4 +226,50 @@ iframe {
 	padding: 0;
 
 	border-width: 0;
+}
+
+
+#new_site {
+	background-color: #e0e0e0;
+	border: 1px solid gray;
+	border-radius: 5px;
+	
+	position: absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+	width: 400px;
+	height: 230px;
+	display: none;
+	
+	z-index: 2;
+	
+	
+	opacity: 0;
+	animation-name: bounceIn;
+	animation-duration: 450ms;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes bounceIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.3) translate3d(0,0,0);
+  }
+  50%{
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  80%{
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1) translate3d(0,0,0);
+  }
 }

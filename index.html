@@ -9,7 +9,13 @@
 			<h1><img id="loading_logo" class="img_loading" src="assets/img/star.png"></h1>
 		</div>
 		
-		<div id="main_wrapper">
+		<div id="new_site">
+			<label for="new_url">URL:</label>
+			<input id="new_url" type="text" placeholder="Website URL"></input>
+			<button onclick="subscribe_to_new_site(document.getElementById('new_url').value)">Subscribe</button>
+		</div>
+		
+		<div id="main_wrapper" onclick="hide_new_site_subscription()">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png"></h1>
 				<p>Welcome to ESNbang!, the new application for members of the Erasmus Student Network !</p>
@@ -28,19 +34,25 @@
 		</div>
 
 		<nav id="side_menu">
-			<li id="home_btn" class="section" onclick="show_home()">
-				<span>Home</span>
-			</li>
+			<nav id="icons">
+				<li id="home_btn" class="section" onclick="show_home()">
+					<span>Home</span>
+				</li>
+				
+				<hr />
+				<li id="faucon_btn" class="section" onclick="show_faucondor()">
+					<span>Faucondor</span>
+				</li>
+				<li id="wiki_btn" class="section" onclick="show_wiki()">
+					<span>Wiki ESN France</span>
+				</li>
+				<li id="buddysystem_btn" class="section" onclick="show_buddysystem()">
+					<span>BuddySystem</span>
+				</li>
+			</nav>
 			
-			<hr />
-			<li id="faucon_btn" class="section" onclick="show_faucondor()">
-				<span>Faucondor</span>
-			</li>
-			<li id="wiki_btn" class="section" onclick="show_wiki()">
-				<span>Wiki ESN France</span>
-			</li>
-			<li id="buddysystem_btn" class="section" onclick="show_buddysystem()">
-				<span>BuddySystem</span>
+			<li class='section subscribe' onclick="show_new_site_subscription()">
+				<span>Subscribe to a news flux</span>
 			</li>
 			
 			<!-- <li id="tuto_btn" class="section"></li> -->

@@ -41,7 +41,7 @@ function get_parameters() {
 
 function subscribe_to_new_site(url) {
 	ipc.send('add_new_site', url);
-	
+	hide_new_site_subscription();
 }
 
 ipc.on('site_already_registered' , function(event, registered, url){
@@ -70,3 +70,4 @@ ipc.on('get-params' , function(event , data){
 	}
 
 });
+

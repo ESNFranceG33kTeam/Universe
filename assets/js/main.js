@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	DOMisReady = true;
 });
 
-var menu = document.getElementById('side_menu');
+var main_wrapper = document.getElementById('main_wrapper');
+var new_site_window = document.getElementById('new_site');
+var menu = document.getElementById('icons');
 var loading_screen = document.getElementById('loading');
 var loading_logo = document.getElementById('loading_logo');
 var home = document.getElementById('home');
@@ -105,4 +107,15 @@ function create_site_menu_component(url) {
 
 function create_site_menu_separation(){
 	menu.appendChild(document.createElement('HR'));
+}
+
+
+function show_new_site_subscription() {
+	main_wrapper.style.filter = 'blur(5px)';
+	new_site_window.style.display = 'block';
+}
+
+function hide_new_site_subscription() {
+	main_wrapper.style.filter = 'none';
+	new_site_window.style.display = 'none';
 }
