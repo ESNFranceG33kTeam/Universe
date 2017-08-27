@@ -92,6 +92,8 @@ function show_home() {
 
 function create_site_menu_component(url) {
 
+	reset_new_site_subscription();
+	
 	if(sites_added === 0)
 		create_site_menu_separation();
 	sites_added++;
@@ -117,8 +119,8 @@ function show_new_site_subscription() {
 	new_site_window.style.animationName = 'bounceIn';
 }
 
-function hide_new_site_subscription() {
+function reset_new_site_subscription() {
 	main_wrapper.style.filter = 'none';
-	// new_site_window.style.display = 'none';
 	new_site_window.style.animationName = 'bounceOut';
+	// TODO reset le champ url
 }

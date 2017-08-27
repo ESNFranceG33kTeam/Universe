@@ -40,8 +40,10 @@ function get_parameters() {
 }
 
 function subscribe_to_new_site(url) {
-	ipc.send('add_new_site', url);
-	hide_new_site_subscription();
+	if(is_valid_url(url))
+		ipc.send('add_new_site', url);
+	else
+		console.log('lien non valide');
 }
 
 ipc.on('site_already_registered' , function(event, registered, url){
@@ -49,11 +51,10 @@ ipc.on('site_already_registered' , function(event, registered, url){
 	if(!registered)
 		create_site_menu_component(url);
 	
-	else {
+	else if(registered){
 		// alert the user
 		console.log('déjà abo');
-	}
-	
+	} 
 	
 });
 
@@ -70,4 +71,15 @@ ipc.on('get-params' , function(event , data){
 	}
 
 });
+
+
+function is_valid_url(url) {
+	
+	var regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ ;
+	if(url === '')
+		return 'void';
+	
+	if(url.match(regex))
+		return true;
+}
 
