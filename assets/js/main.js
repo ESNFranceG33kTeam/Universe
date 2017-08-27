@@ -24,7 +24,8 @@ var w_frame = document.getElementById('wiki_frame');
 // var g_frame = document.getElementById('galaxy_frame');
 
 function check_loaded_frames() {
-	if(frames_loaded === frames_count)
+	// TODO check errors when iframes can't load (internet issues)
+	//if(frames_loaded === frames_count)
 		hide_loading_screen();
 }
 
@@ -111,11 +112,13 @@ function create_site_menu_separation(){
 
 
 function show_new_site_subscription() {
-	main_wrapper.style.filter = 'blur(5px)';
+	main_wrapper.style.filter = 'brightness(0.4)';
 	new_site_window.style.display = 'block';
+	new_site_window.style.animationName = 'bounceIn';
 }
 
 function hide_new_site_subscription() {
 	main_wrapper.style.filter = 'none';
-	new_site_window.style.display = 'none';
+	// new_site_window.style.display = 'none';
+	new_site_window.style.animationName = 'bounceOut';
 }

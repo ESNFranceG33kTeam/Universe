@@ -27,6 +27,7 @@
 	
 	overflow: auto;
 	background-color: #e0e0e0;
+	transform: translateZ();
 }
 
 #main_wrapper:hover {
@@ -245,6 +246,7 @@ iframe {
 	height: 230px;
 	display: none;
 	
+	padding: 20px;
 	z-index: 2;
 	
 	
@@ -271,5 +273,24 @@ iframe {
   100%{
     opacity: 1;
     transform: scale(1) translate3d(0,0,0);
+  }
+}
+
+@keyframes bounceOut{
+  0%{
+    opacity: 1;
+    transform: scale(1) translate3d(0,0,0);
+  }
+  50%{
+    opacity: 0.9;
+    transform: scale(0.3);
+  }
+  80%{
+    opacity: 0.3;
+    transform: scale(0.1)
+  }
+  100%{
+    opacity: 0;
+    transform: scale(0.01) translate3d(0,0,0);
   }
 }
