@@ -54,6 +54,7 @@ ipc.on('site_already_registered' , function(event, registered, url){
 	else if(registered){
 		// alert the user
 		console.log('déjà abo');
+		
 	} 
 	
 });

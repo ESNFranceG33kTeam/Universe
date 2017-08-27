@@ -124,3 +124,8 @@ function reset_new_site_subscription() {
 	new_site_window.style.animationName = 'bounceOut';
 	// TODO reset le champ url
 }
+
+function set_new_site_warning() {
+	new_site_window.style.animationName = '';
+	new_site_window.style.animationName = 'bounceWarning';
+}
