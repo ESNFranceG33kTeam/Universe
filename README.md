@@ -8,6 +8,9 @@ To install Electron, use npm like this:
 ```shell
 # Install the `electron` command globally in your $PATH
 npm install electron -g
+
+# Install all project dependencies
+cd esnbang/ && npm install
 ```
 
 ## Run the application
