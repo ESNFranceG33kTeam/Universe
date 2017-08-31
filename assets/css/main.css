@@ -15,6 +15,34 @@
 	transition: all 200ms ease-out;
 	
 	user-select: none;
+	cursor: default;
+	outline: none;
+}
+
+input {
+	padding: 5px;
+	margin-right: 18px;
+	height: 38px;
+	
+	cursor: text;
+}
+button {
+	border: 5px solid white;
+	color: white;
+	background-color: lightgray;
+	
+	font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px;
+    letter-spacing: 2px;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: white;
+	color: gray;
+	border-color: gray;
 }
 
 
@@ -242,8 +270,8 @@ iframe {
 	bottom: 0;
 	left: 0;
 	
-	width: 255px;
-	height: 20px;
+	width: 340px;
+	height: 60px;
 	display: none;
 	
 	padding: 20px;
@@ -257,63 +285,66 @@ iframe {
 	animation-fill-mode: forwards;
 }
 
-@keyframes bounceIn{
-  0%{
-    opacity: 0;
-    transform: scale(0.3) translate3d(0,0,0);
-  }
-  50%{
-    opacity: 0.9;
-    transform: scale(1);
-  }
-  80%{
-    opacity: 1;
-    transform: scale(0.89);
-  }
-  100%{
-    opacity: 1;
-    transform: scale(1) translate3d(0,0,0);
-  }
+@keyframes bounceIn {
+	0%{
+		opacity: 0;
+		transform: scale(0.3) translate3d(0,0,0);
+	}
+	50%{
+		opacity: 0.9;
+		transform: scale(1);
+	}
+	80%{
+		opacity: 1;
+		transform: scale(0.89);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1) translate3d(0,0,0);
+	}
 }
 
-@keyframes bounceOut{
-  0%{
-    opacity: 1;
-    transform: scale(1) translate3d(0,0,0);
-  }
-  50%{
-    opacity: 0.9;
-    transform: scale(0.3);
-  }
-  80%{
-    opacity: 0.3;
-    transform: scale(0.1)
-  }
-  100%{
-    opacity: 0;
-    transform: scale(0.01) translate3d(0,0,0);
-  }
+@keyframes bounceOut {
+	0%{
+		opacity: 1;
+		transform: scale(1) translate3d(0,0,0);
+	}
+	50%{
+		opacity: 0.9;
+		transform: scale(0.3);
+	}
+	80%{
+		opacity: 0.3;
+		transform: scale(0.1);
+	}
+	100%{
+		opacity: 0;
+		transform: scale(0.01) translate3d(0,0,0);
+	}
 }
 
-@keyframes bounceWarning{
-  0%{
-	opacity: 1;
-    transform: translate3d(-20px,0,0);
-  }
-  25%{
-	  opacity: 1;
-    transform: translate3d(20px,0,0);
-  }
-  50%{
-	  opacity: 1;
-    transform: translate3d(-20px,0,0);
-  }
-  75%{
-	  opacity: 1;
-    transform: translate3d(20px,0,0);
-  }
-  100%{
-	  opacity: 1;
-	transform: translate3d(0,0,0);
-  }
+@keyframes bounceWarning {
+	0%{
+		opacity: 1;
+		transform: translate3d(-10px,0,0);
+	}
+	25%{
+		opacity: 1;
+		transform: translate3d(10px,0,0);
+	}
+	50%{
+		opacity: 1;
+		transform: translate3d(-10px,0,0);
+	}
+	75%{
+		opacity: 1;
+		transform: translate3d(10px,0,0);
+	}
+	100%{
+		opacity: 1;
+		transform: translate3d(0,0,0);
+		
+		border: 2px solid red;
+		background-color: #ff9999;
+	}
 }

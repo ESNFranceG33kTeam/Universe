@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 var main_wrapper = document.getElementById('main_wrapper');
 var new_site_window = document.getElementById('new_site');
+var new_url = document.getElementById('new_url');
+var error_window = document.getElementById('new_site_error');
 var menu = document.getElementById('icons');
 var loading_screen = document.getElementById('loading');
 var loading_logo = document.getElementById('loading_logo');
@@ -90,6 +92,8 @@ function show_home() {
     home.style.display = 'block';
 }
 
+
+
 function create_site_menu_component(url) {
 
 	reset_new_site_subscription();
@@ -122,10 +126,18 @@ function show_new_site_subscription() {
 function reset_new_site_subscription() {
 	main_wrapper.style.filter = 'none';
 	new_site_window.style.animationName = 'bounceOut';
-	// TODO reset le champ url
+	new_site_error.innerText = 'You can insert here a news feed you want to follow.';
+	new_site_error.style.color = 'inherit';
+	new_url.value = '';
 }
 
-function set_new_site_warning() {
-	new_site_window.style.animationName = '';
-	new_site_window.style.animationName = 'bounceWarning';
+function set_new_site_warning(message) {
+	new_site_window.style.animationName = 'bounceOut';
+	setTimeout(function() {
+		new_site_window.style.animationName = 'bounceWarning';
+	}, 20);
+	
+	new_site_error.style.color = 'red';
+	new_site_error.innerText = message;
 }
+

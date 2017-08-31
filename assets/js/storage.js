@@ -71,21 +71,31 @@ function get_parameters() {
 }
 
 function subscribe_to_new_site(url) {
-	if(is_valid_url(url))
+	var valid = is_valid_url(url);
+	
+	if(valid)
 		ipc.send('add_new_site', url);
-	else
+	
+	else if(valid === 'void'){
+		set_new_site_warning('You should try to write something in there !');
+		console.log('input vide');
+	}
+	else{
+		set_new_site_warning('The URL you entered is not valid.');
 		console.log('lien non valide');
+	}
 }
 
 ipc.on('site_already_registered' , function(event, registered, url){
 	
-	if(!registered)
+	if(!registered) {
 		create_site_menu_component(url);
-	
+		console.log('enregistrement de ' + url);
+	}
+
 	else if(registered){
 		// alert the user
-		console.log('déjà abo');
-		
+		set_new_site_warning('You\'ve already registered this one.');
 	} 
 	
 });
@@ -113,5 +123,7 @@ function is_valid_url(url) {
 	
 	if(url.match(regex))
 		return true;
+	else
+		return false;
 }
 
