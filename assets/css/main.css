@@ -99,7 +99,7 @@ button:hover {
 	transform: scale(0.9);
 }
 
-.section span {
+.section div {
 	display: none;
 	background-color: rgb(235, 10, 141);
 	color: #fff;
@@ -115,7 +115,7 @@ button:hover {
     left: 110%; 
 }
 
-.section:hover span {
+.section:hover div {
 	display: block;
 	transform: none;
 }
@@ -130,7 +130,7 @@ button:hover {
 	margin: 20px 15px 15px 15px;
 }
 
-#home_btn span {
+#home_btn div {
 	background-color: rgb(122, 192, 67);
 }
 
@@ -144,7 +144,7 @@ button:hover {
 	/* TODO this disables the hovering effect of .section */
 	animation-fill-mode: forwards;
 }
-.added_site span {
+.added_site div {
 	background-color: rgb(243, 123, 32);
 }
 
@@ -153,9 +153,23 @@ button:hover {
 	background-color: lightgray;
 }
 
-.subscribe span {
+.subscribe div {
 	top: 6px;
 	background-color: gray;
+}
+
+.new_item {
+	background-color: #fa3e3e;
+	border-radius: 2px;
+	color: white;
+	font-weight: bold;
+
+	padding: 1px 3px;
+	font-size: 13px;
+
+	position: absolute;
+	bottom: -3px;
+	right: -3px;
 }
 
 #home_btn {
@@ -345,6 +359,6 @@ iframe {
 		transform: translate3d(0,0,0);
 		
 		border: 2px solid red;
-		background-color: #ff9999;
+		background-color: #ffcccc;
 	}
 }

@@ -105,9 +105,11 @@ function create_site_menu_component(url) {
 	var button = document.createElement('LI');
 	button.className = 'section added_site';
 	
-	var tooltip = document.createElement('SPAN');
+	var tooltip = document.createElement('DIV');
 	tooltip.innerText = url;
 	button.appendChild(tooltip);
+	
+	button.id = url_to_css_id(url);
 
 	menu.appendChild(button);
 }
@@ -115,6 +117,7 @@ function create_site_menu_component(url) {
 function create_site_menu_separation(){
 	menu.appendChild(document.createElement('HR'));
 }
+
 
 
 function show_new_site_subscription() {
@@ -141,3 +144,8 @@ function set_new_site_warning(message) {
 	new_site_error.innerText = message;
 }
 
+
+function url_to_css_id(url) {
+	var ret = url.replace(/:/g, '_');
+	return ret.replace(/\//g, '_');
+}

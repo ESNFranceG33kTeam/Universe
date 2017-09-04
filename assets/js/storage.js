@@ -46,41 +46,19 @@ function get_parameters() {
 		save_parameters(parameters);
 		return parameters;
 	}
-	
-	/*
-	var params = window.localStorage.getItem('parameters');
-	
-	// first start
-	if(params === null) {
-		
-		var parameters = {
-			size : {
-				width: 920,
-				height: 535
-			},
-			
-			sites: []
-		};
-		
-		return parameters;
-		
-	} else {
-		return JSON.parse(params);
-	}
-	*/
 }
 
 function subscribe_to_new_site(url) {
-	var valid = is_valid_url(url);
+	var valid = is_valid_url(url);	
 	
-	if(valid)
-		ipc.send('add_new_site', url);
-	
-	else if(valid === 'void'){
+	if(valid === 'void'){
 		set_new_site_warning('You should try to write something in there !');
 		console.log('input vide');
-	}
-	else{
+	
+	} else if(valid)
+		ipc.send('add_new_site', url);
+	
+	else {
 		set_new_site_warning('The URL you entered is not valid.');
 		console.log('lien non valide');
 	}
@@ -118,7 +96,8 @@ ipc.on('get-params' , function(event , data){
 function is_valid_url(url) {
 	
 	var regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ ;
-	if(url === '')
+	
+	if(url == '')
 		return 'void';
 	
 	if(url.match(regex))
@@ -126,4 +105,3 @@ function is_valid_url(url) {
 	else
 		return false;
 }
-

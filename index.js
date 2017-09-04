@@ -67,22 +67,20 @@ function createWindow () {
 	
 	// main window
 	mainWindow = new BrowserWindow({
-								title: 'ESNbang!',
-								icon: 'assets/img/star.png',
-								backgroundColor: '#e0e0e0',
-								
-								width: 920, 
-								height: 535,
-								minWidth: 920,
-								minHeight: 535,
-								
-								show: false});
+		title: 'ESNbang!',
+		icon: 'assets/img/star.png',
+		backgroundColor: '#e0e0e0',
+		
+		width: 920, 
+		height: 535,
+		minWidth: 920,
+		minHeight: 535,
+		
+		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
     mainWindow.webContents.openDevTools();
 	
-	const session = mainWindow.webContents.session
-	session.clearCache(function(){});
 	
 	// show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
