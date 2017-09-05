@@ -104,6 +104,9 @@ function create_site_menu_component(url) {
 
 	var button = document.createElement('LI');
 	button.className = 'section added_site';
+	button.addEventListener('animationend', function() {
+		button.style.animationName = 'none';
+	}, false);
 	
 	var tooltip = document.createElement('DIV');
 	tooltip.innerText = url;

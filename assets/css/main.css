@@ -95,7 +95,6 @@ button:hover {
 .section:hover {
 	background-color: lightblue;
 	cursor: pointer;
-	
 	transform: scale(0.9);
 }
 
@@ -135,13 +134,10 @@ button:hover {
 }
 
 .added_site {
-	opacity: 0;
+	opacity: 1;
 	animation-name: bounceIn;
 	animation-duration: 450ms;
 	animation-timing-function: linear;
-	
-	
-	/* TODO this disables the hovering effect of .section */
 	animation-fill-mode: forwards;
 }
 .added_site div {
