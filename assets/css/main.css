@@ -75,6 +75,35 @@ button:hover {
 	background-color: rgb(45, 53, 145);
 }
 
+.scroll_btn {
+	opacity: 0;
+	
+	color: darkblue;
+	border: 3px solid darkblue;
+	background-color: rgb(75, 83, 175);
+	
+	padding: 1px;
+	font-weight: bold;
+	font-size: 1.3em;
+	
+	margin-left: 10px;
+	width: 50px;
+	height: 30px;
+	
+	position: absolute;
+	bottom: -3px;
+}
+
+.scroll_btn:hover {
+	color: darkblue;
+	border: 3px solid darkblue;
+	background-color: rgb(95, 103, 195);
+}
+
+#side_menu:hover .scroll_btn {
+	opacity: 1;
+}
+
 .section {
 	position: relative;
 	width: 50px;

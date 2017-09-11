@@ -3,14 +3,7 @@ const Menu = require('electron').remote.Menu;
 
 const frames_count = 3;
 var frames_loaded = 0;
-var DOMisReady = false;
 var sites_added = 0;
-
-
-document.addEventListener("DOMContentLoaded", function(event) {
-	DOMisReady = true;
-});
-
 
 var main_wrapper = document.getElementById('main_wrapper');
 var new_site_window = document.getElementById('new_site');
@@ -27,8 +20,7 @@ var w_frame = document.getElementById('wiki_frame');
 // var g_frame = document.getElementById('galaxy_frame');
 
 function check_loaded_frames() {
-	// TODO check errors when iframes can't load (internet issues)
-	//if(frames_loaded === frames_count)
+	if(frames_loaded === frames_count)
 		hide_loading_screen();
 }
 
