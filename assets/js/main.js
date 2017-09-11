@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	DOMisReady = true;
 });
 
+
 var main_wrapper = document.getElementById('main_wrapper');
 var new_site_window = document.getElementById('new_site');
 var new_url = document.getElementById('new_url');
@@ -122,6 +123,8 @@ function create_site_menu_separation(){
 }
 
 
+
+/* TODO hiding menus by clicking on iframes */
 
 function show_new_site_subscription() {
 	main_wrapper.style.filter = 'brightness(0.4)';

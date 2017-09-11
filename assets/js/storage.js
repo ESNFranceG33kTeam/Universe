@@ -5,7 +5,8 @@ const storage = remote.require('electron-json-storage-sync');
 var parameters = {
 	size : {
 		width: 0,
-		height: 0
+		height: 0,
+		maximised: false
 	},
 	
 	sites: []
@@ -13,10 +14,6 @@ var parameters = {
 */
 
 function save_parameters(params) {
-	/*
-	if(DOMisReady) // otherwise the settings storage will not be guaranteed
-		window.localStorage.setItem('parameters', JSON.stringify(params));
-		*/
 	storage.set('parameters', params);
 }
 
@@ -36,7 +33,8 @@ function get_parameters() {
 		var parameters = {
 			size : {
 				width: 920,
-				height: 535
+				height: 535,
+				maximized: false
 			},
 			
 			sites: [],

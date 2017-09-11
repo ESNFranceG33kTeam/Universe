@@ -79,7 +79,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 	
 	
 	// show the window only when it's rendered
@@ -92,9 +92,18 @@ function createWindow () {
 			console.log(data);
 			console.log('---------------------');
 			
-			// centering the window
-			mainWindow.setSize(parameters.size.width, parameters.size.height);
-			mainWindow.center();
+			
+			if(parameters.size.maximized)
+				mainWindow.maximize();
+			
+			else {
+				
+				// centering the window
+				mainWindow.setSize(parameters.size.width, parameters.size.height);
+				mainWindow.center();
+			}
+			
+			
 			mainWindow.show();
 			
 			// adding the websites
@@ -114,6 +123,12 @@ function createWindow () {
 	
 	// save window size
 	mainWindow.on('resize', () => {
+		parameters.size.maximized = false;
+		save_parameters();
+	});
+	 
+	mainWindow.on('maximize', () => {
+		parameters.size.maximized = true;
 		save_parameters();
 	});
 
