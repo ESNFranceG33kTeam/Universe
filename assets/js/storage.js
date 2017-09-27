@@ -1,4 +1,3 @@
-const ipc = require('electron').ipcRenderer;
 const storage = remote.require('electron-json-storage-sync');
 
 /*
@@ -67,6 +66,7 @@ ipc.on('site_already_registered' , function(event, registered, url){
 	if(!registered) {
 		create_site_menu_component(url);
 		console.log('enregistrement de ' + url);
+		set_overflow_on_menu();
 	}
 
 	else if(registered){

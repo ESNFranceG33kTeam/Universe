@@ -15,7 +15,7 @@
 			<p id="new_site_error">You can insert here a news feed you want to follow.</p>
 		</div>
 		
-		<div id="main_wrapper" onclick="reset_new_site_subscription()">
+		<div id="main_wrapper" onclick="reset_new_site_subscription()" style="z-index: 0">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png" draggable="false"></h1>
 				<p>Welcome to ESNbang!, the new application for members of the Erasmus Student Network !</p>
@@ -26,13 +26,10 @@
 				<p class="sideinfo"><br />Coded with love by the G33k team (France)</p>
 			</div>
 
-            <iframe id="faucon_frame" src="http://faucondor.ixesn.fr"></iframe>
-            <!-- <iframe id="logoinserter_frame" src="http://logoinserter.esnlille.fr"></iframe> --> 
             <iframe id="wiki_frame" src="http://wiki.ixesn.fr"></iframe>
-            <!-- <iframe id="galaxy_frame" src="http://galaxy.esn.org" sandbox="allow-scripts"></iframe> -->
 			<iframe id="buddysystem_frame" src="http://buddysystem.eu/choose"></iframe>
 		</div>
-
+		
 		<nav id="side_menu">
 			<nav id="icons">
 				<li id="home_btn" class="section" onclick="show_home()">
@@ -40,9 +37,6 @@
 				</li>
 				
 				<hr />
-				<li id="faucon_btn" class="section" onclick="show_faucondor()">
-					<div>Faucondor</div>
-				</li>
 				<li id="wiki_btn" class="section" onclick="show_wiki()">
 					<div>Wiki ESN France</div>
 				</li>
@@ -59,7 +53,8 @@
 			<!-- <li id="logoinserter_btn" class="section" onclick="show_logoinserter()"></li> -->
 			<!-- <li id="galaxy_btn" class="section" onclick="show_galaxy()"></li> -->
 			
-			<button class="scroll_btn">▼</button>
+			<button id="btn_up" class="scroll_btn" style="top: -3px;">▲</button>
+			<button id="btn_down" class="scroll_btn">▼</button>
 		</nav>
 
 	</body>

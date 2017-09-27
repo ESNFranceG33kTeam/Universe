@@ -79,7 +79,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 	
 	
 	// show the window only when it's rendered
@@ -103,7 +103,7 @@ function createWindow () {
 				mainWindow.center();
 			}
 			
-			
+			mainWindow.webContents.send('overflow-menu');
 			mainWindow.show();
 			
 			// adding the websites
@@ -124,11 +124,13 @@ function createWindow () {
 	// save window size
 	mainWindow.on('resize', () => {
 		parameters.size.maximized = false;
+		mainWindow.webContents.send('overflow-menu');
 		save_parameters();
 	});
 	 
 	mainWindow.on('maximize', () => {
 		parameters.size.maximized = true;
+		mainWindow.webContents.send('overflow-menu');
 		save_parameters();
 	});
 
