@@ -106,12 +106,21 @@ button:hover {
 	background-color: rgb(95, 103, 195);
 }
 
-.overflowed:hover {
-	padding: 30px 0;
+.scroll_btn_hover {
+	position: fixed;
+	left: 0;
+	height: 30px;
+	width: 70px;
+	bottom: -3px;
 }
-.overflowed:hover .scroll_btn {
+#btn_up_hover:hover #btn_up {
 	opacity: 1;
 }
+#btn_down_hover:hover #btn_down {
+	opacity: 1;
+}
+
+
 
 .section {
 	position: relative;

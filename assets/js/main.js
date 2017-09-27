@@ -21,7 +21,8 @@ var w_frame = document.getElementById('wiki_frame');
 
 var btn_up = document.getElementById('btn_up');
 var btn_down = document.getElementById('btn_down');
-
+var btn_up_hover = document.getElementById('btn_up_hover');
+var btn_down_hover = document.getElementById('btn_down_hover');
 
 function check_loaded_frames() {
 	if(frames_loaded === frames_count)
@@ -49,14 +50,7 @@ w_frame.onload = function() {
 function hide_all () {
     home.style.display = 'none';
     b_frame.style.display = 'none';
-    f_frame.style.display = 'none';
-    // l_frame.style.display = 'none';
     w_frame.style.display = 'none';
-    // g_frame.style.display = 'none';
-}
-function show_faucondor() {
-    hide_all();
-    f_frame.style.display = 'block';
 }
 function show_logoinserter() {
     hide_all();
@@ -65,10 +59,6 @@ function show_logoinserter() {
 function show_wiki() {
     hide_all();
     w_frame.style.display = 'block';
-}
-function show_galaxy() {
-    hide_all();
-    g_frame.style.display = 'block';
 }
 function show_buddysystem() {
 	hide_all();
@@ -150,14 +140,14 @@ ipc.on('overflow-menu' , function(event , data){
 function set_overflow_on_menu() {
 	if(menu_is_overflowed()) {
 		home_menu.className = 'overflowed';
-		btn_up.style.display = 'block';
-		btn_down.style.display = 'block';
+		btn_up_hover.style.display = 'block';
+		btn_down_hover.style.display = 'block';
 	}
 		
 	else {
 		home_menu.className = '';
-		btn_up.style.display = 'none';
-		btn_down.style.display = 'none';
+		btn_up_hover.style.display = 'none';
+		btn_down_hover.style.display = 'none';
 	}
 		
 }
