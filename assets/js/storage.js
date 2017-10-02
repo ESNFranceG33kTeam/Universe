@@ -24,6 +24,7 @@ ipc.on('save' , function(event , data){
 	console.info('save');
 	save_parameters(data);
 });
+
 ipc.on('get-params' , function(event , data){
 	var settings = get_parameters();
 	var sites = settings.sites;
@@ -39,17 +40,27 @@ ipc.on('get-params' , function(event , data){
 // ----------------------------------------------------------------
 
 
-/*
-var parameters = {
+/**
+  * This is the user settings model, used to store all information
+  * relative to the user preferences.
+  * @author Rémy Raes
+  **/
+var settings_model = {
+	
+	// object containing size information of the application window
 	size : {
 		width: 0,
 		height: 0,
 		maximised: false
 	},
 	
-	sites: []
+	// array containing all websites the user has subscribed to
+	sites: [],
+	
+	// is it the first time the user launches the application ?
+	first_launch: true
 }
-*/
+
 
 /**
   * This function saves the user settings on the user local 
@@ -79,19 +90,11 @@ function get_parameters() {
 	} else {
 		
 		// first start
-		var parameters = {
-			size : {
-				width: 920,
-				height: 535,
-				maximized: false
-			},
-			
-			sites: [],
-			first_launch: true
-		};
 		
-		save_parameters(parameters);
-		return parameters;
+		var params = settings_model;
+		save_parameters(params);
+		
+		return params;
 	}
 }
 
