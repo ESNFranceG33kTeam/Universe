@@ -8,6 +8,8 @@ ipc.on('exit-notification' , function(){
 function add_notification_on_site(url) {
 	// check if the notification span exists
 	let component = document.getElementById(url_to_css_id(url));
+	if(component === null) 
+		return ;
 	let child_nodes = component.getElementsByTagName('SPAN');
 	
 	// create it if not

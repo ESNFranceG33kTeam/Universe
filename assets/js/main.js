@@ -12,6 +12,7 @@ var new_url = document.getElementById('new_url');
 var error_window = document.getElementById('new_site_error');
 var menu = document.getElementById('icons');
 var home_menu = document.getElementById('side_menu');
+var home_menu_height = 'cc';
 var loading_screen = document.getElementById('loading');
 var loading_logo = document.getElementById('loading_logo');
 var home = document.getElementById('home');
@@ -93,6 +94,9 @@ function create_site_menu_component(url) {
 	button.id = url_to_css_id(url);
 
 	menu.appendChild(button);
+	
+	// actualise menu size
+	home_menu_height = home_menu.scrollHeight;
 }
 
 function create_site_menu_separation(){
@@ -178,14 +182,20 @@ btn_down.addEventListener('mouseup', function() {
 	clearInterval(t);
 }, false);
 
+
 function scroll_menu_up(){
+	
+	// initialisation
+	if(home_menu_height === 'cc')
+		home_menu_height = home_menu.scrollHeight;
+	
 	let elem = home_menu.style.marginTop;
 	let cpt = 0;
 	if(elem.length > 0)
 		cpt = parseInt(elem.substring(0, elem.length-2));
 	
-	home_menu.style.marginTop = (cpt - interval) + 'px';
-	console.log(cpt);
+	if(home_menu.scrollHeight === home_menu_height)
+		home_menu.style.marginTop = (cpt - interval) + 'px';
 }
 function scroll_menu_down(){
 	let elem = home_menu.style.marginTop;
@@ -195,7 +205,6 @@ function scroll_menu_down(){
 	
 	if(cpt < 0)
 		home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
-	console.log(cpt);
 }
 
 /**

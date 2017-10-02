@@ -77,6 +77,7 @@ ipc.on('site_already_registered' , function(event, registered, url){
 });
 
 ipc.on('save' , function(event , data){
+	console.info('save');
 	save_parameters(data);
 });
 ipc.on('get-params' , function(event , data){

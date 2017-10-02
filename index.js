@@ -129,6 +129,7 @@ function createWindow () {
 	});
 	 
 	mainWindow.on('maximize', () => {
+		console.log('cc');
 		parameters.size.maximized = true;
 		mainWindow.webContents.send('overflow-menu');
 		save_parameters();
