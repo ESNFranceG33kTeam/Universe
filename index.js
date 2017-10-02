@@ -154,7 +154,11 @@ function createWindow () {
 	
 }
 
-
+/**
+  * This function is used to save user settings (see settings object model in 
+  * storage.js)
+  * @author Rémy Raes
+  **/
 function save_parameters() {
 	// TODO code a timer to avoid too much function calls in a short period of time
 	let { width, height } = mainWindow.getBounds();

@@ -6,6 +6,10 @@ const frames_count = 2;
 var frames_loaded = 0;
 var sites_added = 0;
 
+// ----------------------------------------------------------------
+// initializing all application components
+// ----------------------------------------------------------------
+
 var main_wrapper = document.getElementById('main_wrapper');
 var new_site_window = document.getElementById('new_site');
 var new_url = document.getElementById('new_url');
@@ -25,11 +29,25 @@ var btn_down = document.getElementById('btn_down');
 var btn_up_hover = document.getElementById('btn_up_hover');
 var btn_down_hover = document.getElementById('btn_down_hover');
 
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+
+
+/**
+  * This function check if all iframes have loaded their content;
+  * if that's the case, it removes the loading screen.
+  * @author Rémy Raes
+  **/
 function check_loaded_frames() {
 	if(frames_loaded === frames_count)
 		hide_loading_screen();
 }
 
+/**
+  * This function hides the loading screen, enabling the user to 
+  * access the application functionnalities.
+  * @author Rémy Raes
+  **/
 function hide_loading_screen() {
 	loading_logo.style.webkitAnimationPlayState = 'paused';
 	loading_screen.style.opacity = '0';
@@ -38,7 +56,7 @@ function hide_loading_screen() {
 	}, 1000);	
 }
 
-/* listeners */
+// listeners
 b_frame.onload = function() {
 	frames_loaded++;
 	check_loaded_frames();
@@ -48,6 +66,9 @@ w_frame.onload = function() {
 	check_loaded_frames();
 }
 
+// ----------------------------------------------------------------
+// iframe display functions
+// ----------------------------------------------------------------
 function hide_all () {
     home.style.display = 'none';
     b_frame.style.display = 'none';
@@ -71,8 +92,17 @@ function show_home() {
     home.style.display = 'block';
 }
 
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 
+/**
+  * This function creates a component representing a website
+  * on the side menu.
+  *
+  * url The URL of the new website
+  * @author Rémy Raes
+  **/
 function create_site_menu_component(url) {
 
 	reset_new_site_subscription();
@@ -81,12 +111,14 @@ function create_site_menu_component(url) {
 		create_site_menu_separation();
 	sites_added++;
 
+	// creating the button
 	var button = document.createElement('LI');
 	button.className = 'section added_site';
 	button.addEventListener('animationend', function() {
 		button.style.animationName = 'none';
 	}, false);
 	
+	// create the tooltip
 	var tooltip = document.createElement('DIV');
 	tooltip.innerText = url;
 	button.appendChild(tooltip);
@@ -99,6 +131,10 @@ function create_site_menu_component(url) {
 	home_menu_height = home_menu.scrollHeight;
 }
 
+/**
+  * This function appends an HR element into the side menu.
+  * @author Rémy Raes
+  **/
 function create_site_menu_separation(){
 	menu.appendChild(document.createElement('HR'));
 }
@@ -107,12 +143,24 @@ function create_site_menu_separation(){
 
 /* TODO hiding menus by clicking on iframes */
 
+// ----------------------------------------------------------------
+// "New website" window manipulation functions
+// ----------------------------------------------------------------
+
+/**
+  * This function makes the subscription window appear.
+  * @author Rémy Raes
+  **/
 function show_new_site_subscription() {
 	main_wrapper.style.filter = 'brightness(0.4)';
 	new_site_window.style.display = 'block';
 	new_site_window.style.animationName = 'bounceIn';
 }
 
+/**
+  * This function initializes the subscription window (style, animation, tooltip text).
+  * @author Rémy Raes
+  **/
 function reset_new_site_subscription() {
 	main_wrapper.style.filter = 'none';
 	new_site_window.style.animationName = 'bounceOut';
@@ -121,6 +169,12 @@ function reset_new_site_subscription() {
 	new_url.value = '';
 }
 
+/**
+  * This function sets a warning state on the subscription window.
+  *
+  * message The message to display to the user
+  * @author Rémy Raes
+  **/
 function set_new_site_warning(message) {
 	new_site_window.style.animationName = 'bounceOut';
 	setTimeout(function() {
@@ -130,6 +184,9 @@ function set_new_site_warning(message) {
 	new_site_error.style.color = 'red';
 	new_site_error.innerText = message;
 }
+
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 
 function url_to_css_id(url) {
@@ -141,6 +198,11 @@ ipc.on('overflow-menu' , function(event , data){
 	set_overflow_on_menu();
 });
 
+/**
+  * This functions checks if the side menu is overflowed, if that's 
+  * the case, it sets the scrolling buttons state to visible.
+  * @author Rémy Raes
+  **/
 function set_overflow_on_menu() {
 	if(menu_is_overflowed()) {
 		home_menu.className = 'overflowed';
@@ -156,12 +218,12 @@ function set_overflow_on_menu() {
 		
 }
 
-// TODO à revoir
+// TODO to redo
 function menu_is_overflowed() { 
 	return (home_menu.scrollHeight > home_menu.clientHeight);
 }
 
-// listeners pour scroll
+// scrolling listeners avoiding to call the functions too much
 var t = 0;
 var interval = 20;
 btn_up.addEventListener('mousedown', function(){
@@ -183,8 +245,8 @@ btn_down.addEventListener('mouseup', function() {
 }, false);
 
 
+// functions used to scroll the side menu
 function scroll_menu_up(){
-	
 	// initialisation
 	if(home_menu_height === 'cc')
 		home_menu_height = home_menu.scrollHeight;
