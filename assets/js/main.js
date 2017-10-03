@@ -2,7 +2,7 @@ const remote = require('electron').remote;
 const Menu = require('electron').remote.Menu;
 const ipc = require('electron').ipcRenderer;
 
-const frames_count = 2;
+const frames_count = 3;
 var frames_loaded = 0;
 var sites_added = 0;
 
@@ -23,6 +23,7 @@ var home = document.getElementById('home');
 
 var b_frame = document.getElementById('buddysystem_frame');
 var w_frame = document.getElementById('wiki_frame');
+var mb_frame = document.getElementById('mb_frame');
 
 var btn_up = document.getElementById('btn_up');
 var btn_down = document.getElementById('btn_down');
@@ -65,6 +66,11 @@ w_frame.onload = function() {
 	frames_loaded++;
 	check_loaded_frames();
 }
+mb_frame.onload = function() {
+	frames_loaded++;
+	check_loaded_frames();
+}
+
 
 // ----------------------------------------------------------------
 // iframe display functions
@@ -73,6 +79,7 @@ function hide_all () {
     home.style.display = 'none';
     b_frame.style.display = 'none';
     w_frame.style.display = 'none';
+	mb_frame.style.display = 'none';
 }
 function show_logoinserter() {
     hide_all();
@@ -85,6 +92,10 @@ function show_wiki() {
 function show_buddysystem() {
 	hide_all();
 	b_frame.style.display = 'block';
+}
+function show_mb() {
+	hide_all();
+	mb_frame.style.display = 'block';
 }
 
 function show_home() {
