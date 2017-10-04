@@ -25,6 +25,9 @@ var b_frame = document.getElementById('buddysystem_frame');
 var w_frame = document.getElementById('wiki_frame');
 var mb_frame = document.getElementById('mb_frame');
 
+var frames = document.getElementsByTagName('IFRAME');
+
+
 var btn_up = document.getElementById('btn_up');
 var btn_down = document.getElementById('btn_down');
 var btn_up_hover = document.getElementById('btn_up_hover');
@@ -76,10 +79,8 @@ mb_frame.onload = function() {
 // iframe display functions
 // ----------------------------------------------------------------
 function hide_all () {
-    home.style.display = 'none';
-    b_frame.style.display = 'none';
-    w_frame.style.display = 'none';
-	mb_frame.style.display = 'none';
+    for(let i=0; i<frames.length; i++)
+		frames[i].style.display = 'none';
 }
 function show_logoinserter() {
     hide_all();
@@ -150,6 +151,12 @@ function create_site_menu_separation(){
 	menu.appendChild(document.createElement('HR'));
 }
 
+function create_site_frame_component(url) {
+	let frame = document.createElement('IFRAME');
+	frame.id = url_to_css_id(url);
+	
+	main_wrapper.appendChild(frame);
+}
 
 
 /* TODO hiding menus by clicking on iframes */

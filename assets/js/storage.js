@@ -9,6 +9,7 @@ ipc.on('site_already_registered' , function(event, registered, url){
 	
 	if(!registered) {
 		create_site_menu_component(url);
+		create_site_frame_component(url);
 		console.log('enregistrement de ' + url);
 		set_overflow_on_menu();
 	}
@@ -32,6 +33,7 @@ ipc.on('get-params' , function(event , data){
 	ipc.send('send_params', settings);
     for(var i=0; i<sites.length; i++) {
         create_site_menu_component(sites[i]);
+		create_site_frame_component(sites[i]);
 	}
 
 });
