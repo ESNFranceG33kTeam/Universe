@@ -95,12 +95,10 @@ function hide_all_frames () {
 function show_frame(url) {
 
 	hide_all_frames();
-	console.log('showing ' + url);
 
 	let frames = document.getElementsByTagName('iframe');
 	for(let i=0; i<frames.length; i++)
 		if(frames[i].id === (url + '_frame')) {
-			console.log('trouvé');
 			frames[i].style.display = 'block';
 			return ;
 	}
@@ -159,6 +157,13 @@ function create_site_menu_component(url) {
 	let tmp = url_to_css_id(url);
 	button.id = tmp;
 	button.onclick = function() {show_frame(tmp)};
+
+
+	// creating the closing button
+	let span = document.createElement('span');
+	span.className = 'delete';
+	span.innerText = 'x';
+	button.appendChild(span);
 
 
 	// create the tooltip

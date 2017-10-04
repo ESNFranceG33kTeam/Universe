@@ -8,13 +8,13 @@
 		<div id="loading">
 			<h1><img id="loading_logo" class="img_loading" src="assets/img/star.png"></h1>
 		</div>
-		
+
 		<div id="new_site">
 			<input id="new_url" type="text" placeholder="Website URL"></input>
 			<button onclick="subscribe_to_new_site(document.getElementById('new_url').value)">Subscribe</button>
 			<p id="new_site_error">You can insert here a news feed you want to follow.</p>
 		</div>
-		
+
 		<div id="main_wrapper" onclick="reset_new_site_subscription()" style="z-index: 0">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png" draggable="false"></h1>
@@ -29,7 +29,7 @@
             <iframe id="wiki_frame" src="http://wiki.ixesn.fr"></iframe>
 			<iframe id="buddysystem_frame" src="http://buddysystem.eu/"></iframe>
 			<iframe id="mb_frame" src="http://gestion.ixesn.fr/connect.php"></iframe>
-			
+
 			<!--
 				Headers problems
 				https://communauteixesn.slack.com/
@@ -37,13 +37,13 @@
 				http://webshop.ixesn.fr
 			-->
 		</div>
-		
+
 		<nav id="side_menu">
 			<nav id="icons">
 				<li id="home_btn" class="section" onclick="show_home()">
 					<div>Home</div>
 				</li>
-				
+
 				<hr />
 				<li id="wiki_btn" class="section" onclick="show_wiki()">
 					<div>Wiki ESN France</div>
@@ -55,11 +55,11 @@
 					<div>Module Bénévoles</div>
 				</li>
 			</nav>
-			
+
 			<li class='section subscribe' onclick="show_new_site_subscription()">
 				<div>Subscribe to a news flux</div>
 			</li>
-			
+
 			<div class="scroll_btn_hover" id="btn_up_hover" style="top: -3px;">
 				<button id="btn_up" class="scroll_btn" style="top: -3px;">▲</button>
 			</div>

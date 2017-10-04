@@ -22,24 +22,24 @@ ipc.on('exit-notification' , function(){
 function add_notification_on_site(url) {
 	// check if the notification span exists
 	let component = document.getElementById(url_to_css_id(url));
-	if(component === null) 
+	if(component === null)
 		return ;
 	let child_nodes = component.getElementsByTagName('SPAN');
-	
+
 	// create it if not
-	if(child_nodes.length === 0) {
+	if(child_nodes.length <= 1) {
 		let spa = document.createElement("SPAN");
 		spa.innerText = 1;
 		spa.className = 'new_item';
 		component.appendChild(spa);
 	}
-	
+
 	// +1
 	else {
-		let spa = child_nodes[0];
+		let spa = component.getElementsByClassName('new_item')[0];
 		spa.innerText = parseInt(spa.innerText) + 1;
 	}
-	
+
 }
 
 /**
@@ -52,8 +52,8 @@ function add_notification_on_site(url) {
 function remove_notification_from_site(url) {
 	// delete the notification span
 	let component = document.getElementById(url_to_css_id(url));
-	let spa = component.getElementsByTagName("SPAN");
-	
-	if(spa.length != 0)
+	let spa = component.getElementsByClassName('new_item');
+
+	if(spa.length === 1)
 		component.removeChild(spa[0]);
 }
