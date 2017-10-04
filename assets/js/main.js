@@ -48,7 +48,7 @@ function check_loaded_frames() {
 }
 
 /**
-  * This function hides the loading screen, enabling the user to 
+  * This function hides the loading screen, enabling the user to
   * access the application functionnalities.
   * @author Rémy Raes
   **/
@@ -57,7 +57,7 @@ function hide_loading_screen() {
 	loading_screen.style.opacity = '0';
 	setTimeout(function() {
 		loading_screen.style.zIndex = '-1';
-	}, 1000);	
+	}, 1000);
 }
 
 // listeners
@@ -78,29 +78,55 @@ mb_frame.onload = function() {
 // ----------------------------------------------------------------
 // iframe display functions
 // ----------------------------------------------------------------
-function hide_all () {
+function hide_all_frames () {
+
+	// hide base frames
+	home.style.display = 'none';
+	b_frame.style.display = 'none';
+	w_frame.style.display = 'none';
+	mb_frame.style.display = 'none';
+
+	// hide all extern frames
+	let frames = document.getElementsByTagName('iframe');
     for(let i=0; i<frames.length; i++)
-		frames[i].style.display = 'none';
+			frames[i].style.display = 'none';
 }
+
+function show_frame(url) {
+
+	hide_all_frames();
+	console.log('showing ' + url);
+
+	let frames = document.getElementsByTagName('iframe');
+	for(let i=0; i<frames.length; i++)
+		if(frames[i].id === (url + '_frame')) {
+			console.log('trouvé');
+			frames[i].style.display = 'block';
+			return ;
+	}
+
+}
+
+
 function show_logoinserter() {
-    hide_all();
+    hide_all_frames();
     l_frame.style.display = "block";
 }
 function show_wiki() {
-    hide_all();
+    hide_all_frames();
     w_frame.style.display = 'block';
 }
 function show_buddysystem() {
-	hide_all();
+	hide_all_frames();
 	b_frame.style.display = 'block';
 }
 function show_mb() {
-	hide_all();
+	hide_all_frames();
 	mb_frame.style.display = 'block';
 }
 
 function show_home() {
-    hide_all();
+    hide_all_frames();
     home.style.display = 'block';
 }
 
@@ -118,7 +144,7 @@ function show_home() {
 function create_site_menu_component(url) {
 
 	reset_new_site_subscription();
-	
+
 	if(sites_added === 0)
 		create_site_menu_separation();
 	sites_added++;
@@ -129,16 +155,19 @@ function create_site_menu_component(url) {
 	button.addEventListener('animationend', function() {
 		button.style.animationName = 'none';
 	}, false);
-	
+
+	let tmp = url_to_css_id(url);
+	button.id = tmp;
+	button.onclick = function() {show_frame(tmp)};
+
+
 	// create the tooltip
 	var tooltip = document.createElement('DIV');
 	tooltip.innerText = url;
 	button.appendChild(tooltip);
-	
-	button.id = url_to_css_id(url);
 
 	menu.appendChild(button);
-	
+
 	// actualise menu size
 	home_menu_height = home_menu.scrollHeight;
 }
@@ -153,8 +182,9 @@ function create_site_menu_separation(){
 
 function create_site_frame_component(url) {
 	let frame = document.createElement('IFRAME');
-	frame.id = url_to_css_id(url);
-	
+	frame.id = url_to_css_id(url + '_frame');
+	frame.src = url;
+
 	main_wrapper.appendChild(frame);
 }
 
@@ -198,7 +228,7 @@ function set_new_site_warning(message) {
 	setTimeout(function() {
 		new_site_window.style.animationName = 'bounceWarning';
 	}, 20);
-	
+
 	new_site_error.style.color = 'red';
 	new_site_error.innerText = message;
 }
@@ -209,6 +239,7 @@ function set_new_site_warning(message) {
 
 function url_to_css_id(url) {
 	var ret = url.replace(/:/g, '_');
+	ret = ret.replace(/\./g, '_');
 	return ret.replace(/\//g, '_');
 }
 
@@ -217,7 +248,7 @@ ipc.on('overflow-menu' , function(event , data){
 });
 
 /**
-  * This functions checks if the side menu is overflowed, if that's 
+  * This functions checks if the side menu is overflowed, if that's
   * the case, it sets the scrolling buttons state to visible.
   * @author Rémy Raes
   **/
@@ -227,17 +258,17 @@ function set_overflow_on_menu() {
 		btn_up_hover.style.display = 'block';
 		btn_down_hover.style.display = 'block';
 	}
-		
+
 	else {
 		home_menu.className = '';
 		btn_up_hover.style.display = 'none';
 		btn_down_hover.style.display = 'none';
 	}
-		
+
 }
 
 // TODO to redo
-function menu_is_overflowed() { 
+function menu_is_overflowed() {
 	return (home_menu.scrollHeight > home_menu.clientHeight);
 }
 
@@ -268,12 +299,12 @@ function scroll_menu_up(){
 	// initialisation
 	if(home_menu_height === 'cc')
 		home_menu_height = home_menu.scrollHeight;
-	
+
 	let elem = home_menu.style.marginTop;
 	let cpt = 0;
 	if(elem.length > 0)
 		cpt = parseInt(elem.substring(0, elem.length-2));
-	
+
 	if(home_menu.scrollHeight === home_menu_height)
 		home_menu.style.marginTop = (cpt - interval) + 'px';
 }
@@ -282,7 +313,7 @@ function scroll_menu_down(){
 	let cpt = 0;
 	if(elem.length > 0)
 		cpt = parseInt(elem.substring(0, elem.length-2));
-	
+
 	if(cpt < 0)
 		home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
 }
