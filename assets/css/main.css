@@ -250,6 +250,12 @@ button:hover {
 #buddysystem_btn {
 	background-image: url('../img/sections/new/buddysystem.png');
 }
+#slack_btn {
+	background-image: url('../img/sections/new/slack.png');
+}
+#mb_btn {
+	background-image: url('../img/sections/new/gestion.png');
+}
 
 hr {
 	border: 1px solid #e0e0e0;

@@ -2,7 +2,6 @@ const remote = require('electron').remote;
 const Menu = require('electron').remote.Menu;
 const ipc = require('electron').ipcRenderer;
 
-const frames_count = 3;
 var frames_loaded = 0;
 var sites_added = 0;
 
@@ -26,7 +25,8 @@ var w_frame = document.getElementById('wiki_frame');
 var mb_frame = document.getElementById('mb_frame');
 var slack_frame = document.getElementById('slack_frame');
 
-var frames = document.getElementsByTagName('IFRAME');
+var frames = document.getElementsByTagName('webview');
+const frames_count = frames.length;
 
 
 var btn_up = document.getElementById('btn_up');
@@ -37,6 +37,16 @@ var btn_down_hover = document.getElementById('btn_down_hover');
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 
+// TODO launch webviews content loading when the application launches
+// TODO remove the loading screen when all webviews are ready
+// TODO resize all webviews when the application window is resized
+// TODO 'delete websites' function
+
+// temporary
+// TODO webviews don't load their content while created
+document.addEventListener("DOMContentLoaded", function(event) {
+    hide_loading_screen();
+});
 
 /**
   * This function check if all iframes have loaded their content;
@@ -88,15 +98,6 @@ function _update_style(component) {
 // iframe display functions
 // ----------------------------------------------------------------
 function hide_all_frames () {
-
-	// hide base frames
-	/*
-	home.style.display = 'none';
-	b_frame.style.display = 'none';
-	w_frame.style.display = 'none';
-	mb_frame.style.display = 'none';
-	slack_frame.style.display = 'none';
-	*/
 
 	home.className = 'category frame';
 	b_frame.className = 'frame';
