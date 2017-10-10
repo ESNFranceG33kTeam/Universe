@@ -24,6 +24,7 @@ var home = document.getElementById('home');
 var b_frame = document.getElementById('buddysystem_frame');
 var w_frame = document.getElementById('wiki_frame');
 var mb_frame = document.getElementById('mb_frame');
+var slack_frame = document.getElementById('slack_frame');
 
 var frames = document.getElementsByTagName('IFRAME');
 
@@ -73,7 +74,15 @@ mb_frame.onload = function() {
 	frames_loaded++;
 	check_loaded_frames();
 }
+slack_frame.onload = function() {
+	frames_loaded++;
+	check_loaded_frames();
+}
 
+function _update_style(component) {
+	component.shadowRoot.querySelector('object').style.width = '100%';
+	component.shadowRoot.querySelector('object').style.height = '100%';
+}
 
 // ----------------------------------------------------------------
 // iframe display functions
@@ -81,51 +90,71 @@ mb_frame.onload = function() {
 function hide_all_frames () {
 
 	// hide base frames
+	/*
 	home.style.display = 'none';
 	b_frame.style.display = 'none';
 	w_frame.style.display = 'none';
 	mb_frame.style.display = 'none';
+	slack_frame.style.display = 'none';
+	*/
+
+	home.className = 'category frame';
+	b_frame.className = 'frame';
+	w_frame.className = 'frame';
+	mb_frame.className = 'frame';
+	slack_frame.className = 'frame';
 
 	// hide all extern frames
-	let frames = document.getElementsByTagName('iframe');
+	let frames = document.getElementsByTagName('webview');
     for(let i=0; i<frames.length; i++)
-			frames[i].style.display = 'none';
+			frames[i].className = 'frame';
 }
 
 function show_frame(url) {
 
 	hide_all_frames();
 
-	let frames = document.getElementsByTagName('iframe');
+	let frames = document.getElementsByTagName('webview');
 	for(let i=0; i<frames.length; i++)
 		if(frames[i].id === (url + '_frame')) {
-			frames[i].style.display = 'block';
+			frames[i].className = 'frame frame-show';
+			_update_style(frames[i]);
 			return ;
-	}
+		}
 
 }
 
 
 function show_logoinserter() {
-    hide_all_frames();
-    l_frame.style.display = "block";
+		_update_style(l_frame);
+		hide_all_frames();
+    l_frame.className = "frame frame-show";
 }
 function show_wiki() {
+	_update_style(w_frame);
     hide_all_frames();
-    w_frame.style.display = 'block';
+    w_frame.className = 'frame frame-show';
 }
 function show_buddysystem() {
+	_update_style(b_frame);
 	hide_all_frames();
-	b_frame.style.display = 'block';
+	b_frame.className = 'frame frame-show';
 }
 function show_mb() {
+	_update_style(mb_frame);
 	hide_all_frames();
-	mb_frame.style.display = 'block';
+	mb_frame.className = 'frame frame-show';
 }
+function show_slack() {
+	_update_style(slack_frame);
+	hide_all_frames();
+	slack_frame.className = 'frame frame-show';
+}
+
 
 function show_home() {
     hide_all_frames();
-    home.style.display = 'block';
+    home.className = 'category frame-show';
 }
 
 // ----------------------------------------------------------------
@@ -186,8 +215,9 @@ function create_site_menu_separation(){
 }
 
 function create_site_frame_component(url) {
-	let frame = document.createElement('IFRAME');
+	let frame = document.createElement('webview');
 	frame.id = url_to_css_id(url + '_frame');
+	frame.className = 'frame';
 	frame.src = url;
 
 	main_wrapper.appendChild(frame);
@@ -248,7 +278,7 @@ function url_to_css_id(url) {
 	return ret.replace(/\//g, '_');
 }
 
-ipc.on('overflow-menu' , function(event , data){
+ipc.on('resized' , function(event , data){
 	set_overflow_on_menu();
 });
 

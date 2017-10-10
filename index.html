@@ -26,9 +26,11 @@
 				<p class="sideinfo"><br />Coded with love by the G33k team (France)</p>
 			</div>
 
-            <iframe id="wiki_frame" src="http://wiki.ixesn.fr"></iframe>
-			<iframe id="buddysystem_frame" src="http://buddysystem.eu/"></iframe>
-			<iframe id="mb_frame" src="http://gestion.ixesn.fr/connect.php"></iframe>
+      <webview id="wiki_frame" class="frame" src="http://wiki.ixesn.fr"></webview>
+			<webview id="buddysystem_frame" class="frame" src="http://buddysystem.eu/"></webview>
+			<webview id="mb_frame" class="frame" src="http://gestion.ixesn.fr/connect.php"></webview>
+
+			<webview id="slack_frame" class="frame" src="https://communauteixesn.slack.com"></webview>
 
 			<!--
 				Headers problems
@@ -53,6 +55,9 @@
 				</li>
 				<li id="mb_btn" class="section" onclick="show_mb()">
 					<div>Module Bénévoles</div>
+				</li>
+				<li id="slack_btn" class="section" onclick="show_slack()">
+					<div>Slack</div>
 				</li>
 			</nav>
 

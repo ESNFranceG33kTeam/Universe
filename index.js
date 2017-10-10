@@ -28,11 +28,11 @@ app.on('activate', () => {
 
 
 function createWindow () {
-	
+
 	// notification icon
 	tray = new Tray('assets/img/star.png');
 	tray.setToolTip('ESNbang!');
-	
+
 	// context menu on the icon
 	const menu = Menu.buildFromTemplate([
 		{
@@ -48,7 +48,7 @@ function createWindow () {
 		},
 		{
 			type: 'separator'
-		}, 
+		},
 		{
 			label: 'Close application',
 			click: () => {
@@ -64,54 +64,54 @@ function createWindow () {
 		mainWindow.show();
 	});
 
-	
+
 	// main window
 	mainWindow = new BrowserWindow({
 		title: 'ESNbang!',
 		icon: 'assets/img/star.png',
 		backgroundColor: '#e0e0e0',
-		
-		width: 920, 
+
+		width: 1050,
 		height: 535,
-		minWidth: 920,
+		minWidth: 1050,
 		minHeight: 535,
-		
+
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
     mainWindow.webContents.openDevTools();
-	
-	
+
+
 	// show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
 		// initializing parameters
 		mainWindow.webContents.send('get-params');
-		ipcMain.on('send_params', function(event , data){ 
+		ipcMain.on('send_params', function(event , data){
 			parameters = data;
 			console.log('parameters received:');
 			console.log(data);
 			console.log('---------------------');
-			
-			
+
+
 			if(parameters.size.maximized)
 				mainWindow.maximize();
-			
+
 			else {
-				
+
 				// centering the window
 				mainWindow.setSize(parameters.size.width, parameters.size.height);
 				mainWindow.center();
 			}
-			
-			mainWindow.webContents.send('overflow-menu');
+
+			mainWindow.webContents.send('resized');
 			mainWindow.show();
-			
+
 			// adding the websites
 			var sites = parameters.sites;
 		});
 	});
-	
-	
+
+
 	// hide the main window when the user clicks the 'close' button
 	mainWindow.on('close', (event) => {
 		event.preventDefault();
@@ -119,43 +119,42 @@ function createWindow () {
 		save_parameters();
 		mainWindow.hide();
 	});
-	
-	
+
+
 	// save window size
 	mainWindow.on('resize', () => {
 		parameters.size.maximized = false;
-		mainWindow.webContents.send('overflow-menu');
+		mainWindow.webContents.send('resized');
 		save_parameters();
 	});
-	 
+
 	mainWindow.on('maximize', () => {
-		console.log('cc');
 		parameters.size.maximized = true;
-		mainWindow.webContents.send('overflow-menu');
+		mainWindow.webContents.send('resized');
 		save_parameters();
 	});
 
 
 	// adding a site
 	ipcMain.on('add_new_site', function(event , url){
-		
+
 		// checking if the site isn't already registered
-		for(var i=0; i<parameters.sites.length; i++) 
+		for(var i=0; i<parameters.sites.length; i++)
 			if(parameters.sites[i] == url) {
 				console.log('déjà abonné au site');
 				mainWindow.webContents.send('site_already_registered', true);
 				return ;
 			}
-				
-		mainWindow.webContents.send('site_already_registered', false, url);	
+
+		mainWindow.webContents.send('site_already_registered', false, url);
         parameters.sites.push(url);
         mainWindow.webContents.send('save', parameters);
     });
-	
+
 }
 
 /**
-  * This function is used to save user settings (see settings object model in 
+  * This function is used to save user settings (see settings object model in
   * storage.js)
   * @author Rémy Raes
   **/
