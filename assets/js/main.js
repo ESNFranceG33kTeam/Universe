@@ -189,10 +189,29 @@ function create_site_menu_component(url) {
 	button.onclick = function() {show_frame(tmp)};
 
 
-	// creating the closing button
+	// creating the delete button
 	let span = document.createElement('span');
 	span.className = 'delete';
 	span.innerText = 'x';
+  span.addEventListener('click', function(e) {
+    e.stopPropagation();
+    delete_menu_component(url);
+    delete_frame_component(url);
+
+    console.log('deleting ' + url);
+
+    let p = get_parameters();
+    let i = p.sites.indexOf(url);
+
+    if(i>-1)
+      p.sites.splice(i, 1);
+    else {
+      console.log('fail : website not found');
+    }
+
+    console.log(p.sites);
+    save_parameters(p);
+  }, false);
 	button.appendChild(span);
 
 
@@ -222,6 +241,16 @@ function create_site_frame_component(url) {
 	frame.src = url;
 
 	main_wrapper.appendChild(frame);
+}
+
+function delete_menu_component(url) {
+  let comp = document.getElementById(url_to_css_id(url));
+  menu.removeChild(comp);
+}
+
+function delete_frame_component(url) {
+  let comp = document.getElementById(url_to_css_id(url) + '_frame');
+  main_wrapper.removeChild(comp);
 }
 
 
