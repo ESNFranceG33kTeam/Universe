@@ -35,6 +35,9 @@ ipc.on('get-params' , function(event , data){
         create_site_menu_component(sites[i]);
 		create_site_frame_component(sites[i]);
 	}
+	
+	// actualisation
+	frames_count = document.getElementsByTagName('webview').length;
 
 });
 

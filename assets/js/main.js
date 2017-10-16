@@ -26,7 +26,7 @@ var mb_frame = document.getElementById('mb_frame');
 var slack_frame = document.getElementById('slack_frame');
 
 var frames = document.getElementsByTagName('webview');
-const frames_count = frames.length;
+var frames_count = frames.length;
 
 
 var btn_up = document.getElementById('btn_up');
@@ -37,16 +37,6 @@ var btn_down_hover = document.getElementById('btn_down_hover');
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 
-// TODO launch webviews content loading when the application launches
-// TODO remove the loading screen when all webviews are ready
-// TODO resize all webviews when the application window is resized
-// TODO 'delete websites' function
-
-// temporary
-// TODO webviews don't load their content while created
-document.addEventListener("DOMContentLoaded", function(event) {
-    hide_loading_screen();
-});
 
 /**
   * This function check if all iframes have loaded their content;
@@ -54,8 +44,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   * @author Rémy Raes
   **/
 function check_loaded_frames() {
-	if(frames_loaded === frames_count)
+	console.log(frames_loaded)
+	if(frames_loaded === frames_count) {
 		hide_loading_screen();
+	}
 }
 
 /**
@@ -72,22 +64,26 @@ function hide_loading_screen() {
 }
 
 // listeners
-b_frame.onload = function() {
+b_frame.addEventListener('dom-ready', () => {
+	console.log('the buddysystem has been loaded');
 	frames_loaded++;
 	check_loaded_frames();
-}
-w_frame.onload = function() {
+});
+w_frame.addEventListener('dom-ready', () => {
+	console.log('the wiki frame has been loaded');
 	frames_loaded++;
 	check_loaded_frames();
-}
-mb_frame.onload = function() {
+});
+mb_frame.addEventListener('dom-ready', () => {
+	console.log('the mb frame has been loaded');
 	frames_loaded++;
 	check_loaded_frames();
-}
-slack_frame.onload = function() {
+});
+slack_frame.addEventListener('dom-ready', () => {
+	console.log('the slack frame has been loaded');
 	frames_loaded++;
 	check_loaded_frames();
-}
+});
 
 function _update_style(component) {
 	component.shadowRoot.querySelector('object').style.width = '100%';
@@ -234,12 +230,24 @@ function create_site_menu_separation(){
 	menu.appendChild(document.createElement('HR'));
 }
 
+/**
+  * This function creates a frame encapsulating a website
+  * on the side menu.
+  *
+  * url The URL of the new website
+  * @author Rémy Raes
+  **/
 function create_site_frame_component(url) {
 	let frame = document.createElement('webview');
 	frame.id = url_to_css_id(url + '_frame');
 	frame.className = 'frame';
 	frame.src = url;
 
+	frame.addEventListener('dom-ready', () => {
+		console.log(url + ' is loaded')
+		frames_loaded++;
+		check_loaded_frames();
+	});
 	main_wrapper.appendChild(frame);
 }
 
