@@ -99,7 +99,7 @@ function _update_style(component) {
 // ----------------------------------------------------------------
 function hide_all_frames () {
 
-	home.className = 'category frame';
+	home.className = 'frame';
 	b_frame.className = 'frame';
 	w_frame.className = 'frame';
 	mb_frame.className = 'frame';

@@ -319,6 +319,7 @@ h1 {
   top: 20px;
   left: 20px;
   right: 20px;
+  opacity: 1;
 
 	border: 1px solid #c0c0c0;
 	/*
@@ -328,8 +329,9 @@ h1 {
 
 .frame {
 	position: absolute;
-	display: none;
-	visibility: hidden;
+	/* display: none; 
+	visibility: hidden; */
+	opacity: 0;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -342,8 +344,9 @@ h1 {
 }
 
 .frame-show {
-	visibility: visible;
-	display: block;
+	opacity: 1;
+	/*visibility: visible;
+	display: block;*/
 }
 
 
