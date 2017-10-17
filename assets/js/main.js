@@ -1,6 +1,14 @@
 const remote = require('electron').remote;
-const Menu = require('electron').remote.Menu;
 const ipc = require('electron').ipcRenderer;
+
+var KonamiCode = require( "konami-code" );
+
+const konami = new KonamiCode();
+konami.listen(function () {
+	remote.getCurrentWindow().webContents.openDevTools();
+	console.log('cc');
+});
+
 
 var frames_loaded = 0;
 var sites_added = 0;

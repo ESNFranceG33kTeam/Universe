@@ -3,8 +3,8 @@ const app = electron.app;
 const Tray = electron.Tray;
 const Menu = electron.Menu;
 const ipcMain = electron.ipcMain;
-
 const BrowserWindow = electron.BrowserWindow;
+
 var mainWindow;
 var parameters = {};
 
@@ -79,7 +79,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-  // mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 
 
 	// show the window only when it's rendered
