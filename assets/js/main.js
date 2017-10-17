@@ -191,6 +191,8 @@ function create_site_menu_component(url) {
 	span.innerText = 'x';
   span.addEventListener('click', function(e) {
     e.stopPropagation();
+		show_home();
+
     delete_menu_component(url);
     delete_frame_component(url);
 
@@ -209,6 +211,27 @@ function create_site_menu_component(url) {
     save_parameters(p);
   }, false);
 	button.appendChild(span);
+
+	// listeners to manipulate the delete button
+	let cpt = 0;
+	var tt = 0;
+	var interval = 20;
+	button.addEventListener('contextmenu', function(){
+		tt = setInterval(function(){
+			cpt++;
+			if(cpt === 2) {
+				span.className = 'delete delete-show';
+				setTimeout(() => {
+					span.className = 'delete';
+				}, 2000);
+				cpt = 0;
+			}
+		}, 250);
+	}, false);
+	button.addEventListener('mouseup', function() {
+		clearInterval(tt);
+		console.log('cc')
+	}, false);
 
 
 	// create the tooltip
