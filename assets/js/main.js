@@ -6,7 +6,7 @@ var KonamiCode = require( "konami-code" );
 const konami = new KonamiCode();
 konami.listen(function () {
 	remote.getCurrentWindow().webContents.openDevTools();
-	console.log('cc');
+	console.info('dev tools opened');
 });
 
 
