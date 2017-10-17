@@ -397,6 +397,11 @@ btn_down.addEventListener('mouseup', function() {
 	clearInterval(t);
 }, false);
 
+home_menu.addEventListener('mousewheel', (e) => {
+	let delta = -1 * Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+	(delta === 1) ? scroll_menu_up() : scroll_menu_down();
+});
+
 
 // functions used to scroll the side menu
 function scroll_menu_up(){
