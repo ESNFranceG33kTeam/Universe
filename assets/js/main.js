@@ -207,15 +207,17 @@ function create_site_menu_component(url) {
     console.log('deleting ' + url);
 
     let p = get_parameters();
+		let sites = p.sites;
     let i = p.sites.indexOf(url);
 
     if(i>-1)
-      p.sites.splice(i, 1);
+      sites.splice(i, 1);
     else {
       console.log('fail : website not found');
     }
 
     console.log(p.sites);
+		p.sites = sites;
     save_parameters(p);
   }, false);
 	button.appendChild(span);
