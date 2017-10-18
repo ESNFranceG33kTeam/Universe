@@ -6,7 +6,7 @@ var KonamiCode = require( "konami-code" );
 const konami = new KonamiCode();
 konami.listen(function () {
 	remote.getCurrentWindow().webContents.openDevTools();
-	console.info('dev tools opened');
+	console.info('Dev tools have been opened :)');
 });
 
 
@@ -52,7 +52,6 @@ var btn_down_hover = document.getElementById('btn_down_hover');
   * @author Rémy Raes
   **/
 function check_loaded_frames() {
-	console.log(frames_loaded)
 	if(frames_loaded === frames_count) {
 		hide_loading_screen();
 	}
@@ -64,6 +63,7 @@ function check_loaded_frames() {
   * @author Rémy Raes
   **/
 function hide_loading_screen() {
+	console.info('All frames have been loaded, removing the loading screen.');
 	loading_logo.style.webkitAnimationPlayState = 'paused';
 	loading_screen.style.opacity = '0';
 	setTimeout(function() {
@@ -73,22 +73,22 @@ function hide_loading_screen() {
 
 // listeners
 b_frame.addEventListener('dom-ready', () => {
-	console.log('the buddysystem has been loaded');
+	console.log('The buddysystem has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
 w_frame.addEventListener('dom-ready', () => {
-	console.log('the wiki frame has been loaded');
+	console.log('The wiki frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
 mb_frame.addEventListener('dom-ready', () => {
-	console.log('the mb frame has been loaded');
+	console.log('The "module bénévole" frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
 slack_frame.addEventListener('dom-ready', () => {
-	console.log('the slack frame has been loaded');
+	console.log('The Slack frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
@@ -204,7 +204,7 @@ function create_site_menu_component(url) {
     delete_menu_component(url);
     delete_frame_component(url);
 
-    console.log('deleting ' + url);
+    console.info('Deleting ' + url + '.');
 
     let p = get_parameters();
 		let sites = p.sites;
@@ -213,11 +213,10 @@ function create_site_menu_component(url) {
     if(i>-1)
       sites.splice(i, 1);
     else {
-      console.log('fail : website not found');
+      console.err('Failed to delete ' + url + ' : website not found.');
     }
 
-    console.log(p.sites);
-		p.sites = sites;
+	p.sites = sites;
     save_parameters(p);
   }, false);
 	button.appendChild(span);
@@ -240,7 +239,6 @@ function create_site_menu_component(url) {
 	}, false);
 	button.addEventListener('mouseup', function() {
 		clearInterval(tt);
-		console.log('cc')
 	}, false);
 
 
@@ -277,7 +275,7 @@ function create_site_frame_component(url) {
 	frame.src = url;
 
 	frame.addEventListener('dom-ready', () => {
-		console.log(url + ' is loaded')
+		console.log('The website ' + url + ' has been loaded.')
 		frames_loaded++;
 		check_loaded_frames();
 	});

@@ -10,19 +10,20 @@ ipc.on('site_already_registered' , function(event, registered, url){
 	if(!registered) {
 		create_site_menu_component(url);
 		create_site_frame_component(url);
-		console.log('enregistrement de ' + url);
+		console.info('Registering the new website ' + url + '.');
 		set_overflow_on_menu();
 	}
 
 	else if(registered){
 		// alert the user
 		set_new_site_warning('You\'ve already registered this one.');
+		console.warn('The website ' + url + ' has already been registered by the user.');
 	} 
 	
 });
 
 ipc.on('save' , function(event , data){
-	console.info('save');
+	console.info('Saving user settings.');
 	save_parameters(data);
 });
 
@@ -115,14 +116,14 @@ function subscribe_to_new_site(url) {
 	
 	if(valid === 'void'){
 		set_new_site_warning('You should try to write something in there !');
-		console.log('input vide');
+		console.warn('The "new website subscription" input field is empty.');
 	
 	} else if(valid)
 		ipc.send('add_new_site', url);
 	
 	else {
 		set_new_site_warning('The URL you entered is not valid.');
-		console.log('lien non valide');
+		console.warn('The string ' + url + ' is not a valid URL.');
 	}
 }
 
