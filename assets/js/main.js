@@ -222,24 +222,17 @@ function create_site_menu_component(url) {
 	button.appendChild(span);
 
 	// listeners to manipulate the delete button
-	let cpt = 0;
-	var tt = 0;
 	var interval = 20;
 	button.addEventListener('contextmenu', function(){
-		tt = setInterval(function(){
-			cpt++;
-			if(cpt === 2) {
-				span.className = 'delete delete-show';
-				setTimeout(() => {
-					span.className = 'delete';
-				}, 2000);
-				cpt = 0;
-			}
-		}, 250);
+
+		span.className = 'delete delete-show';
+		setTimeout(() => {
+			span.className = 'delete';
+		}, 2000);
+		cpt = 0;		
+		
 	}, false);
-	button.addEventListener('mouseup', function() {
-		clearInterval(tt);
-	}, false);
+	
 
 
 	// create the tooltip
