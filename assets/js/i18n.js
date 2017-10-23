@@ -1,8 +1,13 @@
 var ESNbang = ESNbang || {};
 
+/**
+  *	This module allows the application content to be translated to multiple languages.
+  * @author Rémy Raes
+  **/
 ESNbang.i18n = (function() {
 	var _this = {};	
 	
+	// HTML elements to translate
 	let home_message = document.getElementById('home_message');
 	let home_tooltip = document.getElementById('home_tooltip');
 	let subscription_tooltip = document.getElementById('subscription_tooltip');
@@ -11,6 +16,7 @@ ESNbang.i18n = (function() {
 	let subscription_button_text = document.getElementById('subscription_button_text');
 	
 	
+	// Translation texts
 	let translations = {
 	
 		home_message: {
@@ -49,6 +55,13 @@ ESNbang.i18n = (function() {
 	};
 	
 	
+	/**
+	  * This function allows the application to switch the text of certain elements to 
+	  * enable the understanding of it for differents languages.
+	  * 
+	  * lang_code Code representing a language
+	  * @author Rémy Raes
+	  **/
 	_this.change_language = function(lang_code) {
 		let lang = lang_code;
 		home_message.innerHTML = translations.home_message[lang];

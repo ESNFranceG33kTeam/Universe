@@ -21,6 +21,9 @@ To launch the application, get into the application directory and launch Electro
 electron .
 ```
 
+### Open the Developer Tools
+If you want to open the dev tools inside the application, you just have to type in the Konami code :)
+
 ---
 
 ## For users
@@ -30,8 +33,8 @@ electron .
 To install the application, you need to download a version of it that has been compiled for your operating system
 (Windows, Mac or Linux), and execute it.
 
-Executables are not available yet, because the application is still in development and hasn't reach the version
-"1.0.0".
+[Executables are not available yet, because the application is still in development and hasn't reach the version
+"1.0.0"]
 
 | OS | Version | Download Link |
 | :--: | :---: | :-----------: |
@@ -44,3 +47,10 @@ Executables are not available yet, because the application is still in developme
 Using the application is pretty easy, if you know all shortcuts ; you can find some tips below:
 * to subscribe to a new website, you just have to click the '+' button at the bottom of the sidebar;
 * to remove a website you added before, just right-click on its icon in the sidebar, and then click the delete button associated.
+
+
+---
+
+## Versioning
+
+ESNbang! uses the [semantic versioning](http://semver.org/).
