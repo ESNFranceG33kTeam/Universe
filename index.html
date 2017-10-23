@@ -10,38 +10,32 @@
 		</div>
 
 		<div id="new_site">
-			<input id="new_url" type="text" placeholder="Website URL"></input>
-			<button onclick="subscribe_to_new_site(document.getElementById('new_url').value)">Subscribe</button>
-			<p id="new_site_error">You can insert here a news feed you want to follow.</p>
+			<input id="subscription_placeholder" type="text" placeholder="Website URL"></input>
+			<button id="subscription_button_text" onclick="subscribe_to_new_site(document.getElementById('subscription_placeholder').value)">Subscribe</button>
+			<p id="subscription_text">You can insert here a news feed you want to follow.</p>
 		</div>
 
 		<div id="main_wrapper" onclick="reset_new_site_subscription()" style="z-index: 0">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png" draggable="false"></h1>
-				<p>Welcome to ESNbang!, the new application for members of the Erasmus Student Network !</p>
-				<p>This application gathers many tools used every day by ESNers, everything is at the same place, no need to search for the tools anymore ! <br />
+				<p id="home_message">Welcome to ESNbang!, the new application for members of the Erasmus Student Network !
+				<br /><br />This application gathers many tools used every day by ESNers, everything is at the same place, no need to search for the tools anymore ! <br />
 				ESNbang! can also send you notifications: it listens to information sources (Facebook pages, livestreams, etc) and can tell you when something is happening !
 				Moreover, when you close its main frame, the application doesn't close itself, but rather goes background on your computer, still listening for news :)
 				<br /></p>
-				<p class="sideinfo"><br />Coded with love by the G33k team (France)</p>
+				<p class="sideinfo"><br /><b>< ></b> with <b>❤</b> by the G33k team (France)</p>
 			</div>
 
-      <webview id="wiki_frame" class="frame" src="http://wiki.ixesn.fr"></webview>
+			<webview id="wiki_frame" class="frame" src="http://wiki.ixesn.fr"></webview>
 			<webview id="buddysystem_frame" class="frame" src="http://buddysystem.eu/"></webview>
 			<webview id="mb_frame" class="frame" src="http://gestion.ixesn.fr/connect.php"></webview>
 			<webview id="slack_frame" class="frame" src="https://communauteixesn.slack.com"></webview>
-
-			<!--
-				Headers problems
-				http://inscriptions.ixesn.fr
-				http://webshop.ixesn.fr
-			-->
 		</div>
 
 		<nav id="side_menu">
 			<nav id="icons">
 				<li id="home_btn" class="section" onclick="show_home()">
-					<div>Home</div>
+					<div id="home_tooltip">Home</div>
 				</li>
 
 				<hr />
@@ -60,7 +54,7 @@
 			</nav>
 
 			<li class='section subscribe' onclick="show_new_site_subscription()">
-				<div>Subscribe to a news flux</div>
+				<div id="subscription_tooltip">Subscribe to a news flux</div>
 			</li>
 
 			<div class="scroll_btn_hover" id="btn_up_hover" style="top: -3px;">
@@ -77,6 +71,7 @@
 		<script type="text/javascript" src="assets/js/main.js"></script>
 		<script type="text/javascript" src="assets/js/storage.js"></script>
 		<script type="text/javascript" src="assets/js/notification.js"></script>
+		<script type="text/javascript" src="assets/js/i18n.js"></script>
 	</footer>
 
 </html>

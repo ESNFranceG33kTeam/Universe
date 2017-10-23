@@ -64,7 +64,10 @@ var settings_model = {
 	sites: [],
 	
 	// is it the first time the user launches the application ?
-	first_launch: true
+	first_launch: true,
+	
+	// language of the application
+	language: 'enGB'
 }
 
 

@@ -19,8 +19,8 @@ var sites_added = 0;
 
 var main_wrapper = document.getElementById('main_wrapper');
 var new_site_window = document.getElementById('new_site');
-var new_url = document.getElementById('new_url');
-var error_window = document.getElementById('new_site_error');
+var new_url = document.getElementById('subscription_placeholder');
+var new_site_error = document.getElementById('subscription_text');
 var menu = document.getElementById('icons');
 var home_menu = document.getElementById('side_menu');
 var home_menu_height = 'cc';

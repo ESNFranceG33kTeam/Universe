@@ -170,6 +170,7 @@ button:hover {
 .subscribe {
 	background-color: #c0c0c0;;
 	background-image: url('../img/plus.png');
+	color: white;
 
 	width: 40px;
 	height: 40px;
@@ -272,6 +273,13 @@ hr {
 
 .sideinfo {
 	color: #a0a0a0;
+	position: absolute;
+    bottom: 0;
+}
+
+.sideinfo b {
+	font-size: 1.2em;
+	font-weight: bolder;
 }
 
 
