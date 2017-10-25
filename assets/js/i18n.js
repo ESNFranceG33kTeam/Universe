@@ -2,6 +2,10 @@ var ESNbang = ESNbang || {};
 
 /**
   *	This module allows the application content to be translated to multiple languages.
+  * If you want to introduce translations for another element than those initialized
+  * in i18n, you have to give it an id in the HTML code, to reference it in i18n, and
+  * then to write your translations.
+  *
   * @author Rémy Raes
   **/
 ESNbang.i18n = (function() {
@@ -46,7 +50,7 @@ ESNbang.i18n = (function() {
 		},
 		subscription_text: {
 			enGB: 'Insert here a news feed you want to follow.',
-			frFR: 'Ecris ici un site que tu veux suivre.'
+			frFR: 'Ecris ici l\'adresse d\'un site que tu veux suivre.'
 		},
 		subscription_button_text: {
 			enGB: 'Subscribe',

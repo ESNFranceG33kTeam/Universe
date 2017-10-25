@@ -32,6 +32,7 @@ var b_frame = document.getElementById('buddysystem_frame');
 var w_frame = document.getElementById('wiki_frame');
 var mb_frame = document.getElementById('mb_frame');
 var slack_frame = document.getElementById('slack_frame');
+var excel_frame = document.getElementById('excel_frame');
 
 var frames = document.getElementsByTagName('webview');
 var frames_count = frames.length;
@@ -92,6 +93,11 @@ slack_frame.addEventListener('dom-ready', () => {
 	frames_loaded++;
 	check_loaded_frames();
 });
+excel_frame.addEventListener('dom-ready', () => {
+	console.log('The Excel frame has been loaded.');
+	frames_loaded++;
+	check_loaded_frames();
+});
 
 function _update_style(component) {
 	component.shadowRoot.querySelector('object').style.width = '100%';
@@ -108,6 +114,7 @@ function hide_all_frames () {
 	w_frame.className = 'frame';
 	mb_frame.className = 'frame';
 	slack_frame.className = 'frame';
+	excel_frame.className = 'frame';
 
 	// hide all extern frames
 	let frames = document.getElementsByTagName('webview');
@@ -154,6 +161,11 @@ function show_slack() {
 	_update_style(slack_frame);
 	hide_all_frames();
 	slack_frame.className = 'frame frame-show';
+}
+function show_excel() {
+	_update_style(excel_frame);
+	hide_all_frames();
+	excel_frame.className = 'frame frame-show';
 }
 
 

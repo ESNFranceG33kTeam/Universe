@@ -34,7 +34,7 @@ To install the application, you need to download a version of it that has been c
 (Windows, Mac or Linux), and execute it.
 
 [Executables are not available yet, because the application is still in development and hasn't reach the version
-"1.0.0"]
+`1.0.0`]
 
 | OS | Version | Download Link |
 | :--: | :---: | :-----------: |
