@@ -20,6 +20,26 @@ ESNbang.i18n = (function() {
 	let subscription_button_text = document.getElementById('subscription_button_text');
 	
 	
+	// languages enumeration
+	_this.lang = {
+		'enGB': 0,
+		'frFR': 1
+	}
+	
+	/**
+	  * This function checks if a language code corresponds to a language 
+	  * implementation in the application.
+	  *
+	  * lang_code Code representing a language
+	  * @author Rémy Raes
+	  **/
+	function language_exists(lang_code) {
+		for(let v in ESNbang.i18n.lang)
+			if(lang_code === v)
+				return true;
+		return false;
+	}
+	
 	// Translation texts
 	let translations = {
 	
@@ -67,6 +87,10 @@ ESNbang.i18n = (function() {
 	  * @author Rémy Raes
 	  **/
 	_this.change_language = function(lang_code) {
+		if(!language_exists(lang_code)) {
+			console.error('Failed to change current language: the code \'' + lang_code + '\' doesn\'t exist.');
+			return ;
+		}
 		let lang = lang_code;
 		home_message.innerHTML = translations.home_message[lang];
 		home_tooltip.innerText = translations.home_tooltip[lang];
