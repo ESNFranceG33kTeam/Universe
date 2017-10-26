@@ -64,7 +64,7 @@ function check_loaded_frames() {
   * @author Rémy Raes
   **/
 function hide_loading_screen() {
-	console.info('All frames have been loaded, removing the loading screen.');
+	console.info('All frames have been loaded, hiding the loading screen.');
 	loading_logo.style.webkitAnimationPlayState = 'paused';
 	loading_screen.style.opacity = '0';
 	setTimeout(function() {
@@ -78,28 +78,38 @@ b_frame.addEventListener('dom-ready', () => {
 	frames_loaded++;
 	check_loaded_frames();
 });
+b_frame.addEventListener('mousedown', () => {
+	reset_new_site_subscription()
+});
 w_frame.addEventListener('dom-ready', () => {
 	console.log('The wiki frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
+});
+w_frame.addEventListener('mousedown', () => {
+	reset_new_site_subscription()
 });
 mb_frame.addEventListener('dom-ready', () => {
 	console.log('The "module bénévole" frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
+mb_frame.addEventListener('mousedown', () => {
+	reset_new_site_subscription()
+});
 slack_frame.addEventListener('dom-ready', () => {
 	console.log('The Slack frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
+});
+slack_frame.addEventListener('mousedown', () => {
+	reset_new_site_subscription()
 });
 excel_frame.addEventListener('dom-ready', () => {
 	console.log('The Excel frame has been loaded.');
 	frames_loaded++;
 	check_loaded_frames();
 });
-
-// TODO à implémenter pour toutes les frames
 excel_frame.addEventListener('mousedown', () => {
 	reset_new_site_subscription()
 });
@@ -246,10 +256,10 @@ function create_site_menu_component(url) {
 		setTimeout(() => {
 			span.className = 'delete';
 		}, 2000);
-		cpt = 0;		
-		
+		cpt = 0;
+
 	}, false);
-	
+
 
 
 	// create the tooltip
@@ -289,6 +299,10 @@ function create_site_frame_component(url) {
 		frames_loaded++;
 		check_loaded_frames();
 	});
+	frame.addEventListener('mousedown', () => {
+		reset_new_site_subscription()
+	});
+
 	main_wrapper.appendChild(frame);
 }
 
