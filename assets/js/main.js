@@ -292,6 +292,7 @@ function create_site_frame_component(url) {
 	let frame = document.createElement('webview');
 	frame.id = url_to_css_id(url + '_frame');
 	frame.className = 'frame';
+	frame.setAttribute('data-origin', 'user');
 	frame.src = url;
 
 	frame.addEventListener('dom-ready', () => {
