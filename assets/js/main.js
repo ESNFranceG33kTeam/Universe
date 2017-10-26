@@ -99,6 +99,11 @@ excel_frame.addEventListener('dom-ready', () => {
 	check_loaded_frames();
 });
 
+// TODO à implémenter pour toutes les frames
+excel_frame.addEventListener('mousedown', () => {
+	reset_new_site_subscription()
+});
+
 function _update_style(component) {
 	component.shadowRoot.querySelector('object').style.width = '100%';
 	component.shadowRoot.querySelector('object').style.height = '100%';
