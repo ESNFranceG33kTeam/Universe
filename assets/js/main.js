@@ -76,47 +76,23 @@ function hide_loading_screen() {
 	}, 1000);
 }
 
-// listeners
-b_frame.addEventListener('dom-ready', () => {
-	console.log('The buddysystem has been loaded.');
-	frames_loaded++;
-	check_loaded_frames();
-});
-b_frame.addEventListener('mousedown', () => {
-	reset_new_site_subscription()
-});
-w_frame.addEventListener('dom-ready', () => {
-	console.log('The wiki frame has been loaded.');
-	frames_loaded++;
-	check_loaded_frames();
-});
-w_frame.addEventListener('mousedown', () => {
-	reset_new_site_subscription()
-});
-mb_frame.addEventListener('dom-ready', () => {
-	console.log('The "module bénévole" frame has been loaded.');
-	frames_loaded++;
-	check_loaded_frames();
-});
-mb_frame.addEventListener('mousedown', () => {
-	reset_new_site_subscription()
-});
-slack_frame.addEventListener('dom-ready', () => {
-	console.log('The Slack frame has been loaded.');
-	frames_loaded++;
-	check_loaded_frames();
-});
-slack_frame.addEventListener('mousedown', () => {
-	reset_new_site_subscription()
-});
-excel_frame.addEventListener('dom-ready', () => {
-	console.log('The Excel frame has been loaded.');
-	frames_loaded++;
-	check_loaded_frames();
-});
-excel_frame.addEventListener('mousedown', () => {
-	reset_new_site_subscription()
-});
+
+// listeners on the application frames
+for(let i=0; i<frames_count; i++) {
+	let tmp = frames[i];
+
+	// listener to check the loaded state of the frame
+	tmp.addEventListener('dom-ready', () => {
+		console.log('The website ' + tmp.src + ' frame has been loaded.');
+		frames_loaded++;
+		check_loaded_frames();
+	});
+
+	// listener to hide the 'new site' window
+	tmp.addEventListener('mousedown', () => {
+		reset_new_site_subscription()
+	});
+}
 
 function _update_style(component) {
 	component.shadowRoot.querySelector('object').style.width = '100%';
@@ -127,15 +103,6 @@ function _update_style(component) {
 // iframe display functions
 // ----------------------------------------------------------------
 function hide_all_frames () {
-
-	home.className = 'frame';
-	b_frame.className = 'frame';
-	w_frame.className = 'frame';
-	mb_frame.className = 'frame';
-	slack_frame.className = 'frame';
-	excel_frame.className = 'frame';
-
-	// hide all extern frames
 	let frames = document.getElementsByTagName('webview');
     for(let i=0; i<frames.length; i++)
 			frames[i].className = 'frame';
@@ -154,39 +121,6 @@ function show_frame(url) {
 		}
 
 }
-
-
-function show_logoinserter() {
-		_update_style(l_frame);
-		hide_all_frames();
-    l_frame.className = "frame frame-show";
-}
-function show_wiki() {
-	_update_style(w_frame);
-    hide_all_frames();
-    w_frame.className = 'frame frame-show';
-}
-function show_buddysystem() {
-	_update_style(b_frame);
-	hide_all_frames();
-	b_frame.className = 'frame frame-show';
-}
-function show_mb() {
-	_update_style(mb_frame);
-	hide_all_frames();
-	mb_frame.className = 'frame frame-show';
-}
-function show_slack() {
-	_update_style(slack_frame);
-	hide_all_frames();
-	slack_frame.className = 'frame frame-show';
-}
-function show_excel() {
-	_update_style(excel_frame);
-	hide_all_frames();
-	excel_frame.className = 'frame frame-show';
-}
-
 
 function show_home() {
     hide_all_frames();
@@ -247,8 +181,9 @@ function create_site_menu_component(url) {
       console.err('Failed to delete ' + url + ' : website not found.');
     }
 
-	p.sites = sites;
-    save_parameters(p);
+		p.sites = sites;
+	  save_parameters(p);
+		set_overflow_on_menu();
   }, false);
 	button.appendChild(span);
 
@@ -265,16 +200,13 @@ function create_site_menu_component(url) {
 	}, false);
 
 
-
 	// create the tooltip
 	var tooltip = document.createElement('DIV');
 	tooltip.innerText = url;
 	button.appendChild(tooltip);
 
 	menu.appendChild(button);
-
-	// actualise menu size
-	home_menu_height = home_menu.scrollHeight;
+	set_overflow_on_menu();
 }
 
 /**
@@ -314,6 +246,7 @@ function create_site_frame_component(url) {
 function delete_menu_component(url) {
   let comp = document.getElementById(url);
   menu.removeChild(comp);
+	set_overflow_on_menu();
 }
 
 function delete_frame_component(url) {
@@ -321,8 +254,6 @@ function delete_frame_component(url) {
   main_wrapper.removeChild(comp);
 }
 
-
-/* TODO hiding menus by clicking on iframes */
 
 // ----------------------------------------------------------------
 // "New website" window manipulation functions
@@ -369,13 +300,6 @@ function set_new_site_warning(message) {
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 
-
-function url_to_css_id(url) {
-	var ret = url.replace(/:/g, '_');
-	ret = ret.replace(/\./g, '_');
-	return ret.replace(/\//g, '_');
-}
-
 ipc.on('resized' , function(event , data){
 	set_overflow_on_menu();
 });
@@ -390,6 +314,7 @@ function set_overflow_on_menu() {
 		home_menu.className = 'overflowed';
 		btn_up_hover.style.display = 'block';
 		btn_down_hover.style.display = 'block';
+		home_menu_height = home_menu.scrollHeight;
 	}
 
 	else {
@@ -401,6 +326,7 @@ function set_overflow_on_menu() {
 }
 
 // TODO to redo
+// doesn't work when the subscribe button is above the application bottom
 function menu_is_overflowed() {
 	return (home_menu.scrollHeight > home_menu.clientHeight);
 }
@@ -445,6 +371,8 @@ function scroll_menu_up(){
 
 	if(home_menu.scrollHeight === home_menu_height)
 		home_menu.style.marginTop = (cpt - interval) + 'px';
+
+	set_overflow_on_menu();
 }
 function scroll_menu_down(){
 	let elem = home_menu.style.marginTop;
@@ -454,6 +382,8 @@ function scroll_menu_down(){
 
 	if(cpt < 0)
 		home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
+
+	set_overflow_on_menu();
 }
 
 /**

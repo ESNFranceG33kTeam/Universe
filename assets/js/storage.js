@@ -6,7 +6,7 @@ const storage = remote.require('electron-json-storage-sync');
 // ----------------------------------------------------------------
 
 ipc.on('site_already_registered' , function(event, registered, url){
-	
+
 	if(!registered) {
 		create_site_menu_component(url);
 		create_site_frame_component(url);
@@ -18,8 +18,8 @@ ipc.on('site_already_registered' , function(event, registered, url){
 		// alert the user
 		set_new_site_warning('You\'ve already registered this one.');
 		console.warn('The website ' + url + ' has already been registered by the user.');
-	} 
-	
+	}
+
 });
 
 ipc.on('save' , function(event , data){
@@ -36,7 +36,7 @@ ipc.on('get-params' , function(event , data){
         create_site_menu_component(sites[i]);
 		create_site_frame_component(sites[i]);
 	}
-	
+
 	// actualisation
 	frames_count = document.getElementsByTagName('webview').length;
 
@@ -52,27 +52,27 @@ ipc.on('get-params' , function(event , data){
   * @author Rémy Raes
   **/
 var settings_model = {
-	
+
 	// object containing size information of the application window
 	size : {
 		width: 0,
 		height: 0,
 		maximised: false
 	},
-	
+
 	// array containing all websites the user has subscribed to
 	sites: [],
-	
+
 	// is it the first time the user launches the application ?
 	first_launch: true,
-	
+
 	// language of the application
 	language: 'enGB'
 }
 
 
 /**
-  * This function saves the user settings on the user local 
+  * This function saves the user settings on the user local
   * storage.
   * @author Rémy Raes
   **/
@@ -81,52 +81,52 @@ function save_parameters(params) {
 }
 
 /**
-  * This function check if the user has settings stored on 
-  * its computer, and returns them ; if it's not the case, 
+  * This function check if the user has settings stored on
+  * its computer, and returns them ; if it's not the case,
   * it returns a new settings object.
   * @author Rémy Raes
   **/
 function get_parameters() {
-	
+
 	var settings = storage.get('parameters');
-	
+
 	if(settings !== undefined && settings.status === true) {
 		var parameters = settings.data;
 		parameters.first_launch = false;
-		
+
 		return parameters;
-		
+
 	} else {
-		
+
 		// first start
-		
+
 		var params = settings_model;
 		save_parameters(params);
-		
+
 		return params;
 	}
 }
 
 /**
-  * This function realizes all the tests to see if an url can be 
+  * This function realizes all the tests to see if an url can be
   * subscribed to, or not.
   *
   * url Website address to check
   * @author Rémy Raes
   **/
 function subscribe_to_new_site(url) {
-	var valid = is_valid_url(url);	
-	
+	var valid = is_valid_url(url);
+
 	if(valid === 'void'){
 		set_new_site_warning('You should try to write something in there !');
 		console.warn('The "new website subscription" input field is empty.');
-	
+
 	} else if(valid)
 		ipc.send('add_new_site', url);
-	
+
 	else {
 		set_new_site_warning('The URL you entered is not valid.');
-		console.warn('The string ' + url + ' is not a valid URL.');
+		console.warn('The string "' + url + '" is not a valid URL.');
 	}
 }
 
@@ -138,12 +138,12 @@ function subscribe_to_new_site(url) {
   * @author Rémy Raes
   **/
 function is_valid_url(url) {
-	
+
 	var regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ ;
-	
+
 	if(url == '')
 		return 'void';
-	
+
 	if(url.match(regex))
 		return true;
 	else
