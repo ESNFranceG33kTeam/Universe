@@ -45,7 +45,11 @@ var btn_down_hover = document.getElementById('btn_down_hover');
 
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
-
+String.prototype.hashCode = function() {
+  return 'b' + this.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+};
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
 /**
   * This function check if all iframes have loaded their content;
@@ -143,7 +147,7 @@ function show_frame(url) {
 
 	let frames = document.getElementsByTagName('webview');
 	for(let i=0; i<frames.length; i++)
-		if(frames[i].id === (url + '_frame')) {
+		if(frames[i].id === url) {
 			frames[i].className = 'frame frame-show';
 			_update_style(frames[i]);
 			return ;
@@ -215,9 +219,9 @@ function create_site_menu_component(url) {
 		button.style.animationName = 'none';
 	}, false);
 
-	let tmp = url_to_css_id(url);
+	let tmp = url.hashCode();
 	button.id = tmp;
-	button.onclick = function() {show_frame(tmp)};
+	button.onclick = function() {show_frame(tmp + '_frame')};
 
 
 	// creating the delete button
@@ -228,8 +232,8 @@ function create_site_menu_component(url) {
     e.stopPropagation();
 		show_home();
 
-    delete_menu_component(url);
-    delete_frame_component(url);
+    delete_menu_component(tmp);
+    delete_frame_component(tmp + '_frame');
 
     console.info('Deleting ' + url + '.');
 
@@ -290,7 +294,7 @@ function create_site_menu_separation(){
   **/
 function create_site_frame_component(url) {
 	let frame = document.createElement('webview');
-	frame.id = url_to_css_id(url + '_frame');
+	frame.id = url.hashCode() + '_frame';
 	frame.className = 'frame';
 	frame.setAttribute('data-origin', 'user');
 	frame.src = url;
@@ -308,12 +312,12 @@ function create_site_frame_component(url) {
 }
 
 function delete_menu_component(url) {
-  let comp = document.getElementById(url_to_css_id(url));
+  let comp = document.getElementById(url);
   menu.removeChild(comp);
 }
 
 function delete_frame_component(url) {
-  let comp = document.getElementById(url_to_css_id(url) + '_frame');
+  let comp = document.getElementById(url);
   main_wrapper.removeChild(comp);
 }
 
