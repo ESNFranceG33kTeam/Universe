@@ -103,6 +103,7 @@ function _update_style(component) {
 // iframe display functions
 // ----------------------------------------------------------------
 function hide_all_frames () {
+	home.className = 'category frame';
 	let frames = document.getElementsByTagName('webview');
     for(let i=0; i<frames.length; i++)
 			frames[i].className = 'frame';
