@@ -23,8 +23,9 @@ ipc.on('site_already_registered' , function(event, registered, url){
 });
 
 ipc.on('save' , function(event , data){
-	console.info('Saving user settings.');
-	save_parameters(data);
+	let p = get_parameters();
+	p.size = data;
+	save_parameters(p);
 });
 
 ipc.on('get-params' , function(event , data){
@@ -40,7 +41,12 @@ ipc.on('build-interface' , function(event , data){
         create_site_menu_component(sites[i]);
 		create_site_frame_component(sites[i]);
 	}
-
+	
+	// initializing the language
+	let langSelector = document.getElementById('lang-select');
+	// TODO update the selector flag
+	ESNbang.i18n.load_language_file(settings.language);
+	
 	// actualisation
 	frames_count = document.getElementsByTagName('webview').length;
 });
@@ -76,12 +82,20 @@ var settings_model = {
 }
 
 
+function save_language(lang_code) {
+	let p = get_parameters();
+	p.language = lang_code;
+	save_parameters(p);
+}
+
+
 /**
   * This function saves the user settings on the user local
   * storage.
   * @author Rémy Raes
   **/
 function save_parameters(params) {
+	console.info('Saving user settings.');
 	storage.set('parameters', params);
 }
 

@@ -14,17 +14,17 @@ ESNbang.i18n = (function() {
 	var _this = {};
 
 	// loading the language selector
-  window.onload = function(){
+	window.onload = function(){
 
-      langSelect = new IconSelect("lang-select");
+		langSelect = new IconSelect("lang-select");
 
-      var icons = [];
-			icons.push({'iconFilePath':'i18n/flags/enGB.png', 'iconValue':'1'});
-      icons.push({'iconFilePath':'i18n/flags/frFR.png', 'iconValue':'2'});
+		var icons = [];
+		icons.push({'iconFilePath':'i18n/flags/enGB.png', 'iconValue':'1'});
+		icons.push({'iconFilePath':'i18n/flags/frFR.png', 'iconValue':'2'});
 
-      langSelect.refresh(icons);
+		langSelect.refresh(icons);
 
-  };
+	};
 
 	// HTML elements to translate
 	let home_message = document.getElementById('home_message');
@@ -51,7 +51,9 @@ ESNbang.i18n = (function() {
 				console.error('Failed to change current language: the file \'' + lang_code + '.json\' doesn\'t exist.');
 				return ;
 		  }
+		  console.info('Changing the application language to \'' + lang_code + '\'.');
 		  _this.change_language(JSON.parse(data));
+		  save_language(lang_code);
 		});
 	}
 
