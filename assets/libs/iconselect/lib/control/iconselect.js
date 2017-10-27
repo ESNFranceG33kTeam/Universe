@@ -19,7 +19,7 @@ IconSelect.DEFAULT = {};
 IconSelect.DEFAULT.SELECTED_ICON_WIDTH = 38;
 IconSelect.DEFAULT.SELECTED_ICON_HEIGHT = 32;
 IconSelect.DEFAULT.SELECTED_BOX_PADDING = 1;
-IconSelect.DEFAULT.SELECTED_BOX_PADDING_RIGHT = 12;
+IconSelect.DEFAULT.SELECTED_BOX_PADDING_RIGHT = 1;
 IconSelect.DEFAULT.ICONS_WIDTH = 32;
 IconSelect.DEFAULT.ICONS_HEIGHT = 32;
 IconSelect.DEFAULT.BOX_ICON_SPACE = 1;
@@ -248,7 +248,7 @@ function IconSelect($$elementID, $$parameters) {
 
         _View.iconSelectElement.appendChild(selectedBoxElement);
         selectedBoxElement.appendChild(selectedIconElement);
-        selectedBoxElement.appendChild(componentIconElement);
+        // selectedBoxElement.appendChild(componentIconElement);
         selectedBoxElement.appendChild(_View.boxScrollElement);
 
 
