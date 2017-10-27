@@ -84,6 +84,9 @@ function createWindow () {
 
 	// show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
+		// building the interface
+		mainWindow.webContents.send('build-interface');
+		
 		// initializing parameters
 		mainWindow.webContents.send('get-params');
 		ipcMain.on('send_params', function(event , data){
@@ -160,6 +163,8 @@ function createWindow () {
   **/
 function save_parameters() {
 	// TODO code a timer to avoid too much function calls in a short period of time
+	// TODO la fonction envoie un JSON qui n'est pas forcément à jour, il faut merge intelligemment
+	// à sa réception dans storage.js
 	let { width, height } = mainWindow.getBounds();
 	parameters.size.width = width;
 	parameters.size.height = height;

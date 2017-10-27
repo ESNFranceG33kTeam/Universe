@@ -29,9 +29,13 @@ ipc.on('save' , function(event , data){
 
 ipc.on('get-params' , function(event , data){
 	var settings = get_parameters();
+	ipc.send('send_params', settings);
+});
+
+ipc.on('build-interface' , function(event , data){
+	var settings = get_parameters();
 	var sites = settings.sites;
 
-	ipc.send('send_params', settings);
     for(var i=0; i<sites.length; i++) {
         create_site_menu_component(sites[i]);
 		create_site_frame_component(sites[i]);
@@ -39,8 +43,9 @@ ipc.on('get-params' , function(event , data){
 
 	// actualisation
 	frames_count = document.getElementsByTagName('webview').length;
-
 });
+
+
 
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
