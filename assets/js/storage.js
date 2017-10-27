@@ -62,7 +62,7 @@ var settings_model = {
 	size : {
 		width: 0,
 		height: 0,
-		maximised: false
+		maximized: false
 	},
 
 	// array containing all websites the user has subscribed to
