@@ -45,7 +45,6 @@ ipc.on('build-interface' , function(event , data){
 	// initializing the language
 	let langSelector = document.getElementById('lang-select');
 	let lang = settings.language;
-	ESNbang.i18n.langSelect.setSelectedLanguage(lang);
 	ESNbang.i18n.load_language_file(lang);
 	
 	// actualisation

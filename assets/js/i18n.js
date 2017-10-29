@@ -12,17 +12,26 @@ var ESNbang = ESNbang || {};
 ESNbang.i18n = (function() {
 	var _this = {};
 	
+	let lang_folder = 'i18n/';
+	let flags_folder = 'i18n/flags/';
+
 	_this.langSelect = new IconSelect("lang-select");
 
 	// loading the language selector
 	window.onload = function(){
 
 		var icons = [];
-		icons.push({'iconFilePath':'i18n/flags/enGB.png', 'iconValue':'1', 'iconLang':'enGB'});
-		icons.push({'iconFilePath':'i18n/flags/frFR.png', 'iconValue':'2', 'iconLang':'frFR'});
-
-		_this.langSelect.refresh(icons);
-
+		
+		fs.readdir(flags_folder, (err, files) => {
+			let i = 0;
+			files.forEach(file => {
+				let lang = file.substr(0, file.length-4);
+				icons.push({'iconFilePath': flags_folder + file, 'iconValue': i, 'iconLang': lang});
+				i++;
+			});
+			_this.langSelect.refresh(icons);
+			ESNbang.i18n.langSelect.setSelectedLanguage(get_parameters().language);
+		});
 	};
 
 	// HTML elements to translate

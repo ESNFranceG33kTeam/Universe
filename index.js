@@ -163,13 +163,6 @@ function createWindow () {
   **/
 function send_changed_settings(max) {
 	// TODO code a timer to avoid too much function calls in a short period of time
-	// TODO la fonction envoie un JSON qui n'est pas forcément à jour, il faut merge intelligemment
-	// à sa réception dans storage.js
-	/*let { width, height } = mainWindow.getBounds();
-	parameters.size.width = width;
-	parameters.size.height = height;
-	console.log(parameters);
-	mainWindow.webContents.send('save', parameters);*/
 	let tmp = mainWindow.getBounds();
 	let size = {
 		height: tmp.height,
