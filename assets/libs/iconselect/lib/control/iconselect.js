@@ -120,6 +120,14 @@ function IconSelect($$elementID, $$parameters) {
         //_View.showBox(false);
 
     };
+	
+	this.setSelectedLanguage = function(lang_code) {
+		for(let v in _icons)
+			if(_icons[v].iconLang === lang_code) {
+				this.setSelectedIndex(v);
+				return;
+			}
+	}
 
     this.getSelectedIndex = function(){ return _selectedIndex; };
     this.getSelectedValue = function(){ return _icons[_selectedIndex].iconValue };

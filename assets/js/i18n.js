@@ -1,6 +1,5 @@
 let fs = require('fs');
 var ESNbang = ESNbang || {};
-let langSelect;
 
 /**
   *	This module allows the application content to be translated to multiple languages.
@@ -12,17 +11,17 @@ let langSelect;
   **/
 ESNbang.i18n = (function() {
 	var _this = {};
+	
+	_this.langSelect = new IconSelect("lang-select");
 
 	// loading the language selector
 	window.onload = function(){
 
-		langSelect = new IconSelect("lang-select");
-
 		var icons = [];
-		icons.push({'iconFilePath':'i18n/flags/enGB.png', 'iconValue':'1'});
-		icons.push({'iconFilePath':'i18n/flags/frFR.png', 'iconValue':'2'});
+		icons.push({'iconFilePath':'i18n/flags/enGB.png', 'iconValue':'1', 'iconLang':'enGB'});
+		icons.push({'iconFilePath':'i18n/flags/frFR.png', 'iconValue':'2', 'iconLang':'frFR'});
 
-		langSelect.refresh(icons);
+		_this.langSelect.refresh(icons);
 
 	};
 
