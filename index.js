@@ -151,7 +151,7 @@ function createWindow () {
 
 		mainWindow.webContents.send('site_already_registered', false, url);
         parameters.sites.push(url);
-        mainWindow.webContents.send('save', parameters);
+        mainWindow.webContents.send('save_sites', parameters.sites);
     });
 
 }
@@ -171,5 +171,5 @@ function send_changed_settings(max) {
 	}
 	
 	console.log(size);
-	mainWindow.webContents.send('save', size);
+	mainWindow.webContents.send('save_size', size);
 }

@@ -22,7 +22,13 @@ ipc.on('site_already_registered' , function(event, registered, url){
 
 });
 
-ipc.on('save' , function(event , data){
+ipc.on('save_sites' , function(event , data){
+	let p = get_parameters();
+	p.sites = data;
+	save_parameters(p);
+});
+
+ipc.on('save_size' , function(event , data){
 	let p = get_parameters();
 	p.size = data;
 	save_parameters(p);
@@ -142,6 +148,8 @@ function subscribe_to_new_site(url) {
 
 	} else if(valid)
 		ipc.send('add_new_site', url);
+	
+	// TODO l'envoi d'un signal est inutile, tout peut être géré ici
 
 	else {
 		set_new_site_warning('The URL you entered is not valid.');
