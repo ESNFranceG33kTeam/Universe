@@ -179,7 +179,7 @@ function create_site_menu_component(url) {
     if(i>-1)
       sites.splice(i, 1);
     else {
-      console.err('Failed to delete ' + url + ' : website not found.');
+      console.error('Failed to delete ' + url + ' : website not found.');
     }
 
 		p.sites = sites;

@@ -5,7 +5,7 @@ const storage = remote.require('electron-json-storage-sync');
 // Signals handlers
 // ----------------------------------------------------------------
 
-ipc.on('site_already_registered' , function(event, registered, url){
+function site_already_registered(registered, url){
 
 	if(!registered) {
 		create_site_menu_component(url);
@@ -20,13 +20,13 @@ ipc.on('site_already_registered' , function(event, registered, url){
 		console.warn('The website ' + url + ' has already been registered by the user.');
 	}
 
-});
+}
 
-ipc.on('save_sites' , function(event , data){
+function save_sites(data){
 	let p = get_parameters();
 	p.sites = data;
 	save_parameters(p);
-});
+}
 
 ipc.on('save_size' , function(event , data){
 	let p = get_parameters();
@@ -156,10 +156,26 @@ function subscribe_to_new_site(url) {
 		set_new_site_warning('You should try to write something in there !');
 		console.warn('The "new website subscription" input field is empty.');
 
-	} else if(valid)
-		ipc.send('add_new_site', url);
+	} else if(valid) {
+		
+		let parameters = get_parameters();
+		let sites = parameters.sites;
+		let len = sites.length;
+		
+		// checking if the site isn't already registered
+		for(var i=0; i<len; i++)
+			if(sites[i] == url) {
+				console.log('déjà abonné au site');
+				site_already_registered(true, url);
+				return ;
+			}
 
-	else {
+		site_already_registered(false, url);
+		sites.push(url);
+		save_sites(sites);
+		
+	
+	} else {
 		set_new_site_warning('The URL you entered is not valid.');
 		console.warn('The string "' + url + '" is not a valid URL.');
 	}

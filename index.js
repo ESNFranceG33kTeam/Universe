@@ -6,7 +6,6 @@ const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 
 var mainWindow;
-var parameters = {};
 
 // create the display window as soon as the application is ready
 app.on('ready', createWindow);
@@ -79,7 +78,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 
 
 	// show the window only when it's rendered
@@ -90,11 +89,10 @@ function createWindow () {
 		// initializing parameters
 		mainWindow.webContents.send('get-params');
 		ipcMain.on('send_params', function(event , data){
-			parameters = data;
-			console.log('parameters received:');
-			console.log(data);
-			console.log('---------------------');
-
+			
+			// TODO check the utility of the presence of 'parameters' here
+			
+			let parameters = data;
 
 			if(parameters.size.maximized)
 				mainWindow.maximize();
@@ -119,40 +117,20 @@ function createWindow () {
 	mainWindow.on('close', (event) => {
 		event.preventDefault();
 		mainWindow.webContents.send('exit-notification');
-		// send_changed_settings();
 		mainWindow.hide();
 	});
 
 
 	// save window size
 	mainWindow.on('resize', () => {
-		// parameters.size.maximized = false;
 		mainWindow.webContents.send('resized');
 		send_changed_settings(false);
 	});
 
 	mainWindow.on('maximize', () => {
-		// parameters.size.maximized = true;
 		mainWindow.webContents.send('resized');
 		send_changed_settings(true);
 	});
-
-
-	// adding a site
-	ipcMain.on('add_new_site', function(event , url){
-
-		// checking if the site isn't already registered
-		for(var i=0; i<parameters.sites.length; i++)
-			if(parameters.sites[i] == url) {
-				console.log('déjà abonné au site');
-				mainWindow.webContents.send('site_already_registered', true);
-				return ;
-			}
-
-		mainWindow.webContents.send('site_already_registered', false, url);
-        parameters.sites.push(url);
-        mainWindow.webContents.send('save_sites', parameters.sites);
-    });
 
 }
 
@@ -170,6 +148,5 @@ function send_changed_settings(max) {
 		maximized: max
 	}
 	
-	console.log(size);
 	mainWindow.webContents.send('save_size', size);
 }
