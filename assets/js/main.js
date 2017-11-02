@@ -253,6 +253,10 @@ function create_site_frame_component(site) {
 		// updates the application tooltip
 		save_site_title(site, frame.getTitle());
 	});
+	frame.addEventListener('page-favicon-updated', (e) => {
+		// update the button image
+		update_button_image(url.hashCode(), e.favicons[0]);
+	});
 	frame.addEventListener('mousedown', () => {
 		reset_new_site_subscription()
 	});
@@ -275,6 +279,11 @@ function update_tooltip_title(url, title) {
 	let tmp = document.getElementById(url);
 	let tooltip = tmp.getElementsByTagName('DIV')[0];
 	tooltip.innerHTML = title;
+}
+
+function update_button_image(url, image_url) {
+	let node = document.getElementById(url);
+	node.style.backgroundImage = 'url(\'' + image_url + '\')';
 }
 
 

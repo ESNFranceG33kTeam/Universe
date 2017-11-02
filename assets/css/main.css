@@ -187,6 +187,9 @@ button:hover {
 	animation-duration: 450ms;
 	animation-timing-function: linear;
 	animation-fill-mode: forwards;
+	
+	background-size: 70%;
+	background-position: center; 
 }
 .added_site div {
 	background-color: rgb(243, 123, 32);
