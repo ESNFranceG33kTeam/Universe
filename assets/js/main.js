@@ -139,8 +139,9 @@ function show_home() {
   * url The URL of the new website
   * @author Rémy Raes
   **/
-function create_site_menu_component(url) {
-
+function create_site_menu_component(site) {
+	
+	let url = site.url;
 	reset_new_site_subscription();
 
 	if(sites_added === 0)
@@ -163,29 +164,39 @@ function create_site_menu_component(url) {
 	let span = document.createElement('span');
 	span.className = 'delete';
 	span.innerText = 'x';
-  span.addEventListener('click', function(e) {
-    e.stopPropagation();
+	
+	span.addEventListener('click', function(e) {
+		e.stopPropagation();
 		show_home();
 
-    delete_menu_component(tmp);
-    delete_frame_component(tmp + '_frame');
+		delete_menu_component(tmp);
+		delete_frame_component(tmp + '_frame');
 
-    console.info('Deleting ' + url + '.');
+		console.info('Deleting ' + url + '.');
 
-    let p = get_parameters();
+		let p = get_parameters();
 		let sites = p.sites;
-    let i = p.sites.indexOf(url);
+		// let i = p.sites.indexOf(site);
+		let i=0;
+		
+		for(let k=0; k<sites.length; k++){
+			if(sites[k].url === url) {
+				i = k;
+				break;
+			}
+		}
 
-    if(i>-1)
-      sites.splice(i, 1);
-    else {
-      console.error('Failed to delete ' + url + ' : website not found.');
-    }
+		if(i>-1)
+			sites.splice(i, 1);
+		else {
+			console.error('Failed to delete ' + url + ' : website not found.');
+		}
 
 		p.sites = sites;
-	  save_parameters(p);
+		save_parameters(p);
 		set_overflow_on_menu();
-  }, false);
+		
+	}, false);
 	button.appendChild(span);
 
 	// listeners to manipulate the delete button
@@ -225,7 +236,8 @@ function create_site_menu_separation(){
   * url The URL of the new website
   * @author Rémy Raes
   **/
-function create_site_frame_component(url) {
+function create_site_frame_component(site) {
+	let url = site.url;
 	let frame = document.createElement('webview');
 	frame.id = url.hashCode() + '_frame';
 	frame.className = 'frame';
@@ -245,14 +257,14 @@ function create_site_frame_component(url) {
 }
 
 function delete_menu_component(url) {
-  let comp = document.getElementById(url);
-  menu.removeChild(comp);
+	let comp = document.getElementById(url);
+	menu.removeChild(comp);
 	set_overflow_on_menu();
 }
 
 function delete_frame_component(url) {
-  let comp = document.getElementById(url);
-  main_wrapper.removeChild(comp);
+	let comp = document.getElementById(url);
+	main_wrapper.removeChild(comp);
 }
 
 

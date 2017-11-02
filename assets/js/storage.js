@@ -5,11 +5,13 @@ const storage = remote.require('electron-json-storage-sync');
 // Signals handlers
 // ----------------------------------------------------------------
 
-function site_already_registered(registered, url){
+function site_already_registered(registered, site){
+	
+	let url = site.url;
 
 	if(!registered) {
-		create_site_menu_component(url);
-		create_site_frame_component(url);
+		create_site_menu_component(site);
+		create_site_frame_component(site);
 		console.info('Registering the new website ' + url + '.');
 		set_overflow_on_menu();
 	}
@@ -103,6 +105,7 @@ function save_language(lang_code) {
 function save_parameters(params) {
 	console.info('Saving user settings.');
 	storage.set('parameters', params);
+	console.log(params);
 }
 
 /**
@@ -141,8 +144,6 @@ function get_parameters() {
   **/
 function subscribe_to_new_site(url) {
 	
-	// TODO l'envoi d'un signal est inutile, tout peut être géré ici
-	
 	/*
 		{
 			name: '',
@@ -161,17 +162,21 @@ function subscribe_to_new_site(url) {
 		let parameters = get_parameters();
 		let sites = parameters.sites;
 		let len = sites.length;
+		let site = {
+			name: url,
+			url: url,
+			image_url: url
+		}
 		
 		// checking if the site isn't already registered
 		for(var i=0; i<len; i++)
-			if(sites[i] == url) {
-				console.log('déjà abonné au site');
-				site_already_registered(true, url);
+			if(sites[i].url === url) {
+				site_already_registered(true, site);
 				return ;
 			}
 
-		site_already_registered(false, url);
-		sites.push(url);
+		site_already_registered(false, site);
+		sites.push(site);
 		save_sites(sites);
 		
 	
