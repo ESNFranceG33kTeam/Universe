@@ -89,6 +89,28 @@ var settings_model = {
 	language: 'enGB'
 }
 
+/**
+  * This functions allows the application to save the title of
+  * a page that would have changed its own.
+  * It also propagates the title change to the tooltip, in the
+  * sidebar menu.
+  *
+  * site JSON object representing the site to update
+  * title new title to give to the page
+  * @author Rémy Raes
+  **/
+function save_site_title(site, title) {
+	let p = get_parameters();
+	for(let i=0; i<p.sites.length; i++)
+		if(p.sites[i].url === site.url) {
+			if(title != p.sites[i].name)
+				save_parameters(p);
+			p.sites[i].name = title;
+			update_tooltip_title(site.url.hashCode(), title)
+			console.info('Updating the title for webpage \'' + site.url + '\'.');
+			break;
+		}
+}
 
 function save_language(lang_code) {
 	let p = get_parameters();
@@ -105,7 +127,6 @@ function save_language(lang_code) {
 function save_parameters(params) {
 	console.info('Saving user settings.');
 	storage.set('parameters', params);
-	console.log(params);
 }
 
 /**
@@ -144,13 +165,6 @@ function get_parameters() {
   **/
 function subscribe_to_new_site(url) {
 	
-	/*
-		{
-			name: '',
-			url: '',
-			image_url: ''
-		}
-	*/
 	var valid = is_valid_url(url);
 
 	if(valid === 'void'){
@@ -163,7 +177,7 @@ function subscribe_to_new_site(url) {
 		let sites = parameters.sites;
 		let len = sites.length;
 		let site = {
-			name: url,
+			name: get_site_name(url),
 			url: url,
 			image_url: url
 		}
@@ -204,4 +218,25 @@ function is_valid_url(url) {
 		return true;
 	else
 		return false;
+}
+
+/**
+  * This functions returns a temporary site name, based on its URL
+  * (for example, using 'https://www.facebook.com' will return 
+  * 'Facebook').
+  * 
+  * url URL to convert to a readable name
+  * @author Rémy Raes
+  **/
+function get_site_name(url) {
+	let domain = url.split('/')[2];
+	let tmp = domain.split('.');
+	let ret = null;
+	
+	if(tmp.length > 2)
+		ret = tmp[tmp.length-2];
+	else
+		ret = tmp[0];
+	
+	return ret.substr(0, 1).toUpperCase() + ret.substr(1, ret.length-1);
 }

@@ -214,7 +214,7 @@ function create_site_menu_component(site) {
 
 	// create the tooltip
 	var tooltip = document.createElement('DIV');
-	tooltip.innerText = url;
+	tooltip.innerText = site.name;
 	button.appendChild(tooltip);
 
 	menu.appendChild(button);
@@ -249,6 +249,10 @@ function create_site_frame_component(site) {
 		frames_loaded++;
 		check_loaded_frames();
 	});
+	frame.addEventListener('page-title-updated', () => {
+		// updates the application tooltip
+		save_site_title(site, frame.getTitle());
+	});
 	frame.addEventListener('mousedown', () => {
 		reset_new_site_subscription()
 	});
@@ -265,6 +269,12 @@ function delete_menu_component(url) {
 function delete_frame_component(url) {
 	let comp = document.getElementById(url);
 	main_wrapper.removeChild(comp);
+}
+
+function update_tooltip_title(url, title) {
+	let tmp = document.getElementById(url);
+	let tooltip = tmp.getElementsByTagName('DIV')[0];
+	tooltip.innerHTML = title;
 }
 
 
