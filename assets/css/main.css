@@ -190,6 +190,10 @@ button:hover {
 	
 	background-size: 70%;
 	background-position: center; 
+	
+	/* 
+		TODO : ajouter un gif en background-image
+	*/
 }
 .added_site div {
 	background-color: rgb(243, 123, 32);

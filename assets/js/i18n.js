@@ -82,6 +82,8 @@ ESNbang.i18n = (function() {
 		subscription_button_text.innerText = json['subscription_button_text'];
 	};
 
+	
+	// TODO ajouter une fonction qui fournit les traductions des messages de la fenetre d'inscription
 
 	return _this;
 

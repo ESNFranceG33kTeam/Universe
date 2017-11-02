@@ -78,7 +78,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 
 
 	// show the window only when it's rendered
