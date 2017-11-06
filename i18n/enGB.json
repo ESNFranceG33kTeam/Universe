@@ -4,5 +4,9 @@
   "subscription_tooltip": "Subscribe to a news feed",
   "subscription_placeholder": "Website URL",
   "subscription_text": "Insert here a news feed you want to follow.",
-  "subscription_button_text" : "Subscribe"
+  "subscription_button_text": "Subscribe",
+  
+  "subscription_error_empty_message": "You should try to write something in there !",
+  "subscription_error_already_done": "You've already register this one.",
+  "subscription_error_url_not_valid": "The URL you entered is not valid."
 }

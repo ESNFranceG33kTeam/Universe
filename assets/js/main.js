@@ -308,7 +308,7 @@ function show_new_site_subscription() {
 function reset_new_site_subscription() {
 	main_wrapper.style.filter = 'none';
 	new_site_window.style.animationName = 'bounceOut';
-	new_site_error.innerText = 'You can insert here a news feed you want to follow.';
+	new_site_error.innerText = ESNbang.i18n.errorMessages.subscription_default_message;
 	new_site_error.style.color = 'inherit';
 	new_url.value = '';
 }

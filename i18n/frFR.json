@@ -4,5 +4,9 @@
   "subscription_tooltip": "Ajouter une nouvelle source",
   "subscription_placeholder": "Adresse du site",
   "subscription_text": "Ecris ici l'adresse d'un site que tu veux suivre.",
-  "subscription_button_text" : "S'abonner"
+  "subscription_button_text" : "S'abonner",
+  
+  "subscription_error_empty_message": "Tu devrais écrire quelque chose ici !",
+  "subscription_error_already_done": "Tu as déjà enregistré ce lien.",
+  "subscription_error_url_not_valid": "L'URL entré n'est pas valide."
 }

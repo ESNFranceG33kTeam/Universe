@@ -15,7 +15,16 @@ ESNbang.i18n = (function() {
 	let lang_folder = 'i18n/';
 	let flags_folder = 'i18n/flags/';
 
+	// language selector element
 	_this.langSelect = new IconSelect("lang-select");
+	
+	// variable containing messages for the "new subscription" window
+	_this.errorMessages = {
+		subscription_default_message: '',
+		subscription_empty_message: '',
+		subscription_error_already_done: '',
+		subscription_url_not_valid: ''
+	};
 
 	// loading the language selector
 	window.onload = function(){
@@ -74,16 +83,20 @@ ESNbang.i18n = (function() {
 	  **/
 	_this.change_language = function(json) {
 
+		// loading the translations into the application
 		home_message.innerHTML = json['home_message'];
 		home_tooltip.innerText = json['home_tooltip'];
 		subscription_tooltip.innerText = json['subscription_tooltip'];
 		subscription_placeholder.placeholder = json['subscription_placeholder'];
 		subscription_text.innerText = json['subscription_text'];
 		subscription_button_text.innerText = json['subscription_button_text'];
+		
+		// loading in memory the messages for the "new subscription" window
+		_this.errorMessages.subscription_default_message = json['subscription_text'];
+		_this.errorMessages.subscription_empty_message = json['subscription_error_empty_message'];
+		_this.errorMessages.subscription_already_done = json['subscription_error_already_done'];
+		_this.errorMessages.subscription_url_not_valid = json['subscription_error_url_not_valid'];
 	};
-
-	
-	// TODO ajouter une fonction qui fournit les traductions des messages de la fenetre d'inscription
 
 	return _this;
 

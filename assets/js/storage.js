@@ -18,7 +18,7 @@ function site_already_registered(registered, site){
 
 	else if(registered){
 		// alert the user
-		set_new_site_warning('You\'ve already registered this one.');
+		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
 		console.warn('The website ' + url + ' has already been registered by the user.');
 	}
 
@@ -168,7 +168,7 @@ function subscribe_to_new_site(url) {
 	var valid = is_valid_url(url);
 
 	if(valid === 'void'){
-		set_new_site_warning('You should try to write something in there !');
+		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_empty_message);
 		console.warn('The "new website subscription" input field is empty.');
 
 	} else if(valid) {
@@ -195,7 +195,7 @@ function subscribe_to_new_site(url) {
 		
 	
 	} else {
-		set_new_site_warning('The URL you entered is not valid.');
+		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_url_not_valid);
 		console.warn('The string "' + url + '" is not a valid URL.');
 	}
 }
