@@ -55,9 +55,9 @@ button:hover {
 
 	overflow: auto;
 	background-color: #e0e0e0;
-	transform: translateZ();
+	transform: translateZ(0);
 
-	z-index: 1;
+	z-index: 0;
 }
 
 #main_wrapper:hover {
@@ -187,11 +187,11 @@ button:hover {
 	animation-duration: 450ms;
 	animation-timing-function: linear;
 	animation-fill-mode: forwards;
-	
+
 	background-size: 70%;
-	background-position: center; 
-	
-	/* 
+	background-position: center;
+
+	/*
 		TODO : ajouter un gif en background-image
 	*/
 }

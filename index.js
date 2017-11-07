@@ -85,13 +85,11 @@ function createWindow () {
 	mainWindow.once('ready-to-show', () => {
 		// building the interface
 		mainWindow.webContents.send('build-interface');
-		
+
 		// initializing parameters
 		mainWindow.webContents.send('get-params');
 		ipcMain.on('send_params', function(event , data){
-			
-			// TODO check the utility of the presence of 'parameters' here
-			
+
 			let parameters = data;
 
 			if(parameters.size.maximized)
@@ -134,19 +132,26 @@ function createWindow () {
 
 }
 
+var timer;
 /**
   * This function is used to save user settings (see settings object model in
   * storage.js)
   * @author Rémy Raes
   **/
 function send_changed_settings(max) {
-	// TODO code a timer to avoid too much function calls in a short period of time
-	let tmp = mainWindow.getBounds();
-	let size = {
-		height: tmp.height,
-		width: tmp.width,
-		maximized: max
-	}
-	
-	mainWindow.webContents.send('save_size', size);
+
+	// using a timer to avoid too much function calls
+	clearTimeout(timer);
+
+	timer = setTimeout( () => {
+		let tmp = mainWindow.getBounds();
+		let size = {
+			height: tmp.height,
+			width: tmp.width,
+			maximized: max
+		}
+
+		mainWindow.webContents.send('save_size', size);
+	}, 500);
+
 }

@@ -11,19 +11,15 @@
 		</div>
 
 		<div id="new_site">
-			<input id="subscription_placeholder" type="text" placeholder="Website URL"></input>
-			<button id="subscription_button_text" onclick="subscribe_to_new_site(document.getElementById('subscription_placeholder').value)">Subscribe</button>
-			<p id="subscription_text">You can insert here a news feed you want to follow.</p>
+			<input id="subscription_placeholder" type="text" placeholder=""></input>
+			<button id="subscription_button_text" onclick="subscribe_to_new_site(document.getElementById('subscription_placeholder').value)"></button>
+			<p id="subscription_text"></p>
 		</div>
 
-		<div id="main_wrapper" onclick="reset_new_site_subscription()" style="z-index: 0">
+		<div id="main_wrapper" onclick="reset_new_site_subscription()">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png" draggable="false"></h1>
-				<p id="home_message">Welcome to ESNbang!, the new application for members of the Erasmus Student Network !
-				<br /><br />This application gathers many tools used every day by ESNers, everything is at the same place, no need to search for the tools anymore ! <br />
-				ESNbang! can also send you notifications: it listens to information sources (Facebook pages, livestreams, etc) and can tell you when something is happening !
-				Moreover, when you close its main frame, the application doesn't close itself, but rather goes background on your computer, still listening for news :)
-				<br /></p>
+				<p id="home_message"></p>
 				<p class="sideinfo"><br /><b>< ></b> with <b>❤</b> by the G33k team (France)</p>
 				<div id="lang-select"></div>
 			</div>
@@ -61,7 +57,7 @@
 			</nav>
 
 			<li class='section subscribe' onclick="show_new_site_subscription()">
-				<div id="subscription_tooltip">Subscribe to a news flux</div>
+				<div id="subscription_tooltip"></div>
 			</li>
 
 			<div class="scroll_btn_hover" id="btn_up_hover" style="top: -3px;">

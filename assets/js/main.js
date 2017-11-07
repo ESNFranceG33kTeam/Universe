@@ -140,7 +140,7 @@ function show_home() {
   * @author Rémy Raes
   **/
 function create_site_menu_component(site) {
-	
+
 	let url = site.url;
 	reset_new_site_subscription();
 
@@ -164,7 +164,7 @@ function create_site_menu_component(site) {
 	let span = document.createElement('span');
 	span.className = 'delete';
 	span.innerText = 'x';
-	
+
 	span.addEventListener('click', function(e) {
 		e.stopPropagation();
 		show_home();
@@ -176,9 +176,9 @@ function create_site_menu_component(site) {
 
 		let p = get_parameters();
 		let sites = p.sites;
-		// let i = p.sites.indexOf(site);
-		let i=0;
-		
+		let i=-1;
+
+		// find the position of the site in the settings
 		for(let k=0; k<sites.length; k++){
 			if(sites[k].url === url) {
 				i = k;
@@ -195,7 +195,7 @@ function create_site_menu_component(site) {
 		p.sites = sites;
 		save_parameters(p);
 		set_overflow_on_menu();
-		
+
 	}, false);
 	button.appendChild(span);
 
@@ -267,6 +267,14 @@ function create_site_frame_component(site) {
 function delete_menu_component(url) {
 	let comp = document.getElementById(url);
 	menu.removeChild(comp);
+
+	// remove the second <hr> separator if there's no more added sites
+	if(home_menu.getElementsByClassName('added_site').length == 0) {
+		let hr = home_menu.getElementsByTagName('hr')[1];
+		home_menu.removeChild(hr);
+	}
+
+
 	set_overflow_on_menu();
 }
 
