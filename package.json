@@ -1,6 +1,6 @@
 {
   "name": "esnbang",
-  "version": "1.0.0",
+  "version": "0.2.1",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
