@@ -1,9 +1,22 @@
 # ESNbang!
-This application will gather all ESN resources in one single location.
+
+![ESNbang! logo](https://raw.githubusercontent.com/ESNFranceG33kTeam/esnbang/master/assets/img/logo.png)
+This application is meant to be used by ESNers all over the world ! It will enable them to gather all web resources they want in one single location, and to be notified if new content appears on those resources.
+
+* [For developpers](#for-developers)
+  * [Install Electron](#install-electron)
+  * [Run the application](#run-the-application)
+  * [Open the developer tools](#open-the-developer-tools)
+* [For users](#for-users)
+  * [Install ESNbang!](#install-esnbang)
+  * [Use ESNbang!](#use-esnbang)
+* [Patch notes](#patch-notes)
+
+---
 
 ## For developers
 
-### Install electron 
+### Install Electron 
 Before installing Electron, you must have NodeJS installed on your computer with npm, its packet manager.
 
 To install Electron, use npm like this:
@@ -51,6 +64,28 @@ Using the application is pretty easy, if you know all shortcuts ; you can find s
 
 ---
 
-## Versioning
+## Patch Notes
 
-ESNbang! uses the [semantic versioning](http://semver.org/).
+For the development of ESNbang!, we use the [semantic versioning](http://semver.org/).
+
+* **[0.\*.\*] DEVELOPMENT VERSION**
+  * **[0.2.1]**
+    * Signals system reviewed: naviguation enhanced
+    * Addition of the sites titles
+    * Addition of the sites favicons
+  * **[0.2.0]**
+    * Addition of the internationalization (i18n)
+  * **[0.1.1]**
+    * You can now remove a website you added previously
+    * Little code improvements for performance
+  * **[0.1.0]**
+    * You can now add a new website to your application !
+    * Switching from iframes to webviews, to avoid `x-frame-origin` errors
+  * **[0.0.1]**
+    * Addition of the settings system
+    * Addition of the notification system
+    * All code has been documented
+  * **[0.0.0]**
+    * Introduction of the architecture main wrapper/side menu
+    * Usage of iframes
+    * Tooltips
