@@ -6,12 +6,18 @@ const storage = remote.require('electron-json-storage-sync');
 // ----------------------------------------------------------------
 
 function site_already_registered(registered, site){
-	
+
 	let url = site.url;
 
 	if(!registered) {
 		create_site_menu_component(site);
 		create_site_frame_component(site);
+
+		// Adding the <hr> element if it doesn't exist
+		if(home_menu.getElementsByClassName('added_site').length === 0) {
+			home_menu.appendChild(document.createElement('hr'));
+		}
+
 		console.info('Registering the new website ' + url + '.');
 		set_overflow_on_menu();
 	}
@@ -49,12 +55,12 @@ ipc.on('build-interface' , function(event , data){
         create_site_menu_component(sites[i]);
 		create_site_frame_component(sites[i]);
 	}
-	
+
 	// initializing the language
 	let langSelector = document.getElementById('lang-select');
 	let lang = settings.language;
 	ESNbang.i18n.load_language_file(lang);
-	
+
 	// actualisation
 	frames_count = document.getElementsByTagName('webview').length;
 });
@@ -164,7 +170,7 @@ function get_parameters() {
   * @author Rémy Raes
   **/
 function subscribe_to_new_site(url) {
-	
+
 	var valid = is_valid_url(url);
 
 	if(valid === 'void'){
@@ -172,7 +178,7 @@ function subscribe_to_new_site(url) {
 		console.warn('The "new website subscription" input field is empty.');
 
 	} else if(valid) {
-		
+
 		let parameters = get_parameters();
 		let sites = parameters.sites;
 		let len = sites.length;
@@ -181,7 +187,7 @@ function subscribe_to_new_site(url) {
 			url: url,
 			image_url: url
 		}
-		
+
 		// checking if the site isn't already registered
 		for(var i=0; i<len; i++)
 			if(sites[i].url === url) {
@@ -192,8 +198,8 @@ function subscribe_to_new_site(url) {
 		site_already_registered(false, site);
 		sites.push(site);
 		save_sites(sites);
-		
-	
+
+
 	} else {
 		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_url_not_valid);
 		console.warn('The string "' + url + '" is not a valid URL.');
@@ -222,9 +228,9 @@ function is_valid_url(url) {
 
 /**
   * This functions returns a temporary site name, based on its URL
-  * (for example, using 'https://www.facebook.com' will return 
+  * (for example, using 'https://www.facebook.com' will return
   * 'Facebook').
-  * 
+  *
   * url URL to convert to a readable name
   * @author Rémy Raes
   **/
@@ -232,11 +238,11 @@ function get_site_name(url) {
 	let domain = url.split('/')[2];
 	let tmp = domain.split('.');
 	let ret = null;
-	
+
 	if(tmp.length > 2)
 		ret = tmp[tmp.length-2];
 	else
 		ret = tmp[0];
-	
+
 	return ret.substr(0, 1).toUpperCase() + ret.substr(1, ret.length-1);
 }

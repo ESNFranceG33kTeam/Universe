@@ -252,6 +252,10 @@ function create_site_frame_component(site) {
 	frame.addEventListener('page-title-updated', () => {
 		// updates the application tooltip
 		save_site_title(site, frame.getTitle());
+
+		// TODO to fix, some sites will change title several times for one only
+		// notification (eg. Facebook when you receive a Messenger message)
+		add_notification_on_site(site.url.hashCode);
 	});
 	frame.addEventListener('page-favicon-updated', (e) => {
 		// update the button image
