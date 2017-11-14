@@ -59,6 +59,7 @@ ESNbang.i18n = (function() {
 		* if it doesn't exists, the function exits.
 		* @param {String} lang_code - code representing a language
 		* @author Rémy Raes
+		* @memberof module:ESNbang/i18n
 		**/
 	_this.load_language_file = function (lang_code) {
 
@@ -68,7 +69,7 @@ ESNbang.i18n = (function() {
 				return ;
 		  }
 		  console.info('Changing the application language to \'' + lang_code + '\'.');
-		  _this.change_language(JSON.parse(data));
+		  change_language(JSON.parse(data));
 		  save_language(lang_code);
 		});
 	}
@@ -77,9 +78,11 @@ ESNbang.i18n = (function() {
 	  * This function allows the application to switch the text of certain elements to
 	  * enable the understanding of it for differents languages.
 	  * @param {JSON} json - Object containing all variables translated in a certain language
-	  * @author Rémy Raes
+		* @author Rémy Raes
+		* @private
+		* @memberof module:ESNbang/i18n
 	  **/
-	_this.change_language = function(json) {
+	  function change_language(json) {
 
 		// loading the translations into the application
 		home_message.innerHTML = json['home_message'];
