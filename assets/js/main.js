@@ -135,8 +135,7 @@ function show_home() {
 /**
   * This function creates a component representing a website
   * on the side menu.
-  *
-  * url The URL of the new website
+  * @param {String} url - The URL of the new website
   * @author Rémy Raes
   **/
 function create_site_menu_component(site) {
@@ -232,8 +231,7 @@ function create_site_menu_separation(){
 /**
   * This function creates a frame encapsulating a website
   * on the side menu.
-  *
-  * url The URL of the new website
+  * @param {String} site - The URL of the new website
   * @author Rémy Raes
   **/
 function create_site_frame_component(site) {
@@ -327,8 +325,7 @@ function reset_new_site_subscription() {
 
 /**
   * This function sets a warning state on the subscription window.
-  *
-  * message The message to display to the user
+  * @param {String} message - The message to display to the user
   * @author Rémy Raes
   **/
 function set_new_site_warning(message) {
@@ -369,8 +366,14 @@ function set_overflow_on_menu() {
 
 }
 
-// TODO to redo
-// doesn't work when the subscribe button is above the application bottom
+
+/**
+  * This functions returns the state of the state bar, meaning if its size
+	* enables it to display completely within the screen.
+	* @return {Boolean} is the side menu going out of the screen or not
+	* @author Rémy Raes
+	* @todo doesn't work when the subscribe button is above the application bottom
+	**/
 function menu_is_overflowed() {
 	return (home_menu.scrollHeight > home_menu.clientHeight);
 }

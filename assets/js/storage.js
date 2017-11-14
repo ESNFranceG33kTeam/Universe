@@ -5,31 +5,6 @@ const storage = remote.require('electron-json-storage-sync');
 // Signals handlers
 // ----------------------------------------------------------------
 
-function site_already_registered(registered, site){
-
-	let url = site.url;
-
-	if(!registered) {
-		create_site_menu_component(site);
-		create_site_frame_component(site);
-
-		// Adding the <hr> element if it doesn't exist
-		if(home_menu.getElementsByClassName('added_site').length === 0) {
-			home_menu.appendChild(document.createElement('hr'));
-		}
-
-		console.info('Registering the new website ' + url + '.');
-		set_overflow_on_menu();
-	}
-
-	else if(registered){
-		// alert the user
-		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
-		console.warn('The website ' + url + ' has already been registered by the user.');
-	}
-
-}
-
 function save_sites(data){
 	let p = get_parameters();
 	p.sites = data;
@@ -96,13 +71,44 @@ var settings_model = {
 }
 
 /**
+  * This function does the initialization of a new component, if the site given
+	* hasn't been registered yet.
+	* @param {Boolean} registered - is the site already registered ?
+	* @param {JSON} site - JSON representing a website
+	* @author Rémy Raes
+	**/
+function site_already_registered(registered, site){
+
+	let url = site.url;
+
+	if(!registered) {
+		create_site_menu_component(site);
+		create_site_frame_component(site);
+
+		// Adding the <hr> element if it doesn't exist
+		if(home_menu.getElementsByClassName('added_site').length === 0) {
+			home_menu.appendChild(document.createElement('hr'));
+		}
+
+		console.info('Registering the new website ' + url + '.');
+		set_overflow_on_menu();
+	}
+
+	else if(registered){
+		// alert the user
+		set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
+		console.warn('The website ' + url + ' has already been registered by the user.');
+	}
+
+}
+
+/**
   * This functions allows the application to save the title of
   * a page that would have changed its own.
   * It also propagates the title change to the tooltip, in the
   * sidebar menu.
-  *
-  * site JSON object representing the site to update
-  * title new title to give to the page
+  * @param {JSON} site - JSON object representing the site to update
+  * @param {String} title - new title to give to the page
   * @author Rémy Raes
   **/
 function save_site_title(site, title) {
@@ -128,6 +134,7 @@ function save_language(lang_code) {
 /**
   * This function saves the user settings on the user local
   * storage.
+	* @param {JSON} params - JSON representing user settings
   * @author Rémy Raes
   **/
 function save_parameters(params) {
@@ -139,6 +146,7 @@ function save_parameters(params) {
   * This function check if the user has settings stored on
   * its computer, and returns them ; if it's not the case,
   * it returns a new settings object.
+	* @return {JSON} a JSON object representing user settings
   * @author Rémy Raes
   **/
 function get_parameters() {
@@ -165,8 +173,7 @@ function get_parameters() {
 /**
   * This function realizes all the tests to see if an url can be
   * subscribed to, or not.
-  *
-  * url Website address to check
+  * @param {String} url - Website address to check
   * @author Rémy Raes
   **/
 function subscribe_to_new_site(url) {
@@ -208,9 +215,9 @@ function subscribe_to_new_site(url) {
 
 
 /**
-  * This function checks if a string is a valid url
-  *
-  * url String to check
+  * This function checks if a string is a valid url.
+  * @param {String} url - String to check
+	* @return {Boolean} is the parameter a valid url or not
   * @author Rémy Raes
   **/
 function is_valid_url(url) {
@@ -230,8 +237,8 @@ function is_valid_url(url) {
   * This functions returns a temporary site name, based on its URL
   * (for example, using 'https://www.facebook.com' will return
   * 'Facebook').
-  *
-  * url URL to convert to a readable name
+  * @param {String} url - URL to convert to a readable name
+	* @return {String} A human readable string reprensenting the URL
   * @author Rémy Raes
   **/
 function get_site_name(url) {

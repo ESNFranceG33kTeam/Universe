@@ -15,8 +15,7 @@ ipc.on('exit-notification' , function(){
 /**
   * This function creates notification on a website node, to signal
   * to the user something happened (eg: a new publication).
-  *
-  * url Address of the website from which to add notification
+  * @param {String} url - Address of the website from which to add notification
   * @author Rémy Raes
   **/
 function add_notification_on_site(url) {
@@ -45,8 +44,7 @@ function add_notification_on_site(url) {
 /**
   * This function removes the notification object from a website
   * node (eg: when the user has read everything on the node).
-  *
-  * url Address of the website from which to remove notification
+  * @param {String} url - Address of the website from which to remove notification
   * @author Rémy Raes
   **/
 function remove_notification_from_site(url) {

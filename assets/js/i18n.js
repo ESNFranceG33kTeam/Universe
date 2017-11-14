@@ -6,18 +6,18 @@ var ESNbang = ESNbang || {};
   * If you want to introduce translations for another element than those initialized
   * in i18n, you have to give it an id in the HTML code, to reference it in i18n, and
   * then to write your translations.
-  *
+	* @module ESNbang/i18n
   * @author Rémy Raes
   **/
 ESNbang.i18n = (function() {
 	var _this = {};
-	
+
 	let lang_folder = 'i18n/';
 	let flags_folder = 'i18n/flags/';
 
 	// language selector element
 	_this.langSelect = new IconSelect("lang-select");
-	
+
 	// variable containing messages for the "new subscription" window
 	_this.errorMessages = {
 		subscription_default_message: '',
@@ -30,7 +30,7 @@ ESNbang.i18n = (function() {
 	window.onload = function(){
 
 		var icons = [];
-		
+
 		fs.readdir(flags_folder, (err, files) => {
 			let i = 0;
 			files.forEach(file => {
@@ -57,8 +57,7 @@ ESNbang.i18n = (function() {
 		* application texts in a certain language.
 		* Once the file is loaded, it launches the live translation of the texts;
 		* if it doesn't exists, the function exits.
-		*
-		* lang_code code representing a language
+		* @param {String} lang_code - code representing a language
 		* @author Rémy Raes
 		**/
 	_this.load_language_file = function (lang_code) {
@@ -77,8 +76,7 @@ ESNbang.i18n = (function() {
 	/**
 	  * This function allows the application to switch the text of certain elements to
 	  * enable the understanding of it for differents languages.
-	  *
-	  * json JSON String containing all variables translated in a certain language
+	  * @param {JSON} json - Object containing all variables translated in a certain language
 	  * @author Rémy Raes
 	  **/
 	_this.change_language = function(json) {
@@ -90,7 +88,7 @@ ESNbang.i18n = (function() {
 		subscription_placeholder.placeholder = json['subscription_placeholder'];
 		subscription_text.innerText = json['subscription_text'];
 		subscription_button_text.innerText = json['subscription_button_text'];
-		
+
 		// loading in memory the messages for the "new subscription" window
 		_this.errorMessages.subscription_default_message = json['subscription_text'];
 		_this.errorMessages.subscription_empty_message = json['subscription_error_empty_message'];
