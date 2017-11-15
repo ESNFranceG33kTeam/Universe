@@ -157,7 +157,10 @@ function create_site_menu_component(site) {
 
 	let tmp = url.hashCode();
 	button.id = tmp;
-	button.onclick = function() {show_frame(tmp + '_frame')};
+	button.onclick = function() {
+		remove_notification_from_site(site.url.hashCode());
+		show_frame(tmp + '_frame');
+	};
 
 
 	// creating the delete button
@@ -255,7 +258,9 @@ function create_site_frame_component(site) {
 
 		// TODO to fix, some sites will change title several times for one only
 		// notification (eg. Facebook when you receive a Messenger message)
-		add_notification_on_site(site.url.hashCode);
+		
+		// TODO if the page isn't focused
+		add_notification_on_site(site.url.hashCode());
 	});
 	frame.addEventListener('page-favicon-updated', (e) => {
 		// update the button image
