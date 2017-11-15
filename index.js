@@ -104,6 +104,7 @@ function createWindow () {
 
 			mainWindow.webContents.send('resized');
 			mainWindow.show();
+			// mainWindow.webContents.openDevTools();
 
 			// adding the websites
 			var sites = parameters.sites;
