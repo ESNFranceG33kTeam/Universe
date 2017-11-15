@@ -135,8 +135,7 @@ function show_home() {
 /**
   * This function creates a component representing a website
   * on the side menu.
-  *
-  * url The URL of the new website
+  * @param {String} url - The URL of the new website
   * @author Rémy Raes
   **/
 function create_site_menu_component(site) {
@@ -235,8 +234,7 @@ function create_site_menu_separation(){
 /**
   * This function creates a frame encapsulating a website
   * on the side menu.
-  *
-  * url The URL of the new website
+  * @param {String} site - The URL of the new website
   * @author Rémy Raes
   **/
 function create_site_frame_component(site) {
@@ -282,8 +280,6 @@ function delete_menu_component(url) {
 		let hr = home_menu.getElementsByTagName('hr')[1];
 		home_menu.removeChild(hr);
 	}
-
-
 	set_overflow_on_menu();
 }
 
@@ -332,8 +328,7 @@ function reset_new_site_subscription() {
 
 /**
   * This function sets a warning state on the subscription window.
-  *
-  * message The message to display to the user
+  * @param {String} message - The message to display to the user
   * @author Rémy Raes
   **/
 function set_new_site_warning(message) {
@@ -374,8 +369,14 @@ function set_overflow_on_menu() {
 
 }
 
-// TODO to redo
-// doesn't work when the subscribe button is above the application bottom
+
+/**
+  * This functions returns the state of the state bar, meaning if its size
+	* enables it to display completely within the screen.
+	* @return {Boolean} is the side menu going out of the screen or not
+	* @author Rémy Raes
+	* @todo doesn't work when the subscribe button is above the application bottom
+	**/
 function menu_is_overflowed() {
 	return (home_menu.scrollHeight > home_menu.clientHeight);
 }
@@ -386,24 +387,29 @@ var interval = 20;
 btn_up.addEventListener('mousedown', function(){
 	t = setInterval(function(){
 		scroll_menu_down();
-	}, 100);
+	}, 40);
 }, false);
 btn_up.addEventListener('mouseup', function() {
 	clearInterval(t);
 }, false);
 
+
 btn_down.addEventListener('mousedown', function(){
 	t = setInterval(function(){
 		scroll_menu_up();
-	}, 100);
+	}, 40);
 }, false);
 btn_down.addEventListener('mouseup', function() {
 	clearInterval(t);
 }, false);
 
+let timerScroll = 0;
 home_menu.addEventListener('mousewheel', (e) => {
-	let delta = -1 * Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-	(delta === 1) ? scroll_menu_up() : scroll_menu_down();
+	clearTimeout(timerScroll);
+	timerScroll = setTimeout( () => {
+		let delta = -1 * Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+		(delta === 1) ? scroll_menu_up() : scroll_menu_down();
+	}, 40);
 });
 
 
@@ -418,10 +424,11 @@ function scroll_menu_up(){
 	if(elem.length > 0)
 		cpt = parseInt(elem.substring(0, elem.length-2));
 
-	if(home_menu.scrollHeight === home_menu_height)
+	if(home_menu.scrollHeight === home_menu_height) {
 		home_menu.style.marginTop = (cpt - interval) + 'px';
-
-	set_overflow_on_menu();
+		set_overflow_on_menu();
+	}
+	// console.log('taille menu: ' + home_menu.scrollHeight + ' \nhome_menu_height: ' + home_menu_height + '\nmargin: ' +(cpt - interval) + 'px');
 }
 function scroll_menu_down(){
 	let elem = home_menu.style.marginTop;
@@ -429,10 +436,15 @@ function scroll_menu_down(){
 	if(elem.length > 0)
 		cpt = parseInt(elem.substring(0, elem.length-2));
 
-	if(cpt < 0)
-		home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
+	if(cpt === 0) {
+		clearInterval(t);
+		set_overflow_on_menu();
+	}
 
-	set_overflow_on_menu();
+	if(cpt < (-1 *interval)+1 || cpt > 0){
+		home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
+		set_overflow_on_menu();
+	}
 }
 
 /**
