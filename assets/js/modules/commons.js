@@ -17,9 +17,8 @@ String.prototype.hashCode = function() {
 
 
 /**
-  * This module contains all "hardcoded" components of the application
-  * and all linked operations.
-  * @module ESNbang/components
+  * This module contains all operations and components used by several modules.
+  * @module ESNbang/commons
   * @author Rémy Raes
   **/
 ESNbang.commons = (function(){

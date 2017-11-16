@@ -1,6 +1,11 @@
 var ESNbang = ESNbang || {};
 
-ESNbang.frames = (function(){
+/**
+  * This module contains all operations linked to manipulation
+  * @module ESNbang/frameSystem
+  * @author Rémy Raes
+  **/
+ESNbang.frameSystem = (function(){
 	var _this = {};
 
 	var frames = document.getElementsByTagName('webview');
@@ -25,6 +30,7 @@ ESNbang.frames = (function(){
 	/**
 	  * This function check if all iframes have loaded their content;
 	  * if that's the case, it removes the loading screen.
+	  * @memberof module:ESNbang/frameSystem
 	  * @author Rémy Raes
 	  **/
 	_this.check_loaded_frames = function() {
@@ -36,6 +42,7 @@ ESNbang.frames = (function(){
 	/**
 	  * This function hides the loading screen, enabling the user to
 	  * access the application functionnalities.
+	  * @memberof module:ESNbang/frameSystem
 	  * @author Rémy Raes
 	  **/
 	function hide_loading_screen() {
@@ -49,6 +56,7 @@ ESNbang.frames = (function(){
 
 	/**
 	  * This function hides all application frames.
+	  * @memberof module:ESNbang/frameSystem
 	  * @author Rémy Raes
 	  **/
 	function hide_all_frames () {
@@ -84,6 +92,7 @@ ESNbang.frames = (function(){
 	  * This function creates a frame encapsulating a website
 	  * on the side menu.
 	  * @param {String} site - The URL of the new website
+	  * @memberof module:ESNbang/frameSystem
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_frame = function(site) {
@@ -97,8 +106,8 @@ ESNbang.frames = (function(){
 		frame.addEventListener('dom-ready', () => {
 			console.log('The website ' + url + ' has been loaded.')
 			// frames_loaded++;
-			ESNbang.frames.increment_loaded_frames();
-			ESNbang.frames.check_loaded_frames();
+			_this.increment_loaded_frames();
+			_this.check_loaded_frames();
 		});
 		frame.addEventListener('page-title-updated', () => {
 			// updates the application tooltip
@@ -135,8 +144,8 @@ ESNbang.frames = (function(){
 			tmp.addEventListener('dom-ready', () => {
 				console.log('The website ' + tmp.src + ' frame has been loaded.');
 				// frames_loaded++;
-				ESNbang.frames.increment_loaded_frames();
-				ESNbang.frames.check_loaded_frames();
+				_this.increment_loaded_frames();
+				_this.check_loaded_frames();
 			});
 
 			// listener to hide the 'new site' window

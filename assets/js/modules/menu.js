@@ -1,7 +1,10 @@
 var ESNbang = ESNbang || {};
 
 /**
-  *
+  * This module contains all operations linked to the side menu of the
+  * application.
+  * @module ESNbang/menu
+  * @author Rémy Raes
   **/
 ESNbang.menu = (function() {
 	var _this = {};
@@ -22,6 +25,12 @@ ESNbang.menu = (function() {
 		_this.set_overflow_on_menu();
 	});
 
+	/**
+	  * This function gives the number of sites that has been added by the user.
+	  * @return {Integer} the number of added sites
+	  * @memberof module:ESNbang/menu
+	  * @author Rémy Raes
+	  **/
 	_this.get_added_sites_number = function(){
 		return home_menu.getElementsByClassName('added_site');
 	}
@@ -30,6 +39,7 @@ ESNbang.menu = (function() {
 	  * This functions returns the state of the state bar, meaning if its size
 	  * enables it to display completely within the screen.
 	  * @return {Boolean} is the side menu going out of the screen or not
+	  * @memberof module:ESNbang/menu
 	  * @author Rémy Raes
 	  **/
 	function menu_is_overflowed() {
@@ -40,6 +50,7 @@ ESNbang.menu = (function() {
 	/**
 	  * This functions checks if the side menu is overflowed, if that's
 	  * the case, it sets the scrolling buttons state to visible.
+	  * @memberof module:ESNbang/menu
 	  * @author Rémy Raes
 	  **/
 	_this.set_overflow_on_menu = function() {
@@ -58,7 +69,11 @@ ESNbang.menu = (function() {
 	}
 
 
-	// functions used to scroll the side menu
+	/**
+	  * This function is used to scroll the menu up, if possible.
+	  * @memberof module:ESNbang/menu
+	  * @author Rémy Raes
+	  **/
 	function scroll_menu_up(){
 		// initialisation
 		if(home_menu_height === 'cc')
@@ -73,9 +88,14 @@ ESNbang.menu = (function() {
 			home_menu.style.marginTop = (cpt - interval) + 'px';
 			_this.set_overflow_on_menu();
 		}
-		// console.log('taille menu: ' + home_menu.scrollHeight + ' \nhome_menu_height: ' + home_menu_height + '\nmargin: ' +(cpt - interval) + 'px');
 	}
+
 	var t = 0;
+	/**
+	  * This function is used to scroll the menu down, if possible.
+	  * @memberof module:ESNbang/menu
+	  * @author Rémy Raes
+	  **/
 	function scroll_menu_down(){
 		let elem = home_menu.style.marginTop;
 		let cpt = 0;
@@ -93,9 +113,15 @@ ESNbang.menu = (function() {
 		}
 	}
 
+	/**
+	  * Self-invoking function that initialize scroll listeners on both
+	  * scrolling buttons and mousewheel.
+	  * @memberof module:ESNbang/menu
+	  * @author Rémy Raes
+	  **/
 	(function initialize_scroll_listeners() {
 		// scrolling listeners avoiding to call the functions too much
-		var t = 0;
+		// var t = 0;
 		var interval = 20;
 		btn_up.addEventListener('mousedown', function(){
 			t = setInterval(function(){
@@ -131,6 +157,12 @@ ESNbang.menu = (function() {
 })();
 
 
+/**
+  * This submodule contains all operations linked to manipulation of the site
+  * buttons.
+  * @module ESNbang/menu/siteButton
+  * @author Rémy Raes
+  **/
 ESNbang.menu.siteButton = (function () {
 	var _this = {};
 
@@ -142,6 +174,7 @@ ESNbang.menu.siteButton = (function () {
 	  * This function creates a component representing a website
 	  * on the side menu.
 	  * @param {String} url - The URL of the new website
+	  * @memberof module:ESNbang/menu/siteButton
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_button = function(site) {
@@ -164,7 +197,7 @@ ESNbang.menu.siteButton = (function () {
 		button.id = tmp;
 		button.onclick = function() {
 			ESNbang.notification.remove_notification_from_site(site.url.hashCode());
-			ESNbang.frames.show_frame(tmp + '_frame');
+			ESNbang.frameSystem.show_frame(tmp + '_frame');
 		};
 
 
@@ -175,10 +208,10 @@ ESNbang.menu.siteButton = (function () {
 
 		span.addEventListener('click', function(e) {
 			e.stopPropagation();
-			ESNbang.frames.show_home();
+			ESNbang.frameSystem.show_home();
 
 			delete_button(tmp);
-			ESNbang.frames.delete_frame(tmp + '_frame');
+			ESNbang.frameSystem.delete_frame(tmp + '_frame');
 
 			console.info('Deleting ' + url + '.');
 
@@ -230,13 +263,19 @@ ESNbang.menu.siteButton = (function () {
 
 	/**
 	  * This function appends an HR element into the side menu.
+	  * @memberof module:ESNbang/menu/siteButton
 	  * @author Rémy Raes
 	  **/
 	function create_site_menu_separation(){
 		menu.appendChild(document.createElement('HR'));
 	}
 
-
+	/**
+	  * This functions deletes a button from the menu.
+	  * @param {String} url - hashed url of the website to delete
+	  * @memberof module:ESNbang/menu/siteButton
+	  * @author Rémy Raes
+	  **/
 	function delete_button(url) {
 		let comp = document.getElementById(url);
 		menu.removeChild(comp);
@@ -249,12 +288,26 @@ ESNbang.menu.siteButton = (function () {
 		ESNbang.menu.set_overflow_on_menu();
 	}
 
+	/**
+	  * This function updates the tooltip containing the title of a site.
+	  * @param {String} url - hashed url of the site to update
+	  * @param {String} title - new site title to put into its tooltip
+	  * @memberof module:ESNbang/menu/siteButton
+	  * @author Rémy Raes
+	  **/
 	_this.update_tooltip_title = function(url, title) {
 		let tmp = document.getElementById(url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
 		tooltip.innerHTML = title;
 	}
 
+	/**
+	  * This function updates the image of a site button.
+	  * @param {String} url - hashed url of the site to update
+	  * @param {String} image_url - url of the new background image
+	  * @memberof module:ESNbang/menu/siteButton
+	  * @author Rémy Raes
+	  **/
 	_this.update_button_image = function(url, image_url) {
 		let node = document.getElementById(url);
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';

@@ -1,17 +1,25 @@
 var ESNbang = ESNbang || {};
 
+/**
+  * This module contains all operations linked to manipulation of the
+  * "new subscription" window, which is used for the user to add a new site
+  * to its application.
+  * @module ESNbang/subscription
+  * @author Rémy Raes
+  **/
 ESNbang.subscription = (function () {
-	
+
 	var _this = {};
-	
+
 	var new_site_window = document.getElementById('new_site');
 	var new_url = document.getElementById('subscription_placeholder');
 	var new_site_error = document.getElementById('subscription_text');
 
-	
+
 	/**
 	  * This function makes the subscription window appear.
 	  * @author Rémy Raes
+	  * @memberof module:ESNbang/subscription
 	  **/
 	_this.show_new_site_subscription = function() {
 		ESNbang.commons.main_wrapper.style.filter = 'brightness(0.4)';
@@ -21,6 +29,7 @@ ESNbang.subscription = (function () {
 
 	/**
 	  * This function initializes the subscription window (style, animation, tooltip text).
+	  * @memberof module:ESNbang/subscription
 	  * @author Rémy Raes
 	  **/
 	_this.reset = function() {
@@ -34,6 +43,7 @@ ESNbang.subscription = (function () {
 	/**
 	  * This function sets a warning state on the subscription window.
 	  * @param {String} message - The message to display to the user
+	  * @memberof module:ESNbang/subscription
 	  * @author Rémy Raes
 	  **/
 	_this.set_new_site_warning = function(message) {

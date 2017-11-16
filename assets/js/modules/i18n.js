@@ -78,7 +78,6 @@ ESNbang.i18n = (function() {
 	  * enable the understanding of it for differents languages.
 	  * @param {JSON} json - Object containing all variables translated in a certain language
 		* @author Rémy Raes
-		* @private
 		* @memberof module:ESNbang/i18n
 	  **/
 	  function change_language(json) {

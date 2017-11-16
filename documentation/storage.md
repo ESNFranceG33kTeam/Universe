@@ -1,63 +1,52 @@
-## Members
+<a name="module_ESNbang/storage"></a>
 
-<dl>
-<dt><a href="#settings_model">settings_model</a></dt>
-<dd><p>This is the user settings model, used to store all information
-relative to the user preferences.</p>
-</dd>
-</dl>
+## ESNbang/storage
+This module contains all operations linked to manipulation of user
+settings and their storage.
 
-## Functions
+**Author**: Rémy Raes  
 
-<dl>
-<dt><a href="#site_already_registered">site_already_registered(registered, site)</a></dt>
-<dd><p>This function does the initialization of a new component, if the site given
-hasn&#39;t been registered yet.</p>
-</dd>
-<dt><a href="#save_site_title">save_site_title(site, title)</a></dt>
-<dd><p>This functions allows the application to save the title of
-a page that would have changed its own.
-It also propagates the title change to the tooltip, in the
-sidebar menu.</p>
-</dd>
-<dt><a href="#save_parameters">save_parameters(params)</a></dt>
-<dd><p>This function saves the user settings on the user local
-storage.</p>
-</dd>
-<dt><a href="#get_parameters">get_parameters()</a> ⇒ <code>JSON</code></dt>
-<dd><p>This function check if the user has settings stored on
-its computer, and returns them ; if it&#39;s not the case,
-it returns a new settings object.</p>
-</dd>
-<dt><a href="#subscribe_to_new_site">subscribe_to_new_site(url)</a></dt>
-<dd><p>This function realizes all the tests to see if an url can be
-subscribed to, or not.</p>
-</dd>
-<dt><a href="#is_valid_url">is_valid_url(url)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>This function checks if a string is a valid url.</p>
-</dd>
-<dt><a href="#get_site_name">get_site_name(url)</a> ⇒ <code>String</code></dt>
-<dd><p>This functions returns a temporary site name, based on its URL
-(for example, using &#39;<a href="https://www.facebook.com">https://www.facebook.com</a>&#39; will return
-&#39;Facebook&#39;).</p>
-</dd>
-</dl>
+* [ESNbang/storage](#module_ESNbang/storage)
+    * [.settings_model](#module_ESNbang/storage.settings_model)
+    * [.save_sites(data)](#module_ESNbang/storage.save_sites)
+    * [.site_already_registered(registered, site)](#module_ESNbang/storage.site_already_registered)
+    * [._this.save_site_title(site, title)](#module_ESNbang/storage._this.save_site_title)
+    * [._this.save_language(lang_code)](#module_ESNbang/storage._this.save_language)
+    * [._this.save_parameters(params)](#module_ESNbang/storage._this.save_parameters)
+    * [.store_parameters(params)](#module_ESNbang/storage.store_parameters)
+    * [._this.get_parameters()](#module_ESNbang/storage._this.get_parameters) ⇒ <code>JSON</code>
+    * [._this.subscribe_to_new_site(url)](#module_ESNbang/storage._this.subscribe_to_new_site)
+    * [.is_valid_url(url)](#module_ESNbang/storage.is_valid_url) ⇒ <code>Boolean</code>
+    * [.get_site_name(url)](#module_ESNbang/storage.get_site_name) ⇒ <code>String</code>
 
-<a name="settings_model"></a>
+<a name="module_ESNbang/storage.settings_model"></a>
 
-## settings_model
+### ESNbang/storage.settings_model
 This is the user settings model, used to store all information
 relative to the user preferences.
 
-**Kind**: global variable  
+**Kind**: static property of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Author**: Rémy Raes  
-<a name="site_already_registered"></a>
+<a name="module_ESNbang/storage.save_sites"></a>
 
-## site_already_registered(registered, site)
+### ESNbang/storage.save_sites(data)
+This function saves user settings when its subscripted sites have been
+changed.
+
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
+**Author**: Rémy Raes  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>JSON</code> | Object containing all user websites |
+
+<a name="module_ESNbang/storage.site_already_registered"></a>
+
+### ESNbang/storage.site_already_registered(registered, site)
 This function does the initialization of a new component, if the site given
 hasn't been registered yet.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -65,15 +54,15 @@ hasn't been registered yet.
 | registered | <code>Boolean</code> | is the site already registered ? |
 | site | <code>JSON</code> | JSON representing a website |
 
-<a name="save_site_title"></a>
+<a name="module_ESNbang/storage._this.save_site_title"></a>
 
-## save_site_title(site, title)
+### ESNbang/storage._this.save_site_title(site, title)
 This functions allows the application to save the title of
 a page that would have changed its own.
 It also propagates the title change to the tooltip, in the
 sidebar menu.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -81,48 +70,74 @@ sidebar menu.
 | site | <code>JSON</code> | JSON object representing the site to update |
 | title | <code>String</code> | new title to give to the page |
 
-<a name="save_parameters"></a>
+<a name="module_ESNbang/storage._this.save_language"></a>
 
-## save_parameters(params)
+### ESNbang/storage._this.save_language(lang_code)
+This function saves user settings when the application language
+is changing.
+
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
+**Author**: Rémy Raes  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lang_code | <code>String</code> | code of the current language |
+
+<a name="module_ESNbang/storage._this.save_parameters"></a>
+
+### ESNbang/storage._this.save_parameters(params)
+This function is the public method that enables modules to save
+user settings.
+
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
+**Author**: Rémy Raes  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| params | <code>JSON</code> | Object containing the user settings, following the pattern settings_model |
+
+<a name="module_ESNbang/storage.store_parameters"></a>
+
+### ESNbang/storage.store_parameters(params)
 This function saves the user settings on the user local
 storage.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | params | <code>JSON</code> | JSON representing user settings |
 
-<a name="get_parameters"></a>
+<a name="module_ESNbang/storage._this.get_parameters"></a>
 
-## get_parameters() ⇒ <code>JSON</code>
+### ESNbang/storage._this.get_parameters() ⇒ <code>JSON</code>
 This function check if the user has settings stored on
 its computer, and returns them ; if it's not the case,
 it returns a new settings object.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Returns**: <code>JSON</code> - a JSON object representing user settings  
 **Author**: Rémy Raes  
-<a name="subscribe_to_new_site"></a>
+<a name="module_ESNbang/storage._this.subscribe_to_new_site"></a>
 
-## subscribe_to_new_site(url)
+### ESNbang/storage._this.subscribe_to_new_site(url)
 This function realizes all the tests to see if an url can be
 subscribed to, or not.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | url | <code>String</code> | Website address to check |
 
-<a name="is_valid_url"></a>
+<a name="module_ESNbang/storage.is_valid_url"></a>
 
-## is_valid_url(url) ⇒ <code>Boolean</code>
+### ESNbang/storage.is_valid_url(url) ⇒ <code>Boolean</code>
 This function checks if a string is a valid url.
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Returns**: <code>Boolean</code> - is the parameter a valid url or not  
 **Author**: Rémy Raes  
 
@@ -130,14 +145,14 @@ This function checks if a string is a valid url.
 | --- | --- | --- |
 | url | <code>String</code> | String to check |
 
-<a name="get_site_name"></a>
+<a name="module_ESNbang/storage.get_site_name"></a>
 
-## get_site_name(url) ⇒ <code>String</code>
+### ESNbang/storage.get_site_name(url) ⇒ <code>String</code>
 This functions returns a temporary site name, based on its URL
 (for example, using 'https://www.facebook.com' will return
 'Facebook').
 
-**Kind**: global function  
+**Kind**: static method of [<code>ESNbang/storage</code>](#module_ESNbang/storage)  
 **Returns**: <code>String</code> - A human readable string reprensenting the URL  
 **Author**: Rémy Raes  
 

@@ -10,54 +10,51 @@ ESNbang.storage = (function () {
 
 	var _this = {};
 
-	// ----------------------------------------------------------------
-	// Signals handlers
-	// ----------------------------------------------------------------
+	/**
+	  * This function handles all signals sended by other modules to save
+	  * user settings.
+	  * @memberof module:ESNbang/storage
+	  * @author Rémy Raes
+	  **/
+	(function storage_handlers() {
 
-	function save_sites(data){
-		let p = _this.get_parameters();
-		p.sites = data;
-		store_parameters(p);
-	}
+		ipc.on('save_size' , function(event , data){
+			let p = _this.get_parameters();
+			p.size = data;
+			store_parameters(p);
+		});
 
-	ipc.on('save_size' , function(event , data){
-		let p = _this.get_parameters();
-		p.size = data;
-		store_parameters(p);
-	});
+		ipc.on('get-params' , function(event , data){
+			var settings = _this.get_parameters();
+			ipc.send('send_params', settings);
+		});
 
-	ipc.on('get-params' , function(event , data){
-		var settings = _this.get_parameters();
-		ipc.send('send_params', settings);
-	});
+		ipc.on('build-interface' , function(event , data){
+			var settings = _this.get_parameters();
+			var sites = settings.sites;
 
-	ipc.on('build-interface' , function(event , data){
-		var settings = _this.get_parameters();
-		var sites = settings.sites;
+		    for(var i=0; i<sites.length; i++) {
+		        ESNbang.menu.siteButton.create_new_button(sites[i]);
+				ESNbang.frameSystem.create_new_frame(sites[i]);
+			}
 
-	    for(var i=0; i<sites.length; i++) {
-	        ESNbang.menu.siteButton.create_new_button(sites[i]);
-			ESNbang.frames.create_new_frame(sites[i]);
-		}
+			// initializing the language
+			let langSelector = document.getElementById('lang-select');
+			let lang = settings.language;
+			ESNbang.i18n.load_language_file(lang);
 
-		// initializing the language
-		let langSelector = document.getElementById('lang-select');
-		let lang = settings.language;
-		ESNbang.i18n.load_language_file(lang);
+			// actualisation
+			ESNbang.frameSystem.load_all_frames();
+		});
 
-		// actualisation
-		ESNbang.frames.load_all_frames();
-	});
+	})();
 
-
-
-	// ----------------------------------------------------------------
-	// ----------------------------------------------------------------
 
 
 	/**
 	  * This is the user settings model, used to store all information
 	  * relative to the user preferences.
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	var settings_model = {
@@ -79,11 +76,26 @@ ESNbang.storage = (function () {
 		language: 'enGB'
 	}
 
+
+	/**
+	  * This function saves user settings when its subscripted sites have been
+	  * changed.
+	  * @param {JSON} data - Object containing all user websites
+	  * @memberof module:ESNbang/storage
+	  * @author Rémy Raes
+	  **/
+	function save_sites(data){
+		let p = _this.get_parameters();
+		p.sites = data;
+		store_parameters(p);
+	}
+
 	/**
 	  * This function does the initialization of a new component, if the site given
 		* hasn't been registered yet.
 		* @param {Boolean} registered - is the site already registered ?
 		* @param {JSON} site - JSON representing a website
+		* @memberof module:ESNbang/storage
 		* @author Rémy Raes
 		**/
 	function site_already_registered(registered, site){
@@ -92,7 +104,7 @@ ESNbang.storage = (function () {
 
 		if(!registered) {
 			ESNbang.menu.siteButton.create_new_button(site);
-			ESNbang.frames.create_new_frame(site);
+			ESNbang.frameSystem.create_new_frame(site);
 
 			// Adding the <hr> element if it doesn't exist
 			/*
@@ -119,6 +131,7 @@ ESNbang.storage = (function () {
 	  * sidebar menu.
 	  * @param {JSON} site - JSON object representing the site to update
 	  * @param {String} title - new title to give to the page
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	_this.save_site_title = function(site, title) {
@@ -134,21 +147,34 @@ ESNbang.storage = (function () {
 			}
 	}
 
+	/**
+	  * This function saves user settings when the application language
+	  * is changing.
+	  * @param {String} lang_code - code of the current language
+	  * @memberof module:ESNbang/storage
+	  * @author Rémy Raes
+	  **/
 	_this.save_language = function(lang_code) {
 		let p = _this.get_parameters();
 		p.language = lang_code;
 		store_parameters(p);
 	}
 
-
+	/**
+	  * This function is the public method that enables modules to save
+	  * user settings.
+	  * @param {JSON} params - Object containing the user settings, following the pattern settings_model
+	  * @memberof module:ESNbang/storage
+	  * @author Rémy Raes
+	  **/
 	_this.save_parameters = function(params) {
 		store_parameters(params);
-
 	}
 	/**
 	  * This function saves the user settings on the user local
 	  * storage.
-		* @param {JSON} params - JSON representing user settings
+	  * @param {JSON} params - JSON representing user settings
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	function store_parameters(params) {
@@ -160,7 +186,8 @@ ESNbang.storage = (function () {
 	  * This function check if the user has settings stored on
 	  * its computer, and returns them ; if it's not the case,
 	  * it returns a new settings object.
-		* @return {JSON} a JSON object representing user settings
+	  * @return {JSON} a JSON object representing user settings
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	_this.get_parameters = function() {
@@ -188,6 +215,7 @@ ESNbang.storage = (function () {
 	  * This function realizes all the tests to see if an url can be
 	  * subscribed to, or not.
 	  * @param {String} url - Website address to check
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	_this.subscribe_to_new_site = function(url) {
@@ -231,7 +259,8 @@ ESNbang.storage = (function () {
 	/**
 	  * This function checks if a string is a valid url.
 	  * @param {String} url - String to check
-		* @return {Boolean} is the parameter a valid url or not
+	  * @return {Boolean} is the parameter a valid url or not
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	function is_valid_url(url) {
@@ -252,7 +281,8 @@ ESNbang.storage = (function () {
 	  * (for example, using 'https://www.facebook.com' will return
 	  * 'Facebook').
 	  * @param {String} url - URL to convert to a readable name
-		* @return {String} A human readable string reprensenting the URL
+	  * @return {String} A human readable string reprensenting the URL
+	  * @memberof module:ESNbang/storage
 	  * @author Rémy Raes
 	  **/
 	function get_site_name(url) {
