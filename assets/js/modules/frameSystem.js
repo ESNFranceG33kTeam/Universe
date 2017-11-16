@@ -116,8 +116,8 @@ ESNbang.frameSystem = (function(){
 			// TODO to fix, some sites will change title several times for one only
 			// notification (eg. Facebook when you receive a Messenger message)
 
-			// TODO if the page isn't focused
-			ESNbang.notification.add_notification_on_site(site.url.hashCode());
+			if(!frame_is_focused(site.url.hashCode()))
+				ESNbang.notification.add_notification_on_site(site.url.hashCode());
 		});
 		frame.addEventListener('page-favicon-updated', (e) => {
 			// update the button image
@@ -129,6 +129,26 @@ ESNbang.frameSystem = (function(){
 
 		ESNbang.commons.main_wrapper.appendChild(frame);
 	};
+
+	/**
+	  * This functions tells if a frame is focused.
+	  * @param {String} url - hashed url of the site frame
+	  * @return {Boolean} is the frame focused or not
+	  * @memberof module:ESNbang/frameSystem
+	  **/
+	function frame_is_focused(url) {
+		let frame = undefined;
+		for(let i=0; i<frames_count; i++)
+			if(frames[i].id === url + '_frame') {
+				frame = frames[i];
+				break;
+			}
+		if(frame === undefined) {
+			console.error('Frame ' + url + ' not found.');
+			return;
+		}
+		return frame.className === 'frame frame-show';
+	}
 
 	_this.delete_frame = function(url) {
 		let comp = document.getElementById(url);

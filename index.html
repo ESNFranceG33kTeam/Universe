@@ -24,12 +24,12 @@
 				<div id="lang-select"></div>
 			</div>
 
-			<!-- id of the frame = its url.hashCode() -->
-			<webview id="b-329606763" class="frame" data-origin="application" src="http://wiki.ixesn.fr"></webview>
-			<webview id="b-280049688" class="frame" data-origin="application" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false"></webview>
-			<webview id="b1624201268" class="frame" data-origin="application" src="http://buddysystem.eu/"></webview>
-			<webview id="b-1504237755" class="frame" data-origin="application" src="http://gestion.ixesn.fr/connect.php"></webview>
-			<webview id="b-1057396883" class="frame" data-origin="application" src="https://communauteixesn.slack.com"></webview>
+			<!-- id of the frame = its url.hashCode() + _frame -->
+			<webview id="b-329606763_frame" class="frame" data-origin="application" src="http://wiki.ixesn.fr"></webview>
+			<webview id="b-280049688_frame" class="frame" data-origin="application" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false"></webview>
+			<webview id="b1624201268_frame" class="frame" data-origin="application" src="http://buddysystem.eu/"></webview>
+			<webview id="b-1504237755_frame" class="frame" data-origin="application" src="http://gestion.ixesn.fr/connect.php"></webview>
+			<webview id="b-1057396883_frame" class="frame" data-origin="application" src="https://communauteixesn.slack.com"></webview>
 		</div>
 
 		<nav id="side_menu">
@@ -39,19 +39,19 @@
 				</li>
 
 				<hr />
-				<li id="wiki_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-329606763')">
+				<li id="wiki_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-329606763_frame')">
 					<div>Wiki ESN France</div>
 				</li>
-				<li id="excel_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-280049688')">
+				<li id="excel_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-280049688_frame')">
 					<div>Excel d'or</div>
 				</li>
-				<li id="buddysystem_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b1624201268')">
+				<li id="buddysystem_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b1624201268_frame')">
 					<div>BuddySystem</div>
 				</li>
-				<li id="mb_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-1504237755')">
+				<li id="mb_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-1504237755_frame')">
 					<div>Module Bénévoles</div>
 				</li>
-				<li id="slack_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-1057396883')">
+				<li id="slack_btn" class="section" onclick="ESNbang.frameSystem.show_frame('b-1057396883_frame')">
 					<div>Slack</div>
 				</li>
 			</nav>
