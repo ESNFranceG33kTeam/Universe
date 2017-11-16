@@ -1,6 +1,3 @@
-const storage = remote.require('electron-json-storage-sync');
-
-
 // ----------------------------------------------------------------
 // Signals handlers
 // ----------------------------------------------------------------
@@ -27,8 +24,8 @@ ipc.on('build-interface' , function(event , data){
 	var sites = settings.sites;
 
     for(var i=0; i<sites.length; i++) {
-        create_site_menu_component(sites[i]);
-		create_site_frame_component(sites[i]);
+        ESNbang.menu.siteButton.create_new_button(sites[i]);
+		ESNbang.frames.create_new_frame(sites[i]);
 	}
 
 	// initializing the language
@@ -37,7 +34,7 @@ ipc.on('build-interface' , function(event , data){
 	ESNbang.i18n.load_language_file(lang);
 
 	// actualisation
-	frames_count = document.getElementsByTagName('webview').length;
+	ESNbang.frames.load_all_frames();
 });
 
 
@@ -82,12 +79,12 @@ function site_already_registered(registered, site){
 	let url = site.url;
 
 	if(!registered) {
-		create_site_menu_component(site);
-		create_site_frame_component(site);
+		ESNbang.menu.siteButton.create_new_button(site);
+		ESNbang.frames.create_new_frame(site);
 
 		// Adding the <hr> element if it doesn't exist
-		if(home_menu.getElementsByClassName('added_site').length === 0) {
-			home_menu.appendChild(document.createElement('hr'));
+		if(ESNbang.home_menu.getElementsByClassName('added_site').length === 0) {
+			ESNbang.home_menu.appendChild(document.createElement('hr'));
 		}
 
 		console.info('Registering the new website ' + url + '.');
@@ -118,7 +115,7 @@ function save_site_title(site, title) {
 			if(title != p.sites[i].name)
 				save_parameters(p);
 			p.sites[i].name = title;
-			update_tooltip_title(site.url.hashCode(), title)
+			ESNbang.menu.siteButton.update_tooltip_title(site.url.hashCode(), title)
 			console.info('Updating the title for webpage \'' + site.url + '\'.');
 			break;
 		}

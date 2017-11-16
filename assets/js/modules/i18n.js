@@ -1,4 +1,3 @@
-let fs = require('fs');
 var ESNbang = ESNbang || {};
 
 /**
@@ -6,7 +5,7 @@ var ESNbang = ESNbang || {};
   * If you want to introduce translations for another element than those initialized
   * in i18n, you have to give it an id in the HTML code, to reference it in i18n, and
   * then to write your translations.
-	* @module ESNbang/i18n
+  * @module ESNbang/i18n
   * @author Rémy Raes
   **/
 ESNbang.i18n = (function() {
@@ -101,4 +100,4 @@ ESNbang.i18n = (function() {
 
 	return _this;
 
-})(ESNbang || {});
+})();
