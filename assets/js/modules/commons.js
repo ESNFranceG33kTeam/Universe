@@ -17,16 +17,16 @@ String.prototype.hashCode = function() {
 
 
 /**
-  * This module contains all "hardcoded" components of the application 
+  * This module contains all "hardcoded" components of the application
   * and all linked operations.
   * @module ESNbang/components
   * @author Rémy Raes
   **/
 ESNbang.commons = (function(){
 	var _this = {};
-	
+
 	// application components
 	_this.main_wrapper = document.getElementById('main_wrapper');
-	
+
 	return _this;
 })();

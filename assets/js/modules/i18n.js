@@ -38,7 +38,7 @@ ESNbang.i18n = (function() {
 				i++;
 			});
 			_this.langSelect.refresh(icons);
-			ESNbang.i18n.langSelect.setSelectedLanguage(get_parameters().language);
+			ESNbang.i18n.langSelect.setSelectedLanguage(ESNbang.storage.get_parameters().language);
 		});
 	};
 
@@ -69,7 +69,7 @@ ESNbang.i18n = (function() {
 		  }
 		  console.info('Changing the application language to \'' + lang_code + '\'.');
 		  change_language(JSON.parse(data));
-		  save_language(lang_code);
+		  ESNbang.storage.save_language(lang_code);
 		});
 	}
 

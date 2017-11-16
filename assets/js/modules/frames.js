@@ -2,26 +2,26 @@ var ESNbang = ESNbang || {};
 
 ESNbang.frames = (function(){
 	var _this = {};
-	
+
 	var frames = document.getElementsByTagName('webview');
 	var home = document.getElementById('home');
-		
+
 	var frames_count = frames.length;
 	var frames_loaded = 0;
-	
+
 	_this.increment_loaded_frames = function() {
 		frames_loaded++;
 	};
-	
+
 	_this.load_all_frames = function() {
 		frames = document.getElementsByTagName('webview');
 		frames_count = frames.length;
 	}
-	
-	
+
+
 	var loading_screen = document.getElementById('loading');
 	var loading_logo = document.getElementById('loading_logo');
-	
+
 	/**
 	  * This function check if all iframes have loaded their content;
 	  * if that's the case, it removes the loading screen.
@@ -32,7 +32,7 @@ ESNbang.frames = (function(){
 			hide_loading_screen();
 		}
 	}
-	
+
 	/**
 	  * This function hides the loading screen, enabling the user to
 	  * access the application functionnalities.
@@ -46,7 +46,7 @@ ESNbang.frames = (function(){
 			loading_screen.style.zIndex = '-1';
 		}, 1000);
 	}
-	
+
 	/**
 	  * This function hides all application frames.
 	  * @author Rémy Raes
@@ -58,7 +58,7 @@ ESNbang.frames = (function(){
 				frames[i].className = 'frame';
 	}
 
-	
+
 	_this.show_frame = function(url) {
 		hide_all_frames();
 		_this.load_all_frames()
@@ -74,12 +74,12 @@ ESNbang.frames = (function(){
 		hide_all_frames();
 		home.className = 'category frame-show';
 	};
-	
+
 	function _update_style(component) {
 		component.shadowRoot.querySelector('object').style.width = '100%';
 		component.shadowRoot.querySelector('object').style.height = '100%';
 	}
-	
+
 	/**
 	  * This function creates a frame encapsulating a website
 	  * on the side menu.
@@ -102,11 +102,11 @@ ESNbang.frames = (function(){
 		});
 		frame.addEventListener('page-title-updated', () => {
 			// updates the application tooltip
-			save_site_title(site, frame.getTitle());
+			ESNbang.storage.save_site_title(site, frame.getTitle());
 
 			// TODO to fix, some sites will change title several times for one only
 			// notification (eg. Facebook when you receive a Messenger message)
-			
+
 			// TODO if the page isn't focused
 			ESNbang.notification.add_notification_on_site(site.url.hashCode());
 		});
@@ -120,7 +120,7 @@ ESNbang.frames = (function(){
 
 		ESNbang.commons.main_wrapper.appendChild(frame);
 	};
-	
+
 	_this.delete_frame = function(url) {
 		let comp = document.getElementById(url);
 		ESNbang.commons.main_wrapper.removeChild(comp);
@@ -141,11 +141,11 @@ ESNbang.frames = (function(){
 
 			// listener to hide the 'new site' window
 			tmp.addEventListener('mousedown', () => {
-				reset_new_site_subscription()
+				ESNbang.subscription.reset()
 			});
 		}
 	})();
 
-	
+
 	return _this;
 })();

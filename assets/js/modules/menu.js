@@ -1,27 +1,31 @@
 var ESNbang = ESNbang || {};
 
 /**
-  *	
+  *
   **/
 ESNbang.menu = (function() {
 	var _this = {};
-	
+
 	var interval = 20;
-	
+
 	var home_menu = document.getElementById('side_menu');
 	var home_menu_height = 'cc';
-	
+
 	// scrolling buttons
 	var btn_up = document.getElementById('btn_up');
 	var btn_down = document.getElementById('btn_down');
 	var btn_up_hover = document.getElementById('btn_up_hover');
 	var btn_down_hover = document.getElementById('btn_down_hover');
-	
-	
+
+
 	ipc.on('resized' , function(event , data){
 		_this.set_overflow_on_menu();
 	});
-	
+
+	_this.get_added_sites_number = function(){
+		return home_menu.getElementsByClassName('added_site');
+	}
+
 	/**
 	  * This functions returns the state of the state bar, meaning if its size
 	  * enables it to display completely within the screen.
@@ -87,7 +91,7 @@ ESNbang.menu = (function() {
 			home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
 			_this.set_overflow_on_menu();
 		}
-	}	
+	}
 
 	(function initialize_scroll_listeners() {
 		// scrolling listeners avoiding to call the functions too much
@@ -120,7 +124,7 @@ ESNbang.menu = (function() {
 				(delta === 1) ? scroll_menu_up() : scroll_menu_down();
 			}, 40);
 		});
-	})();	
+	})();
 
 	return _this;
 
@@ -129,11 +133,11 @@ ESNbang.menu = (function() {
 
 ESNbang.menu.siteButton = (function () {
 	var _this = {};
-	
+
 	var sites_added = 0;
 	var menu = document.getElementById('icons');
-	
-	
+
+
 	/**
 	  * This function creates a component representing a website
 	  * on the side menu.
@@ -178,7 +182,7 @@ ESNbang.menu.siteButton = (function () {
 
 			console.info('Deleting ' + url + '.');
 
-			let p = get_parameters();
+			let p = ESNbang.storage.get_parameters();
 			let sites = p.sites;
 			let i=-1;
 
@@ -197,7 +201,7 @@ ESNbang.menu.siteButton = (function () {
 			}
 
 			p.sites = sites;
-			save_parameters(p);
+			ESNbang.storage.save_parameters(p);
 			ESNbang.menu.set_overflow_on_menu();
 
 		}, false);
@@ -223,7 +227,7 @@ ESNbang.menu.siteButton = (function () {
 		menu.appendChild(button);
 		ESNbang.menu.set_overflow_on_menu();
 	}
-	
+
 	/**
 	  * This function appends an HR element into the side menu.
 	  * @author Rémy Raes
@@ -232,19 +236,19 @@ ESNbang.menu.siteButton = (function () {
 		menu.appendChild(document.createElement('HR'));
 	}
 
-	
+
 	function delete_button(url) {
 		let comp = document.getElementById(url);
 		menu.removeChild(comp);
 
 		// remove the second <hr> separator if there's no more added sites
-		if(home_menu.getElementsByClassName('added_site').length == 0) {
+		if(ESNbang.menu.get_added_sites_number() == 0) {
 			let hr = home_menu.getElementsByTagName('hr')[1];
 			home_menu.removeChild(hr);
 		}
 		ESNbang.menu.set_overflow_on_menu();
 	}
-	
+
 	_this.update_tooltip_title = function(url, title) {
 		let tmp = document.getElementById(url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
@@ -255,8 +259,8 @@ ESNbang.menu.siteButton = (function () {
 		let node = document.getElementById(url);
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
 	}
-	
-	
+
+
 
 	return _this;
 })();
