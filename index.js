@@ -78,7 +78,7 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 
 
 	// show the window only when it's rendered
@@ -104,7 +104,6 @@ function createWindow () {
 
 			mainWindow.webContents.send('resized');
 			mainWindow.show();
-			// mainWindow.webContents.openDevTools();
 
 			// adding the websites
 			var sites = parameters.sites;
