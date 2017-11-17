@@ -148,7 +148,7 @@ ESNbang.menu = (function() {
 			timerScroll = setTimeout( () => {
 				let delta = -1 * Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 				(delta === 1) ? scroll_menu_up() : scroll_menu_down();
-			}, 40);
+			}, 1);
 		});
 	})();
 

@@ -335,16 +335,15 @@ h1 {
 	padding: 20px;
 
 	position: absolute;
-  bottom: 20px;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  opacity: 1;
+	bottom: 20px;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	opacity: 1;
 
 	border: 1px solid #c0c0c0;
-	/*
-		ajouter une ombre
-	*/
+	transition: none;
+	box-shadow: 0px 0px 50px -10px black;
 }
 
 #lang-select {
