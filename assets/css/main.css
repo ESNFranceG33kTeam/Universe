@@ -343,7 +343,7 @@ h1 {
 
 	border: 1px solid #c0c0c0;
 	transition: none;
-	box-shadow: 0px 0px 50px -10px black;
+	/*box-shadow: 0px 0px 50px -10px black;*/
 }
 
 #lang-select {

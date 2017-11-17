@@ -34,9 +34,13 @@ ESNbang.frameSystem = (function(){
 	  * @author Rémy Raes
 	  **/
 	_this.check_loaded_frames = function() {
-		if(frames_loaded === frames_count) {
+		if(is_ready_to_display()) {
 			hide_loading_screen();
 		}
+	}
+	
+	function is_ready_to_display() {
+		return frames_loaded === frames_count;
 	}
 
 	/**
@@ -108,6 +112,10 @@ ESNbang.frameSystem = (function(){
 			// frames_loaded++;
 			_this.increment_loaded_frames();
 			_this.check_loaded_frames();
+			
+			// reset the notification indicator
+			console.log('cc: ' + url)
+			ESNbang.notification.remove_notification_from_site(url.hashCode());
 		});
 		frame.addEventListener('page-title-updated', () => {
 			// updates the application tooltip
@@ -116,7 +124,7 @@ ESNbang.frameSystem = (function(){
 			// TODO to fix, some sites will change title several times for one only
 			// notification (eg. Facebook when you receive a Messenger message)
 
-			if(!frame_is_focused(site.url.hashCode()))
+			if(!frame_is_focused(site.url.hashCode()) && is_ready_to_display())
 				ESNbang.notification.add_notification_on_site(site.url.hashCode());
 		});
 		frame.addEventListener('page-favicon-updated', (e) => {
