@@ -26,7 +26,7 @@ ESNbang.i18n = (function() {
 	};
 
 	// loading the language selector
-	window.onload = function(){
+	(function(){
 
 		var icons = [];
 
@@ -40,7 +40,7 @@ ESNbang.i18n = (function() {
 			_this.langSelect.refresh(icons);
 			ESNbang.i18n.langSelect.setSelectedLanguage(ESNbang.storage.get_parameters().language);
 		});
-	};
+	})();
 
 	// HTML elements to translate
 	let home_message = document.getElementById('home_message');

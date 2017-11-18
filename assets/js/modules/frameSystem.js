@@ -114,7 +114,6 @@ ESNbang.frameSystem = (function(){
 			_this.check_loaded_frames();
 			
 			// reset the notification indicator
-			console.log('cc: ' + url)
 			ESNbang.notification.remove_notification_from_site(url.hashCode());
 		});
 		frame.addEventListener('page-title-updated', () => {
