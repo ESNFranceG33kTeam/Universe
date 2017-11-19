@@ -29,7 +29,8 @@ app.on('activate', () => {
 function createWindow () {
 
 	// notification icon
-	tray = new Tray('assets/img/star.png');
+	var trayImage = __dirname + '/assets/img/icons/star.png';
+	tray = new Tray(trayImage);
 	tray.setToolTip('ESNbang!');
 
 	// context menu on the icon
@@ -67,7 +68,7 @@ function createWindow () {
 	// main window
 	mainWindow = new BrowserWindow({
 		title: 'ESNbang!',
-		icon: 'assets/img/star.png',
+		icon: __dirname + '/assets/img/icons/star.png',
 		backgroundColor: '#e0e0e0',
 
 		width: 1050,

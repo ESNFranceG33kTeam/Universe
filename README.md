@@ -7,6 +7,7 @@ This application is meant to be used by ESNers all over the world ! It will enab
   * [Install Electron](#install-electron)
   * [Run the application](#run-the-application)
   * [Open the developer tools](#open-the-developer-tools)
+  * [Package the application](#package-the-application)
 * [For users](#for-users)
   * [Install ESNbang!](#install-esnbang)
   * [Use ESNbang!](#use-esnbang)
@@ -36,6 +37,11 @@ electron .
 
 ### Open the Developer Tools
 If you want to open the dev tools inside the application, you just have to type in the Konami code :)
+
+### Package the application
+For Windows: `npm run package-windows`
+For Mac: `npm run package-mac`
+For Linux: `npm run package-linux`
 
 ---
 

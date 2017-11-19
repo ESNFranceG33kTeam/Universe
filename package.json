@@ -4,12 +4,19 @@
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
-    "test": "electron ."
+    "test": "electron .",
+	"package-windows": "electron-packager . ESNbang! --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"ESN International - All rights reserved\" --overwrite",
+	"package-mac": "electron-packager . ESNbang! --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"ESN International - All rights reserved\" --overwrite",
+	"package-linux": "electron-packager . ESNbang! --platform=linux --arch=ia32 --prune=true --appCopyright=\"ESN International - All rights reserved\" --overwrite"
   },
   "author": "Rémy Raes",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^1.6.11",
+    "electron-json-storage-sync": "^1.1.0",
+    "konami-code": "^0.2.1"
+  },
+  "dependencies": {
     "electron-json-storage-sync": "^1.1.0",
     "konami-code": "^0.2.1"
   }
