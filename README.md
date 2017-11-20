@@ -39,9 +39,11 @@ electron .
 If you want to open the dev tools inside the application, you just have to type in the Konami code :)
 
 ### Package the application
-For Windows: `npm run package-windows`
-For Mac: `npm run package-mac`
-For Linux: `npm run package-linux`
+| OS | Command |
+| :--: | :---: | 
+| Windows | `npm run package-windows` |
+| Mac | `npm run package-mac` |
+| Linux | `npm run package-linux` |
 
 ---
 
