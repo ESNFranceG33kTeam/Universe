@@ -7,7 +7,7 @@
 ESNbang.menu.siteButton = (function () {
 	var _this = {};
 
-	var sites_added = 0;
+	var added_sites = 0;
 	var menu = document.getElementById('icons');
 
 
@@ -23,9 +23,9 @@ ESNbang.menu.siteButton = (function () {
 		let url = site.url;
 		ESNbang.subscription.reset();
 
-		if(sites_added === 0)
+		if(added_sites === 0)
 			create_site_menu_separation();
-		sites_added++;
+		added_sites++;
 
 		// creating the button
 		var button = document.createElement('LI');
@@ -120,12 +120,14 @@ ESNbang.menu.siteButton = (function () {
 	function delete_button(url) {
 		let comp = document.getElementById(url);
 		menu.removeChild(comp);
-
+		
 		// remove the second <hr> separator if there's no more added sites
-		if(ESNbang.menu.get_added_sites_number() == 0) {
-			let hr = home_menu.getElementsByTagName('hr')[1];
-			home_menu.removeChild(hr);
+		if(added_sites == 1) {
+			let hr = menu.getElementsByTagName('hr')[1];
+			menu.removeChild(hr);
 		}
+		added_sites -= 1;
+		
 		ESNbang.menu.set_overflow_on_menu();
 	}
 

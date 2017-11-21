@@ -26,16 +26,6 @@ ESNbang.menu = (function() {
 	});
 
 	/**
-	  * This function gives the number of sites that has been added by the user.
-	  * @return {Integer} the number of added sites
-	  * @memberof module:ESNbang/menu
-	  * @author Rémy Raes
-	  **/
-	_this.get_added_sites_number = function(){
-		return home_menu.getElementsByClassName('added_site');
-	}
-
-	/**
 	  * This functions returns the state of the state bar, meaning if its size
 	  * enables it to display completely within the screen.
 	  * @return {Boolean} is the side menu going out of the screen or not

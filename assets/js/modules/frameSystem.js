@@ -151,7 +151,7 @@ ESNbang.frameSystem = (function(){
 				break;
 			}
 		if(frame === undefined) {
-			console.error('Frame ' + url + ' not found.');
+			console.warn('Frame ' + url + ' not found.');
 			return;
 		}
 		return frame.className === 'frame frame-show';
