@@ -1,10 +1,10 @@
 /**
   * This submodule contains all operations linked to manipulation of the site
   * buttons.
-  * @module ESNbang/menu/siteButton
+  * @module ESNbang/menu/buttonManager
   * @author Rémy Raes
   **/
-ESNbang.menu.siteButton = (function () {
+ESNbang.menu.buttonManager = (function () {
 	var _this = {};
 
 	var added_sites = 0;
@@ -15,7 +15,7 @@ ESNbang.menu.siteButton = (function () {
 	  * This function creates a component representing a website
 	  * on the side menu.
 	  * @param {String} url - The URL of the new website
-	  * @memberof module:ESNbang/menu/siteButton
+	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_button = function(site) {
@@ -38,7 +38,7 @@ ESNbang.menu.siteButton = (function () {
 		button.id = tmp;
 		button.onclick = function() {
 			ESNbang.notification.remove_notification_from_site(site.url.hashCode());
-			ESNbang.frameSystem.show_frame(tmp + '_frame');
+			ESNbang.frameManager.show_frame(tmp + '_frame');
 		};
 
 
@@ -49,10 +49,10 @@ ESNbang.menu.siteButton = (function () {
 
 		span.addEventListener('click', function(e) {
 			e.stopPropagation();
-			ESNbang.frameSystem.show_home();
+			ESNbang.frameManager.show_home();
 
 			delete_button(tmp);
-			ESNbang.frameSystem.delete_frame(tmp + '_frame');
+			ESNbang.frameManager.delete_frame(tmp + '_frame');
 
 			console.info('Deleting ' + url + '.');
 
@@ -104,7 +104,7 @@ ESNbang.menu.siteButton = (function () {
 
 	/**
 	  * This function appends an HR element into the side menu.
-	  * @memberof module:ESNbang/menu/siteButton
+	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	function create_site_menu_separation(){
@@ -114,7 +114,7 @@ ESNbang.menu.siteButton = (function () {
 	/**
 	  * This functions deletes a button from the menu.
 	  * @param {String} url - hashed url of the website to delete
-	  * @memberof module:ESNbang/menu/siteButton
+	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	function delete_button(url) {
@@ -135,26 +135,26 @@ ESNbang.menu.siteButton = (function () {
 	  * This function updates the tooltip containing the title of a site.
 	  * @param {String} url - hashed url of the site to update
 	  * @param {String} title - new site title to put into its tooltip
-	  * @memberof module:ESNbang/menu/siteButton
+	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.update_tooltip_title = function(url, title) {
 		let tmp = document.getElementById(url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
 		tooltip.innerHTML = title;
-	}
+	};
 
 	/**
 	  * This function updates the image of a site button.
 	  * @param {String} url - hashed url of the site to update
 	  * @param {String} image_url - url of the new background image
-	  * @memberof module:ESNbang/menu/siteButton
+	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.update_button_image = function(url, image_url) {
 		let node = document.getElementById(url);
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
-	}
+	};
 
 
 	return _this;

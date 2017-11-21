@@ -34,8 +34,8 @@ ESNbang.storage = (function () {
 			var sites = settings.sites;
 
 		    for(var i=0; i<sites.length; i++) {
-		        ESNbang.menu.siteButton.create_new_button(sites[i]);
-				ESNbang.frameSystem.create_new_frame(sites[i]);
+		        ESNbang.menu.buttonManager.create_new_button(sites[i]);
+				ESNbang.frameManager.create_new_frame(sites[i]);
 			}
 
 			// initializing the language
@@ -44,7 +44,7 @@ ESNbang.storage = (function () {
 			ESNbang.i18n.load_language_file(lang);
 
 			// actualisation
-			ESNbang.frameSystem.load_all_frames();
+			ESNbang.frameManager.load_all_frames();
 		});
 
 	})();
@@ -103,8 +103,8 @@ ESNbang.storage = (function () {
 		let url = site.url;
 
 		if(!registered) {
-			ESNbang.menu.siteButton.create_new_button(site);
-			ESNbang.frameSystem.create_new_frame(site);
+			ESNbang.menu.buttonManager.create_new_button(site);
+			ESNbang.frameManager.create_new_frame(site);
 
 			// Adding the <hr> element if it doesn't exist
 			/*
@@ -141,7 +141,7 @@ ESNbang.storage = (function () {
 				if(title != p.sites[i].name)
 					store_parameters(p);
 				p.sites[i].name = title;
-				ESNbang.menu.siteButton.update_tooltip_title(site.url.hashCode(), title)
+				ESNbang.menu.buttonManager.update_tooltip_title(site.url.hashCode(), title)
 				console.info('Updating the title for webpage \'' + site.url + '\'.');
 				break;
 			}
@@ -250,7 +250,7 @@ ESNbang.storage = (function () {
 
 
 		} else {
-			set_new_site_warning(ESNbang.i18n.errorMessages.subscription_url_not_valid);
+			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_url_not_valid);
 			console.warn('The string "' + url + '" is not a valid URL.');
 		}
 	}

@@ -25,7 +25,7 @@ ESNbang.subscription = (function () {
 		ESNbang.commons.main_wrapper.style.filter = 'brightness(0.4)';
 		new_site_window.style.display = 'block';
 		new_site_window.style.animationName = 'bounceIn';
-	}
+	};
 
 	/**
 	  * This function initializes the subscription window (style, animation, tooltip text).
@@ -38,7 +38,7 @@ ESNbang.subscription = (function () {
 		new_site_error.innerText = ESNbang.i18n.errorMessages.subscription_default_message;
 		new_site_error.style.color = 'inherit';
 		new_url.value = '';
-	}
+	};
 
 	/**
 	  * This function sets a warning state on the subscription window.
@@ -54,7 +54,7 @@ ESNbang.subscription = (function () {
 
 		new_site_error.style.color = 'red';
 		new_site_error.innerText = message;
-	}
+	};
 
 	return _this;
 

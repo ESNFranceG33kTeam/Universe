@@ -2,10 +2,10 @@ var ESNbang = ESNbang || {};
 
 /**
   * This module contains all operations linked to manipulation
-  * @module ESNbang/frameSystem
+  * @module ESNbang/frameManager
   * @author Rémy Raes
   **/
-ESNbang.frameSystem = (function(){
+ESNbang.frameManager = (function(){
 	var _this = {};
 
 	var frames = document.getElementsByTagName('webview');
@@ -21,7 +21,7 @@ ESNbang.frameSystem = (function(){
 	_this.load_all_frames = function() {
 		frames = document.getElementsByTagName('webview');
 		frames_count = frames.length;
-	}
+	};
 
 
 	var loading_screen = document.getElementById('loading');
@@ -30,14 +30,14 @@ ESNbang.frameSystem = (function(){
 	/**
 	  * This function check if all iframes have loaded their content;
 	  * if that's the case, it removes the loading screen.
-	  * @memberof module:ESNbang/frameSystem
+	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
 	_this.check_loaded_frames = function() {
 		if(is_ready_to_display()) {
 			hide_loading_screen();
 		}
-	}
+	};
 	
 	function is_ready_to_display() {
 		return frames_loaded === frames_count;
@@ -46,7 +46,7 @@ ESNbang.frameSystem = (function(){
 	/**
 	  * This function hides the loading screen, enabling the user to
 	  * access the application functionnalities.
-	  * @memberof module:ESNbang/frameSystem
+	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
 	function hide_loading_screen() {
@@ -60,7 +60,7 @@ ESNbang.frameSystem = (function(){
 
 	/**
 	  * This function hides all application frames.
-	  * @memberof module:ESNbang/frameSystem
+	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
 	function hide_all_frames () {
@@ -73,7 +73,7 @@ ESNbang.frameSystem = (function(){
 
 	_this.show_frame = function(url) {
 		hide_all_frames();
-		_this.load_all_frames()
+		_this.load_all_frames();
 		for(let i=0; i<frames.length; i++)
 			if(frames[i].id === url) {
 				frames[i].className = 'frame frame-show';
@@ -96,7 +96,7 @@ ESNbang.frameSystem = (function(){
 	  * This function creates a frame encapsulating a website
 	  * on the side menu.
 	  * @param {String} site - The URL of the new website
-	  * @memberof module:ESNbang/frameSystem
+	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_frame = function(site) {
@@ -128,7 +128,7 @@ ESNbang.frameSystem = (function(){
 		});
 		frame.addEventListener('page-favicon-updated', (e) => {
 			// update the button image
-			ESNbang.menu.siteButton.update_button_image(url.hashCode(), e.favicons[0]);
+			ESNbang.menu.buttonManager.update_button_image(url.hashCode(), e.favicons[0]);
 		});
 		frame.addEventListener('mousedown', () => {
 			ESNbang.subscription.reset()
@@ -141,7 +141,7 @@ ESNbang.frameSystem = (function(){
 	  * This functions tells if a frame is focused.
 	  * @param {String} url - hashed url of the site frame
 	  * @return {Boolean} is the frame focused or not
-	  * @memberof module:ESNbang/frameSystem
+	  * @memberof module:ESNbang/frameManager
 	  **/
 	function frame_is_focused(url) {
 		let frame = undefined;
