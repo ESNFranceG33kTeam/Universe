@@ -118,7 +118,7 @@ ESNbang.storage = (function () {
 
 		else if(registered){
 			// alert the user
-			set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
+			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
 			console.warn('The website ' + url + ' has already been registered by the user.');
 		}
 
@@ -223,7 +223,7 @@ ESNbang.storage = (function () {
 		var valid = is_valid_url(url);
 
 		if(valid === 'void'){
-			set_new_site_warning(ESNbang.i18n.errorMessages.subscription_empty_message);
+			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_empty_message);
 			console.warn('The "new website subscription" input field is empty.');
 
 		} else if(valid) {

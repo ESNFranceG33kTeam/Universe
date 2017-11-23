@@ -79,6 +79,7 @@ For the development of ESNbang!, we use the [semantic versioning](http://semver.
 * **[0.x.x] DEVELOPMENT VERSION**
   * **[0.3.0]**
     * Application architecture improved
+    * Electron version updated (security issues)
   * **[0.2.1]**
     * Signals system reviewed: naviguation enhanced
     * Addition of the sites titles
