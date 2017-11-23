@@ -17,7 +17,7 @@ This application is meant to be used by ESNers all over the world ! It will enab
 
 ## For developers
 
-### Install Electron 
+### Install Electron
 Before installing Electron, you must have NodeJS installed on your computer with npm, its packet manager.
 
 To install Electron, use npm like this:
@@ -40,7 +40,7 @@ If you want to open the dev tools inside the application, you just have to type 
 
 ### Package the application
 | OS | Command |
-| :--: | :---: | 
+| :--: | :---: |
 | Windows | `npm run package-windows` |
 | Mac | `npm run package-mac` |
 | Linux | `npm run package-linux` |
@@ -76,7 +76,9 @@ Using the application is pretty easy, if you know all shortcuts ; you can find s
 
 For the development of ESNbang!, we use the [semantic versioning](http://semver.org/).
 
-* **[0.\*.\*] DEVELOPMENT VERSION**
+* **[0.x.x] DEVELOPMENT VERSION**
+  * **[0.3.0]**
+    * Application architecture improved
   * **[0.2.1]**
     * Signals system reviewed: naviguation enhanced
     * Addition of the sites titles
