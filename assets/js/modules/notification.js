@@ -1,4 +1,5 @@
 var ESNbang = ESNbang || {};
+const dialog = remote.dialog;
 
 /**
   * This modules contains all operations linked to communication of
@@ -16,6 +17,13 @@ ESNbang.notification = (function () {
 			icon: 'assets/img/icons/star.png'
 		});
 	});
+	
+	_this.testNotification = function() {
+		dialog.showMessageBox({
+			title: 'test',
+			message: 'bonjour'
+		});
+	};
 
 
 	/**
