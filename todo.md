@@ -7,5 +7,6 @@
 - [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
 
 
+### LESS URGENT
 - [ ] Make a tutorial mode
 - [ ] Make a settings system to allow developpers to set the main websites of the application
