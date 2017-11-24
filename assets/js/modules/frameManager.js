@@ -14,7 +14,7 @@ ESNbang.frameManager = (function(){
 	var frames_count = frames.length;
 	var frames_loaded = 0;
 
-	_this.increment_loaded_frames = function() {
+	function increment_loaded_frames() {
 		frames_loaded++;
 	};
 
@@ -33,12 +33,12 @@ ESNbang.frameManager = (function(){
 	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
-	_this.check_loaded_frames = function() {
+	function check_loaded_frames() {
 		if(is_ready_to_display()) {
 			hide_loading_screen();
 		}
 	};
-	
+
 	function is_ready_to_display() {
 		return frames_loaded === frames_count;
 	}
@@ -108,11 +108,10 @@ ESNbang.frameManager = (function(){
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
-			console.log('The website ' + url + ' has been loaded.')
-			// frames_loaded++;
-			_this.increment_loaded_frames();
-			_this.check_loaded_frames();
-			
+			console.log('The website ' + url + ' has been loaded.');
+			increment_loaded_frames();
+			check_loaded_frames();
+
 			// reset the notification indicator
 			ESNbang.notification.remove_notification_from_site(url.hashCode());
 		});
@@ -170,9 +169,8 @@ ESNbang.frameManager = (function(){
 			// listener to check the loaded state of the frame
 			tmp.addEventListener('dom-ready', () => {
 				console.log('The website ' + tmp.src + ' frame has been loaded.');
-				// frames_loaded++;
-				_this.increment_loaded_frames();
-				_this.check_loaded_frames();
+				increment_loaded_frames();
+				check_loaded_frames();
 			});
 
 			// listener to hide the 'new site' window
