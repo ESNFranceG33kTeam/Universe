@@ -10,6 +10,22 @@ ESNbang.menu.buttonManager = (function () {
 	var added_sites = 0;
 	var menu = document.getElementById('icons');
 
+	// object containing added website button HTML elements
+	let html_buttons = {};
+	html_buttons.addNewElement = function(url, element) {
+		let hash = url.hashCode();
+		let tmp = this[hash];
+		if(tmp === undefined)
+			this[hash] = document.getElementById(hash);
+	};
+	html_buttons.getElement = function(url) {
+		return this[url];
+	}
+
+	_this.getButtons = function() {
+		return html_buttons;
+	}
+
 
 	/**
 	  * This function creates a component representing a website
@@ -100,6 +116,8 @@ ESNbang.menu.buttonManager = (function () {
 
 		menu.appendChild(button);
 		ESNbang.menu.set_overflow_on_menu();
+
+		html_buttons.addNewElement(url);
 	}
 
 	/**
@@ -118,16 +136,16 @@ ESNbang.menu.buttonManager = (function () {
 	  * @author Rémy Raes
 	  **/
 	function delete_button(url) {
-		let comp = document.getElementById(url);
+		let comp = html_buttons.getElement(url);
 		menu.removeChild(comp);
-		
+
 		// remove the second <hr> separator if there's no more added sites
 		if(added_sites == 1) {
 			let hr = menu.getElementsByTagName('hr')[1];
 			menu.removeChild(hr);
 		}
 		added_sites -= 1;
-		
+
 		ESNbang.menu.set_overflow_on_menu();
 	}
 
@@ -139,7 +157,7 @@ ESNbang.menu.buttonManager = (function () {
 	  * @author Rémy Raes
 	  **/
 	_this.update_tooltip_title = function(url, title) {
-		let tmp = document.getElementById(url);
+		let tmp = html_buttons.getElement(url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
 		tooltip.innerHTML = title;
 	};
@@ -152,7 +170,7 @@ ESNbang.menu.buttonManager = (function () {
 	  * @author Rémy Raes
 	  **/
 	_this.update_button_image = function(url, image_url) {
-		let node = document.getElementById(url);
+		let node = html_buttons.getElement(url);
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
 	};
 
