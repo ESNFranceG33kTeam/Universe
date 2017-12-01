@@ -44,7 +44,11 @@ ESNbang.i18n = (function() {
 				i++;
 			});
 			_this.langSelect.refresh(icons);
-			ESNbang.i18n.langSelect.setSelectedLanguage(ESNbang.storage.get_parameters().language);
+			let lang = ESNbang.storage.get_parameters().language;
+			ESNbang.i18n.langSelect.setSelectedLanguage(lang);
+
+			// initializing language
+			ESNbang.i18n.load_language_file(lang);
 		});
 	})();
 

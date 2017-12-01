@@ -33,15 +33,10 @@ ESNbang.storage = (function () {
 			var settings = _this.get_parameters();
 			var sites = settings.sites;
 
-		    for(var i=0; i<sites.length; i++) {
+		    for(var i=0, length=sites.length; i<length; i++) {
 		        ESNbang.menu.buttonManager.create_new_button(sites[i]);
 				ESNbang.frameManager.create_new_frame(sites[i]);
 			}
-
-			// initializing the language
-			let langSelector = document.getElementById('lang-select');
-			let lang = settings.language;
-			ESNbang.i18n.load_language_file(lang);
 
 			// actualisation
 			ESNbang.frameManager.load_all_frames();
@@ -105,12 +100,6 @@ ESNbang.storage = (function () {
 		if(!registered) {
 			ESNbang.menu.buttonManager.create_new_button(site);
 			ESNbang.frameManager.create_new_frame(site);
-
-			// Adding the <hr> element if it doesn't exist
-			/*
-			if(ESNbang.menu.get_added_sites_number.length === 0) {
-				ESNbang.home_menu.appendChild(document.createElement('hr'));
-			}*/
 
 			console.info('Registering the new website ' + url + '.');
 			ESNbang.menu.set_overflow_on_menu();
