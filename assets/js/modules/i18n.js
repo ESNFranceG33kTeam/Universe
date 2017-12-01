@@ -25,6 +25,12 @@ ESNbang.i18n = (function() {
 		subscription_url_not_valid: ''
 	};
 
+	// variable containing messages for notifications
+	_this.notificationMessages = {
+		notification_running_title: '',
+		notification_running_text: ''
+	};
+
 	// loading the language selector
 	(function(){
 
@@ -95,6 +101,10 @@ ESNbang.i18n = (function() {
 		_this.errorMessages.subscription_empty_message = json['subscription_error_empty_message'];
 		_this.errorMessages.subscription_already_done = json['subscription_error_already_done'];
 		_this.errorMessages.subscription_url_not_valid = json['subscription_error_url_not_valid'];
+
+		// loading in memory messages for notifications
+		_this.notificationMessages.notification_running_title = json['notification_application_still_running_title'];
+		_this.notificationMessages.notification_running_text = json['notification_application_still_running_text'];
 	};
 
 	return _this;

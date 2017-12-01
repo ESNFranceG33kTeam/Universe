@@ -12,12 +12,12 @@ ESNbang.notification = (function () {
 	var _this = {};
 
 	ipc.on('exit-notification' , function(){
-		new Notification('Application still running', {
-			body: 'ESNbang! is running in background.',
+		new Notification(ESNbang.i18n.notificationMessages.notification_running_text, {
+			body: ESNbang.i18n.notificationMessages.notification_running_title,
 			icon: 'assets/img/icons/star.png'
 		});
 	});
-	
+
 	_this.testNotification = function() {
 		dialog.showMessageBox({
 			title: 'test',
@@ -55,7 +55,7 @@ ESNbang.notification = (function () {
 		Disabling notifications count :
 		to fix, some sites will change title several times for one only
 		notification (eg. Facebook when you receive a Messenger message)
-		
+
 		// +1
 		else {
 			let spa = component.getElementsByClassName('new_item')[0];
