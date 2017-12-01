@@ -66,7 +66,7 @@ ESNbang.frameManager = (function(){
 	function hide_all_frames () {
 		home.className = 'category frame';
 		_this.load_all_frames();
-		for(let i=0; i<frames.length; i++)
+		for(let i=0, length=frames.length; i<length; i++)
 				frames[i].className = 'frame';
 	}
 
@@ -74,7 +74,7 @@ ESNbang.frameManager = (function(){
 	_this.show_frame = function(url) {
 		hide_all_frames();
 		_this.load_all_frames();
-		for(let i=0; i<frames.length; i++)
+		for(let i=0, length=frames.length; i<length; i++)
 			if(frames[i].id === url) {
 				frames[i].className = 'frame frame-show';
 				_update_style(frames[i]);

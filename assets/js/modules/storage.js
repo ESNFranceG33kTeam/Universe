@@ -136,7 +136,7 @@ ESNbang.storage = (function () {
 	  **/
 	_this.save_site_title = function(site, title) {
 		let p = _this.get_parameters();
-		for(let i=0; i<p.sites.length; i++)
+		for(let i=0, length=p.sites.length; i<length; i++)
 			if(p.sites[i].url === site.url) {
 				if(title != p.sites[i].name)
 					store_parameters(p);
@@ -230,7 +230,6 @@ ESNbang.storage = (function () {
 
 			let parameters = _this.get_parameters();
 			let sites = parameters.sites;
-			let len = sites.length;
 			let site = {
 				name: get_site_name(url),
 				url: url,
@@ -238,7 +237,7 @@ ESNbang.storage = (function () {
 			}
 
 			// checking if the site isn't already registered
-			for(var i=0; i<len; i++)
+			for(let i=0, len = sites.length; i<len; i++)
 				if(sites[i].url === url) {
 					site_already_registered(true, site);
 					return ;

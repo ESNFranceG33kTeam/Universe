@@ -140,7 +140,7 @@ ESNbang.menu.buttonManager = (function () {
 		menu.removeChild(comp);
 
 		// remove the second <hr> separator if there's no more added sites
-		if(added_sites == 1) {
+		if(added_sites === 1) {
 			let hr = menu.getElementsByTagName('hr')[1];
 			menu.removeChild(hr);
 		}
