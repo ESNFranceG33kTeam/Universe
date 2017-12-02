@@ -10,12 +10,17 @@ ESNbang.frameManager = (function(){
 
 	var frames = document.getElementsByTagName('webview');
 	var home = document.getElementById('home');
+	var loadingBar = new ldBar("#loading_bar");
+	// loadingBar.set(0);
 
 	var frames_count = frames.length;
 	var frames_loaded = 0;
 
 	function increment_loaded_frames() {
 		frames_loaded++;
+		loadingBar.set(
+			(frames_loaded/frames_count)*100
+		);
 	};
 
 	_this.load_all_frames = function() {
@@ -35,7 +40,7 @@ ESNbang.frameManager = (function(){
 	  **/
 	function check_loaded_frames() {
 		if(is_ready_to_display()) {
-			hide_loading_screen();
+			setTimeout(hide_loading_screen, 1000);
 		}
 	};
 

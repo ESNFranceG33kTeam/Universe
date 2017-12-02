@@ -1,10 +1,10 @@
 /*
 	ESN official colors :
-	blue: rgb(39, 171, 226)
+	blue: rgb(39, 171, 226) / #27ABE2
 	darkblue: rgb(45, 53, 145)
-	green: rgb(122, 192, 67)
-	orange: rgb(243, 123, 32)
-	pink: rgb(235, 10, 141)
+	green: rgb(122, 192, 67) / #7AC043
+	orange: rgb(243, 123, 32) / #F37B20
+	pink: rgb(235, 10, 141) / #EB0A8D
 */
 
 * {
@@ -311,13 +311,17 @@ hr {
 #loading img {
 	position: absolute;
 
-	width: 90px;
 	left: 50%;
 	margin-left: -45px;
 	top: 50%;
 	margin-top: -45px;
 
+	width: 90px;
 	animation: rotation 2s infinite;
+}
+
+.ldBar-label {
+	display: none;
 }
 
 @keyframes rotation {
