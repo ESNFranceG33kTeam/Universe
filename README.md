@@ -11,7 +11,7 @@ This application is meant to be used by ESNers all over the world ! It will enab
 * [For users](#for-users)
   * [Install ESNbang!](#install-esnbang)
   * [Use ESNbang!](#use-esnbang)
-* [Patch notes](#patch-notes)
+* [Patch notes (Old)](#patch-notes)
 
 ---
 
@@ -76,10 +76,10 @@ Using the application is pretty easy, if you know all shortcuts ; you can find s
 
 For the development of ESNbang!, we use the [semantic versioning](http://semver.org/).
 
+These patch notes only cover patches up to 0.2.1. For later patches, please check [the releases](https://github.com/ESNFranceG33kTeam/esnbang/releases).
+
+
 * **[0.x.x] DEVELOPMENT VERSION**
-  * **[0.3.0]**
-    * Application architecture improved
-    * Electron version updated (security issues)
   * **[0.2.1]**
     * Signals system reviewed: naviguation enhanced
     * Addition of the sites titles
