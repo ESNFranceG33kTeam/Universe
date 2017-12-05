@@ -128,13 +128,13 @@ button:hover {
 	height: 50px;
 	margin: 10px;
 
-	background-color: rgb(88, 220, 255);
+	background-color: rgb(121, 187, 255);
 	border-radius: 10px;
 	list-style: none;
 
 	background-repeat: no-repeat;
-	background-position: left top;
-	background-size: cover;
+	background-position: center;
+	background-size: 70%;
 
 	background-image: url('../img/sections/star.png');
 }
@@ -170,11 +170,17 @@ button:hover {
 .subscribe {
 	background-color: #c0c0c0;;
 	background-image: url('../img/plus.png');
+	background-size: 100%;
 	color: white;
 
 	width: 40px;
 	height: 40px;
 	margin: 20px 15px 15px 15px;
+}
+
+#home_btn {
+	background-size: cover;
+	background-color: rgb(81, 219, 255);
 }
 
 #home_btn div {
@@ -191,6 +197,7 @@ button:hover {
 	background-size: 70%;
 	background-position: center;
 	background-image: url('../img/new_section_loading.gif');
+	background-color: rgb(81, 219, 255);
 }
 .added_site div {
 	background-color: rgb(243, 123, 32);
@@ -241,7 +248,7 @@ button:hover {
 	visibility: visible;
 	opacity: 1;
 }
-
+/*
 #home_btn {
 	background-image: url('../img/sections/star.png');
 }
@@ -268,7 +275,7 @@ button:hover {
 }
 #mb_btn {
 	background-image: url('../img/sections/new/gestion.png');
-}
+}*/
 
 hr {
 	border: 1px solid #e0e0e0;

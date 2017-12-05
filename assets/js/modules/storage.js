@@ -33,13 +33,7 @@ ESNbang.storage = (function () {
 			var settings = _this.get_parameters();
 			var sites = settings.sites;
 
-		    for(var i=0, length=sites.length; i<length; i++) {
-		        ESNbang.menu.buttonManager.create_new_button(sites[i]);
-				ESNbang.frameManager.create_new_frame(sites[i]);
-			}
-
-			// actualisation
-			ESNbang.frameManager.load_all_frames();
+			ESNbang.commons.build(sites);
 		});
 
 	})();
@@ -98,8 +92,8 @@ ESNbang.storage = (function () {
 		let url = site.url;
 
 		if(!registered) {
-			ESNbang.menu.buttonManager.create_new_button(site);
-			ESNbang.frameManager.create_new_frame(site);
+			ESNbang.menu.buttonManager.create_new_button(site, false);
+			ESNbang.frameManager.create_new_frame(site, false);
 
 			console.info('Registering the new website ' + url + '.');
 			ESNbang.menu.set_overflow_on_menu();

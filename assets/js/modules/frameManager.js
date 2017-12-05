@@ -104,12 +104,16 @@ ESNbang.frameManager = (function(){
 	  * @memberof module:ESNbang/frameManager
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_frame = function(site) {
+	_this.create_new_frame = function(site, is_main_website) {
 		let url = site.url;
 		let frame = document.createElement('webview');
 		frame.id = url.hashCode() + '_frame';
 		frame.className = 'frame';
-		frame.setAttribute('data-origin', 'user');
+		if(is_main_website)
+			frame.setAttribute('data-origin', 'application');
+		else
+			frame.setAttribute('data-origin', 'user');
+
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
@@ -139,6 +143,7 @@ ESNbang.frameManager = (function(){
 		});
 
 		ESNbang.commons.main_wrapper.appendChild(frame);
+		ESNbang.frameManager.load_all_frames();
 	};
 
 	/**

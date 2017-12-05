@@ -34,84 +34,95 @@ ESNbang.menu.buttonManager = (function () {
 	  * @memberof module:ESNbang/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_button = function(site) {
+	_this.create_new_button = function(site, is_main_website) {
 
 		let url = site.url;
 		ESNbang.subscription.reset();
 
-		if(added_sites === 0)
-			create_site_menu_separation();
-		added_sites++;
+		if(!is_main_website) {
+			if(added_sites === 0)
+				create_site_menu_separation();
+			added_sites++;
+		}
 
 		// creating the button
 		var button = document.createElement('LI');
-		button.className = 'section added_site';
+
+		if(!is_main_website)
+			button.className = 'section added_site';
+		else
+			button.className = 'section';
+
 		button.addEventListener('animationend', function() {
 			button.style.animationName = 'none';
 		}, false);
 
 		let tmp = url.hashCode();
 		button.id = tmp;
+
 		button.onclick = function() {
 			ESNbang.notification.remove_notification_from_site(site.url.hashCode());
 			ESNbang.frameManager.show_frame(tmp + '_frame');
 		};
 
+		if(!is_main_website) {
 
-		// creating the delete button
-		let span = document.createElement('span');
-		span.className = 'delete';
-		span.innerText = 'x';
+			// creating the delete button
+			let span = document.createElement('span');
+			span.className = 'delete';
+			span.innerText = 'x';
 
-		span.addEventListener('click', function(e) {
-			e.stopPropagation();
-			ESNbang.frameManager.show_home();
+			span.addEventListener('click', function(e) {
+				e.stopPropagation();
+				ESNbang.frameManager.show_home();
 
-			delete_button(tmp);
-			ESNbang.frameManager.delete_frame(tmp + '_frame');
+				delete_button(tmp);
+				ESNbang.frameManager.delete_frame(tmp + '_frame');
 
-			console.info('Deleting ' + url + '.');
+				console.info('Deleting ' + url + '.');
 
-			let p = ESNbang.storage.get_parameters();
-			let sites = p.sites;
-			let i=-1;
+				let p = ESNbang.storage.get_parameters();
+				let sites = p.sites;
+				let i=-1;
 
-			// find the position of the site in the settings
-			for(let k=0; k<sites.length; k++){
-				if(sites[k].url === url) {
-					i = k;
-					break;
+				// find the position of the site in the settings
+				for(let k=0; k<sites.length; k++){
+					if(sites[k].url === url) {
+						i = k;
+						break;
+					}
 				}
-			}
 
-			if(i>-1)
-				sites.splice(i, 1);
-			else {
-				console.error('Failed to delete ' + url + ' : website not found.');
-			}
+				if(i>-1)
+					sites.splice(i, 1);
+				else {
+					console.error('Failed to delete ' + url + ' : website not found.');
+				}
 
-			p.sites = sites;
-			ESNbang.storage.save_parameters(p);
-			ESNbang.menu.set_overflow_on_menu();
+				p.sites = sites;
+				ESNbang.storage.save_parameters(p);
+				ESNbang.menu.set_overflow_on_menu();
 
-		}, false);
-		button.appendChild(span);
+			}, false);
+			button.appendChild(span);
 
 
-		button.addEventListener('contextmenu', function(){
+			button.addEventListener('contextmenu', function(){
 
-			span.className = 'delete delete-show';
-			setTimeout(() => {
-				span.className = 'delete';
-			}, 2000);
-			cpt = 0;
+				span.className = 'delete delete-show';
+				setTimeout(() => {
+					span.className = 'delete';
+				}, 2000);
+				cpt = 0;
 
-		}, false);
+			}, false);
+		}
 
 
 		// create the tooltip
 		var tooltip = document.createElement('DIV');
 		tooltip.innerText = site.name;
+
 		button.appendChild(tooltip);
 
 		menu.appendChild(button);
