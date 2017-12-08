@@ -25,7 +25,7 @@ app.on('window-all-closed', () => {
 
 // on MacOS, enable the user to reopen the application after it has been "closed"
 app.on('activate', () => {
-	if (process.platform === null) {
+	if (mainWindow === null) {
 		createWindow();
 	}
 });
@@ -119,11 +119,21 @@ function createWindow () {
 
 
 	// hide the main window when the user clicks the 'close' button
+	//For Windows
 	mainWindow.on('close', (event) => {
-		event.preventDefault();
-		mainWindow.webContents.send('exit-notification');
-		mainWindow.hide();
+		if (process.platform !== 'darwin'){
+			event.preventDefault();
+			mainWindow.webContents.send('exit-notification');
+			mainWindow.hide();
+		}
 	});
+	mainWindow.on('hide', (event) => {
+		if (process.platform == 'darwin'){
+			//event.preventDefault();
+			mainWindow.webContents.send('exit-notification');
+		}
+	});
+
 
 
 	// save window size
