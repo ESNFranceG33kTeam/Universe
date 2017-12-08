@@ -16,7 +16,6 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
-
 //// if all application windows have been closed, shutdown the application
 //app.on('window-all-closed', () => {
 //	if (process.platform == 'darwin') {
@@ -26,7 +25,7 @@ app.on('window-all-closed', () => {
 
 // on MacOS, enable the user to reopen the application after it has been "closed"
 app.on('activate', () => {
-	if (mainWindow === null) {
+	if (process.platform === null) {
 		createWindow();
 	}
 });
