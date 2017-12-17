@@ -113,11 +113,21 @@ function createWindow () {
 
 
 	// hide the main window when the user clicks the 'close' button
+	//For Windows
 	mainWindow.on('close', (event) => {
-		event.preventDefault();
-		mainWindow.webContents.send('exit-notification');
-		mainWindow.hide();
+		if (process.platform !== 'darwin'){
+			event.preventDefault();
+			mainWindow.webContents.send('exit-notification');
+			mainWindow.hide();
+		}
 	});
+	mainWindow.on('hide', (event) => {
+		if (process.platform == 'darwin'){
+			//event.preventDefault();
+			mainWindow.webContents.send('exit-notification');
+		}
+	});
+
 
 
 	// save window size
