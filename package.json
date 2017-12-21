@@ -6,16 +6,22 @@
   "scripts": {
     "package-windows": "electron-packager . ESNbang! --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"ESN International - All rights reserved\" --overwrite",
     "package-mac": "electron-packager . ESNbang! --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"ESN International - All rights reserved\" --overwrite",
-    "package-linux": "electron-packager . ESNbang! --platform=linux --arch=ia32 --prune=true --appCopyright=\"ESN International - All rights reserved\" --overwrite"
+    "package-linux": "electron-packager . ESNbang! --platform=linux --arch=ia32 --prune=true --appCopyright=\"ESN International - All rights reserved\" --overwrite",
+    "create-windows-installer": "electron-packager"
   },
   "author": "Rémy Raes",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^1.7.9",
+    "electron-builder": "^19.49.0",
     "electron-packager": "^10.1.0"
   },
   "dependencies": {
     "electron-json-storage-sync": "^1.1.0",
     "konami-code": "^0.2.1"
+  },
+  "build": {
+    "appId": "france.esn.geekteam.bang",
+    "noMsi": false
   }
 }
