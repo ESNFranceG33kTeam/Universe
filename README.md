@@ -8,6 +8,7 @@ This application is meant to be used by ESNers all over the world ! It will enab
   * [Run the application](#run-the-application)
   * [Open the developer tools](#open-the-developer-tools)
   * [Package the application](#package-the-application)
+  * [Generate an installer](#generate-an-installer)
 * [For users](#for-users)
   * [Install ESNbang!](#install-esnbang)
   * [Use ESNbang!](#use-esnbang)
@@ -44,6 +45,11 @@ If you want to open the dev tools inside the application, you just have to type 
 | Windows | `npm run package-windows` |
 | Mac | `npm run package-mac` |
 | Linux | `npm run package-linux` |
+
+### Generate an installer
+| OS | Command |
+| :--: | :---: |
+| Windows | `npm run create-windows-installer` |
 
 ---
 

@@ -1,15 +1,15 @@
 {
-  "name": "esnbang",
+  "name": "ESNbang",
   "version": "0.4.0",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
-    "package-windows": "electron-packager . ESNbang! --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"ESN International - All rights reserved\" --overwrite",
-    "package-mac": "electron-packager . ESNbang! --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"ESN International - All rights reserved\" --overwrite",
-    "package-linux": "electron-packager . ESNbang! --platform=linux --arch=ia32 --prune=true --appCopyright=\"ESN International - All rights reserved\" --overwrite",
-    "create-windows-installer": "electron-packager"
+    "package-windows": "electron-packager . esnbang --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-mac": "electron-packager . esnbang --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-linux": "electron-packager . esnbang --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "create-windows-installer": "electron-builder --ia32"
   },
-  "author": "Rémy Raes",
+  "author": "G33k Team - ESN France",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^1.7.9",
@@ -22,6 +22,10 @@
   },
   "build": {
     "appId": "france.esn.geekteam.bang",
-    "noMsi": false
+    "win": {
+        "icon": "./assets/img/icons/star.ico",
+        "target": "msi",
+        "legalTrademarks": "G33k Team - ESN France - All rights reserved"
+    }
   }
 }
