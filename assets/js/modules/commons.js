@@ -4,6 +4,7 @@ const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
 const remote = require('electron').remote;
 const storage = remote.require('electron-json-storage-sync');
+const path = require('path');
 
 const konami = new KonamiCode();
 konami.listen(function () {
@@ -32,7 +33,7 @@ ESNbang.commons = (function(){
 	_this.build = function(sites) {
 
 		// build main sites
-		fs.readFile(__dirname + '/websites.json', 'utf8', function (err,data) {
+		fs.readFile(path.join(__dirname, '/websites.json'), 'utf8', function (err,data) {
 			let new_sites = {};
 			try {
 				new_sites = JSON.parse(data);

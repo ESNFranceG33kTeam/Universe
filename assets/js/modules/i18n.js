@@ -11,8 +11,8 @@ var ESNbang = ESNbang || {};
 ESNbang.i18n = (function() {
 	var _this = {};
 
-	let lang_folder = __dirname + '/i18n/';
-	let flags_folder = __dirname + '/i18n/flags/';
+	let lang_folder = path.join(__dirname, 'i18n');
+	let flags_folder = path.join(__dirname, 'i18n', 'flags');
 
 	// language selector element
 	_this.langSelect = new IconSelect("lang-select");
@@ -40,7 +40,7 @@ ESNbang.i18n = (function() {
 			let i = 0;
 			files.forEach(file => {
 				let lang = file.substr(0, file.length-4);
-				icons.push({'iconFilePath': flags_folder + file, 'iconValue': i, 'iconLang': lang});
+				icons.push({'iconFilePath': path.join(flags_folder, file), 'iconValue': i, 'iconLang': lang});
 				i++;
 			});
 			_this.langSelect.refresh(icons);
@@ -72,7 +72,7 @@ ESNbang.i18n = (function() {
 		**/
 	_this.load_language_file = function (lang_code) {
 
-		fs.readFile(__dirname + '/i18n/' + lang_code + '.json', 'utf8', function (err,data) {
+		fs.readFile(path.join(lang_folder, (lang_code + '.json')), 'utf8', function (err,data) {
 		  if (err) {
 				console.error('Failed to change current language: the file \'' + lang_code + '.json\' doesn\'t exist.');
 				return ;

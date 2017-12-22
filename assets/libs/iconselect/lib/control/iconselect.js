@@ -120,7 +120,7 @@ function IconSelect($$elementID, $$parameters) {
         //_View.showBox(false);
 
     };
-	
+
 	this.setSelectedLanguage = function(lang_code) {
 		for(let v in _icons)
 			if(_icons[v].iconLang === lang_code) {
@@ -291,8 +291,8 @@ function IconSelect($$elementID, $$parameters) {
         iconElement.style.marginTop = $parameters.boxIconSpace;
         iconElement.addEventListener('mousedown', function() {
           let str = $iconFilePath;
-          let tmp = str.substring(str.lastIndexOf('/') + 1);
-          tmp = tmp.substring(0, tmp.length-4);
+          // removing the ".png" extension
+          let tmp = path.basename(str, '.png');
           ESNbang.i18n.load_language_file(tmp);
         });
 
