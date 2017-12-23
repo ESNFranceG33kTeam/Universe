@@ -61,5 +61,66 @@ Universe.commons = (function(){
 		});
 	};
 
+
+	_this.launch_tutorial = function() {
+
+		let logo = document.getElementsByClassName('img_center')[0];
+		let menu = Universe.menu.get_home_menu();
+		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
+
+		SpotlightJS.config({
+			message: {
+				positions: ['dir_top_center', 'dir_bottom_center', 'dir_bottom_right']
+			},
+			arrow: {size: 11},
+			navigation: {loop: true, await: false}
+		}).add(
+			'main', {
+				element: logo,
+				speed: 600,
+				message: {
+					buttons: [{
+						text: 'Next',
+						click: function () {
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Universe: tutorial mode',
+					body: 'Welcome to your Universe! This is a tutorial mode, that will explain fastly how the application works. You can relaunch it anytime by clicking the logo, just there.'
+				},
+			},
+			'menu', {
+				element: menu,
+				speed: 600,
+				message: {
+					buttons: [{
+						text: 'Next',
+						click: function () {
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Browsing menu',
+					body: 'This is the browsing menu, where you can find all your favourites ESN platforms!'
+				}
+			},
+			'addsite', {
+				element: addSiteButton,
+				speed: 600,
+				message: {
+					buttons: [{
+						text: 'Finish',
+						click: function () {
+							SpotlightJS.destroy();
+						}
+					}],
+					title: 'Adding a new platform',
+					body: 'If you want to add a new source of information, you simply have to click this button!<br>Now, you\'re good to go!'
+				}
+			}
+
+		).spotlight('main', 'menu', 'addsite');
+
+	};
+
 	return _this;
 })();

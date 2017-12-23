@@ -300,6 +300,9 @@ hr {
 	left: 50%;
 	margin-left: -200px
 }
+.img_center:hover {
+	cursor: pointer;
+}
 
 #loading {
 	position: absolute;

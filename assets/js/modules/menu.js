@@ -21,6 +21,11 @@ Universe.menu = (function() {
 	var btn_down_hover = document.getElementById('btn_down_hover');
 
 
+	// getters
+	_this.get_home_menu = function() {
+		return home_menu;
+	}
+
 	ipc.on('resized' , function(event , data){
 		_this.set_overflow_on_menu();
 	});
