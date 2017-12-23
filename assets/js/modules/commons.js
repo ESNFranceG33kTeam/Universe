@@ -79,6 +79,7 @@ Universe.commons = (function(){
 				element: logo,
 				speed: 600,
 				message: {
+					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
 						text: 'Next',
 						click: function () {
@@ -93,6 +94,7 @@ Universe.commons = (function(){
 				element: menu,
 				speed: 600,
 				message: {
+					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
 						text: 'Next',
 						click: function () {
@@ -107,6 +109,7 @@ Universe.commons = (function(){
 				element: addSiteButton,
 				speed: 600,
 				message: {
+					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
 						text: 'Finish',
 						click: function () {
