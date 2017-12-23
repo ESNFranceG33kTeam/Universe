@@ -1,4 +1,4 @@
-﻿var ESNbang = ESNbang || {};
+﻿var Universe = Universe || {};
 const KonamiCode = require( "konami-code" );
 const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
@@ -19,11 +19,11 @@ String.prototype.hashCode = function() {
 
 /**
   * This module contains all operations and components used by several modules.
-  * @module ESNbang/commons
+  * @module Universe/commons
   * @author Rémy Raes
   **/
 
-ESNbang.commons = (function(){
+Universe.commons = (function(){
 	var _this = {};
 
 	// application components
@@ -46,18 +46,18 @@ ESNbang.commons = (function(){
 					name: i,
 					url: new_sites[i]
 				};
-				ESNbang.menu.buttonManager.create_new_button(new_site, true);
-				ESNbang.frameManager.create_new_frame(new_site, true);
+				Universe.menu.buttonManager.create_new_button(new_site, true);
+				Universe.frameManager.create_new_frame(new_site, true);
 			}
 
 			// build added sites
 			for(let i=0, length=sites.length; i<length; i++) {
-				ESNbang.menu.buttonManager.create_new_button(sites[i]);
-				ESNbang.frameManager.create_new_frame(sites[i]);
+				Universe.menu.buttonManager.create_new_button(sites[i]);
+				Universe.frameManager.create_new_frame(sites[i]);
 			}
 
 			// actualisation
-			ESNbang.frameManager.load_all_frames();
+			Universe.frameManager.load_all_frames();
 		});
 	};
 

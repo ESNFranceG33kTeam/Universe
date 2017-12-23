@@ -1,19 +1,19 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 const dialog = remote.dialog;
 
 /**
   * This modules contains all operations linked to communication of
   * information to the user, being by desktop or site notifications.
-  * @module ESNbang/notification
+  * @module Universe/notification
   * @author Rémy Raes
   **/
-ESNbang.notification = (function () {
+Universe.notification = (function () {
 
 	var _this = {};
 
 	ipc.on('exit-notification' , function(){
-		new Notification(ESNbang.i18n.notificationMessages.notification_running_text, {
-			body: ESNbang.i18n.notificationMessages.notification_running_title,
+		new Notification(Universe.i18n.notificationMessages.notification_running_text, {
+			body: Universe.i18n.notificationMessages.notification_running_title,
 			icon: 'assets/img/icons/star.png'
 		});
 	});
@@ -30,7 +30,7 @@ ESNbang.notification = (function () {
 	  * This function creates notification on a website node, to signal
 	  * to the user something happened (eg: a new publication).
 	  * @param {String} url - Address of the website from which to add notification
-	  * @memberof module:ESNbang/notification
+	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/
 	_this.add_notification_on_site = function(url) {
@@ -69,7 +69,7 @@ ESNbang.notification = (function () {
 	  * This function removes the notification object from a website
 	  * node (eg: when the user has read everything on the node).
 	  * @param {String} url - Address of the website from which to remove notification
-	  * @memberof module:ESNbang/notification
+	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/
 	_this.remove_notification_from_site = function(url) {

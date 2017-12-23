@@ -1,19 +1,19 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 
 /**
   * This module contains all operations linked to manipulation of user
 	* settings and their storage.
-	* @module ESNbang/storage
+	* @module Universe/storage
 	* @author Rémy Raes
 	**/
-ESNbang.storage = (function () {
+Universe.storage = (function () {
 
 	var _this = {};
 
 	/**
 	  * This function handles all signals sended by other modules to save
 	  * user settings.
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	(function storage_handlers() {
@@ -33,7 +33,7 @@ ESNbang.storage = (function () {
 			var settings = _this.get_parameters();
 			var sites = settings.sites;
 
-			ESNbang.commons.build(sites);
+			Universe.commons.build(sites);
 		});
 
 	})();
@@ -43,7 +43,7 @@ ESNbang.storage = (function () {
 	/**
 	  * This is the user settings model, used to store all information
 	  * relative to the user preferences.
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	var settings_model = {
@@ -70,7 +70,7 @@ ESNbang.storage = (function () {
 	  * This function saves user settings when its subscripted sites have been
 	  * changed.
 	  * @param {JSON} data - Object containing all user websites
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	function save_sites(data){
@@ -84,7 +84,7 @@ ESNbang.storage = (function () {
 		* hasn't been registered yet.
 		* @param {Boolean} registered - is the site already registered ?
 		* @param {JSON} site - JSON representing a website
-		* @memberof module:ESNbang/storage
+		* @memberof module:Universe/storage
 		* @author Rémy Raes
 		**/
 	function site_already_registered(registered, site){
@@ -92,16 +92,16 @@ ESNbang.storage = (function () {
 		let url = site.url;
 
 		if(!registered) {
-			ESNbang.menu.buttonManager.create_new_button(site, false);
-			ESNbang.frameManager.create_new_frame(site, false);
+			Universe.menu.buttonManager.create_new_button(site, false);
+			Universe.frameManager.create_new_frame(site, false);
 
 			console.info('Registering the new website ' + url + '.');
-			ESNbang.menu.set_overflow_on_menu();
+			Universe.menu.set_overflow_on_menu();
 		}
 
 		else if(registered){
 			// alert the user
-			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_already_done);
+			Universe.subscription.set_new_site_warning(Universe.i18n.errorMessages.subscription_already_done);
 			console.warn('The website ' + url + ' has already been registered by the user.');
 		}
 
@@ -114,7 +114,7 @@ ESNbang.storage = (function () {
 	  * sidebar menu.
 	  * @param {JSON} site - JSON object representing the site to update
 	  * @param {String} title - new title to give to the page
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	_this.save_site_title = function(site, title) {
@@ -124,7 +124,7 @@ ESNbang.storage = (function () {
 				if(title != p.sites[i].name)
 					store_parameters(p);
 				p.sites[i].name = title;
-				ESNbang.menu.buttonManager.update_tooltip_title(site.url.hashCode(), title)
+				Universe.menu.buttonManager.update_tooltip_title(site.url.hashCode(), title)
 				console.info('Updating the title for webpage \'' + site.url + '\'.');
 				break;
 			}
@@ -134,7 +134,7 @@ ESNbang.storage = (function () {
 	  * This function saves user settings when the application language
 	  * is changing.
 	  * @param {String} lang_code - code of the current language
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	_this.save_language = function(lang_code) {
@@ -147,7 +147,7 @@ ESNbang.storage = (function () {
 	  * This function is the public method that enables modules to save
 	  * user settings.
 	  * @param {JSON} params - Object containing the user settings, following the pattern settings_model
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	_this.save_parameters = function(params) {
@@ -157,7 +157,7 @@ ESNbang.storage = (function () {
 	  * This function saves the user settings on the user local
 	  * storage.
 	  * @param {JSON} params - JSON representing user settings
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	function store_parameters(params) {
@@ -170,7 +170,7 @@ ESNbang.storage = (function () {
 	  * its computer, and returns them ; if it's not the case,
 	  * it returns a new settings object.
 	  * @return {JSON} a JSON object representing user settings
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	_this.get_parameters = function() {
@@ -198,7 +198,7 @@ ESNbang.storage = (function () {
 	  * This function realizes all the tests to see if an url can be
 	  * subscribed to, or not.
 	  * @param {String} url - Website address to check
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	_this.subscribe_to_new_site = function(url) {
@@ -206,7 +206,7 @@ ESNbang.storage = (function () {
 		var valid = is_valid_url(url);
 
 		if(valid === 'void'){
-			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_empty_message);
+			Universe.subscription.set_new_site_warning(Universe.i18n.errorMessages.subscription_empty_message);
 			console.warn('The "new website subscription" input field is empty.');
 
 		} else if(valid) {
@@ -232,7 +232,7 @@ ESNbang.storage = (function () {
 
 
 		} else {
-			ESNbang.subscription.set_new_site_warning(ESNbang.i18n.errorMessages.subscription_url_not_valid);
+			Universe.subscription.set_new_site_warning(Universe.i18n.errorMessages.subscription_url_not_valid);
 			console.warn('The string "' + url + '" is not a valid URL.');
 		}
 	}
@@ -242,7 +242,7 @@ ESNbang.storage = (function () {
 	  * This function checks if a string is a valid url.
 	  * @param {String} url - String to check
 	  * @return {Boolean} is the parameter a valid url or not
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	function is_valid_url(url) {
@@ -264,7 +264,7 @@ ESNbang.storage = (function () {
 	  * 'Facebook').
 	  * @param {String} url - URL to convert to a readable name
 	  * @return {String} A human readable string reprensenting the URL
-	  * @memberof module:ESNbang/storage
+	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
 	function get_site_name(url) {

@@ -1,11 +1,11 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 
 /**
   * This module contains all operations linked to manipulation
-  * @module ESNbang/frameManager
+  * @module Universe/frameManager
   * @author Rémy Raes
   **/
-ESNbang.frameManager = (function(){
+Universe.frameManager = (function(){
 	var _this = {};
 
 	var frames = document.getElementsByTagName('webview');
@@ -35,7 +35,7 @@ ESNbang.frameManager = (function(){
 	/**
 	  * This function check if all iframes have loaded their content;
 	  * if that's the case, it removes the loading screen.
-	  * @memberof module:ESNbang/frameManager
+	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
 	function check_loaded_frames() {
@@ -51,7 +51,7 @@ ESNbang.frameManager = (function(){
 	/**
 	  * This function hides the loading screen, enabling the user to
 	  * access the application functionnalities.
-	  * @memberof module:ESNbang/frameManager
+	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
 	function hide_loading_screen() {
@@ -65,7 +65,7 @@ ESNbang.frameManager = (function(){
 
 	/**
 	  * This function hides all application frames.
-	  * @memberof module:ESNbang/frameManager
+	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
 	function hide_all_frames () {
@@ -101,7 +101,7 @@ ESNbang.frameManager = (function(){
 	  * This function creates a frame encapsulating a website
 	  * on the side menu.
 	  * @param {String} site - The URL of the new website
-	  * @memberof module:ESNbang/frameManager
+	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_frame = function(site, is_main_website) {
@@ -122,35 +122,35 @@ ESNbang.frameManager = (function(){
 			check_loaded_frames();
 
 			// reset the notification indicator
-			ESNbang.notification.remove_notification_from_site(url.hashCode());
+			Universe.notification.remove_notification_from_site(url.hashCode());
 		});
 		frame.addEventListener('page-title-updated', () => {
 			// updates the application tooltip
-			ESNbang.storage.save_site_title(site, frame.getTitle());
+			Universe.storage.save_site_title(site, frame.getTitle());
 
 			// TODO to fix, some sites will change title several times for one only
 			// notification (eg. Facebook when you receive a Messenger message)
 
 			if(!frame_is_focused(site.url.hashCode()) && is_ready_to_display())
-				ESNbang.notification.add_notification_on_site(site.url.hashCode());
+				Universe.notification.add_notification_on_site(site.url.hashCode());
 		});
 		frame.addEventListener('page-favicon-updated', (e) => {
 			// update the button image
-			ESNbang.menu.buttonManager.update_button_image(url.hashCode(), e.favicons[0]);
+			Universe.menu.buttonManager.update_button_image(url.hashCode(), e.favicons[0]);
 		});
 		frame.addEventListener('mousedown', () => {
-			ESNbang.subscription.reset()
+			Universe.subscription.reset()
 		});
 
-		ESNbang.commons.main_wrapper.appendChild(frame);
-		ESNbang.frameManager.load_all_frames();
+		Universe.commons.main_wrapper.appendChild(frame);
+		Universe.frameManager.load_all_frames();
 	};
 
 	/**
 	  * This functions tells if a frame is focused.
 	  * @param {String} url - hashed url of the site frame
 	  * @return {Boolean} is the frame focused or not
-	  * @memberof module:ESNbang/frameManager
+	  * @memberof module:Universe/frameManager
 	  **/
 	function frame_is_focused(url) {
 		let frame = undefined;
@@ -168,7 +168,7 @@ ESNbang.frameManager = (function(){
 
 	_this.delete_frame = function(url) {
 		let comp = document.getElementById(url);
-		ESNbang.commons.main_wrapper.removeChild(comp);
+		Universe.commons.main_wrapper.removeChild(comp);
 	};
 
 	(function initialize_listeners_on_frames() {
@@ -185,7 +185,7 @@ ESNbang.frameManager = (function(){
 
 			// listener to hide the 'new site' window
 			tmp.addEventListener('mousedown', () => {
-				ESNbang.subscription.reset()
+				Universe.subscription.reset()
 			});
 		}
 	})();

@@ -293,7 +293,7 @@ function IconSelect($$elementID, $$parameters) {
           let str = $iconFilePath;
           // removing the ".png" extension
           let tmp = path.basename(str, '.png');
-          ESNbang.i18n.load_language_file(tmp);
+          Universe.i18n.load_language_file(tmp);
         });
 
         var iconImgElement = document.createElement('img');

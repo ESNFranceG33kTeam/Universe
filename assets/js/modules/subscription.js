@@ -1,13 +1,13 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 
 /**
   * This module contains all operations linked to manipulation of the
   * "new subscription" window, which is used for the user to add a new site
   * to its application.
-  * @module ESNbang/subscription
+  * @module Universe/subscription
   * @author Rémy Raes
   **/
-ESNbang.subscription = (function () {
+Universe.subscription = (function () {
 
 	var _this = {};
 
@@ -19,23 +19,23 @@ ESNbang.subscription = (function () {
 	/**
 	  * This function makes the subscription window appear.
 	  * @author Rémy Raes
-	  * @memberof module:ESNbang/subscription
+	  * @memberof module:Universe/subscription
 	  **/
 	_this.show_new_site_subscription = function() {
-		ESNbang.commons.main_wrapper.style.filter = 'brightness(0.4)';
+		Universe.commons.main_wrapper.style.filter = 'brightness(0.4)';
 		new_site_window.style.display = 'block';
 		new_site_window.style.animationName = 'bounceIn';
 	};
 
 	/**
 	  * This function initializes the subscription window (style, animation, tooltip text).
-	  * @memberof module:ESNbang/subscription
+	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes
 	  **/
 	_this.reset = function() {
-		ESNbang.commons.main_wrapper.style.filter = 'none';
+		Universe.commons.main_wrapper.style.filter = 'none';
 		new_site_window.style.animationName = 'bounceOut';
-		new_site_error.innerText = ESNbang.i18n.errorMessages.subscription_default_message;
+		new_site_error.innerText = Universe.i18n.errorMessages.subscription_default_message;
 		new_site_error.style.color = 'inherit';
 		new_url.value = '';
 	};
@@ -43,7 +43,7 @@ ESNbang.subscription = (function () {
 	/**
 	  * This function sets a warning state on the subscription window.
 	  * @param {String} message - The message to display to the user
-	  * @memberof module:ESNbang/subscription
+	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes
 	  **/
 	_this.set_new_site_warning = function(message) {

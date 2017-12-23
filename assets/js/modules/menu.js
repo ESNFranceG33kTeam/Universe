@@ -1,12 +1,12 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 
 /**
   * This module contains all operations linked to the side menu of the
   * application.
-  * @module ESNbang/menu
+  * @module Universe/menu
   * @author Rémy Raes
   **/
-ESNbang.menu = (function() {
+Universe.menu = (function() {
 	var _this = {};
 
 	var interval = 20;
@@ -29,7 +29,7 @@ ESNbang.menu = (function() {
 	  * This functions returns the state of the state bar, meaning if its size
 	  * enables it to display completely within the screen.
 	  * @return {Boolean} is the side menu going out of the screen or not
-	  * @memberof module:ESNbang/menu
+	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	function menu_is_overflowed() {
@@ -40,7 +40,7 @@ ESNbang.menu = (function() {
 	/**
 	  * This functions checks if the side menu is overflowed, if that's
 	  * the case, it sets the scrolling buttons state to visible.
-	  * @memberof module:ESNbang/menu
+	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	_this.set_overflow_on_menu = function() {
@@ -61,7 +61,7 @@ ESNbang.menu = (function() {
 
 	/**
 	  * This function is used to scroll the menu up, if possible.
-	  * @memberof module:ESNbang/menu
+	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	function scroll_menu_up(){
@@ -83,7 +83,7 @@ ESNbang.menu = (function() {
 	var t = 0;
 	/**
 	  * This function is used to scroll the menu down, if possible.
-	  * @memberof module:ESNbang/menu
+	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	function scroll_menu_down(){
@@ -106,7 +106,7 @@ ESNbang.menu = (function() {
 	/**
 	  * Self-invoking function that initialize scroll listeners on both
 	  * scrolling buttons and mousewheel.
-	  * @memberof module:ESNbang/menu
+	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	(function initialize_scroll_listeners() {

@@ -1,6 +1,6 @@
 # Universe
 
-![ESNbang! logo](https://raw.githubusercontent.com/ESNFranceG33kTeam/esnbang/master/assets/img/logo.png)
+![Universe logo](https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/logo.png)
 This application is meant to be used by ESNers all over the world ! It will enable them to gather all web resources they want in one single location, and to be notified if new content appears on those resources.
 
 * [For developpers](#for-developers)
@@ -80,9 +80,9 @@ Using the application is pretty easy, if you know all shortcuts ; you can find s
 
 ## Patch Notes
 
-For the development of ESNbang!, we use the [semantic versioning](http://semver.org/).
+For the development of Universe, we use the [semantic versioning](http://semver.org/).
 
-These patch notes only cover patches up to 0.2.1. For later patches, please check [the releases](https://github.com/ESNFranceG33kTeam/esnbang/releases).
+These patch notes only cover patches up to 0.2.1. For later patches, please check [the releases system](https://github.com/ESNFranceG33kTeam/Universe/releases).
 
 
 * **[0.x.x] DEVELOPMENT VERSION**

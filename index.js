@@ -6,6 +6,7 @@ const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 
 var mainWindow;
+app.setAppUserModelId('france.esn.geekteam.universe');
 
 // create the display window as soon as the application is ready
 app.on('ready', createWindow);
@@ -31,7 +32,7 @@ function createWindow () {
 	// notification icon
 	var trayImage = __dirname + '/assets/img/icons/star.png';
 	tray = new Tray(trayImage);
-	tray.setToolTip('ESNbang!');
+	tray.setToolTip('Universe');
 
 	// context menu on the icon
 	const menu = Menu.buildFromTemplate([
@@ -67,7 +68,7 @@ function createWindow () {
 
 	// main window
 	mainWindow = new BrowserWindow({
-		title: 'ESNbang!',
+		title: 'Universe',
 		icon: __dirname + '/assets/img/icons/star.png',
 		backgroundColor: '#e0e0e0',
 

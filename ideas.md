@@ -7,4 +7,3 @@
 * autoupdate system
 * Galaxy authentification system
   * "Remember me" system (to avoid logging to each website when launching the app)
- * "Report a bug" feature

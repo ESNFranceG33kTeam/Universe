@@ -1,5 +1,5 @@
 {
-  "home_message": "Welcome to ESNbang!, the new application for members of the Erasmus Student Network !<br /><br /> This application gathers many tools used every day by ESNers, everything is at the same place, no need to search for the tools anymore !<br />ESNbang! can also send you notifications: it listens to information sources (Facebook pages, livestreams, etc) and can tell you when something is happening ! Moreover, when you close its main frame, the application doesn't close itself, but rather goes background on your computer, still listening for news :)",
+  "home_message": "Welcome to Universe, the new application for members of the Erasmus Student Network !<br /><br /> This application gathers many tools used every day by ESNers, everything is at the same place, no need to search for the tools anymore !<br />Universe can also send you notifications: it listens to information sources (Facebook pages, livestreams, etc) and can tell you when something is happening ! Moreover, when you close its main frame, the application doesn't close itself, but rather goes background on your computer, still listening for news :)",
   "home_tooltip": "Home",
   "subscription_tooltip": "Subscribe to a news feed",
   "subscription_placeholder": "Website URL",
@@ -11,5 +11,5 @@
   "subscription_error_url_not_valid": "The URL you entered is not valid.",
 
   "notification_application_still_running_title": "Application still running",
-  "notification_application_still_running_text": "ESNbang! is running in background."
+  "notification_application_still_running_text": "Universe is running in background."
 }

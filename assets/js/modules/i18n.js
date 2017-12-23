@@ -1,14 +1,14 @@
-var ESNbang = ESNbang || {};
+var Universe = Universe || {};
 
 /**
   *	This module allows the application content to be translated to multiple languages.
   * If you want to introduce translations for another element than those initialized
   * in i18n, you have to give it an id in the HTML code, to reference it in i18n, and
   * then to write your translations.
-  * @module ESNbang/i18n
+  * @module Universe/i18n
   * @author Rémy Raes
   **/
-ESNbang.i18n = (function() {
+Universe.i18n = (function() {
 	var _this = {};
 
 	let lang_folder = path.join(__dirname, 'i18n');
@@ -44,11 +44,11 @@ ESNbang.i18n = (function() {
 				i++;
 			});
 			_this.langSelect.refresh(icons);
-			let lang = ESNbang.storage.get_parameters().language;
-			ESNbang.i18n.langSelect.setSelectedLanguage(lang);
+			let lang = Universe.storage.get_parameters().language;
+			Universe.i18n.langSelect.setSelectedLanguage(lang);
 
 			// initializing language
-			ESNbang.i18n.load_language_file(lang);
+			Universe.i18n.load_language_file(lang);
 		});
 	})();
 
@@ -68,7 +68,7 @@ ESNbang.i18n = (function() {
 		* if it doesn't exists, the function exits.
 		* @param {String} lang_code - code representing a language
 		* @author Rémy Raes
-		* @memberof module:ESNbang/i18n
+		* @memberof module:Universe/i18n
 		**/
 	_this.load_language_file = function (lang_code) {
 
@@ -79,7 +79,7 @@ ESNbang.i18n = (function() {
 		  }
 		  console.info('Changing the application language to \'' + lang_code + '\'.');
 		  change_language(JSON.parse(data));
-		  ESNbang.storage.save_language(lang_code);
+		  Universe.storage.save_language(lang_code);
 		});
 	}
 
@@ -88,7 +88,7 @@ ESNbang.i18n = (function() {
 	  * enable the understanding of it for differents languages.
 	  * @param {JSON} json - Object containing all variables translated in a certain language
 		* @author Rémy Raes
-		* @memberof module:ESNbang/i18n
+		* @memberof module:Universe/i18n
 	  **/
 	  function change_language(json) {
 

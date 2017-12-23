@@ -20,11 +20,11 @@
 
 		<div id="new_site">
 			<input id="subscription_placeholder" type="text" placeholder=""></input>
-			<button id="subscription_button_text" onclick="ESNbang.storage.subscribe_to_new_site(document.getElementById('subscription_placeholder').value)"></button>
+			<button id="subscription_button_text" onclick="Universe.storage.subscribe_to_new_site(document.getElementById('subscription_placeholder').value)"></button>
 			<p id="subscription_text"></p>
 		</div>
 
-		<div id="main_wrapper" onclick="ESNbang.subscription.reset()">
+		<div id="main_wrapper" onclick="Universe.subscription.reset()">
 			<div id="home" class="category">
 				<h1><img class="img_center" src="assets/img/logo.png" draggable="false"></h1>
 				<p id="home_message"></p>
@@ -35,13 +35,13 @@
 
 		<nav id="side_menu">
 			<nav id="icons">
-				<li id="home_btn" class="section" onclick="ESNbang.frameManager.show_home()">
+				<li id="home_btn" class="section" onclick="Universe.frameManager.show_home()">
 					<div id="home_tooltip">Home</div>
 				</li>
 				<hr />
 			</nav>
 
-			<li class='section subscribe' onclick="ESNbang.subscription.show_new_site_subscription()">
+			<li class='section subscribe' onclick="Universe.subscription.show_new_site_subscription()">
 				<div id="subscription_tooltip"></div>
 			</li>
 

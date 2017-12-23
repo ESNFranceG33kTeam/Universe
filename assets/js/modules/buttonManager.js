@@ -1,10 +1,10 @@
 /**
   * This submodule contains all operations linked to manipulation of the site
   * buttons.
-  * @module ESNbang/menu/buttonManager
+  * @module Universe/menu/buttonManager
   * @author Rémy Raes
   **/
-ESNbang.menu.buttonManager = (function () {
+Universe.menu.buttonManager = (function () {
 	var _this = {};
 
 	var added_sites = 0;
@@ -31,13 +31,13 @@ ESNbang.menu.buttonManager = (function () {
 	  * This function creates a component representing a website
 	  * on the side menu.
 	  * @param {String} url - The URL of the new website
-	  * @memberof module:ESNbang/menu/buttonManager
+	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_button = function(site, is_main_website) {
 
 		let url = site.url;
-		ESNbang.subscription.reset();
+		Universe.subscription.reset();
 
 		if(!is_main_website) {
 			if(added_sites === 0)
@@ -61,8 +61,8 @@ ESNbang.menu.buttonManager = (function () {
 		button.id = tmp;
 
 		button.onclick = function() {
-			ESNbang.notification.remove_notification_from_site(site.url.hashCode());
-			ESNbang.frameManager.show_frame(tmp + '_frame');
+			Universe.notification.remove_notification_from_site(site.url.hashCode());
+			Universe.frameManager.show_frame(tmp + '_frame');
 		};
 
 		if(!is_main_website) {
@@ -74,14 +74,14 @@ ESNbang.menu.buttonManager = (function () {
 
 			span.addEventListener('click', function(e) {
 				e.stopPropagation();
-				ESNbang.frameManager.show_home();
+				Universe.frameManager.show_home();
 
 				delete_button(tmp);
-				ESNbang.frameManager.delete_frame(tmp + '_frame');
+				Universe.frameManager.delete_frame(tmp + '_frame');
 
 				console.info('Deleting ' + url + '.');
 
-				let p = ESNbang.storage.get_parameters();
+				let p = Universe.storage.get_parameters();
 				let sites = p.sites;
 				let i=-1;
 
@@ -100,8 +100,8 @@ ESNbang.menu.buttonManager = (function () {
 				}
 
 				p.sites = sites;
-				ESNbang.storage.save_parameters(p);
-				ESNbang.menu.set_overflow_on_menu();
+				Universe.storage.save_parameters(p);
+				Universe.menu.set_overflow_on_menu();
 
 			}, false);
 			button.appendChild(span);
@@ -126,14 +126,14 @@ ESNbang.menu.buttonManager = (function () {
 		button.appendChild(tooltip);
 
 		menu.appendChild(button);
-		ESNbang.menu.set_overflow_on_menu();
+		Universe.menu.set_overflow_on_menu();
 
 		html_buttons.addNewElement(url);
 	}
 
 	/**
 	  * This function appends an HR element into the side menu.
-	  * @memberof module:ESNbang/menu/buttonManager
+	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	function create_site_menu_separation(){
@@ -143,7 +143,7 @@ ESNbang.menu.buttonManager = (function () {
 	/**
 	  * This functions deletes a button from the menu.
 	  * @param {String} url - hashed url of the website to delete
-	  * @memberof module:ESNbang/menu/buttonManager
+	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	function delete_button(url) {
@@ -157,14 +157,14 @@ ESNbang.menu.buttonManager = (function () {
 		}
 		added_sites -= 1;
 
-		ESNbang.menu.set_overflow_on_menu();
+		Universe.menu.set_overflow_on_menu();
 	}
 
 	/**
 	  * This function updates the tooltip containing the title of a site.
 	  * @param {String} url - hashed url of the site to update
 	  * @param {String} title - new site title to put into its tooltip
-	  * @memberof module:ESNbang/menu/buttonManager
+	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.update_tooltip_title = function(url, title) {
@@ -177,7 +177,7 @@ ESNbang.menu.buttonManager = (function () {
 	  * This function updates the image of a site button.
 	  * @param {String} url - hashed url of the site to update
 	  * @param {String} image_url - url of the new background image
-	  * @memberof module:ESNbang/menu/buttonManager
+	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
 	_this.update_button_image = function(url, image_url) {
@@ -187,4 +187,4 @@ ESNbang.menu.buttonManager = (function () {
 
 
 	return _this;
-})(ESNbang.menu || {});
+})(Universe.menu || {});

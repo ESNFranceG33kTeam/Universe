@@ -1,12 +1,12 @@
 {
-  "name": "ESNbang",
+  "name": "Universe",
   "version": "0.4.0",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
-    "package-windows": "electron-packager . esnbang --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-mac": "electron-packager . esnbang --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-linux": "electron-packager . esnbang --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-windows": "electron-packager . universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-mac": "electron-packager . universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-linux": "electron-packager . universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
     "create-windows-installer": "electron-builder --ia32"
   },
   "author": "G33k Team - ESN France",
@@ -21,7 +21,7 @@
     "konami-code": "^0.2.1"
   },
   "build": {
-    "appId": "france.esn.geekteam.bang",
+    "appId": "france.esn.geekteam.universe",
     "win": {
         "icon": "./assets/img/icons/star.ico",
         "target": "msi",
