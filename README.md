@@ -10,7 +10,7 @@ This application is meant to be used by ESNers all over the world ! It will enab
   * [Package the application](#package-the-application)
   * [Generate an installer](#generate-an-installer)
 * [For users](#for-users)
-  * [Install ESNbang!](#install-universe)
+  * [Install Universe](#install-universe)
   * [Use Universe](#use-universe)
 * [Patch notes (Old)](#patch-notes)
 
