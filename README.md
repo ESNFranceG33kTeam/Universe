@@ -1,4 +1,4 @@
-# ESNbang!
+# Universe
 
 ![ESNbang! logo](https://raw.githubusercontent.com/ESNFranceG33kTeam/esnbang/master/assets/img/logo.png)
 This application is meant to be used by ESNers all over the world ! It will enable them to gather all web resources they want in one single location, and to be notified if new content appears on those resources.
@@ -10,8 +10,8 @@ This application is meant to be used by ESNers all over the world ! It will enab
   * [Package the application](#package-the-application)
   * [Generate an installer](#generate-an-installer)
 * [For users](#for-users)
-  * [Install ESNbang!](#install-esnbang)
-  * [Use ESNbang!](#use-esnbang)
+  * [Install ESNbang!](#install-universe)
+  * [Use Universe](#use-universe)
 * [Patch notes (Old)](#patch-notes)
 
 ---
@@ -27,7 +27,7 @@ To install Electron, use npm like this:
 npm install electron -g
 
 # Install all project dependencies
-cd esnbang/ && npm install
+cd universe/ && npm install
 ```
 
 ### Run the application
@@ -55,7 +55,7 @@ If you want to open the dev tools inside the application, you just have to type 
 
 ## For users
 
-### Install ESNbang!
+### Install Universe!
 
 To install the application, you need to download a version of it that has been compiled for your operating system
 (Windows, Mac or Linux), and execute it.
@@ -69,7 +69,7 @@ To install the application, you need to download a version of it that has been c
 | Mac OS | `1.0.0` | ... |
 | Linux | `1.0.0` | ... |
 
-### Use ESNbang!
+### Use Universe!
 
 Using the application is pretty easy, if you know all shortcuts ; you can find some tips below:
 * to subscribe to a new website, you just have to click the '+' button at the bottom of the sidebar;
