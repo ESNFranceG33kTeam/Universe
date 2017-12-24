@@ -151,7 +151,7 @@
 
 /* Focus overlay */
 .spt-overlay {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -161,22 +161,28 @@
 
 /* Focus helper layer */
 .spt-helper {
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+
 
     overflow: visible;
-    opacity: 0;
-
-    will-change: left, top, width, height, box-shadow, -moz-box-shadow, -webkit-box-shadow;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
+
+
+}
+
+.spt-helper-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Focus fix (for z-index) */
@@ -198,8 +204,8 @@
 }
 
 /* Focus message arrow */
-.spt-message .spt-arbox{
-    position:relative;
+.spt-message .spt-arbox {
+    position: absolute;
 }
 
 /* Focus message wrapper */
@@ -211,7 +217,6 @@
     border-radius: 2px;
     background: #f4f4f4;
 }
-
 
 .spt-message .spt-message-wrapper::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -288,21 +293,11 @@
 
 .spt-gpua {
 
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 
 }
 

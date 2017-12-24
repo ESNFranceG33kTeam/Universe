@@ -64,13 +64,15 @@ Universe.commons = (function(){
 	// tutorial mode
 	let tutorialModeInitialized = false;
 	let span;
+	let exampleButton;
 
 	function init_tutorial_mode() {
 
 		let logo = document.getElementsByClassName('img_center')[0];
 		let menu = Universe.menu.get_home_menu();
-		let exampleButton = document.getElementsByClassName('section')[1];
+		exampleButton = document.getElementsByClassName('section')[1];
 		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
+		let newSiteWindow = Universe.subscription.get_new_site_window();
 
 		span = document.createElement('span');
 		span.className = 'delete';
@@ -79,10 +81,10 @@ Universe.commons = (function(){
 
 		SpotlightJS.config({
 			message: {
-				positions: ['dir_top_center', 'dir_bottom_center', 'dir_bottom_right']
+				positions: ['dir_top_middle', 'dir_bottom_middle', 'dir_right_middle']
 			},
 			arrow: {size: 11},
-			navigation: {loop: true, await: false}
+			navigation: {loop: true, await: false},
 		}).add(
 			'main', {
 				element: logo,
@@ -145,10 +147,11 @@ Universe.commons = (function(){
 					}],
 					title: 'Platforms',
 					body: 'This is a main platform of your Universe. To display it, you just have to left click it.'
-				}
+				},
+				config: {borders: {radius: 10}}
 			},
 			'delsite', {
-				element: exampleButton,
+				element: span,
 				speed: 600,
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
@@ -168,7 +171,8 @@ Universe.commons = (function(){
 					}],
 					title: 'Deleting a platform',
 					body: 'If you want to delete a platform, just right click it and press the delete button.<br><u>Please note that you cannot delete a main platform from your Universe.</u>'
-				}
+				},
+				config: {borders: {radius: 2}}
 			},
 			'addsite', {
 				element: addSiteButton,
@@ -185,12 +189,38 @@ Universe.commons = (function(){
 					{
 						text: 'Next',
 						click: function () {
+							Universe.subscription.show_new_site_subscription();
 							SpotlightJS.next();
 						}
 					}],
 					title: 'Adding a new platform',
 					body: 'If you want to add a new source of information, you simply have to click this button!'
-				}
+				},
+				config: {borders: {radius: 10}}
+
+			},'newsite', {
+				element: newSiteWindow,
+				speed: 600,
+				message: {
+					icon: path.join('assets','img','icons','star.png'),
+					buttons: [{
+						text: 'Previous',
+						click: function () {
+							Universe.subscription.reset();
+							SpotlightJS.previous();
+						}
+					},
+					{
+						text: 'Next',
+						click: function () {
+							Universe.subscription.reset();
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Adding a custom platform',
+					body: 'You just have to insert the URL of the website you want to follow here, and click the "Subscribe" button.'
+				},
+				config: {borders: {radius: 2}}
 			},
 			'end', {
 				element: logo,
@@ -198,12 +228,6 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
-						click: function () {
-							SpotlightJS.previous();
-						}
-					},
-					{
 						text: 'Finish',
 						click: function () {
 							SpotlightJS.destroy();
@@ -222,7 +246,7 @@ Universe.commons = (function(){
 			tutorialModeInitialized = true;
 			init_tutorial_mode();
 		}
-		SpotlightJS.spotlight('main', 'menu', 'section', 'delsite', 'addsite', 'end');
+		SpotlightJS.spotlight('main', 'menu', 'section', 'delsite', 'addsite', 'newsite', 'end');
 	};
 
 	return _this;
