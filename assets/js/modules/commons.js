@@ -61,12 +61,21 @@ Universe.commons = (function(){
 		});
 	};
 
+	// tutorial mode
+	let tutorialModeInitialized = false;
+	let span;
 
-	_this.launch_tutorial = function() {
+	function init_tutorial_mode() {
 
 		let logo = document.getElementsByClassName('img_center')[0];
 		let menu = Universe.menu.get_home_menu();
+		let exampleButton = document.getElementsByClassName('section')[1];
 		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
+
+		span = document.createElement('span');
+		span.className = 'delete';
+		span.innerText = 'x';
+		exampleButton.appendChild(span);
 
 		SpotlightJS.config({
 			message: {
@@ -81,6 +90,11 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
+						text: 'Exit tutorial mode',
+						click: function () {
+							SpotlightJS.destroy();
+						}
+					},{
 						text: 'Next',
 						click: function () {
 							SpotlightJS.next();
@@ -96,6 +110,12 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
+						text: 'Previous',
+						click: function () {
+							SpotlightJS.previous();
+						}
+					},
+					{
 						text: 'Next',
 						click: function () {
 							SpotlightJS.next();
@@ -105,24 +125,104 @@ Universe.commons = (function(){
 					body: 'This is the browsing menu, where you can find all your favourites ESN platforms!'
 				}
 			},
+			'section', {
+				element: exampleButton,
+				speed: 600,
+				message: {
+					icon: path.join('assets','img','icons','star.png'),
+					buttons: [{
+						text: 'Previous',
+						click: function () {
+							SpotlightJS.previous();
+						}
+					},
+					{
+						text: 'Next',
+						click: function () {
+							span.className = 'delete delete-show';
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Platforms',
+					body: 'This is a main platform of your Universe. To display it, you just have to left click it.'
+				}
+			},
+			'delsite', {
+				element: exampleButton,
+				speed: 600,
+				message: {
+					icon: path.join('assets','img','icons','star.png'),
+					buttons: [{
+						text: 'Previous',
+						click: function () {
+							span.className = 'delete';
+							SpotlightJS.previous();
+						}
+					},
+					{
+						text: 'Next',
+						click: function () {
+							span.className = 'delete';
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Deleting a platform',
+					body: 'If you want to delete a platform, just right click it and press the delete button.<br><u>Please note that you cannot delete a main platform from your Universe.</u>'
+				}
+			},
 			'addsite', {
 				element: addSiteButton,
 				speed: 600,
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
+						text: 'Previous',
+						click: function () {
+							span.className = 'delete delete-show';
+							SpotlightJS.previous();
+						}
+					},
+					{
+						text: 'Next',
+						click: function () {
+							SpotlightJS.next();
+						}
+					}],
+					title: 'Adding a new platform',
+					body: 'If you want to add a new source of information, you simply have to click this button!'
+				}
+			},
+			'end', {
+				element: logo,
+				speed: 600,
+				message: {
+					icon: path.join('assets','img','icons','star.png'),
+					buttons: [{
+						text: 'Previous',
+						click: function () {
+							SpotlightJS.previous();
+						}
+					},
+					{
 						text: 'Finish',
 						click: function () {
 							SpotlightJS.destroy();
 						}
 					}],
-					title: 'Adding a new platform',
-					body: 'If you want to add a new source of information, you simply have to click this button!<br>Now, you\'re good to go!'
+					title: 'End',
+					body: 'Now, you\'re good to go!<br>Don\'t hesitate to contact your webmaster if you need assistance :)'
 				}
-			}
+			},
 
-		).spotlight('main', 'menu', 'addsite');
+		);
+	}
 
+	_this.launch_tutorial_mode = function() {
+		if(!tutorialModeInitialized) {
+			tutorialModeInitialized = true;
+			init_tutorial_mode();
+		}
+		SpotlightJS.spotlight('main', 'menu', 'section', 'delsite', 'addsite', 'end');
 	};
 
 	return _this;
