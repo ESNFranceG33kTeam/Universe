@@ -62,7 +62,6 @@ Universe.commons = (function(){
 	};
 
 	// tutorial mode
-	let tutorialModeInitialized = false;
 	let span;
 	let exampleButton;
 
@@ -73,6 +72,8 @@ Universe.commons = (function(){
 		exampleButton = document.getElementsByClassName('section')[1];
 		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
 		let newSiteWindow = Universe.subscription.get_new_site_window();
+		let translations = Universe.i18n.tutorialMessages;
+		let new_url = Universe.subscription.get_new_url();
 
 		span = document.createElement('span');
 		span.className = 'delete';
@@ -92,18 +93,18 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Exit tutorial mode',
+						text: translations.buttons.exit,
 						click: function () {
 							SpotlightJS.destroy();
 						}
 					},{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Universe: tutorial mode',
-					body: 'Welcome to your Universe! This is a tutorial mode, that will explain fastly how the application works. You can relaunch it anytime by clicking the logo, just there.'
+					title: translations.main.title,
+					body: translations.main.body
 				},
 			},
 			'menu', {
@@ -112,19 +113,19 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
+						text: translations.buttons.previous,
 						click: function () {
 							SpotlightJS.previous();
 						}
 					},
 					{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Browsing menu',
-					body: 'This is the browsing menu, where you can find all your favourites ESN platforms!'
+					title: translations.menu.title,
+					body: translations.menu.body
 				},
 				config: {borders: {radius: 2}}
 			},
@@ -134,20 +135,20 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
+						text: translations.buttons.previous,
 						click: function () {
 							SpotlightJS.previous();
 						}
 					},
 					{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
 							span.className = 'delete delete-show';
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Platforms',
-					body: 'This is a main platform of your Universe. To display it, you just have to left click it.'
+					title: translations.section.title,
+					body: translations.section.body
 				},
 				config: {borders: {radius: 10}}
 			},
@@ -157,21 +158,21 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
+						text: translations.buttons.previous,
 						click: function () {
 							span.className = 'delete';
 							SpotlightJS.previous();
 						}
 					},
 					{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
 							span.className = 'delete';
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Deleting a platform',
-					body: 'If you want to delete a platform, just right click it and press the delete button.<br><u>Please note that you cannot delete a main platform from your Universe.</u>'
+					title: translations.delsite.title,
+					body: translations.delsite.body
 				},
 				config: {borders: {radius: 2}}
 			},
@@ -181,21 +182,22 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
+						text: translations.buttons.previous,
 						click: function () {
 							span.className = 'delete delete-show';
 							SpotlightJS.previous();
 						}
 					},
 					{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
+							new_url.value = 'https://remyraes.com/';
 							Universe.subscription.show_new_site_subscription();
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Adding a new platform',
-					body: 'If you want to add a new source of information, you simply have to click this button!'
+					title: translations.addsite.title,
+					body: translations.addsite.body
 				},
 				config: {borders: {radius: 10}}
 
@@ -205,21 +207,21 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Previous',
+						text: translations.buttons.previous,
 						click: function () {
 							Universe.subscription.reset();
 							SpotlightJS.previous();
 						}
 					},
 					{
-						text: 'Next',
+						text: translations.buttons.next,
 						click: function () {
 							Universe.subscription.reset();
 							SpotlightJS.next();
 						}
 					}],
-					title: 'Adding a custom platform',
-					body: 'You just have to insert the URL of the website you want to follow here, and click the "Subscribe" button.'
+					title: translations.newsite.title,
+					body: translations.newsite.body
 				},
 				config: {borders: {radius: 2}}
 			},
@@ -229,13 +231,13 @@ Universe.commons = (function(){
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
-						text: 'Finish',
+						text: translations.buttons.exit,
 						click: function () {
 							SpotlightJS.destroy();
 						}
 					}],
-					title: 'End',
-					body: 'Now, you\'re good to go!<br>Don\'t hesitate to contact your webmaster if you need assistance :)'
+					title: translations.end.title,
+					body: translations.end.body
 				}
 			},
 
@@ -243,10 +245,8 @@ Universe.commons = (function(){
 	}
 
 	_this.launch_tutorial_mode = function() {
-		if(!tutorialModeInitialized) {
-			tutorialModeInitialized = true;
-			init_tutorial_mode();
-		}
+		SpotlightJS.clear();
+		init_tutorial_mode();
 		SpotlightJS.spotlight('main', 'menu', 'section', 'delsite', 'addsite', 'newsite', 'end');
 	};
 

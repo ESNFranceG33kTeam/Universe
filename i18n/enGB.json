@@ -11,5 +11,23 @@
   "subscription_error_url_not_valid": "The URL you entered is not valid.",
 
   "notification_application_still_running_title": "Application still running",
-  "notification_application_still_running_text": "Universe is running in background."
+  "notification_application_still_running_text": "Universe is running in background.",
+
+  "tutorial_main_title": "Universe: tutorial mode",
+  "tutorial_main_body": "Welcome to your Universe! This is a tutorial mode, that will explain fastly how the application works. You can relaunch it anytime by clicking the logo, just there.",
+  "tutorial_menu_title": "Browsing menu",
+  "tutorial_menu_body": "This is the browsing menu, where you can find all your favourites ESN platforms!",
+  "tutorial_section_title": "Platforms",
+  "tutorial_section_body": "This is a main platform of your Universe. To display it, you just have to left click it.",
+  "tutorial_delsite_title": "Deleting a platform",
+  "tutorial_delsite_body": "If you want to delete a platform, just right click it and press the delete button.<br><u>Please note that you cannot delete a main platform from your Universe.</u>",
+  "tutorial_addsite_title": "Adding a new platform",
+  "tutorial_addsite_body": "If you want to add a new source of information, you simply have to click this button!",
+  "tutorial_newsite_title": "Adding a custom platform",
+  "tutorial_newsite_body": "You just have to insert the URL of the website you want to follow here, and click the \"Subscribe\" button.",
+  "tutorial_end_title": "End",
+  "tutorial_end_body": "Now, you're good to go!<br>Don't hesitate to contact your webmaster if you need assistance :)",
+  "tutorial_buttons_exit": "Exit tutorial mode",
+  "tutorial_buttons_previous": "Previous",
+  "tutorial_buttons_next": "Next"
 }

@@ -31,6 +31,15 @@ Universe.i18n = (function() {
 		notification_running_text: ''
 	};
 
+	// variable containing messages for the tutorial mode
+	_this.tutorialMessages = {
+		buttons: {
+			exit: '',
+			previous: '',
+			next: ''
+		}
+	};
+
 	// loading the language selector
 	(function(){
 
@@ -109,6 +118,45 @@ Universe.i18n = (function() {
 		// loading in memory messages for notifications
 		_this.notificationMessages.notification_running_title = json['notification_application_still_running_title'];
 		_this.notificationMessages.notification_running_text = json['notification_application_still_running_text'];
+
+		// loading in memory messages for the tutorial mode
+		_this.tutorialMessages = {
+			main: {
+				title: json['tutorial_main_title'],
+				body: json['tutorial_main_body']
+			},
+			menu: {
+				title: json['tutorial_menu_title'],
+				body: json['tutorial_menu_body']
+			},
+			section: {
+				title: json['tutorial_section_title'],
+				body: json['tutorial_section_body']
+			},
+			delsite: {
+				title: json['tutorial_delsite_title'],
+				body: json['tutorial_delsite_body']
+			},
+			addsite: {
+				title: json['tutorial_addsite_title'],
+				body: json['tutorial_addsite_body']
+			},
+			newsite: {
+				title: json['tutorial_newsite_title'],
+				body: json['tutorial_newsite_body']
+			},
+			end: {
+				title: json['tutorial_end_title'],
+				body: json['tutorial_end_body']
+			},
+
+			buttons: {
+				exit: json['tutorial_buttons_exit'],
+				previous: json['tutorial_buttons_previous'],
+				next: json['tutorial_buttons_next']
+			}
+		};
+
 	};
 
 	return _this;

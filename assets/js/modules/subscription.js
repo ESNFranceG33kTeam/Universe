@@ -15,10 +15,13 @@ Universe.subscription = (function () {
 	var new_url = document.getElementById('subscription_placeholder');
 	var new_site_error = document.getElementById('subscription_text');
 
-	// getter
+	// getters
 	_this.get_new_site_window = function() {
 		return new_site_window;
 	};
+	_this.get_new_url = function() {
+		return new_url;
+	}
 
 	/**
 	  * This function makes the subscription window appear.

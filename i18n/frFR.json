@@ -11,5 +11,23 @@
   "subscription_error_url_not_valid": "L'URL entré n'est pas valide.",
 
   "notification_application_still_running_title": "Ninja !",
-  "notification_application_still_running_text": "L'appli tourne toujours en arrière-plan."
+  "notification_application_still_running_text": "L'appli tourne toujours en arrière-plan.",
+
+  "tutorial_main_title": "Universe: mode tutoriel",
+  "tutorial_main_body": "Bienvenue sur Universe ! Ceci est un mode tutoriel, qui explique rapidement comment fonctionne l'application. Tu peux le relancer à n'importe quel moment, en cliquant sur ce logo.",
+  "tutorial_menu_title": "Menu de navigation",
+  "tutorial_menu_body": "Voici le menu de navigation, c'est là que tu pourras retrouver tous tes plateformes ESN préférées !",
+  "tutorial_section_title": "Plateformes",
+  "tutorial_section_body": "Ceci est une plateforme principale de ton application. Pour l'afficher, il te suffit de faire un clic gauche dessus.",
+  "tutorial_delsite_title": "Supprimer une plateforme",
+  "tutorial_delsite_body": "Si tu veux supprimer une plateforme, fais un clic droit dessus et clic gauche sur le bouton de suppression qui est apparu.<br><u>Note cependant qu'il est impossible de supprimer une plateforme principale de ton application.</u>",
+  "tutorial_addsite_title": "Ajouter une nouvelle plateforme",
+  "tutorial_addsite_body": "Si tu veux ajouter une nouvelle source d'informations, tu as juste à cliquer ce bouton !",
+  "tutorial_newsite_title": "Ajouter une nouvelle plateforme",
+  "tutorial_newsite_body": "Ensuite, copie-colle ici l'URL du site que tu veux ajouter, puis clique sur le bouton \"S'abonner\".",
+  "tutorial_end_title": "Fin",
+  "tutorial_end_body": "Tu sais tout sur Universe !<br>N'hésite pas à contacter ton WPA si tu as besoin d'aide :)",
+  "tutorial_buttons_exit": "Fermer le mode tutoriel",
+  "tutorial_buttons_previous": "Précédent",
+  "tutorial_buttons_next": "Suivant"
 }
