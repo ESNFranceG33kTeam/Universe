@@ -125,7 +125,8 @@ Universe.commons = (function(){
 					}],
 					title: 'Browsing menu',
 					body: 'This is the browsing menu, where you can find all your favourites ESN platforms!'
-				}
+				},
+				config: {borders: {radius: 2}}
 			},
 			'section', {
 				element: exampleButton,
