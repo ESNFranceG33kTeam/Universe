@@ -28,7 +28,9 @@ Universe.i18n = (function() {
 	// variable containing messages for notifications
 	_this.notificationMessages = {
 		notification_running_title: '',
-		notification_running_text: ''
+		notification_running_text: '',
+		new_notification_title: '',
+		new_notification_text: ''
 	};
 
 	// variable containing messages for the tutorial mode
@@ -118,6 +120,8 @@ Universe.i18n = (function() {
 		// loading in memory messages for notifications
 		_this.notificationMessages.notification_running_title = json['notification_application_still_running_title'];
 		_this.notificationMessages.notification_running_text = json['notification_application_still_running_text'];
+		_this.notificationMessages.new_notification_text = json['new_notification_title'];
+		_this.notificationMessages.new_notification_title = json['new_notification_text'];
 
 		// loading in memory messages for the tutorial mode
 		_this.tutorialMessages = {

@@ -12,6 +12,8 @@
 
   "notification_application_still_running_title": "Ninja !",
   "notification_application_still_running_text": "L'appli tourne toujours en arrière-plan.",
+  "new_notification_title": "Universe : notification !",
+  "new_notification_text": "Des nouvelles sont arrivées sur",
 
   "tutorial_main_title": "Universe: mode tutoriel",
   "tutorial_main_body": "Bienvenue sur Universe ! Ceci est un mode tutoriel, qui explique rapidement comment fonctionne l'application. Tu peux le relancer à n'importe quel moment, en cliquant sur ce logo.",

@@ -27,8 +27,8 @@ Universe.notification = (function () {
 	};
 
 	function send_notification(site) {
-		new Notification('Your Universe has news for you!', {
-			body: 'News just arrived on ' + site.name + '!',
+		new Notification(Universe.i18n.notificationMessages.new_notification_title, {
+			body: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name,
 			icon: site.image_url
 		});
 	}
