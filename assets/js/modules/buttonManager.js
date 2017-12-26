@@ -180,8 +180,10 @@ Universe.menu.buttonManager = (function () {
 	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
-	_this.update_button_image = function(url, image_url) {
+	_this.update_button_image = function(site, image_url) {
+		let url = site.url.hashCode();
 		let node = html_buttons.getElement(url);
+		site.image_url = image_url;
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
 	};
 

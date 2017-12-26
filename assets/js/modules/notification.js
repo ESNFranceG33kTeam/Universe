@@ -12,10 +12,11 @@ Universe.notification = (function () {
 	var _this = {};
 
 	ipc.on('exit-notification' , function(){
-		new Notification(Universe.i18n.notificationMessages.notification_running_text, {
-			body: Universe.i18n.notificationMessages.notification_running_title,
+		new Notification(Universe.i18n.notificationMessages.notification_running_title, {
+			body: Universe.i18n.notificationMessages.notification_running_text,
 			icon: 'assets/img/icons/star.png'
 		});
+		Universe.frameManager.show_home();
 	});
 
 	_this.testNotification = function() {
@@ -25,6 +26,13 @@ Universe.notification = (function () {
 		});
 	};
 
+	function send_notification(site) {
+		new Notification('Your Universe has news for you!', {
+			body: 'News just arrived on ' + site.name + '!',
+			icon: site.image_url
+		});
+	}
+
 
 	/**
 	  * This function creates notification on a website node, to signal
@@ -33,7 +41,10 @@ Universe.notification = (function () {
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/
-	_this.add_notification_on_site = function(url) {
+	_this.add_notification_on_site = function(site) {
+
+		console.log(site);
+		let url = site.url.hashCode();
 
 		// check if the notification span exists
 		let component = document.getElementById(url);
@@ -50,6 +61,8 @@ Universe.notification = (function () {
 			spa.className = 'new_item';
 			component.appendChild(spa);
 		}
+
+		send_notification(site);
 
 		/*
 		Disabling notifications count :

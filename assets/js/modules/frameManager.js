@@ -125,18 +125,15 @@ Universe.frameManager = (function(){
 			Universe.notification.remove_notification_from_site(url.hashCode());
 		});
 		frame.addEventListener('page-title-updated', () => {
+			if(!frame_is_focused(site.url.hashCode()) && is_ready_to_display())
+				Universe.notification.add_notification_on_site(site);
+
 			// updates the application tooltip
 			Universe.storage.save_site_title(site, frame.getTitle());
-
-			// TODO to fix, some sites will change title several times for one only
-			// notification (eg. Facebook when you receive a Messenger message)
-
-			if(!frame_is_focused(site.url.hashCode()) && is_ready_to_display())
-				Universe.notification.add_notification_on_site(site.url.hashCode());
 		});
 		frame.addEventListener('page-favicon-updated', (e) => {
 			// update the button image
-			Universe.menu.buttonManager.update_button_image(url.hashCode(), e.favicons[0]);
+			Universe.menu.buttonManager.update_button_image(site, e.favicons[0]);
 		});
 		frame.addEventListener('mousedown', () => {
 			Universe.subscription.reset()
