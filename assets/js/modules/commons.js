@@ -44,7 +44,8 @@ Universe.commons = (function(){
 			for(let i in new_sites) {
 				let new_site = {
 					name: i,
-					url: new_sites[i]
+					url: new_sites[i],
+					muted: false
 				};
 				Universe.menu.buttonManager.create_new_button(new_site, true);
 				Universe.frameManager.create_new_frame(new_site, true);

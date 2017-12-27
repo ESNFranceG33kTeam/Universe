@@ -43,6 +43,7 @@ Universe.notification = (function () {
 	  **/
 	_this.add_notification_on_site = function(site) {
 
+		console.log(site);
 		let url = site.url.hashCode();
 
 		// check if the notification span exists
@@ -61,8 +62,6 @@ Universe.notification = (function () {
 			component.appendChild(spa);
 		}
 
-		send_notification(site);
-
 		/*
 		Disabling notifications count :
 		to fix, some sites will change title several times for one only
@@ -74,6 +73,8 @@ Universe.notification = (function () {
 			spa.innerText = parseInt(spa.innerText) + 1;
 		}
 		*/
+		if(!site.muted)
+			send_notification(site);
 
 	}
 

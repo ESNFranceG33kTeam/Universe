@@ -216,7 +216,8 @@ Universe.storage = (function () {
 			let site = {
 				name: get_site_name(url),
 				url: url,
-				image_url: url
+				image_url: url,
+				muted: false
 			}
 
 			// checking if the site isn't already registered
