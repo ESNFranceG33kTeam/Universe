@@ -69,13 +69,52 @@ Universe.menu.buttonManager = (function () {
 		// creating the mute button
 		let muteBtn = document.createElement('span');
 		muteBtn.className = 'mute';
+		if(site.muted)
+			muteBtn.className = 'mute muteActivated';
+		else
+			muteBtn.className = 'mute';
 		button.appendChild(muteBtn);
 
+		muteBtn.addEventListener('click', (e) => {
+			e.stopPropagation();
+			site.muted = !site.muted;
+			if(site.muted)
+				muteBtn.className = 'mute mute-show muteActivated';
+			else
+				muteBtn.className = 'mute mute-show';
+		});
+
+
+		// enabling the 'settings' mode
 		button.addEventListener('contextmenu', () => {
-			muteBtn.className = 'mute mute-show';
-			setTimeout(() => {
-				muteBtn.className = 'mute';
-			}, 2000);
+
+			let deleteBtn = button.getElementsByClassName('delete')[0];
+
+			if(button.classList.contains('sectionSettings')) {
+
+				if(site.muted)
+					muteBtn.className = 'mute muteActivated';
+				else
+					muteBtn.className = 'mute';
+
+				if(!is_main_website) {
+					deleteBtn.className = 'delete';
+					button.className = 'section added_site';
+				}else
+					button.className = 'section';
+
+
+			} else {
+
+				if(!is_main_website)
+					deleteBtn.className = 'delete delete-show';
+
+				if(site.muted)
+					muteBtn.className = 'mute mute-show muteActivated';
+				else
+					muteBtn.className = 'mute mute-show';
+				button.className = 'sectionSettings';
+			}
 		});
 
 
@@ -119,17 +158,6 @@ Universe.menu.buttonManager = (function () {
 
 			}, false);
 			button.appendChild(span);
-
-
-			button.addEventListener('contextmenu', function(){
-
-				span.className = 'delete delete-show';
-				setTimeout(() => {
-					span.className = 'delete';
-				}, 2000);
-				cpt = 0;
-
-			}, false);
 		}
 
 

@@ -145,6 +145,48 @@ button:hover {
 	transform: scale(0.9);
 }
 
+/*
+	c/c
+*/
+
+.sectionSettings {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+
+	background-color: lightblue;
+	border-radius: 10px;
+	list-style: none;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 70%;
+	background-image: url('../img/sections/star.png');
+}
+
+.sectionSettings div {
+	display: block;
+	background-color: rgb(243, 123, 32);
+	color: #fff;
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 6px;
+	white-space: nowrap;
+
+	position: absolute;
+	z-index: 3;
+
+	top: 12px;
+    left: 110%;
+}
+
+.sectionSettings:hover {
+	cursor: pointer;
+}
+
+
+
 .section div {
 	display: none;
 	background-color: rgb(235, 10, 141);
@@ -251,19 +293,22 @@ button:hover {
     background-position: center;
     background-size: 100%;
 
-	padding: 1px 3px;
-	width: 6px;
-	height: 6px;
+	width: 17px;
+	height: 17px;
 
 	position: absolute;
 	top: -3px;
 	right: -3px;
 
-	/*opacity: 0;
-	visibility: hidden;*/
+	opacity: 0;
+	visibility: hidden;
+}
 
-	visibility: visible;
-	opacity: 1;
+.muteActivated {
+	background: #4285f4 url('../img/muted.png');
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 .delete-show, .mute-show {
