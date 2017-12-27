@@ -65,6 +65,20 @@ Universe.menu.buttonManager = (function () {
 			Universe.frameManager.show_frame(tmp + '_frame');
 		};
 
+
+		// creating the mute button
+		let muteBtn = document.createElement('span');
+		muteBtn.className = 'mute';
+		button.appendChild(muteBtn);
+
+		button.addEventListener('contextmenu', () => {
+			muteBtn.className = 'mute mute-show';
+			setTimeout(() => {
+				muteBtn.className = 'mute';
+			}, 2000);
+		});
+
+
 		if(!is_main_website) {
 
 			// creating the delete button
