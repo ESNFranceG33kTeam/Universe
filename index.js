@@ -85,8 +85,6 @@ function createWindow () {
 
 	// show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
-		// building the interface
-		mainWindow.webContents.send('build-interface');
 
 		// initializing parameters
 		mainWindow.webContents.send('get-params');
@@ -109,6 +107,10 @@ function createWindow () {
 
 			// adding the websites
 			var sites = parameters.sites;
+
+
+			// building the interface
+			mainWindow.webContents.send('build-interface');
 		});
 	});
 
