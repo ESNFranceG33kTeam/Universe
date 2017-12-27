@@ -167,7 +167,14 @@ button:hover {
 
 .sectionSettings div {
 	display: block;
-	background-color: rgb(243, 123, 32);
+
+	background-color: rgb(45, 53, 145);
+
+/*
+	background: -webkit-linear-gradient(rgb(122, 192, 67), rgb(45, 53, 145));
+	background:    -moz-linear-gradient(rgb(122, 192, 67), rgb(45, 53, 145));
+	background:         linear-gradient(rgb(122, 192, 67), rgb(45, 53, 145));
+*/
 	color: #fff;
 	text-align: center;
 	padding: 5px 10px;
@@ -178,7 +185,7 @@ button:hover {
 	z-index: 3;
 
 	top: 12px;
-    left: 110%;
+    left: 130%;
 }
 
 .sectionSettings:hover {

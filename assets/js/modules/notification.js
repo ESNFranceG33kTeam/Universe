@@ -43,7 +43,6 @@ Universe.notification = (function () {
 	  **/
 	_this.add_notification_on_site = function(site) {
 
-		console.log(site);
 		let url = site.url.hashCode();
 
 		// check if the notification span exists
@@ -52,10 +51,10 @@ Universe.notification = (function () {
 			return ;
 		}
 
-		let child_nodes = component.getElementsByTagName('SPAN');
+		let child_nodes = component.getElementsByClassName('new_item');
 
 		// create it if not
-		if(child_nodes.length <= 1) {
+		if(child_nodes.length === 0) {
 			let spa = document.createElement("SPAN");
 			spa.innerText = '!';
 			spa.className = 'new_item';
