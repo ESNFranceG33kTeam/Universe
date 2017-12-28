@@ -76,6 +76,13 @@ Universe.commons = (function(){
 		let translations = Universe.i18n.tutorialMessages;
 		let new_url = Universe.subscription.get_new_url();
 
+		let targetBtn = document.createElement('div');
+		targetBtn.className = 'tutorialSectionFocus';
+		let icons = document.getElementById('icons');
+		icons.appendChild(targetBtn);
+		let mute = exampleButton.getElementsByClassName('mute')[0];
+		console.log(mute);
+
 		span = document.createElement('span');
 		span.className = 'delete';
 		span.innerText = 'x';
@@ -83,7 +90,7 @@ Universe.commons = (function(){
 
 		SpotlightJS.config({
 			message: {
-				positions: ['dir_top_middle', 'dir_bottom_middle', 'dir_right_middle']
+				positions: ['dir_top_center', 'dir_bottom_center', 'dir_right_middle']
 			},
 			arrow: {size: 11},
 			navigation: {loop: true, await: false},
@@ -96,6 +103,7 @@ Universe.commons = (function(){
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
+							icons.removeChild(targetBtn);
 							SpotlightJS.destroy();
 						}
 					},{
@@ -144,6 +152,9 @@ Universe.commons = (function(){
 					{
 						text: translations.buttons.next,
 						click: function () {
+							exampleButton.className = 'sectionSettings';
+							mute.className = 'mute mute-show';
+							console.log(exampleButton);
 							span.className = 'delete delete-show';
 							SpotlightJS.next();
 						}
@@ -153,14 +164,16 @@ Universe.commons = (function(){
 				},
 				config: {borders: {radius: 10}}
 			},
-			'delsite', {
-				element: span,
+			'settingsMode', {
+				element: targetBtn,
 				speed: 600,
 				message: {
 					icon: path.join('assets','img','icons','star.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
+							exampleButton.className = 'section';
+							mute.className = 'mute';
 							span.className = 'delete';
 							SpotlightJS.previous();
 						}
@@ -168,12 +181,14 @@ Universe.commons = (function(){
 					{
 						text: translations.buttons.next,
 						click: function () {
+							exampleButton.className = 'section';
+							mute.className = 'mute';
 							span.className = 'delete';
 							SpotlightJS.next();
 						}
 					}],
-					title: translations.delsite.title,
-					body: translations.delsite.body
+					title: translations.settingsMode.title,
+					body: translations.settingsMode.body
 				},
 				config: {borders: {radius: 2}}
 			},
@@ -185,6 +200,8 @@ Universe.commons = (function(){
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
+							exampleButton.className = 'sectionSettings';
+							mute.className = 'mute mute-show';
 							span.className = 'delete delete-show';
 							SpotlightJS.previous();
 						}
@@ -234,6 +251,7 @@ Universe.commons = (function(){
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
+							icons.removeChild(targetBtn);
 							SpotlightJS.destroy();
 						}
 					}],
@@ -248,7 +266,7 @@ Universe.commons = (function(){
 	_this.launch_tutorial_mode = function() {
 		SpotlightJS.clear();
 		init_tutorial_mode();
-		SpotlightJS.spotlight('main', 'menu', 'section', 'delsite', 'addsite', 'newsite', 'end');
+		SpotlightJS.spotlight('main', 'menu', 'section', 'settingsMode', 'addsite', 'newsite', 'end');
 	};
 
 	return _this;

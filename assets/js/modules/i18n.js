@@ -137,9 +137,9 @@ Universe.i18n = (function() {
 				title: json['tutorial_section_title'],
 				body: json['tutorial_section_body']
 			},
-			delsite: {
-				title: json['tutorial_delsite_title'],
-				body: json['tutorial_delsite_body']
+			settingsMode: {
+				title: json['tutorial_settings_mode_title'],
+				body: json['tutorial_settings_mode_body']
 			},
 			addsite: {
 				title: json['tutorial_addsite_title'],
