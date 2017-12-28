@@ -166,28 +166,26 @@
     top: 0;
     left: 0;
 
-
     overflow: visible;
-
+    border-collapse: collapse;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
-
-
-}
-
-.spt-helper-wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
 }
 
 /* Focus fix (for z-index) */
 .spt-position-fix {
     position: relative;
+}
+
+/* Overflow wrapper */
+.spt-overflow-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Focus message layer */
@@ -276,6 +274,7 @@
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
     border: 1px solid #cacaca;
     border-bottom: none;
     border-right: none;
