@@ -43,7 +43,6 @@ Universe.notification = (function () {
 	  **/
 	_this.add_notification_on_site = function(site) {
 
-		console.log(site);
 		let url = site.url.hashCode();
 
 		// check if the notification span exists

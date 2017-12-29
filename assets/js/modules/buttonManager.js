@@ -82,7 +82,8 @@ Universe.menu.buttonManager = (function () {
 				muteBtn.className = 'mute mute-show muteActivated';
 			else
 				muteBtn.className = 'mute mute-show';
-			console.log('Pop-up notifications are muted=' + site.muted + ' for webpage ' + site.url + '.');
+
+			Universe.storage.save_site(site);
 		});
 
 

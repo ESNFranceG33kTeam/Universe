@@ -128,7 +128,21 @@ Universe.storage = (function () {
 				console.info('Updating the title for webpage \'' + site.url + '\'.');
 				break;
 			}
-	}
+	};
+
+	_this.save_site = function(site) {
+		let p = _this.get_parameters();
+		let sites = p.sites;
+		for(let i=0, length=sites.length; i<length; i++)
+			if(sites[i].url === site.url) {
+				sites[i] = site;
+				console.info('Saving muted=' + site.muted + ' for webpage \'' + site.url + '\'.');
+				p.sites = sites;
+				store_parameters(p);
+				break;
+			}
+	};
+
 
 	/**
 	  * This function saves user settings when the application language
