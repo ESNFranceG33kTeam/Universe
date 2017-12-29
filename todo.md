@@ -2,7 +2,7 @@
 
 - [x] Break the code into modules
 - [x] Generate documentation with [jsdoc](https://github.com/jsdoc2md/jsdoc-to-markdown/wiki)
-- [ ] Handle behaviour when no network
+- [x] Handle behaviour when no network (not necessary)
 - [ ] Generate certificates to sign the application
 
 
