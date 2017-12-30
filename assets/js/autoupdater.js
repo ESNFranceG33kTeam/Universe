@@ -3,8 +3,7 @@ const {app, autoUpdater, dialog} = require('electron');
 const version = app.getVersion();
 const platform = os.platform() + '_' + os.arch();  // usually returns darwin_64
 
-// const updaterFeedURL = 'http://esnfrance-g33kteam-universe.herokuapp.com/update/' + platform + '/' + version;
-const updaterFeedURL = 'http://esnfrance-g33kteam-universe.herokuapp.com';
+const updaterFeedURL = 'http://esnfrance-g33kteam-universe.herokuapp.com/update/' + platform + '/' + version;
 // replace updaterFeedURL with http://yourappname.herokuapp.com
 
 function appUpdater() {

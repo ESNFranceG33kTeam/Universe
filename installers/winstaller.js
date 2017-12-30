@@ -8,7 +8,7 @@ resultPromise = electronInstaller.createWindowsInstaller({
     outputDirectory: distDir,
     iconUrl: 'https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/icons/star.ico',
     setupIcon: './assets/img/icons/installerStar.ico',
-    loadingGif: './assets/img/new_section_loading.gif',
+    loadingGif: './assets/img/loading.gif',
     authors: 'ESN France - G33k Team',
     exe: 'universe.exe',
     setupExe: 'UniverseInstaller.exe',
