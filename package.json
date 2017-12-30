@@ -4,28 +4,32 @@
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
-    "package-windows": "electron-packager . universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-mac": "electron-packager . universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-linux": "electron-packager . universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "create-windows-installer": "electron-builder --ia32"
+    "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-linux": "electron-packager . Universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "create-windows-installer": "electron-builder --ia32",
+    "winstaller": "npm run package-windows && node installers/winstaller.js"
   },
   "author": "G33k Team - ESN France",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^1.7.9",
     "electron-builder": "^19.49.0",
-    "electron-packager": "^10.1.0"
+    "electron-packager": "^10.1.0",
+    "electron-winstaller": "^2.6.3"
   },
   "dependencies": {
+    "electron-is-dev": "^0.3.0",
     "electron-json-storage-sync": "^1.1.0",
+    "electron-squirrel-startup": "^1.0.0",
     "konami-code": "^0.2.1"
   },
   "build": {
     "appId": "france.esn.geekteam.universe",
     "win": {
-        "icon": "./assets/img/icons/star.ico",
-        "target": "msi",
-        "legalTrademarks": "G33k Team - ESN France - All rights reserved"
+      "icon": "./assets/img/icons/star.ico",
+      "target": "msi",
+      "legalTrademarks": "G33k Team - ESN France - All rights reserved"
     }
   }
 }
