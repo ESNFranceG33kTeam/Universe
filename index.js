@@ -97,7 +97,6 @@ app.on('activate', () => {
 });
 
 
-
 function createWindow () {
 
 	// notification icon
@@ -185,7 +184,7 @@ function createWindow () {
 			mainWindow.webContents.send('build-interface');
 
 			if(!isDev)
-				appUpdater();
+				appUpdater(mainWindow);
 		});
 	});
 

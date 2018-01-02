@@ -5,7 +5,7 @@ const platform = os.platform() + '_' + os.arch();  // usually returns darwin_64
 
 const updaterFeedURL = 'http://remyraes.com:5014/update/win32/' + version + '/stable';
 
-function appUpdater() {
+function appUpdater(mainWindow) {
 	console.log('hitting ' + updaterFeedURL);
 	autoUpdater.setFeedURL(updaterFeedURL);
 	/* Log whats happening
@@ -16,27 +16,41 @@ function appUpdater() {
 	autoUpdater.on('update-available', () => console.log('update-available'));
 	autoUpdater.on('update-not-available', () => console.log('update-not-available'));
 
+	// update downloading progress
+	autoUpdater.addListener("download-progress", function (event, bytesPerSecond, percent, total, transferred) {
+		console.log('cc');
+		mainWindow.setProgressBar(event.percent / 100);
+	});
+
 	// Ask the user if update is available
 	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-		let message = app.getName() + ' ' + releaseName + ' is now available. It will be installed the next time you (fully) restart the application.';
-		if (releaseNotes) {
-			const splitNotes = releaseNotes.split(/[^\r]\n/);
-			message += '\n\nRelease notes:\n';
-			splitNotes.forEach(notes => {
-				message += notes + '\n\n';
+
+		mainWindow.setProgressBar(0);
+		var buttons = ['Restart', 'Later'];
+		if (os.platform() === 'win32') {
+			dialog.showMessageBox(mainWindow, {
+				type: 'info',
+				buttons: buttons,
+				message: "A new update is ready to install! \n" + "Version " + releaseName + " is downloaded and will be automatically installed on restart.",
+				title: "Update"
+			}, function (buttonIndex) {
+				if (buttonIndex == 0) {
+					autoUpdater.quitAndInstall();
+					return false;
+				}
+			});
+		} else {
+			dialog.showMessageBox(mainWindow, { type: 'info',
+				buttons: buttons,
+				message: "A new update is ready to install! \n" + "Version " + releaseName + " is downloaded and will be automatically installed on restart.",
+				title: "Update"
+			}, function (buttonIndex) {
+				if (buttonIndex == 0) {
+					autoUpdater.quitAndInstall();
+					return false;
+				}
 			});
 		}
-		// Ask user to update the app
-		dialog.showMessageBox({
-			type: 'question',
-			// buttons: ['Install and Relaunch', 'Later'],
-			buttons: ['Install and Relaunch'],
-			defaultId: 0,
-			message: 'A new version of ' + app.getName() + ' has been downloaded',
-			detail: message
-		}, response => {
-			setTimeout(() => autoUpdater.quitAndInstall(), 1);
-		});
 	});
 	// init for updates
 	autoUpdater.checkForUpdates();
