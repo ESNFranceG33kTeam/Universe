@@ -43,6 +43,8 @@ function handleSquirrelEvent() {
 
   const squirrelEvent = process.argv[1];
   switch (squirrelEvent) {
+      case '--squirrel-firstrun':
+            return true;
     case '--squirrel-install':
     case '--squirrel-updated':
       // Optionally do things such as:
@@ -153,6 +155,7 @@ function createWindow () {
 
 
 	// show the window only when it's rendered
+    // TODO isn't called everytime
 	mainWindow.once('ready-to-show', () => {
 
 		// initializing parameters

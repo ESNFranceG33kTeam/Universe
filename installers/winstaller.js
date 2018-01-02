@@ -1,5 +1,4 @@
 var electronInstaller = require('electron-winstaller');
-const path = require('path');
 var distDir = '/universe-winstaller';
 
 console.log('Beginning installer creation...')
@@ -11,7 +10,7 @@ resultPromise = electronInstaller.createWindowsInstaller({
     loadingGif: './assets/img/loading.gif',
     authors: 'ESN France - G33k Team',
     exe: 'universe.exe',
-    setupExe: 'UniverseInstaller.exe',
+    setupExe: 'UniverseInstaller-' + '0.4.1' + '.exe',
     noMsi: true
   });
 

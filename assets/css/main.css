@@ -17,6 +17,9 @@
 	user-select: none;
 	cursor: default;
 	outline: none;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 }
 
 input {
