@@ -13,7 +13,6 @@ const isDev = require('electron-is-dev');
 const {appUpdater} = require('./assets/js/autoupdater');
 
 
-
 function handleSquirrelEvent() {
   if (process.argv.length === 1) {
     return false;

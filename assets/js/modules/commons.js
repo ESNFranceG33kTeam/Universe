@@ -2,6 +2,7 @@
 const KonamiCode = require( "konami-code" );
 const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
+const app = require('electron').remote;
 const remote = require('electron').remote;
 const storage = remote.require('electron-json-storage-sync');
 const path = require('path');
@@ -26,11 +27,27 @@ String.prototype.hashCode = function() {
 Universe.commons = (function(){
 	var _this = {};
 
+	// version number indicator
+	let versionIndicator = document.getElementById('version');
+
+	ipc.on('dlUpdate' , function(event, data){
+		updateVersionIndicator(data);
+	});
+
+	function updateVersionIndicator(data) {
+		if(data.downloading)
+			versionIndicator.innerText += ' - downloading a new version...'
+		else
+			versionIndicator.innerText = data.message;
+	};
+
+
 	// application components
 	_this.main_wrapper = document.getElementById('main_wrapper');
 
-
 	_this.build = function(sites) {
+
+		versionIndicator.innerText = app.app.getVersion();
 
 		// build main sites
 		fs.readFile(path.join(__dirname, '/websites.json'), 'utf8', function (err,data) {

@@ -13,7 +13,13 @@ function appUpdater(mainWindow) {
 	You could alsoe use nslog or other logging to see what's happening */
 	autoUpdater.on('error', err => console.log(err));
 	autoUpdater.on('checking-for-update', () => console.log('checking-for-update'));
-	autoUpdater.on('update-available', () => console.log('update-available'));
+	autoUpdater.on('update-available', () => {
+		mainWindow.webContents.send('dlUpdate',
+		{
+			downloading: true
+		});
+		console.log('update-available');
+	});
 	autoUpdater.on('update-not-available', () => console.log('update-not-available'));
 
 	// update downloading progress
@@ -24,6 +30,12 @@ function appUpdater(mainWindow) {
 
 	// Ask the user if update is available
 	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+
+		mainWindow.webContents.send('dlUpdate',
+		{
+			downloading: false,
+			message: 'Version ' + releaseName + ' is available.'
+		});
 
 		mainWindow.setProgressBar(0);
 		var buttons = ['Restart', 'Later'];
