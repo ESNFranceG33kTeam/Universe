@@ -24,7 +24,7 @@
 
 input {
 	padding: 5px;
-	margin-right: 18px;
+	margin-right: 17px;
 	height: 38px;
 
 	cursor: text;
@@ -332,49 +332,18 @@ button:hover {
 	visibility: visible;
 	opacity: 1;
 }
-/*
-#home_btn {
-	background-image: url('../img/sections/star.png');
-}
-#tuto_btn {
-	background-image: url('../img/sections/star.png');
-}
-#excel_btn {
-	background-image: url('../img/sections/new/excel_dor.png');
-}
-#logoinserter_btn {
-	background-image: url('../img/sections/new/logoinserter.png');
-}
-#wiki_btn {
-	background-image: url('../img/sections/new/wiki.png');
-}
-#galaxy_btn {
-	background-image: url('../img/sections/new/galaxy.png');
-}
-#buddysystem_btn {
-	background-image: url('../img/sections/new/buddysystem.png');
-}
-#slack_btn {
-	background-image: url('../img/sections/new/slack.png');
-}
-#mb_btn {
-	background-image: url('../img/sections/new/gestion.png');
-}*/
 
 hr {
 	border: 1px solid #e0e0e0;
 }
 
 
-.sideinfo {
+.authors {
 	color: #a0a0a0;
 	position: absolute;
     bottom: 0;
-}
-
-.sideinfo b {
-	font-size: 1.2em;
-	font-weight: bolder;
+	left: 0;
+	margin: 20px;
 }
 
 

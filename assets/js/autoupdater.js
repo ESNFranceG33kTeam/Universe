@@ -1,9 +1,10 @@
 const os = require('os');
 const {app, autoUpdater, dialog} = require('electron');
 const version = app.getVersion();
-const platform = os.platform() + '_' + os.arch();  // usually returns darwin_64
+const osis = os.platform();
+let platform = os.platform() + '_' + os.arch();
 
-const updaterFeedURL = 'http://remyraes.com:5014/update/win32/' + version + '/stable';
+const updaterFeedURL = 'http://remyraes.com:5014/update/' + platform + '/' + version + '/stable';
 
 function appUpdater(mainWindow) {
 	console.log('hitting ' + updaterFeedURL);
