@@ -1,7 +1,8 @@
 {
+    "PalloSpace": "http://pallospace.ixesn.fr",
+    "Galaxy": "http://galaxy.esn.org"
     "Wiki ESN France": "http://wiki.ixesn.fr",
     "Excel d'or": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false",
-    "BuddySystem": "http://buddysystem.eu/",
-    "Module bénévoles": "http://gestion.ixesn.fr/connect.php",
+    "BuddySystem": "https://buddysystem.eu/choose",
     "Slack": "https://communauteixesn.slack.com"
 }
