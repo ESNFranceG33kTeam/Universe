@@ -148,12 +148,8 @@ function createWindow () {
 
 		show: false});
 	app.setApplicationMenu(null);
-	mainWindow.loadURL(`file://${__dirname}/index.html`);
-	// mainWindow.webContents.openDevTools();
 
-
-	// show the window only when it's rendered
-    // TODO isn't called everytime
+    // show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
 
 		// initializing parameters
@@ -186,6 +182,9 @@ function createWindow () {
 				appUpdater(mainWindow);
 		});
 	});
+
+	mainWindow.loadURL(`file://${__dirname}/index.html`);
+	// mainWindow.webContents.openDevTools();
 
 
 	// hide the main window when the user clicks the 'close' button

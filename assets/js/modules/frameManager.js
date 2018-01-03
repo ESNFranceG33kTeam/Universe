@@ -173,15 +173,15 @@ Universe.frameManager = (function(){
 		Universe.commons.main_wrapper.removeChild(comp);
 	};
 
-	_this.reset_frame = function(url) {
-		console.log(url.hashCode() + '_frame');
+	_this.reset_frame = function(site) {
+		let url = site.url;
 		let frame = document.getElementById(url.hashCode() + '_frame');
 		if(!frame) {
 			console.warn('Frame ' + url + ' not found.');
 			return;
 		}
 		frame.loadURL(url);
-		console.info('Frame ' + url + ' has been reset.');
+		console.info('Frame ' + site.name + ' has been reset.');
 	};
 
 

@@ -98,7 +98,6 @@ Universe.commons = (function(){
 		let icons = document.getElementById('icons');
 		icons.appendChild(targetBtn);
 		let mute = exampleButton.getElementsByClassName('mute')[0];
-		console.log(mute);
 
 		span = document.createElement('span');
 		span.className = 'delete';
@@ -170,9 +169,6 @@ Universe.commons = (function(){
 						text: translations.buttons.next,
 						click: function () {
 							exampleButton.className = 'sectionSettings';
-							mute.className = 'mute mute-show';
-							console.log(exampleButton);
-							span.className = 'delete delete-show';
 							SpotlightJS.next();
 						}
 					}],
@@ -190,8 +186,6 @@ Universe.commons = (function(){
 						text: translations.buttons.previous,
 						click: function () {
 							exampleButton.className = 'section';
-							mute.className = 'mute';
-							span.className = 'delete';
 							SpotlightJS.previous();
 						}
 					},
@@ -199,8 +193,6 @@ Universe.commons = (function(){
 						text: translations.buttons.next,
 						click: function () {
 							exampleButton.className = 'section';
-							mute.className = 'mute';
-							span.className = 'delete';
 							SpotlightJS.next();
 						}
 					}],
@@ -218,8 +210,6 @@ Universe.commons = (function(){
 						text: translations.buttons.previous,
 						click: function () {
 							exampleButton.className = 'sectionSettings';
-							mute.className = 'mute mute-show';
-							span.className = 'delete delete-show';
 							SpotlightJS.previous();
 						}
 					},

@@ -86,8 +86,7 @@ Universe.menu.buttonManager = (function () {
 
 		resetBtn.addEventListener('click', (e) => {
 			e.stopPropagation();
-			console.log(site.url);
-			Universe.frameManager.reset_frame(site.url);
+			Universe.frameManager.reset_frame(site);
 			button.className = (!is_main_website) ? 'section added_site' : 'section';
 		});
 
