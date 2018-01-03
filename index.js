@@ -77,6 +77,20 @@ function handleSquirrelEvent() {
 
 var mainWindow;
 app.setAppUserModelId('france.esn.geekteam.universe');
+const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+        if (mainWindow.isMinimized())
+            mainWindow.restore()
+        mainWindow.show();
+        mainWindow.focus();
+    }
+});
+
+if (isSecondInstance) {
+    app.quit();
+}
+
 
 // create the display window as soon as the application is ready
 app.on('ready', createWindow);
