@@ -68,7 +68,7 @@ Universe.menu.buttonManager = (function () {
 
 		// creating the mute button
 		let muteBtn = document.createElement('span');
-		muteBtn = (site.muted) ? 'mute muteActivated' : 'mute';
+		muteBtn.className = (site.muted) ? 'mute muteActivated' : 'mute';
 		button.appendChild(muteBtn);
 
 		muteBtn.addEventListener('click', (e) => {
@@ -217,6 +217,15 @@ Universe.menu.buttonManager = (function () {
 		let node = html_buttons.getElement(url);
 		site.image_url = image_url;
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
+	};
+
+	_this.add_loader = function(site) {
+		let comp = html_buttons.getElement(site.url.hashCode());
+		comp.className += ' sectionLoading';
+	};
+	_this.remove_loader = function(site, is_main_website) {
+		let comp = html_buttons.getElement(site.url.hashCode());
+		comp.className = is_main_website ? 'section' : 'section added_site';
 	};
 
 

@@ -262,6 +262,21 @@ button:hover {
 	background-color: rgb(243, 123, 32);
 }
 
+.sectionLoading {
+	animation: loading 2s infinite;
+}/*
+blue: rgb(39, 171, 226) / #27ABE2
+darkblue: rgb(45, 53, 145)
+green: rgb(122, 192, 67) / #7AC043
+orange: rgb(243, 123, 32) / #F37B20
+pink: rgb(235, 10, 141) / #EB0A8D*/
+@keyframes loading {
+    0%   {background-color: rgb(121, 187, 255);}
+	25%	 {background-color: rgb(122, 192, 67);}
+	50%	 {background-color: rgb(243, 123, 32);}
+    75% {background-color: rgb(235, 10, 141);}
+	100% {background-color: rgb(121, 187, 255);}
+}
 
 .subscribe:hover {
 	background-color: lightgray;

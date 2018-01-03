@@ -14,4 +14,4 @@
 - [ ] Review the function checking if the side menu is overflowed
 - [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
 - [ ] Generate certificates to sign the application
-- [ ] Add a loading indicator on platforms
+- [x] Add a loading indicator on platforms

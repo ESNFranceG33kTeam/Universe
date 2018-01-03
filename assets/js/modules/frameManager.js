@@ -137,6 +137,12 @@ Universe.frameManager = (function(){
 			// hiding the subscription window
 			Universe.subscription.reset();
 		});
+		frame.addEventListener('did-start-loading', () => {
+			Universe.menu.buttonManager.add_loader(site);
+		});
+		frame.addEventListener('did-stop-loading', () => {
+			Universe.menu.buttonManager.remove_loader(site, is_main_website);
+		});
 
 		Universe.commons.main_wrapper.appendChild(frame);
 		Universe.frameManager.load_all_frames();
