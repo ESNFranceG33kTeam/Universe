@@ -168,6 +168,27 @@ Universe.frameManager = (function(){
 		Universe.commons.main_wrapper.removeChild(comp);
 	};
 
+	_this.reset_frame = function(url) {
+		console.log(url.hashCode() + '_frame');
+		let frame = document.getElementById(url.hashCode() + '_frame');
+		if(!frame) {
+			console.warn('Frame ' + url + ' not found.');
+			return;
+		}
+		frame.loadURL(url);
+		console.info('Frame ' + url + ' has been reset.');
+	};
+/*
+	_this.reset_frame = function(url) {
+		let node = document.getElementById((''+url).hashCode() + '_frame');
+		if(node === null) {
+			console.warn('Frame ' + url + ' not found.');
+			return;
+		}
+		node.loadURL(url);
+		console.info('Frame ' + url + ' has been reset.');
+	};*/
+
 	(function initialize_listeners_on_frames() {
 		// listeners on the application frames
 		for(let i=0; i<frames_count; i++) {

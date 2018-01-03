@@ -87,6 +87,18 @@ Universe.menu.buttonManager = (function () {
 		});
 
 
+		// creating the reset button
+		let resetBtn = document.createElement('span');
+		resetBtn.className = 'reset';
+		button.appendChild(resetBtn);
+
+		resetBtn.addEventListener('click', () => {
+			console.log(site.url);
+			Universe.frameManager.reset_frame(site.url);
+			button.className = (!is_main_website) ? 'section added_site' : 'section';
+		});
+
+
 		// enabling the 'settings' mode
 		button.addEventListener('contextmenu', () => {
 

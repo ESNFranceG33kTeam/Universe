@@ -333,6 +333,31 @@ button:hover {
 	opacity: 1;
 }
 
+
+.reset {
+	border-radius: 2px;
+	background: #ff9b00 url('../img/reset.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+
+	width: 17px;
+	height: 17px;
+
+	position: absolute;
+	bottom: -3px;
+	left: -3px;
+
+	opacity: 0;
+	visibility: hidden;
+}
+
+.sectionSettings .reset {
+	visibility: visible;
+	opacity: 1;
+}
+
+
 hr {
 	border: 1px solid #e0e0e0;
 }
