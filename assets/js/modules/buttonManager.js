@@ -68,21 +68,13 @@ Universe.menu.buttonManager = (function () {
 
 		// creating the mute button
 		let muteBtn = document.createElement('span');
-		muteBtn.className = 'mute';
-		if(site.muted)
-			muteBtn.className = 'mute muteActivated';
-		else
-			muteBtn.className = 'mute';
+		muteBtn = (site.muted) ? 'mute muteActivated' : 'mute';
 		button.appendChild(muteBtn);
 
 		muteBtn.addEventListener('click', (e) => {
 			e.stopPropagation();
 			site.muted = !site.muted;
-			if(site.muted)
-				muteBtn.className = 'mute mute-show muteActivated';
-			else
-				muteBtn.className = 'mute mute-show';
-
+			muteBtn.className = (site.muted) ? 'mute muteActivated' : 'mute';
 			Universe.storage.save_site(site);
 		});
 
@@ -92,7 +84,8 @@ Universe.menu.buttonManager = (function () {
 		resetBtn.className = 'reset';
 		button.appendChild(resetBtn);
 
-		resetBtn.addEventListener('click', () => {
+		resetBtn.addEventListener('click', (e) => {
+			e.stopPropagation();
 			console.log(site.url);
 			Universe.frameManager.reset_frame(site.url);
 			button.className = (!is_main_website) ? 'section added_site' : 'section';
@@ -102,31 +95,14 @@ Universe.menu.buttonManager = (function () {
 		// enabling the 'settings' mode
 		button.addEventListener('contextmenu', () => {
 
-			let deleteBtn = button.getElementsByClassName('delete')[0];
-
 			if(button.classList.contains('sectionSettings')) {
 
-				if(site.muted)
-					muteBtn.className = 'mute muteActivated';
-				else
-					muteBtn.className = 'mute';
-
 				if(!is_main_website) {
-					deleteBtn.className = 'delete';
 					button.className = 'section added_site';
 				}else
 					button.className = 'section';
 
-
 			} else {
-
-				if(!is_main_website)
-					deleteBtn.className = 'delete delete-show';
-
-				if(site.muted)
-					muteBtn.className = 'mute mute-show muteActivated';
-				else
-					muteBtn.className = 'mute mute-show';
 				button.className = 'sectionSettings';
 			}
 		});

@@ -328,11 +328,6 @@ button:hover {
     background-size: 100%;
 }
 
-.delete-show, .mute-show {
-	visibility: visible;
-	opacity: 1;
-}
-
 
 .reset {
 	border-radius: 2px;
@@ -352,7 +347,7 @@ button:hover {
 	visibility: hidden;
 }
 
-.sectionSettings .reset {
+.sectionSettings .reset, .sectionSettings .delete, .sectionSettings .mute, .sectionSettings .muteActivated {
 	visibility: visible;
 	opacity: 1;
 }
