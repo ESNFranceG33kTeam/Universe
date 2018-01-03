@@ -1,7 +1,8 @@
 var Universe = Universe || {};
 
 /**
-  * This module contains all operations linked to manipulation
+  * This module contains all operations linked to manipulation of the setApplicationMenu
+  * frames.
   * @module Universe/frameManager
   * @author Rémy Raes
   **/
@@ -11,7 +12,6 @@ Universe.frameManager = (function(){
 	var frames = document.getElementsByTagName('webview');
 	var home = document.getElementById('home');
 	var loadingBar = new ldBar("#loading_bar");
-	// loadingBar.set(0);
 
 	var frames_count = frames.length;
 	var frames_loaded = 0;
@@ -72,7 +72,7 @@ Universe.frameManager = (function(){
 		home.className = 'category frame';
 		_this.load_all_frames();
 		for(let i=0, length=frames.length; i<length; i++)
-				frames[i].className = 'frame';
+			frames[i].className = 'frame';
 	}
 
 
@@ -109,10 +109,8 @@ Universe.frameManager = (function(){
 		let frame = document.createElement('webview');
 		frame.id = url.hashCode() + '_frame';
 		frame.className = 'frame';
-		if(is_main_website)
-			frame.setAttribute('data-origin', 'application');
-		else
-			frame.setAttribute('data-origin', 'user');
+		let attribute = (is_main_website) ? 'application' : 'user';
+		frame.setAttribute('data-origin', attribute);
 
 		frame.src = url;
 
@@ -136,7 +134,8 @@ Universe.frameManager = (function(){
 			Universe.menu.buttonManager.update_button_image(site, e.favicons[0]);
 		});
 		frame.addEventListener('mousedown', () => {
-			Universe.subscription.reset()
+			// hiding the subscription window
+			Universe.subscription.reset();
 		});
 
 		Universe.commons.main_wrapper.appendChild(frame);
@@ -178,16 +177,7 @@ Universe.frameManager = (function(){
 		frame.loadURL(url);
 		console.info('Frame ' + url + ' has been reset.');
 	};
-/*
-	_this.reset_frame = function(url) {
-		let node = document.getElementById((''+url).hashCode() + '_frame');
-		if(node === null) {
-			console.warn('Frame ' + url + ' not found.');
-			return;
-		}
-		node.loadURL(url);
-		console.info('Frame ' + url + ' has been reset.');
-	};*/
+
 
 	(function initialize_listeners_on_frames() {
 		// listeners on the application frames

@@ -4,7 +4,8 @@
 - [x] Generate documentation with [jsdoc](https://github.com/jsdoc2md/jsdoc-to-markdown/wiki)
 - [x] Handle behaviour when no network (not necessary)
 - [x] Make an autoupdate system
-- [ ] Add a "reset site" button
+- [x] Add a "reset site" button
+- [ ] Get a new logo
 
 
 ### LESS URGENT
@@ -13,3 +14,4 @@
 - [ ] Review the function checking if the side menu is overflowed
 - [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
 - [ ] Generate certificates to sign the application
+- [ ] Add a loading indicator on platforms
