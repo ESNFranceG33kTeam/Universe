@@ -468,7 +468,7 @@ h1 {
 .frame {
 	position: absolute;
 	/*display: none; */
-	visibility: hidden;
+	/*visibility: hidden;*/
 	opacity: 0;
 	top: 0;
 	left: 0;
