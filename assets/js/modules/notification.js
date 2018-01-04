@@ -84,9 +84,9 @@ Universe.notification = (function () {
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/
-	_this.remove_notification_from_site = function(url) {
+	_this.remove_notification_from_site = function(site) {
 		// delete the notification span
-		let component = document.getElementById(url);
+		let component = document.getElementById(site.url.hashCode());
 		let spa = component.getElementsByClassName('new_item');
 
 		if(spa.length === 1)

@@ -89,20 +89,18 @@ Universe.storage = (function () {
 		**/
 	function site_already_registered(registered, site){
 
-		let url = site.url;
-
 		if(!registered) {
 			Universe.menu.buttonManager.create_new_button(site, false);
 			Universe.frameManager.create_new_frame(site, false);
 
-			console.info('Registering the new website ' + url + '.');
+			console.info('Registering the new website \'' + site.name + '\'.');
 			Universe.menu.set_overflow_on_menu();
 		}
 
 		else if(registered){
 			// alert the user
 			Universe.subscription.set_new_site_warning(Universe.i18n.errorMessages.subscription_already_done);
-			console.warn('The website ' + url + ' has already been registered by the user.');
+			console.warn('The website ' + site.name + ' has already been registered by the user.');
 		}
 
 	}
@@ -124,8 +122,7 @@ Universe.storage = (function () {
 				if(title != p.sites[i].name)
 					store_parameters(p);
 				p.sites[i].name = title;
-				Universe.menu.buttonManager.update_tooltip_title(site.url.hashCode(), title)
-				console.info('Updating the title for webpage \'' + site.url + '\'.');
+				Universe.menu.buttonManager.update_tooltip_title(site, title)
 				break;
 			}
 	};

@@ -14,12 +14,15 @@ Universe.menu.buttonManager = (function () {
 	let html_buttons = {};
 	html_buttons.addNewElement = function(url, element) {
 		let hash = url.hashCode();
-		let tmp = this[hash];
-		if(tmp === undefined)
-			this[hash] = document.getElementById(hash);
+			this[hash] = element;
 	};
 	html_buttons.getElement = function(url) {
-		return this[url];
+		let hash = url.hashCode();
+		return this[hash];
+	}
+	html_buttons.remove = function(url) {
+		let hash = url.hashCode();
+		delete this[hash];
 	}
 
 	_this.getButtons = function() {
@@ -57,13 +60,7 @@ Universe.menu.buttonManager = (function () {
 			button.style.animationName = 'none';
 		}, false);
 
-		let tmp = url.hashCode();
-		button.id = tmp;
-
-		button.onclick = function() {
-			Universe.notification.remove_notification_from_site(site.url.hashCode());
-			Universe.frameManager.show_frame(site.url);
-		};
+		button.id = url.hashCode();
 
 
 		// creating the mute button
@@ -118,10 +115,8 @@ Universe.menu.buttonManager = (function () {
 				e.stopPropagation();
 				Universe.frameManager.show_home();
 
-				delete_button(tmp);
-				Universe.frameManager.delete_frame(url);
-
-				console.info('Deleting ' + url + '.');
+				delete_button(site);
+				Universe.frameManager.delete_frame(site);
 
 				let p = Universe.storage.get_parameters();
 				let sites = p.sites;
@@ -138,16 +133,23 @@ Universe.menu.buttonManager = (function () {
 				if(i>-1)
 					sites.splice(i, 1);
 				else {
-					console.error('Failed to delete ' + url + ' : website not found.');
+					console.error('Failed to delete ' + site.name + ' : website not found.');
 				}
 
 				p.sites = sites;
 				Universe.storage.save_parameters(p);
 				Universe.menu.set_overflow_on_menu();
 
+				html_buttons.remove(url);
+
 			}, false);
 			button.appendChild(span);
 		}
+
+		button.onclick = function() {
+			Universe.notification.remove_notification_from_site(site);
+			Universe.frameManager.show_frame(site.url);
+		};
 
 
 		// create the tooltip
@@ -159,7 +161,7 @@ Universe.menu.buttonManager = (function () {
 		menu.appendChild(button);
 		Universe.menu.set_overflow_on_menu();
 
-		html_buttons.addNewElement(url);
+		html_buttons.addNewElement(url, button);
 	}
 
 	/**
@@ -177,8 +179,8 @@ Universe.menu.buttonManager = (function () {
 	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
-	function delete_button(url) {
-		let comp = html_buttons.getElement(url);
+	function delete_button(site) {
+		let comp = html_buttons.getElement(site.url);
 		menu.removeChild(comp);
 
 		// remove the second <hr> separator if there's no more added sites
@@ -198,10 +200,11 @@ Universe.menu.buttonManager = (function () {
 	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
-	_this.update_tooltip_title = function(url, title) {
-		let tmp = html_buttons.getElement(url);
+	_this.update_tooltip_title = function(site, title) {
+		let tmp = html_buttons.getElement(site.url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
 		tooltip.innerHTML = title;
+		console.info('Updating the title for webpage \'' + site.name + '\'.');
 	};
 
 	/**
@@ -212,18 +215,17 @@ Universe.menu.buttonManager = (function () {
 	  * @author Rémy Raes
 	  **/
 	_this.update_button_image = function(site, image_url) {
-		let url = site.url.hashCode();
-		let node = html_buttons.getElement(url);
+		let node = html_buttons.getElement(site.url);
 		site.image_url = image_url;
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
 	};
 
 	_this.add_loader = function(site) {
-		let comp = html_buttons.getElement(site.url.hashCode());
+		let comp = html_buttons.getElement(site.url);
 		comp.className += ' sectionLoading';
 	};
 	_this.remove_loader = function(site, is_main_website) {
-		let comp = html_buttons.getElement(site.url.hashCode());
+		let comp = html_buttons.getElement(site.url);
 		comp.className = is_main_website ? 'section' : 'section added_site';
 	};
 

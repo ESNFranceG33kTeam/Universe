@@ -11,8 +11,9 @@ Universe.frameManager = (function(){
 
 	let home = document.getElementById('home');
 	let loadingBar = new ldBar("#loading_bar");
+	var loading_screen = document.getElementById('loading');
+	var loading_logo = document.getElementById('loading_logo');
 	let frames_loaded = 0;
-
 
 	let webviews = {
 		views: {}
@@ -40,7 +41,7 @@ Universe.frameManager = (function(){
 	};
 
 	_this.getWebviews = function() {
-		return webviews.getViews;
+		return webviews.getViews();
 	};
 
 	function increment_loaded_frames() {
@@ -50,8 +51,6 @@ Universe.frameManager = (function(){
 		);
 	};
 
-	var loading_screen = document.getElementById('loading');
-	var loading_logo = document.getElementById('loading_logo');
 
 	/**
 	  * This function check if all webviews have loaded their content;
@@ -128,12 +127,12 @@ Universe.frameManager = (function(){
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
-			console.log('The website ' + url + ' has been loaded.');
+			console.log('The website \'' + site.name + '\' has been loaded.');
 			increment_loaded_frames();
 			check_loaded_frames();
 
 			// reset the notification indicator
-			Universe.notification.remove_notification_from_site(url.hashCode());
+			Universe.notification.remove_notification_from_site(site);
 		});
 		frame.addEventListener('page-title-updated', () => {
 			if(!frame_is_focused(site.url) && is_ready_to_display())
@@ -173,10 +172,11 @@ Universe.frameManager = (function(){
 		return frame.className === 'frame frame-show';
 	}
 
-	_this.delete_frame = function(url) {
-		let node = webviews.get(url);
+	_this.delete_frame = function(site) {
+		let node = webviews.get(site.url);
 		Universe.commons.main_wrapper.removeChild(node);
-		webviews.remove(url);
+		webviews.remove(site.url);
+		console.info('Deleting ' + site.name + '.');
 	};
 
 	_this.reset_frame = function(site) {
