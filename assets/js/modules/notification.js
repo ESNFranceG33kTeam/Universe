@@ -12,11 +12,11 @@ Universe.notification = (function () {
 	var _this = {};
 
 	ipc.on('exit-notification' , function(){
+		Universe.frameManager.show_home();
 		new Notification(Universe.i18n.notificationMessages.notification_running_title, {
 			body: Universe.i18n.notificationMessages.notification_running_text,
 			icon: 'assets/img/icons/star.png'
 		});
-		Universe.frameManager.show_home();
 	});
 
 	_this.testNotification = function() {
