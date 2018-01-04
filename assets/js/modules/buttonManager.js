@@ -62,7 +62,7 @@ Universe.menu.buttonManager = (function () {
 
 		button.onclick = function() {
 			Universe.notification.remove_notification_from_site(site.url.hashCode());
-			Universe.frameManager.show_frame(tmp + '_frame');
+			Universe.frameManager.show_frame(site.url);
 		};
 
 
@@ -119,7 +119,7 @@ Universe.menu.buttonManager = (function () {
 				Universe.frameManager.show_home();
 
 				delete_button(tmp);
-				Universe.frameManager.delete_frame(tmp + '_frame');
+				Universe.frameManager.delete_frame(url);
 
 				console.info('Deleting ' + url + '.');
 

@@ -7,33 +7,54 @@ var Universe = Universe || {};
   * @author Rémy Raes
   **/
 Universe.frameManager = (function(){
-	var _this = {};
+	let _this = {};
 
-	var frames = document.getElementsByTagName('webview');
-	var home = document.getElementById('home');
-	var loadingBar = new ldBar("#loading_bar");
+	let home = document.getElementById('home');
+	let loadingBar = new ldBar("#loading_bar");
+	let frames_loaded = 0;
 
-	var frames_count = frames.length;
-	var frames_loaded = 0;
+
+	let webviews = {
+		views: {}
+	};
+
+	webviews.add = function(url, view) {
+		let hash = url.hashCode() + '_frame';
+		let element = this.views[hash];
+		if(element === undefined)
+			this.views[hash] = view;
+	};
+	webviews.get = function(url) {
+		let hash = url.hashCode() + '_frame';
+		return this.views[hash];
+	};
+	webviews.remove = function(url) {
+		let hash = url.hashCode() + '_frame';
+		delete this.views[hash];
+	}
+	webviews.getViews = function() {
+		return webviews.views;
+	};
+	webviews.getViewsCount = function() {
+		return Object.keys(webviews.views).length;
+	};
+
+	_this.getWebviews = function() {
+		return webviews.getViews;
+	};
 
 	function increment_loaded_frames() {
 		frames_loaded++;
 		loadingBar.set(
-			(frames_loaded/frames_count)*100
+			(frames_loaded/webviews.getViewsCount())*100
 		);
 	};
-
-	_this.load_all_frames = function() {
-		frames = document.getElementsByTagName('webview');
-		frames_count = frames.length;
-	};
-
 
 	var loading_screen = document.getElementById('loading');
 	var loading_logo = document.getElementById('loading_logo');
 
 	/**
-	  * This function check if all iframes have loaded their content;
+	  * This function check if all webviews have loaded their content;
 	  * if that's the case, it removes the loading screen.
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
@@ -45,7 +66,7 @@ Universe.frameManager = (function(){
 	};
 
 	function is_ready_to_display() {
-		return frames_loaded === frames_count;
+		return frames_loaded === webviews.getViewsCount();
 	}
 
 	/**
@@ -70,32 +91,23 @@ Universe.frameManager = (function(){
 	  **/
 	function hide_all_frames () {
 		home.className = 'category frame';
-		_this.load_all_frames();
-		for(let i=0, length=frames.length; i<length; i++)
-			frames[i].className = 'frame';
+		let views = webviews.views;
+		for (let key in views) {
+			views[key].className = 'frame';
+		}
 	}
 
 
 	_this.show_frame = function(url) {
 		hide_all_frames();
-		_this.load_all_frames();
-		for(let i=0, length=frames.length; i<length; i++)
-			if(frames[i].id === url) {
-				frames[i].className = 'frame frame-show';
-				_update_style(frames[i]);
-				return ;
-			}
+		let hash = url.hashCode() + '_frame';
+		webviews.views[hash].className = 'frame frame-show';
 	};
 
 	_this.show_home = function() {
 		hide_all_frames();
 		home.className = 'category frame-show';
 	};
-
-	function _update_style(component) {
-		component.shadowRoot.querySelector('object').style.width = '100%';
-		component.shadowRoot.querySelector('object').style.height = '100%';
-	}
 
 	/**
 	  * This function creates a frame encapsulating a website
@@ -107,11 +119,12 @@ Universe.frameManager = (function(){
 	_this.create_new_frame = function(site, is_main_website) {
 		let url = site.url;
 		let frame = document.createElement('webview');
+
 		frame.id = url.hashCode() + '_frame';
 		frame.className = 'frame';
+
 		let attribute = (is_main_website) ? 'application' : 'user';
 		frame.setAttribute('data-origin', attribute);
-
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
@@ -123,7 +136,7 @@ Universe.frameManager = (function(){
 			Universe.notification.remove_notification_from_site(url.hashCode());
 		});
 		frame.addEventListener('page-title-updated', () => {
-			if(!frame_is_focused(site.url.hashCode()) && is_ready_to_display())
+			if(!frame_is_focused(site.url) && is_ready_to_display())
 				Universe.notification.add_notification_on_site(site);
 
 			// updates the application tooltip
@@ -145,7 +158,7 @@ Universe.frameManager = (function(){
 		});
 
 		Universe.commons.main_wrapper.appendChild(frame);
-		Universe.frameManager.load_all_frames();
+		webviews.add(url, frame);
 	};
 
 	/**
@@ -155,54 +168,22 @@ Universe.frameManager = (function(){
 	  * @memberof module:Universe/frameManager
 	  **/
 	function frame_is_focused(url) {
-		let frame = undefined;
-		for(let i=0; i<frames_count; i++)
-			if(frames[i].id === url + '_frame') {
-				frame = frames[i];
-				break;
-			}
-		if(frame === undefined) {
-			console.warn('Frame ' + url + ' not found.');
-			return;
-		}
+		let hash = url.hashCode() + '_frame';
+		let frame = webviews.views[hash];
 		return frame.className === 'frame frame-show';
 	}
 
 	_this.delete_frame = function(url) {
-		let comp = document.getElementById(url);
-		Universe.commons.main_wrapper.removeChild(comp);
+		let node = webviews.get(url);
+		Universe.commons.main_wrapper.removeChild(node);
+		webviews.remove(url);
 	};
 
 	_this.reset_frame = function(site) {
-		let url = site.url;
-		let frame = document.getElementById(url.hashCode() + '_frame');
-		if(!frame) {
-			console.warn('Frame ' + url + ' not found.');
-			return;
-		}
-		frame.loadURL(url);
-		console.info('Frame ' + site.name + ' has been reset.');
+		let frame = webviews.get(site.url);
+		frame.loadURL(site.url);
+		console.info('Frame ' + site.name + ' is resetting.');
 	};
-
-
-	(function initialize_listeners_on_frames() {
-		// listeners on the application frames
-		for(let i=0; i<frames_count; i++) {
-			let tmp = frames[i];
-
-			// listener to check the loaded state of the frame
-			tmp.addEventListener('dom-ready', () => {
-				console.log('The website ' + tmp.src + ' frame has been loaded.');
-				increment_loaded_frames();
-				check_loaded_frames();
-			});
-
-			// listener to hide the 'new site' window
-			tmp.addEventListener('mousedown', () => {
-				Universe.subscription.reset()
-			});
-		}
-	})();
 
 
 	return _this;

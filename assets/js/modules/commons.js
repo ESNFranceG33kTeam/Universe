@@ -73,9 +73,6 @@ Universe.commons = (function(){
 				Universe.menu.buttonManager.create_new_button(sites[i]);
 				Universe.frameManager.create_new_frame(sites[i]);
 			}
-
-			// actualisation
-			Universe.frameManager.load_all_frames();
 		});
 	};
 
