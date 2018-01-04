@@ -467,8 +467,9 @@ h1 {
 
 .frame {
 	position: absolute;
-	/*display: none; */
-	visibility: hidden;
+	/*display: none;*/
+	/*visibility: hidden;*/
+	z-index: 0;
 	opacity: 0;
 	top: 0;
 	left: 0;
@@ -482,9 +483,10 @@ h1 {
 }
 
 .frame-show {
+	z-index: 1;
 	opacity: 1;
-	visibility: visible;
-	/*display: block;*/
+	/*visibility: visible;*/
+	/*display: show;*/
 }
 
 
