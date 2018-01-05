@@ -304,6 +304,7 @@ function IconSelect($$elementID, $$parameters) {
         iconImgElement.setAttribute('icon-index', $index);
         iconImgElement.setAttribute('width', $parameters.iconsWidth);
         iconImgElement.setAttribute('height', $parameters.iconsHeight);
+        iconImgElement.setAttribute('draggable', 'false');
 
         iconElement.appendChild(iconImgElement);
         _View.boxElement.appendChild(iconElement);

@@ -15,4 +15,4 @@
 - [x] Launch tutorial mode when executed for the first time
 - [ ] Review the function checking if the side menu is overflowed
 - [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
-- [ ] Modify translation listener 
+- [x] Modify translation listener 
