@@ -109,7 +109,7 @@ Universe.frameManager = (function(){
 
 	_this.show_home = function() {
 		hide_all_frames();
-		home.className = 'category frame-show';
+		home.className = 'homeWrapper frame-show';
 	};
 
 	/**
