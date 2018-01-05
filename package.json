@@ -1,6 +1,6 @@
 {
   "name": "Universe",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "scripts": {
