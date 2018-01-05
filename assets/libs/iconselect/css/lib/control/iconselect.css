@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : Nov 28, 2013, 7:09:35 AM
     Author     : bugraozden
 */
@@ -74,14 +74,14 @@ and open the template in the editor.
      padding: 0px;
      width: 170px; /* sil */
      height: 170px; /* sil */
-     border: 1px solid #EEEEEE;
+     border: 1px solid #999999;
      background-color: #EEEEEE;
 
      -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
      border-radius: 3px;
-     
-     
+
+
      overflow:auto;
      /*
      -webkit-overflow-scrolling: touch;

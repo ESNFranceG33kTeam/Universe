@@ -216,6 +216,8 @@ function IconSelect($$elementID, $$parameters) {
 
         _View.selectedIconImgElement = document.createElement('img');
         _View.selectedIconImgElement.setAttribute('src', '');
+        _View.selectedIconImgElement.setAttribute('draggable' ,'false');
+
         selectedIconElement.appendChild(_View.selectedIconImgElement);
 
         var componentIconElement = document.createElement('div');
@@ -289,7 +291,7 @@ function IconSelect($$elementID, $$parameters) {
         iconElement.style.height = $parameters.iconsHeight;
         iconElement.style.marginLeft = $parameters.boxIconSpace;
         iconElement.style.marginTop = $parameters.boxIconSpace;
-        iconElement.addEventListener('mousedown', function() {
+        iconElement.addEventListener('click', function() {
           let str = $iconFilePath;
           // removing the ".png" extension
           let tmp = path.basename(str, '.png');
