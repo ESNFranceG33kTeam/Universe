@@ -1,4 +1,36 @@
 var Universe = Universe || {};
+let suggested_sites = [
+	{
+		name: 'Pallospace',
+		url: 'http://pallospace.ixesn.fr',
+		image_url: "http://pallospace.ixesn.fr",
+		muted: false
+	},
+	{
+		name: 'Galaxy',
+		url: 'http://galaxy.esn.org',
+		image_url: 'http://galaxy.esn.org',
+		muted: false
+	},
+	{
+		name: 'Module Bénévole',
+		url: 'http://gestion.ixesn.fr/liste',
+		image_url: 'http://gestion.ixesn.fr/liste',
+		muted: false
+	},
+	{
+		name: 'Excel d\'or',
+		url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
+		image_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
+		muted: false
+	},
+	{
+		name: 'Slack',
+		url: 'https://communauteixesn.slack.com',
+		image_url: 'https://communauteixesn.slack.com',
+		muted: false
+	},
+];
 
 /**
   * This module contains all operations linked to manipulation of user
@@ -56,7 +88,7 @@ Universe.storage = (function () {
 		},
 
 		// array containing all websites the user has subscribed to
-		sites: [],
+		sites: suggested_sites,
 
 		// is it the first time the user launches the application ?
 		first_launch: true,
@@ -172,6 +204,9 @@ Universe.storage = (function () {
 	  * @author Rémy Raes
 	  **/
 	function store_parameters(params) {
+		if(params.first_launch)
+			Universe.frameManager.trigger_tutorial_mode();
+
 		console.info('Saving user settings.');
 		storage.set('parameters', params);
 	}
@@ -292,4 +327,5 @@ Universe.storage = (function () {
 		return ret.substr(0, 1).toUpperCase() + ret.substr(1, ret.length-1);
 	}
 	return _this;
+
 })();

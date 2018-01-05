@@ -14,6 +14,7 @@ Universe.frameManager = (function(){
 	var loading_screen = document.getElementById('loading');
 	var loading_logo = document.getElementById('loading_logo');
 	let frames_loaded = 0;
+	let first_launch = false;
 
 	let webviews = {
 		views: {}
@@ -81,6 +82,9 @@ Universe.frameManager = (function(){
 		setTimeout(function() {
 			loading_screen.style.zIndex = '-1';
 		}, 1000);
+
+		if(first_launch)
+			Universe.commons.launch_tutorial_mode();
 	}
 
 	/**
@@ -115,15 +119,16 @@ Universe.frameManager = (function(){
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_frame = function(site, is_main_website) {
+	_this.create_new_frame = function(site) {
 		let url = site.url;
 		let frame = document.createElement('webview');
 
 		frame.id = url.hashCode() + '_frame';
 		frame.className = 'frame';
 
-		let attribute = (is_main_website) ? 'application' : 'user';
-		frame.setAttribute('data-origin', attribute);
+		// let attribute = (is_main_website) ? 'application' : 'user';
+		// frame.setAttribute('data-origin', attribute);
+		frame.setAttribute('data-origin', 'user');
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
@@ -153,7 +158,7 @@ Universe.frameManager = (function(){
 			Universe.menu.buttonManager.add_loader(site);
 		});
 		frame.addEventListener('did-stop-loading', () => {
-			Universe.menu.buttonManager.remove_loader(site, is_main_website);
+			Universe.menu.buttonManager.remove_loader(site);
 		});
 
 		Universe.commons.main_wrapper.appendChild(frame);
@@ -183,6 +188,11 @@ Universe.frameManager = (function(){
 		let frame = webviews.get(site.url);
 		frame.loadURL(site.url);
 		console.info('Frame ' + site.name + ' is resetting.');
+	};
+
+
+	_this.trigger_tutorial_mode = function() {
+		first_launch = true;
 	};
 
 

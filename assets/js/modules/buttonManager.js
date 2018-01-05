@@ -37,24 +37,17 @@ Universe.menu.buttonManager = (function () {
 	  * @memberof module:Universe/menu/buttonManager
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_button = function(site, is_main_website) {
+	_this.create_new_button = function(site) {
 
 		let url = site.url;
 		Universe.subscription.reset();
-
-		if(!is_main_website) {
-			if(added_sites === 0)
-				create_site_menu_separation();
-			added_sites++;
-		}
+		if(added_sites === 0)
+			create_site_menu_separation();
+		added_sites++;
 
 		// creating the button
 		var button = document.createElement('LI');
-
-		if(!is_main_website)
-			button.className = 'section added_site';
-		else
-			button.className = 'section';
+		button.className = 'section';
 
 		button.addEventListener('animationend', function() {
 			button.style.animationName = 'none';
@@ -84,67 +77,58 @@ Universe.menu.buttonManager = (function () {
 		resetBtn.addEventListener('click', (e) => {
 			e.stopPropagation();
 			Universe.frameManager.reset_frame(site);
-			button.className = (!is_main_website) ? 'section added_site' : 'section';
+			button.className = 'section';
 		});
 
 
 		// enabling the 'settings' mode
 		button.addEventListener('contextmenu', () => {
-
-			if(button.classList.contains('sectionSettings')) {
-
-				if(!is_main_website) {
-					button.className = 'section added_site';
-				}else
-					button.className = 'section';
-
-			} else {
+			if(button.classList.contains('sectionSettings'))
+				button.className = 'section';
+			else
 				button.className = 'sectionSettings';
-			}
 		});
 
 
-		if(!is_main_website) {
+		// creating the delete button
+		let span = document.createElement('span');
+		span.className = 'delete';
+		span.innerText = 'x';
 
-			// creating the delete button
-			let span = document.createElement('span');
-			span.className = 'delete';
-			span.innerText = 'x';
+		span.addEventListener('click', function(e) {
+			e.stopPropagation();
+			Universe.frameManager.show_home();
 
-			span.addEventListener('click', function(e) {
-				e.stopPropagation();
-				Universe.frameManager.show_home();
+			delete_button(site);
+			Universe.frameManager.delete_frame(site);
 
-				delete_button(site);
-				Universe.frameManager.delete_frame(site);
+			let p = Universe.storage.get_parameters();
+			let sites = p.sites;
+			let i=-1;
 
-				let p = Universe.storage.get_parameters();
-				let sites = p.sites;
-				let i=-1;
-
-				// find the position of the site in the settings
-				for(let k=0; k<sites.length; k++){
-					if(sites[k].url === url) {
-						i = k;
-						break;
-					}
+			// find the position of the site in the settings
+			for(let k=0; k<sites.length; k++){
+				if(sites[k].url === url) {
+					i = k;
+					break;
 				}
+			}
 
-				if(i>-1)
-					sites.splice(i, 1);
-				else {
-					console.error('Failed to delete ' + site.name + ' : website not found.');
-				}
+			if(i>-1)
+				sites.splice(i, 1);
+			else {
+				console.error('Failed to delete ' + site.name + ' : website not found.');
+			}
 
-				p.sites = sites;
-				Universe.storage.save_parameters(p);
-				Universe.menu.set_overflow_on_menu();
+			p.sites = sites;
+			Universe.storage.save_parameters(p);
+			Universe.menu.set_overflow_on_menu();
 
-				html_buttons.remove(url);
+			html_buttons.remove(url);
 
-			}, false);
-			button.appendChild(span);
-		}
+		}, false);
+		button.appendChild(span);
+
 
 		button.onclick = function() {
 			Universe.notification.remove_notification_from_site(site);
@@ -183,9 +167,9 @@ Universe.menu.buttonManager = (function () {
 		let comp = html_buttons.getElement(site.url);
 		menu.removeChild(comp);
 
-		// remove the second <hr> separator if there's no more added sites
+		// remove the <hr> separator if there's no more added sites
 		if(added_sites === 1) {
-			let hr = menu.getElementsByTagName('hr')[1];
+			let hr = menu.getElementsByTagName('hr')[0];
 			menu.removeChild(hr);
 		}
 		added_sites -= 1;
@@ -224,9 +208,9 @@ Universe.menu.buttonManager = (function () {
 		let comp = html_buttons.getElement(site.url);
 		comp.className += ' sectionLoading';
 	};
-	_this.remove_loader = function(site, is_main_website) {
+	_this.remove_loader = function(site) {
 		let comp = html_buttons.getElement(site.url);
-		comp.className = is_main_website ? 'section' : 'section added_site';
+		comp.className = 'section';
 	};
 
 

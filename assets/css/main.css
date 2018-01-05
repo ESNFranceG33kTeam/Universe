@@ -131,15 +131,24 @@ button:hover {
 	height: 50px;
 	margin: 10px;
 
-	background-color: rgb(121, 187, 255);
+	/*background-color: rgb(121, 187, 255);*/
 	border-radius: 10px;
 	list-style: none;
 
+
+	/*background-image: url('../img/sections/star.png');*/
+
+	opacity: 1;
+	animation-name: bounceIn;
+	animation-duration: 450ms;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+
+	background-size: 70%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 70%;
-
-	background-image: url('../img/sections/star.png');
+	background-image: url('../img/new_section_loading.gif');
+	background-color: rgb(121, 187, 255);
 }
 
 .section:hover {
@@ -238,38 +247,53 @@ button:hover {
 }
 
 #home_btn {
-	background-size: cover;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+
 	background-color: rgb(81, 219, 255);
+	border-radius: 10px;
+	list-style: none;
+
+
+	background-image: url('../img/sections/star.png');
+	background-size: cover;
 }
 
 #home_btn div {
+	display: none;
+	background-color: rgb(235, 10, 141);
+	color: #fff;
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 6px;
+	white-space: nowrap;
+
+	position: absolute;
+	z-index: 3;
+
+	top: 12px;
+    left: 110%;
 	background-color: rgb(122, 192, 67);
 }
 
-.added_site {
-	opacity: 1;
-	animation-name: bounceIn;
-	animation-duration: 450ms;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
+#home_btn:hover {
+	background-color: lightblue;
+	cursor: pointer;
+	transform: scale(0.9);
+}
+#home_btn:hover div {
+	display: block;
+	transform: none;
+}
 
-	background-size: 70%;
-	background-position: center;
-	background-image: url('../img/new_section_loading.gif');
-	background-color: rgb(81, 219, 255);
-}
-.added_site div {
-	background-color: rgb(243, 123, 32);
-}
 
 .sectionLoading {
 	animation: loading 2s infinite;
-}/*
-blue: rgb(39, 171, 226) / #27ABE2
-darkblue: rgb(45, 53, 145)
-green: rgb(122, 192, 67) / #7AC043
-orange: rgb(243, 123, 32) / #F37B20
-pink: rgb(235, 10, 141) / #EB0A8D*/
+	animation-name: loading !important;
+}
+
 @keyframes loading {
     0%   {background-color: rgb(121, 187, 255);}
 	25%	 {background-color: rgb(122, 192, 67);}

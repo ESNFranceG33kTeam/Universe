@@ -47,33 +47,13 @@ Universe.commons = (function(){
 
 	_this.build = function(sites) {
 
+		// build sites
+		for(let i=0, length=sites.length; i<length; i++) {
+			Universe.menu.buttonManager.create_new_button(sites[i]);
+			Universe.frameManager.create_new_frame(sites[i]);
+		}
+
 		versionIndicator.innerText = app.app.getVersion();
-
-		// build main sites
-		fs.readFile(path.join(__dirname, '/websites.json'), 'utf8', function (err,data) {
-			let new_sites = {};
-			try {
-				new_sites = JSON.parse(data);
-			}catch(e) {
-				console.error('Syntax error in the file websites.json.');
-			}
-
-			for(let i in new_sites) {
-				let new_site = {
-					name: i,
-					url: new_sites[i],
-					muted: false
-				};
-				Universe.menu.buttonManager.create_new_button(new_site, true);
-				Universe.frameManager.create_new_frame(new_site, true);
-			}
-
-			// build added sites
-			for(let i=0, length=sites.length; i<length; i++) {
-				Universe.menu.buttonManager.create_new_button(sites[i]);
-				Universe.frameManager.create_new_frame(sites[i]);
-			}
-		});
 	};
 
 	// tutorial mode
@@ -84,7 +64,7 @@ Universe.commons = (function(){
 
 		let logo = document.getElementsByClassName('img_center')[0];
 		let menu = Universe.menu.get_home_menu();
-		exampleButton = document.getElementsByClassName('section')[1];
+		exampleButton = document.getElementsByClassName('section')[0];
 		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
 		let newSiteWindow = Universe.subscription.get_new_site_window();
 		let translations = Universe.i18n.tutorialMessages;
