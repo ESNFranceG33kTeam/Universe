@@ -11,7 +11,7 @@ const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 const isDev = require('electron-is-dev');
 const {appUpdater} = require('./assets/js/autoupdater');
-
+let tray;
 
 function handleSquirrelEvent() {
   if (process.argv.length === 1) {
@@ -149,6 +149,13 @@ function createWindow () {
 	});
 
 
+    // tray listener
+    ipcMain.on('tray_notif', function(event , data){
+        tray.displayBalloon(data);
+    });
+
+
+
 	// main window
 	mainWindow = new BrowserWindow({
 		title: 'Universe',
@@ -232,6 +239,7 @@ function createWindow () {
 	});
 
 }
+
 
 var timer;
 /**

@@ -1,8 +1,6 @@
 var Universe = Universe || {};
 const dialog = remote.dialog;
 const platform = require('os').platform();
-const notifier = require('electron-notifications')
-
 
 /**
   * This modules contains all operations linked to communication of
@@ -17,16 +15,11 @@ Universe.notification = (function () {
 	ipc.on('exit-notification' , function(){
 		Universe.frameManager.show_home();
 		if(platform == 'win32') {
-			let notif = notifier.notify(Universe.i18n.notificationMessages.notification_running_title, {
-				message: Universe.i18n.notificationMessages.notification_running_text,
-				icon: path.join(__dirname, 'assets/img/icons/star.png'),
-				buttons: ['Dismiss'],
-		  	});
-			notif.on('buttonClicked', (text, buttonIndex, options) => {
-				if (buttonIndex === 0) {
-					notif.close()
-				}
-			});
+			ipc.send('tray_notif', {
+		        icon: 'assets/img/icons/star.png',
+		        title: Universe.i18n.notificationMessages.notification_running_title,
+		        content: Universe.i18n.notificationMessages.notification_running_text
+		    });
 		} else {
 			new Notification(Universe.i18n.notificationMessages.notification_running_title, {
 				body: Universe.i18n.notificationMessages.notification_running_text,
@@ -44,17 +37,12 @@ Universe.notification = (function () {
 
 	function send_notification(site) {
 		if(platform === 'win32') {
-			let notif = notifier.notify(Universe.i18n.notificationMessages.new_notification_title, {
-				message: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name,
-				icon: site.image_url,
-				buttons: ['Dismiss'],
-		  	});
-			notif.on('buttonClicked', (text, buttonIndex, options) => {
-				if (buttonIndex === 0) {
-					notif.close()
-				}
-			});
-
+			ipc.send('tray_notif', {
+		        //icon: site.image_url, // doesn't work with other image formats
+				icon: 'assets/img/icons/star.png',
+		        title: Universe.i18n.notificationMessages.new_notification_title,
+		        content: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name
+		    });
 		} else {
 			new Notification(Universe.i18n.notificationMessages.new_notification_title, {
 				body: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name,
