@@ -16,7 +16,7 @@ Universe.notification = (function () {
 		Universe.frameManager.show_home();
 		if(platform == 'win32') {
 			ipc.send('tray_notif', {
-		        icon: 'assets/img/icons/star.png',
+		        icon: __dirname + '/assets/img/icons/star.png',
 		        title: Universe.i18n.notificationMessages.notification_running_title,
 		        content: Universe.i18n.notificationMessages.notification_running_text
 		    });
@@ -28,18 +28,11 @@ Universe.notification = (function () {
 		}
 	});
 
-	_this.testNotification = function() {
-		dialog.showMessageBox({
-			title: 'test',
-			message: 'bonjour'
-		});
-	};
-
 	function send_notification(site) {
 		if(platform === 'win32') {
 			ipc.send('tray_notif', {
 		        //icon: site.image_url, // doesn't work with other image formats
-				icon: 'assets/img/icons/star.png',
+				icon: __dirname + '/assets/img/icons/star.png',
 		        title: Universe.i18n.notificationMessages.new_notification_title,
 		        content: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name
 		    });

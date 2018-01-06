@@ -7,7 +7,8 @@
 - [x] Add a "reset site" button
 - [x] Fix application behaviour when no platforms are registered
     - [x] Fix delete issues (first platform sometimes cannot be deleted)
-- [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
+- [x] Fix notification system (https://github.com/electron/electron/issues/10864)
+    - [x] Using Tray Balloons system
 - [ ] Get a new logo
 
 
