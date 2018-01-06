@@ -59,6 +59,7 @@ Universe.commons = (function(){
 	// tutorial mode
 	let span;
 	let exampleButton;
+	let no_added_platforms = false;
 
 	function init_tutorial_mode() {
 
@@ -66,6 +67,8 @@ Universe.commons = (function(){
 		let menu = Universe.menu.get_home_menu();
 		exampleButton = document.getElementsByClassName('section')[0];
 		let addSiteButton = document.getElementsByClassName('section subscribe')[0];
+		no_added_platforms = (exampleButton.classList.contains('subscribe'));
+
 		let newSiteWindow = Universe.subscription.get_new_site_window();
 		let translations = Universe.i18n.tutorialMessages;
 		let new_url = Universe.subscription.get_new_url();
@@ -250,7 +253,12 @@ Universe.commons = (function(){
 	_this.launch_tutorial_mode = function() {
 		SpotlightJS.clear();
 		init_tutorial_mode();
-		SpotlightJS.spotlight('main', 'menu', 'section', 'settingsMode', 'addsite', 'newsite', 'end');
+
+		console.log(no_added_platforms);
+		if(no_added_platforms)
+			SpotlightJS.spotlight('main', 'menu', 'addsite', 'newsite', 'end');
+		else
+			SpotlightJS.spotlight('main', 'menu', 'section', 'settingsMode', 'addsite', 'newsite', 'end');
 	};
 
 	return _this;

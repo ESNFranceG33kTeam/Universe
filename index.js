@@ -198,7 +198,7 @@ function createWindow () {
 	});
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
-	// mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 
 
 	// hide the main window when the user clicks the 'close' button

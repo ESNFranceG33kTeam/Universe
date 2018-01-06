@@ -165,7 +165,7 @@ Universe.storage = (function () {
 		for(let i=0, length=sites.length; i<length; i++)
 			if(sites[i].url === site.url) {
 				sites[i] = site;
-				console.info('Saving muted=' + site.muted + ' for webpage \'' + site.url + '\'.');
+				console.info('Saving muted=' + site.muted + ' for webpage \'' + site.name + '\'.');
 				p.sites = sites;
 				store_parameters(p);
 				break;
@@ -227,6 +227,10 @@ Universe.storage = (function () {
 			var parameters = settings.data;
 			parameters.first_launch = false;
 
+			// if no platforms have been added
+			if(parameters.sites.length === 0)
+				Universe.frameManager.hide_loading_screen();
+
 			return parameters;
 
 		} else {
@@ -239,6 +243,10 @@ Universe.storage = (function () {
 			return params;
 		}
 	}
+
+	_this.remove_parameters = function() {
+		return storage.remove('parameters');
+	};
 
 	/**
 	  * This function realizes all the tests to see if an url can be

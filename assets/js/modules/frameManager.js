@@ -61,7 +61,8 @@ Universe.frameManager = (function(){
 	  **/
 	function check_loaded_frames() {
 		if(is_ready_to_display()) {
-			setTimeout(hide_loading_screen, 1000);
+			console.info('All frames have been loaded, hiding the loading screen.');
+			setTimeout(_this.hide_loading_screen, 1000);
 		}
 	};
 
@@ -75,8 +76,7 @@ Universe.frameManager = (function(){
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
-	function hide_loading_screen() {
-		console.info('All frames have been loaded, hiding the loading screen.');
+	_this.hide_loading_screen = function() {
 		loading_logo.style.webkitAnimationPlayState = 'paused';
 		loading_screen.style.opacity = '0';
 		setTimeout(function() {
@@ -86,6 +86,7 @@ Universe.frameManager = (function(){
 		if(first_launch)
 			Universe.commons.launch_tutorial_mode();
 	}
+
 
 	/**
 	  * This function hides all application frames.
