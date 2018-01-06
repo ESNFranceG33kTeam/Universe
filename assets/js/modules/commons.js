@@ -7,6 +7,7 @@ const remote = require('electron').remote;
 const storage = remote.require('electron-json-storage-sync');
 const path = require('path');
 
+
 const konami = new KonamiCode();
 konami.listen(function () {
 	remote.getCurrentWindow().webContents.openDevTools();

@@ -3,6 +3,7 @@
   "version": "0.4.2",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
+  "appUserModelID": "france.esn.geekteam.universe",
   "scripts": {
     "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
     "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
@@ -21,6 +22,7 @@
   "dependencies": {
     "electron-is-dev": "^0.3.0",
     "electron-json-storage-sync": "^1.1.0",
+    "electron-notifications": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "konami-code": "^0.2.1"
   }

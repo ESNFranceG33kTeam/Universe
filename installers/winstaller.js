@@ -9,16 +9,16 @@ function (err, data) {
     packageJson = JSON.parse(data);
     let version = packageJson["version"];
 
-    console.log('Beginning installer creation for version ' + version)
+    console.log('\nBeginning installer creation for version ' + version)
 
     if (err) {
         console.error('Failed to read package.json');
         return ;
     }
 
-
     resultPromise = electronInstaller.createWindowsInstaller({
       appDirectory: './Universe-win32-ia32',
+      name: 'france.esn.geekteam.universe',
       outputDirectory: distDir,
       iconUrl: 'https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/icons/star.ico',
       setupIcon: './assets/img/icons/installerStar.ico',

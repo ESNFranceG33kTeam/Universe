@@ -164,6 +164,7 @@ function createWindow () {
 	app.setApplicationMenu(null);
 
     // show the window only when it's rendered
+    // TODO sometimes the event is not triggered
 	mainWindow.once('ready-to-show', () => {
 
 		// initializing parameters
