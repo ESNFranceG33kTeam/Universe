@@ -57,7 +57,6 @@ Universe.commons = (function(){
 	};
 
 	// tutorial mode
-	let span;
 	let exampleButton;
 	let no_added_platforms = false;
 
@@ -78,11 +77,6 @@ Universe.commons = (function(){
 		let icons = document.getElementById('icons');
 		icons.appendChild(targetBtn);
 		let mute = exampleButton.getElementsByClassName('mute')[0];
-
-		span = document.createElement('span');
-		span.className = 'delete';
-		span.innerText = 'x';
-		exampleButton.appendChild(span);
 
 		SpotlightJS.config({
 			message: {

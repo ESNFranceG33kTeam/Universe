@@ -5,9 +5,10 @@
 - [x] Handle behaviour when no network (not necessary)
 - [x] Make an autoupdate system
 - [x] Add a "reset site" button
-- [ ] Get a new logo
 - [x] Fix application behaviour when no platforms are registered
-    - [ ] Fix delete issues (first platform sometimes cannot be deleted)
+    - [x] Fix delete issues (first platform sometimes cannot be deleted)
+- [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
+- [ ] Get a new logo
 
 
 ### LESS URGENT
@@ -15,5 +16,4 @@
 - [x] Add a loading indicator on platforms
 - [x] Launch tutorial mode when executed for the first time
 - [ ] Review the function checking if the side menu is overflowed
-- [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
 - [x] Modify translation listener
