@@ -3,7 +3,6 @@
   * @module Universe/tutorial
   * @author Rémy Raes
   **/
-
 Universe.tutorial = (function(){
 	var _this = {};
 
@@ -11,8 +10,15 @@ Universe.tutorial = (function(){
 	let exampleButton;
 	let no_added_platforms = false;
 
+
+	/**
+	  * Initializes spotlight.js with a tutorial configuration.
+	  * @memberof module:Universe/tutorial
+	  * @author Rémy Raes
+	  **/
 	function init_tutorial_mode() {
 
+		// html elements needed for the tutorial
 		let logo = document.getElementsByClassName('img_center')[0];
 		let menu = Universe.menu.get_home_menu();
 		exampleButton = document.getElementsByClassName('section')[0];
@@ -29,6 +35,7 @@ Universe.tutorial = (function(){
 		icons.appendChild(targetBtn);
 		let mute = exampleButton.getElementsByClassName('mute')[0];
 
+		// route through all html elements to showcase
 		SpotlightJS.config({
 			message: {
 				positions: ['dir_top_center', 'dir_bottom_center', 'dir_right_middle']
@@ -195,6 +202,12 @@ Universe.tutorial = (function(){
 		);
 	}
 
+	/**
+	  * Public method that launches the tutorial mode.
+	  * Will behave differently if no website has been added to the application.
+	  * @memberof module:Universe/tutorial
+	  * @author Rémy Raes
+	  **/
 	_this.launch_tutorial_mode = function() {
 		SpotlightJS.clear();
 		init_tutorial_mode();
@@ -206,5 +219,5 @@ Universe.tutorial = (function(){
 	};
 
 	return _this;
-	
+
 })(Universe || {});

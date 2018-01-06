@@ -11,6 +11,12 @@ Universe.notification = (function () {
 
 	var _this = {};
 
+	/**
+	  * Listener that sends notification informing the user that the
+	  * application is running in background.
+	  * @memberof module:Universe/notification
+	  * @author Rémy Raes
+	  **/
 	ipc.on('exit-notification' , function(){
 		Universe.frameManager.show_home();
 		if(platform == 'win32') {
@@ -27,6 +33,12 @@ Universe.notification = (function () {
 		}
 	});
 
+	/**
+	  * Sends a notification informing the user that a certain website has
+	  * received news.
+	  * @memberof module:Universe/notification
+	  * @author Rémy Raes
+	  **/
 	function send_notification(site) {
 		if(platform === 'win32') {
 			ipc.send('tray_notif', {
@@ -45,9 +57,9 @@ Universe.notification = (function () {
 
 
 	/**
-	  * This function creates notification on a website node, to signal
-	  * to the user something happened (eg: a new publication).
-	  * @param {String} url - Address of the website from which to add notification
+	  * Creates notification on a website button, to signal to the user
+	  * something happened (eg: a new publication).
+	  * @param {Object} site - Website object
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/
@@ -88,9 +100,9 @@ Universe.notification = (function () {
 	}
 
 	/**
-	  * This function removes the notification object from a website
-	  * node (eg: when the user has read everything on the node).
-	  * @param {String} url - Address of the website from which to remove notification
+	  * Removes the notification object from a website button (eg: when the user
+	  * has read everything on the node).
+	  * @param {Object} site - Website object
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
 	  **/

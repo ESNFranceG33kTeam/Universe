@@ -1,6 +1,6 @@
 /**
-  * This module contains all operations linked to manipulation of the setApplicationMenu
-  * frames.
+  * This module contains all operations linked to manipulation of the
+  * webviews.
   * @module Universe/frameManager
   * @author Rémy Raes
   **/
@@ -52,8 +52,8 @@ Universe.frameManager = (function(){
 
 
 	/**
-	  * This function check if all webviews have loaded their content;
-	  * if that's the case, it removes the loading screen.
+	  * Checks if all webviews have loaded their content;
+	  * if that's the case, removes the loading screen.
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
@@ -69,8 +69,8 @@ Universe.frameManager = (function(){
 	}
 
 	/**
-	  * This function hides the loading screen, enabling the user to
-	  * access the application functionnalities.
+	  * Hides the loading screen, and launch the tutorial mode if the
+	  * application is started for the first time (or reset).
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
@@ -87,7 +87,7 @@ Universe.frameManager = (function(){
 
 
 	/**
-	  * This function hides all application frames.
+	  * Hides all webviews.
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
@@ -112,9 +112,8 @@ Universe.frameManager = (function(){
 	};
 
 	/**
-	  * This function creates a frame encapsulating a website
-	  * on the side menu.
-	  * @param {String} site - The URL of the new website
+	  * Creates a webview showing a certain website.
+	  * @param {Object} site - Website object
 	  * @memberof module:Universe/frameManager
 	  * @author Rémy Raes
 	  **/
@@ -124,10 +123,6 @@ Universe.frameManager = (function(){
 
 		frame.id = url.hashCode() + '_frame';
 		frame.className = 'frame';
-
-		// let attribute = (is_main_website) ? 'application' : 'user';
-		// frame.setAttribute('data-origin', attribute);
-		frame.setAttribute('data-origin', 'user');
 		frame.src = url;
 
 		frame.addEventListener('dom-ready', () => {
@@ -165,8 +160,8 @@ Universe.frameManager = (function(){
 	};
 
 	/**
-	  * This functions tells if a frame is focused.
-	  * @param {String} url - hashed url of the site frame
+	  * Returns if a webview is focused.
+	  * @param {String} url - url of the site webview
 	  * @return {Boolean} is the frame focused or not
 	  * @memberof module:Universe/frameManager
 	  **/
@@ -176,6 +171,12 @@ Universe.frameManager = (function(){
 		return frame.className === 'frame frame-show';
 	}
 
+	/**
+	  * Deletes a webview.
+	  * @param {Object} site - Website object
+	  * @memberof module:Universe/frameManager
+	  * @author Rémy Raes
+	  **/
 	_this.delete_frame = function(site) {
 		let node = webviews.get(site.url);
 		Universe.main_wrapper.removeChild(node);
@@ -183,17 +184,27 @@ Universe.frameManager = (function(){
 		console.info('Deleting ' + site.name + '.');
 	};
 
+	/**
+	  * Resets a webview to the url it was registered with.
+	  * @param {Object} site - Website object
+	  * @memberof module:Universe/frameManager
+	  * @author Rémy Raes
+	  **/
 	_this.reset_frame = function(site) {
 		let frame = webviews.get(site.url);
 		frame.loadURL(site.url);
 		console.info('Frame ' + site.name + ' is resetting.');
 	};
 
-
+	/**
+	  * When called, tells to the frameManager to launch tutorial mode as
+	  * soon as all webviews are loaded and ready to display.
+	  * @memberof module:Universe/frameManager
+	  * @author Rémy Raes
+	  **/
 	_this.trigger_tutorial_mode = function() {
 		first_launch = true;
 	};
-
 
 	return _this;
 

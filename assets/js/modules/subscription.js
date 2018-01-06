@@ -22,7 +22,7 @@ Universe.subscription = (function () {
 	}
 
 	/**
-	  * This function makes the subscription window appear.
+	  * Makes the subscription window appear.
 	  * @author Rémy Raes
 	  * @memberof module:Universe/subscription
 	  **/
@@ -33,7 +33,7 @@ Universe.subscription = (function () {
 	};
 
 	/**
-	  * This function initializes the subscription window (style, animation, tooltip text).
+	  * Initializes the subscription window (style, animation, tooltip text).
 	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes
 	  **/
@@ -46,7 +46,7 @@ Universe.subscription = (function () {
 	};
 
 	/**
-	  * This function sets a warning state on the subscription window.
+	  * Sets a warning state on the subscription window.
 	  * @param {String} message - The message to display to the user
 	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes

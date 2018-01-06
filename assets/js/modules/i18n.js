@@ -71,14 +71,14 @@ Universe.i18n = (function() {
 
 
 	/**
-	  * This function launches the loading of a file containing translations of the
-		* application texts in a certain language.
-		* Once the file is loaded, it launches the live translation of the texts;
-		* if it doesn't exists, the function exits.
-		* @param {String} lang_code - code representing a language
-		* @author Rémy Raes
-		* @memberof module:Universe/i18n
-		**/
+	  * Launches the loading of a file containing translations of the
+	  * application texts in a certain language.
+	  * Once the file is loaded, launches the live translation of the texts;
+	  * if it doesn't exists, exits.
+	  * @param {String} lang_code - code representing a language
+  	  * @author Rémy Raes
+	  * @memberof module:Universe/i18n
+	  **/
 	_this.load_language_file = function (lang_code) {
 
 		fs.readFile(path.join(lang_folder, (lang_code + '.json')), 'utf8', function (err,data) {
@@ -93,11 +93,11 @@ Universe.i18n = (function() {
 	}
 
 	/**
-	  * This function allows the application to switch the text of certain elements to
+	  * Allows the application to switch the text of certain elements to
 	  * enable the understanding of it for differents languages.
 	  * @param {JSON} json - Object containing all variables translated in a certain language
-		* @author Rémy Raes
-		* @memberof module:Universe/i18n
+	  * @author Rémy Raes
+	  * @memberof module:Universe/i18n
 	  **/
 	  function change_language(json) {
 

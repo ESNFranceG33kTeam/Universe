@@ -10,12 +10,19 @@ const path = require('path');
 var Universe = (function() {
     let _this = {};
 
+    // listener to access the Dev Tools
     const konami = new KonamiCode();
     konami.listen(function () {
     	remote.getCurrentWindow().webContents.openDevTools();
     	console.info('Dev tools have been opened :)');
     });
 
+    /**
+	  * Returns a hash value.
+      * Used to obtain HTML identifiers for buttons and webviews.
+	  * @memberof module:Universe/updater
+	  * @author Rémy Raes
+	  **/
     String.prototype.hashCode = function() {
       return 'b' + this.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
     };
@@ -23,6 +30,12 @@ var Universe = (function() {
     // application components
 	_this.main_wrapper = document.getElementById('main_wrapper');
 
+    /**
+	  * Creates HTML components (buttons and webviews) for all websites, and
+      * set the version indicator.
+	  * @memberof module:Universe
+	  * @author Rémy Raes
+	  **/
 	_this.build = function(sites) {
 		for(let i=0, length=sites.length; i<length; i++) {
 			Universe.menu.buttonManager.create_new_button(sites[i]);

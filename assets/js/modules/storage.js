@@ -42,8 +42,7 @@ Universe.storage = (function () {
 	var _this = {};
 
 	/**
-	  * This function handles all signals sended by other modules to save
-	  * user settings.
+	  * Handles all signals sended by other modules to save user settings.
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
@@ -98,9 +97,8 @@ Universe.storage = (function () {
 
 
 	/**
-	  * This function saves user settings when its subscripted sites have been
-	  * changed.
-	  * @param {JSON} data - Object containing all user websites
+	  * Saves user settings when its subscripted sites have been changed.
+	  * @param {Object} data - Object containing all user websites
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
@@ -111,13 +109,13 @@ Universe.storage = (function () {
 	}
 
 	/**
-	  * This function does the initialization of a new component, if the site given
-		* hasn't been registered yet.
-		* @param {Boolean} registered - is the site already registered ?
-		* @param {JSON} site - JSON representing a website
-		* @memberof module:Universe/storage
-		* @author Rémy Raes
-		**/
+	  * Does the initialization of a new component, if the site given hasn't
+	  * been registered yet.
+	  * @param {Boolean} registered - is the site already registered ?
+	  * @param {Object} site - Website object
+	  * @memberof module:Universe/storage
+	  * @author Rémy Raes
+	  **/
 	function site_already_registered(registered, site){
 
 		if(!registered) {
@@ -137,11 +135,10 @@ Universe.storage = (function () {
 	}
 
 	/**
-	  * This functions allows the application to save the title of
-	  * a page that would have changed its own.
-	  * It also propagates the title change to the tooltip, in the
-	  * sidebar menu.
-	  * @param {JSON} site - JSON object representing the site to update
+	  * Allows the application to save the title of a page that have changed
+	  * its own.
+	  * Propagates the title change to the tooltip, in the sidebar menu.
+	  * @param {Object} site - Website object
 	  * @param {String} title - new title to give to the page
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
@@ -158,6 +155,12 @@ Universe.storage = (function () {
 			}
 	};
 
+	/**
+	  * Saves a single site into the user settings.
+	  * @param {Object} site - Website object
+	  * @memberof module:Universe/storage
+  	  * @author Rémy Raes
+	  **/
 	_this.save_site = function(site) {
 		let p = _this.get_parameters();
 		let sites = p.sites;
@@ -173,8 +176,7 @@ Universe.storage = (function () {
 
 
 	/**
-	  * This function saves user settings when the application language
-	  * is changing.
+	  * Saves user settings when the application language is changed.
 	  * @param {String} lang_code - code of the current language
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
@@ -188,7 +190,7 @@ Universe.storage = (function () {
 	/**
 	  * This function is the public method that enables modules to save
 	  * user settings.
-	  * @param {JSON} params - Object containing the user settings, following the pattern settings_model
+	  * @param {JSON} params - Object containing the user settings, following the pattern @settings_model
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
 	  **/
@@ -196,8 +198,7 @@ Universe.storage = (function () {
 		store_parameters(params);
 	}
 	/**
-	  * This function saves the user settings on the user local
-	  * storage.
+	  * This function saves the user settings on the user local storage.
 	  * @param {JSON} params - JSON representing user settings
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
@@ -211,9 +212,8 @@ Universe.storage = (function () {
 	}
 
 	/**
-	  * This function check if the user has settings stored on
-	  * its computer, and returns them ; if it's not the case,
-	  * it returns a new settings object.
+	  * Checks if the user has settings stored on its computer, and returns
+	  * them; if it's not the case, returns a new settings object.
 	  * @return {JSON} a JSON object representing user settings
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
@@ -248,8 +248,7 @@ Universe.storage = (function () {
 	};
 
 	/**
-	  * This function realizes all the tests to see if an url can be
-	  * subscribed to, or not.
+	  * Realizes all the tests to see if an url can be subscribed to, or not.
 	  * @param {String} url - Website address to check
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
@@ -293,7 +292,7 @@ Universe.storage = (function () {
 
 
 	/**
-	  * This function checks if a string is a valid url.
+	  * Checks if a string is a valid url.
 	  * @param {String} url - String to check
 	  * @return {Boolean} is the parameter a valid url or not
 	  * @memberof module:Universe/storage
@@ -313,9 +312,8 @@ Universe.storage = (function () {
 	}
 
 	/**
-	  * This functions returns a temporary site name, based on its URL
-	  * (for example, using 'https://www.facebook.com' will return
-	  * 'Facebook').
+	  * Returns a temporary site name, based on its URL (for example, using
+	  * 'https://www.facebook.com' will return 'Facebook').
 	  * @param {String} url - URL to convert to a readable name
 	  * @return {String} A human readable string reprensenting the URL
 	  * @memberof module:Universe/storage

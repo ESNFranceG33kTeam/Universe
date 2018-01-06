@@ -3,7 +3,6 @@
   * @module Universe/updater
   * @author Rémy Raes
   **/
-
 Universe.updater = (function(){
 	var _this = {};
 
@@ -14,6 +13,11 @@ Universe.updater = (function(){
 		updateVersionIndicator(data);
 	});
 
+	/**
+	  * Updates the version indicator when the application starts.
+	  * @memberof module:Universe/updater
+	  * @author Rémy Raes
+	  **/
 	function updateVersionIndicator(data) {
 		if(data.downloading)
 			versionIndicator.innerText += ' - downloading a new version...'
@@ -21,6 +25,11 @@ Universe.updater = (function(){
 			versionIndicator.innerText = data.message;
 	};
 
+	/**
+	  * Public getter of the version updating method.
+	  * @memberof module:Universe/updater
+	  * @author Rémy Raes
+	  **/
     _this.updateVersionIndicator = function() {
         versionIndicator.innerText = app.app.getVersion();
     };

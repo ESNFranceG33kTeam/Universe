@@ -8,7 +8,6 @@ Universe.menu = (function() {
 	var _this = {};
 
 	var interval = 20;
-
 	var home_menu = document.getElementById('side_menu');
 	var home_menu_height = 'cc';
 
@@ -19,18 +18,18 @@ Universe.menu = (function() {
 	var btn_down_hover = document.getElementById('btn_down_hover');
 
 
-	// getters
+	// getter
 	_this.get_home_menu = function() {
 		return home_menu;
-	}
+	};
 
 	ipc.on('resized' , function(event , data){
 		_this.set_overflow_on_menu();
 	});
 
 	/**
-	  * This functions returns the state of the state bar, meaning if its size
-	  * enables it to display completely within the screen.
+	  * Returns the state of the state bar, meaning if its size enables it to be
+	  * displayed completely within the screen.
 	  * @return {Boolean} is the side menu going out of the screen or not
 	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
@@ -41,8 +40,8 @@ Universe.menu = (function() {
 
 
 	/**
-	  * This functions checks if the side menu is overflowed, if that's
-	  * the case, it sets the scrolling buttons state to visible.
+	  * Checks if the side menu is overflowed; if that's the case, sets the
+	  * scrolling buttons state to visible.
 	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
@@ -63,12 +62,12 @@ Universe.menu = (function() {
 
 
 	/**
-	  * This function is used to scroll the menu up, if possible.
+	  * Used to scroll the menu up, if possible.
 	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	function scroll_menu_up(){
-		// initialisation
+		// initialization
 		if(home_menu_height === 'cc')
 			home_menu_height = home_menu.scrollHeight;
 
@@ -85,7 +84,7 @@ Universe.menu = (function() {
 
 	var t = 0;
 	/**
-	  * This function is used to scroll the menu down, if possible.
+	  * Used to scroll the menu down, if possible.
 	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
@@ -107,14 +106,13 @@ Universe.menu = (function() {
 	}
 
 	/**
-	  * Self-invoking function that initialize scroll listeners on both
+	  * Self-invoking function that initializes scroll listeners on both
 	  * scrolling buttons and mousewheel.
 	  * @memberof module:Universe/menu
 	  * @author Rémy Raes
 	  **/
 	(function initialize_scroll_listeners() {
 		// scrolling listeners avoiding to call the functions too much
-		// var t = 0;
 		var interval = 20;
 		btn_up.addEventListener('mousedown', function(){
 			t = setInterval(function(){
