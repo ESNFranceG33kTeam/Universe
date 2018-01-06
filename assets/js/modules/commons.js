@@ -254,7 +254,6 @@ Universe.commons = (function(){
 		SpotlightJS.clear();
 		init_tutorial_mode();
 
-		console.log(no_added_platforms);
 		if(no_added_platforms)
 			SpotlightJS.spotlight('main', 'menu', 'addsite', 'newsite', 'end');
 		else

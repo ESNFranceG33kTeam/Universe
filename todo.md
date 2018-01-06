@@ -6,7 +6,8 @@
 - [x] Make an autoupdate system
 - [x] Add a "reset site" button
 - [ ] Get a new logo
-- [ ] Fix application behaviour when no platforms are registered
+- [x] Fix application behaviour when no platforms are registered
+    - [ ] Fix delete issues (first platform sometimes cannot be deleted)
 
 
 ### LESS URGENT
@@ -15,4 +16,4 @@
 - [x] Launch tutorial mode when executed for the first time
 - [ ] Review the function checking if the side menu is overflowed
 - [ ] Fix notification system (https://github.com/electron/electron/issues/10864)
-- [x] Modify translation listener 
+- [x] Modify translation listener
