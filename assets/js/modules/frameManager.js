@@ -84,7 +84,7 @@ Universe.frameManager = (function(){
 		}, 1000);
 
 		if(first_launch)
-			Universe.commons.launch_tutorial_mode();
+			Universe.tutorial.launch_tutorial_mode();
 	}
 
 
