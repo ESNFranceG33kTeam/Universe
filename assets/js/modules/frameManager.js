@@ -39,10 +39,23 @@ Universe.frameManager = (function(){
 		return Object.keys(webviews.views).length;
 	};
 
+	/**
+	  * @memberof module:Universe/frameManager
+	  * @return {HTML} all webviews
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.getWebviews = function() {
 		return webviews.getViews();
 	};
 
+	/**
+	  * Increments the number of loaded frames when one has finished loading,
+	  * and updates the loader.
+	  * @memberof module:Universe/frameManager
+	  * @private
+	  * @author Rémy Raes
+	  **/
 	function increment_loaded_frames() {
 		frames_loaded++;
 		loadingBar.set(
@@ -52,9 +65,10 @@ Universe.frameManager = (function(){
 
 
 	/**
-	  * Checks if all webviews have loaded their content;
-	  * if that's the case, removes the loading screen.
+	  * Checks if all webviews have loaded their content; if that's the case,
+	  * removes the loading screen.
 	  * @memberof module:Universe/frameManager
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function check_loaded_frames() {
@@ -64,6 +78,12 @@ Universe.frameManager = (function(){
 		}
 	};
 
+	/**
+	  * @memberof module:Universe/frameManager
+	  * @return {Boolean} is the application fully loaded
+	  * @private
+	  * @author Rémy Raes
+	  **/
 	function is_ready_to_display() {
 		return frames_loaded === webviews.getViewsCount();
 	}
@@ -72,6 +92,7 @@ Universe.frameManager = (function(){
 	  * Hides the loading screen, and launch the tutorial mode if the
 	  * application is started for the first time (or reset).
 	  * @memberof module:Universe/frameManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.hide_loading_screen = function() {
@@ -89,6 +110,7 @@ Universe.frameManager = (function(){
 	/**
 	  * Hides all webviews.
 	  * @memberof module:Universe/frameManager
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function hide_all_frames () {
@@ -99,13 +121,25 @@ Universe.frameManager = (function(){
 		}
 	}
 
-
+	/**
+	  * Hides all frames, and display one.
+	  * @param {String} url - URL of the targeted website
+	  * @memberof module:Universe/frameManager
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.show_frame = function(url) {
 		hide_all_frames();
 		let hash = url.hashCode() + '_frame';
 		webviews.views[hash].className = 'frame frame-show';
 	};
 
+	/**
+	  * Hides all frames, and display the home one.
+	  * @memberof module:Universe/frameManager
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.show_home = function() {
 		hide_all_frames();
 		home.className = 'homeWrapper frame-show';
@@ -115,6 +149,7 @@ Universe.frameManager = (function(){
 	  * Creates a webview showing a certain website.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/frameManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_frame = function(site) {
@@ -164,6 +199,8 @@ Universe.frameManager = (function(){
 	  * @param {String} url - url of the site webview
 	  * @return {Boolean} is the frame focused or not
 	  * @memberof module:Universe/frameManager
+	  * @private
+	  * @author Rémy Raes
 	  **/
 	function frame_is_focused(url) {
 		let hash = url.hashCode() + '_frame';
@@ -175,6 +212,7 @@ Universe.frameManager = (function(){
 	  * Deletes a webview.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/frameManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.delete_frame = function(site) {
@@ -188,6 +226,7 @@ Universe.frameManager = (function(){
 	  * Resets a webview to the url it was registered with.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/frameManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.reset_frame = function(site) {
@@ -200,6 +239,7 @@ Universe.frameManager = (function(){
 	  * When called, tells to the frameManager to launch tutorial mode as
 	  * soon as all webviews are loaded and ready to display.
 	  * @memberof module:Universe/frameManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.trigger_tutorial_mode = function() {

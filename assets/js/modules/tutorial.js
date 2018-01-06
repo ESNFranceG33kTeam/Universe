@@ -15,6 +15,7 @@ Universe.tutorial = (function(){
 	  * Initializes spotlight.js with a tutorial configuration.
 	  * @memberof module:Universe/tutorial
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function init_tutorial_mode() {
 
@@ -207,6 +208,7 @@ Universe.tutorial = (function(){
 	  * Will behave differently if no website has been added to the application.
 	  * @memberof module:Universe/tutorial
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.launch_tutorial_mode = function() {
 		SpotlightJS.clear();

@@ -19,9 +19,10 @@ var Universe = (function() {
 
     /**
 	  * Returns a hash value.
-      * Used to obtain HTML identifiers for buttons and webviews.
-	  * @memberof module:Universe/updater
+      * Called to obtain HTML identifiers for buttons and webviews.
+	  * @memberof module:Universe
 	  * @author Rémy Raes
+      * @public
 	  **/
     String.prototype.hashCode = function() {
       return 'b' + this.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
@@ -35,6 +36,7 @@ var Universe = (function() {
       * set the version indicator.
 	  * @memberof module:Universe
 	  * @author Rémy Raes
+      * @public
 	  **/
 	_this.build = function(sites) {
 		for(let i=0, length=sites.length; i<length; i++) {

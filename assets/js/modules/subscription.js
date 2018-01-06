@@ -13,10 +13,24 @@ Universe.subscription = (function () {
 	var new_url = document.getElementById('subscription_placeholder');
 	var new_site_error = document.getElementById('subscription_text');
 
-	// getters
+	/**
+	  * Returns the HTML component corresponding to the new site window.
+	  * @return {HTML} menu
+	  * @memberof module:Universe/menu
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.get_new_site_window = function() {
 		return new_site_window;
 	};
+	/**
+	  * Returns the HTML component corresponding to the new URL e,tered by the
+	  * user.
+	  * @return {HTML} menu
+	  * @memberof module:Universe/menu
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.get_new_url = function() {
 		return new_url;
 	}
@@ -25,6 +39,7 @@ Universe.subscription = (function () {
 	  * Makes the subscription window appear.
 	  * @author Rémy Raes
 	  * @memberof module:Universe/subscription
+	  * @public
 	  **/
 	_this.show_new_site_subscription = function() {
 		Universe.main_wrapper.style.filter = 'brightness(0.4)';
@@ -36,6 +51,7 @@ Universe.subscription = (function () {
 	  * Initializes the subscription window (style, animation, tooltip text).
 	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.reset = function() {
 		Universe.main_wrapper.style.filter = 'none';
@@ -50,6 +66,7 @@ Universe.subscription = (function () {
 	  * @param {String} message - The message to display to the user
 	  * @memberof module:Universe/subscription
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.set_new_site_warning = function(message) {
 		new_site_window.style.animationName = 'bounceOut';

@@ -17,6 +17,7 @@ Universe.updater = (function(){
 	  * Updates the version indicator when the application starts.
 	  * @memberof module:Universe/updater
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function updateVersionIndicator(data) {
 		if(data.downloading)
@@ -29,6 +30,7 @@ Universe.updater = (function(){
 	  * Public getter of the version updating method.
 	  * @memberof module:Universe/updater
 	  * @author Rémy Raes
+	  * @public
 	  **/
     _this.updateVersionIndicator = function() {
         versionIndicator.innerText = app.app.getVersion();

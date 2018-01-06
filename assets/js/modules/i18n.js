@@ -77,6 +77,7 @@ Universe.i18n = (function() {
 	  * if it doesn't exists, exits.
 	  * @param {String} lang_code - code representing a language
   	  * @author Rémy Raes
+	  * @public
 	  * @memberof module:Universe/i18n
 	  **/
 	_this.load_language_file = function (lang_code) {
@@ -94,8 +95,9 @@ Universe.i18n = (function() {
 
 	/**
 	  * Allows the application to switch the text of certain elements to
-	  * enable the understanding of it for differents languages.
+	  * enable the understanding of it for differents languages. 
 	  * @param {JSON} json - Object containing all variables translated in a certain language
+	  * @private
 	  * @author Rémy Raes
 	  * @memberof module:Universe/i18n
 	  **/

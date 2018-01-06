@@ -18,7 +18,13 @@ Universe.menu = (function() {
 	var btn_down_hover = document.getElementById('btn_down_hover');
 
 
-	// getter
+	/**
+	  * Returns the HTML component corresponding to the side menu.
+	  * @return {HTML} menu
+	  * @memberof module:Universe/menu
+	  * @public
+	  * @author Rémy Raes
+	  **/
 	_this.get_home_menu = function() {
 		return home_menu;
 	};
@@ -32,6 +38,7 @@ Universe.menu = (function() {
 	  * displayed completely within the screen.
 	  * @return {Boolean} is the side menu going out of the screen or not
 	  * @memberof module:Universe/menu
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function menu_is_overflowed() {
@@ -43,6 +50,7 @@ Universe.menu = (function() {
 	  * Checks if the side menu is overflowed; if that's the case, sets the
 	  * scrolling buttons state to visible.
 	  * @memberof module:Universe/menu
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.set_overflow_on_menu = function() {
@@ -64,6 +72,7 @@ Universe.menu = (function() {
 	/**
 	  * Used to scroll the menu up, if possible.
 	  * @memberof module:Universe/menu
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function scroll_menu_up(){
@@ -86,6 +95,7 @@ Universe.menu = (function() {
 	/**
 	  * Used to scroll the menu down, if possible.
 	  * @memberof module:Universe/menu
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function scroll_menu_down(){
@@ -109,6 +119,7 @@ Universe.menu = (function() {
 	  * Self-invoking function that initializes scroll listeners on both
 	  * scrolling buttons and mousewheel.
 	  * @memberof module:Universe/menu
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	(function initialize_scroll_listeners() {

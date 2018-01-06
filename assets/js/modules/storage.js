@@ -41,11 +41,7 @@ Universe.storage = (function () {
 
 	var _this = {};
 
-	/**
-	  * Handles all signals sended by other modules to save user settings.
-	  * @memberof module:Universe/storage
-	  * @author Rémy Raes
-	  **/
+	// Handles all signals sended by other modules to save user settings.
 	(function storage_handlers() {
 
 		ipc.on('save_size' , function(event , data){
@@ -75,6 +71,7 @@ Universe.storage = (function () {
 	  * relative to the user preferences.
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	var settings_model = {
 
@@ -101,6 +98,7 @@ Universe.storage = (function () {
 	  * @param {Object} data - Object containing all user websites
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function save_sites(data){
 		let p = _this.get_parameters();
@@ -115,6 +113,7 @@ Universe.storage = (function () {
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function site_already_registered(registered, site){
 
@@ -142,6 +141,7 @@ Universe.storage = (function () {
 	  * @param {String} title - new title to give to the page
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.save_site_title = function(site, title) {
 		let p = _this.get_parameters();
@@ -160,6 +160,7 @@ Universe.storage = (function () {
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/storage
   	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.save_site = function(site) {
 		let p = _this.get_parameters();
@@ -180,6 +181,7 @@ Universe.storage = (function () {
 	  * @param {String} lang_code - code of the current language
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.save_language = function(lang_code) {
 		let p = _this.get_parameters();
@@ -193,6 +195,7 @@ Universe.storage = (function () {
 	  * @param {JSON} params - Object containing the user settings, following the pattern @settings_model
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.save_parameters = function(params) {
 		store_parameters(params);
@@ -202,6 +205,7 @@ Universe.storage = (function () {
 	  * @param {JSON} params - JSON representing user settings
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function store_parameters(params) {
 		if(params.first_launch)
@@ -217,6 +221,7 @@ Universe.storage = (function () {
 	  * @return {JSON} a JSON object representing user settings
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.get_parameters = function() {
 
@@ -243,7 +248,13 @@ Universe.storage = (function () {
 		}
 	}
 
-	_this.remove_parameters = function() {
+	/**
+	  * Deletes user parameters.
+	  * @memberof module:Universe/storage
+	  * @author Rémy Raes
+	  * @public
+	  **/
+	_this.reset = function() {
 		return storage.remove('parameters');
 	};
 
@@ -252,6 +263,7 @@ Universe.storage = (function () {
 	  * @param {String} url - Website address to check
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.subscribe_to_new_site = function(url) {
 
@@ -297,6 +309,7 @@ Universe.storage = (function () {
 	  * @return {Boolean} is the parameter a valid url or not
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function is_valid_url(url) {
 
@@ -318,6 +331,7 @@ Universe.storage = (function () {
 	  * @return {String} A human readable string reprensenting the URL
 	  * @memberof module:Universe/storage
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function get_site_name(url) {
 		let domain = url.split('/')[2];

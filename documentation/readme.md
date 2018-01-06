@@ -2,7 +2,7 @@
 
 <dl>
 <dt><a href="#module_Universe/menu/buttonManager">Universe/menu/buttonManager</a></dt>
-<dd><p>This submodule contains all operations linked to manipulation of the site
+<dd><p>This submodule contains all operations linked to manipulation of the site 
 buttons.</p>
 </dd>
 <dt><a href="#module_Universe/frameManager">Universe/frameManager</a></dt>
@@ -43,14 +43,12 @@ to its application.</p>
 <a name="module_Universe/menu/buttonManager"></a>
 
 ## Universe/menu/buttonManager
-This submodule contains all operations linked to manipulation of the sitebuttons.
+This submodule contains all operations linked to manipulation of the site buttons.
 
 **Author**: Rémy Raes  
 
 * [Universe/menu/buttonManager](#module_Universe/menu/buttonManager)
     * [._this.create_new_button(site)](#module_Universe/menu/buttonManager._this.create_new_button)
-    * [.create_site_menu_separation()](#module_Universe/menu/buttonManager.create_site_menu_separation)
-    * [.delete_button(site)](#module_Universe/menu/buttonManager.delete_button)
     * [._this.update_tooltip_title(site, title)](#module_Universe/menu/buttonManager._this.update_tooltip_title)
     * [._this.update_button_image(site, image_url)](#module_Universe/menu/buttonManager._this.update_button_image)
     * [._this.add_loader(site)](#module_Universe/menu/buttonManager._this.add_loader)
@@ -59,28 +57,10 @@ This submodule contains all operations linked to manipulation of the sitebutton
 <a name="module_Universe/menu/buttonManager._this.create_new_button"></a>
 
 ### Universe/menu/buttonManager._this.create_new_button(site)
-Creates a component representing a websiteon the side menu.
+Creates a component representing a website on the side menu.
 
 **Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| site | <code>Object</code> | Website object |
-
-<a name="module_Universe/menu/buttonManager.create_site_menu_separation"></a>
-
-### Universe/menu/buttonManager.create_site_menu_separation()
-Inserts a separator into the side menu.
-
-**Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
-**Author**: Rémy Raes  
-<a name="module_Universe/menu/buttonManager.delete_button"></a>
-
-### Universe/menu/buttonManager.delete_button(site)
-Deletes a button from the menu.
-
-**Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -93,6 +73,7 @@ Deletes a button from the menu.
 Updates the tooltip containing the title of a site.
 
 **Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -106,6 +87,7 @@ Updates the tooltip containing the title of a site.
 Updates the image of a site button.
 
 **Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -119,6 +101,7 @@ Updates the image of a site button.
 Sets a button state to loading (adds a CSS animation).
 
 **Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -131,6 +114,7 @@ Sets a button state to loading (adds a CSS animation).
 Removes the loading state of a button.
 
 **Kind**: static method of [<code>Universe/menu/buttonManager</code>](#module_Universe/menu/buttonManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -145,21 +129,21 @@ This module contains all operations linked to manipulation of thewebviews.
 **Author**: Rémy Raes  
 
 * [Universe/frameManager](#module_Universe/frameManager)
-    * [.check_loaded_frames()](#module_Universe/frameManager.check_loaded_frames)
+    * [._this.getWebviews()](#module_Universe/frameManager._this.getWebviews) ⇒ <code>HTML</code>
     * [._this.hide_loading_screen()](#module_Universe/frameManager._this.hide_loading_screen)
-    * [.hide_all_frames()](#module_Universe/frameManager.hide_all_frames)
+    * [._this.show_frame(url)](#module_Universe/frameManager._this.show_frame)
+    * [._this.show_home()](#module_Universe/frameManager._this.show_home)
     * [._this.create_new_frame(site)](#module_Universe/frameManager._this.create_new_frame)
-    * [.frame_is_focused(url)](#module_Universe/frameManager.frame_is_focused) ⇒ <code>Boolean</code>
     * [._this.delete_frame(site)](#module_Universe/frameManager._this.delete_frame)
     * [._this.reset_frame(site)](#module_Universe/frameManager._this.reset_frame)
     * [._this.trigger_tutorial_mode()](#module_Universe/frameManager._this.trigger_tutorial_mode)
 
-<a name="module_Universe/frameManager.check_loaded_frames"></a>
+<a name="module_Universe/frameManager._this.getWebviews"></a>
 
-### Universe/frameManager.check_loaded_frames()
-Checks if all webviews have loaded their content;if that's the case, removes the loading screen.
-
+### Universe/frameManager._this.getWebviews() ⇒ <code>HTML</code>
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Returns**: <code>HTML</code> - all webviews  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/frameManager._this.hide_loading_screen"></a>
 
@@ -167,13 +151,28 @@ Checks if all webviews have loaded their content;if that's the case, removes th
 Hides the loading screen, and launch the tutorial mode if theapplication is started for the first time (or reset).
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/frameManager.hide_all_frames"></a>
+<a name="module_Universe/frameManager._this.show_frame"></a>
 
-### Universe/frameManager.hide_all_frames()
-Hides all webviews.
+### Universe/frameManager._this.show_frame(url)
+Hides all frames, and display one.
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
+**Author**: Rémy Raes  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>String</code> | URL of the targeted website |
+
+<a name="module_Universe/frameManager._this.show_home"></a>
+
+### Universe/frameManager._this.show_home()
+Hides all frames, and display the home one.
+
+**Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/frameManager._this.create_new_frame"></a>
 
@@ -181,23 +180,12 @@ Hides all webviews.
 Creates a webview showing a certain website.
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | site | <code>Object</code> | Website object |
-
-<a name="module_Universe/frameManager.frame_is_focused"></a>
-
-### Universe/frameManager.frame_is_focused(url) ⇒ <code>Boolean</code>
-Returns if a webview is focused.
-
-**Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
-**Returns**: <code>Boolean</code> - is the frame focused or not  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>String</code> | url of the site webview |
 
 <a name="module_Universe/frameManager._this.delete_frame"></a>
 
@@ -205,6 +193,7 @@ Returns if a webview is focused.
 Deletes a webview.
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -217,6 +206,7 @@ Deletes a webview.
 Resets a webview to the url it was registered with.
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -229,6 +219,7 @@ Resets a webview to the url it was registered with.
 When called, tells to the frameManager to launch tutorial mode assoon as all webviews are loaded and ready to display.
 
 **Kind**: static method of [<code>Universe/frameManager</code>](#module_Universe/frameManager)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/i18n"></a>
 
@@ -236,34 +227,18 @@ When called, tells to the frameManager to launch tutorial mode assoon as all we
 This module allows the application content to be translated to multiple languages.If you want to introduce translations for another element than those initializedin i18n, you have to give it an id in the HTML code, to reference it in i18n, andthen to write your translations.
 
 **Author**: Rémy Raes  
-
-* [Universe/i18n](#module_Universe/i18n)
-    * [._this.load_language_file(lang_code)](#module_Universe/i18n._this.load_language_file)
-    * [.change_language(json)](#module_Universe/i18n.change_language)
-
 <a name="module_Universe/i18n._this.load_language_file"></a>
 
 ### Universe/i18n._this.load_language_file(lang_code)
 Launches the loading of a file containing translations of theapplication texts in a certain language.Once the file is loaded, launches the live translation of the texts;if it doesn't exists, exits.
 
 **Kind**: static method of [<code>Universe/i18n</code>](#module_Universe/i18n)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | lang_code | <code>String</code> | code representing a language |
-
-<a name="module_Universe/i18n.change_language"></a>
-
-### Universe/i18n.change_language(json)
-Allows the application to switch the text of certain elements toenable the understanding of it for differents languages.
-
-**Kind**: static method of [<code>Universe/i18n</code>](#module_Universe/i18n)  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| json | <code>JSON</code> | Object containing all variables translated in a certain language |
 
 <a name="module_Universe/menu"></a>
 
@@ -273,18 +248,19 @@ This module contains all operations linked to the side menu of theapplication.
 **Author**: Rémy Raes  
 
 * [Universe/menu](#module_Universe/menu)
-    * [.menu_is_overflowed()](#module_Universe/menu.menu_is_overflowed) ⇒ <code>Boolean</code>
+    * [._this.get_home_menu()](#module_Universe/menu._this.get_home_menu) ⇒ <code>HTML</code>
     * [._this.set_overflow_on_menu()](#module_Universe/menu._this.set_overflow_on_menu)
-    * [.scroll_menu_up()](#module_Universe/menu.scroll_menu_up)
-    * [.scroll_menu_down()](#module_Universe/menu.scroll_menu_down)
+    * [._this.get_new_site_window()](#module_Universe/menu._this.get_new_site_window) ⇒ <code>HTML</code>
+    * [._this.get_new_url()](#module_Universe/menu._this.get_new_url) ⇒ <code>HTML</code>
 
-<a name="module_Universe/menu.menu_is_overflowed"></a>
+<a name="module_Universe/menu._this.get_home_menu"></a>
 
-### Universe/menu.menu_is_overflowed() ⇒ <code>Boolean</code>
-Returns the state of the state bar, meaning if its size enables it to bedisplayed completely within the screen.
+### Universe/menu._this.get_home_menu() ⇒ <code>HTML</code>
+Returns the HTML component corresponding to the side menu.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
-**Returns**: <code>Boolean</code> - is the side menu going out of the screen or not  
+**Returns**: <code>HTML</code> - menu  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/menu._this.set_overflow_on_menu"></a>
 
@@ -292,20 +268,25 @@ Returns the state of the state bar, meaning if its size enables it to bedisplay
 Checks if the side menu is overflowed; if that's the case, sets thescrolling buttons state to visible.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
+**Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/menu.scroll_menu_up"></a>
+<a name="module_Universe/menu._this.get_new_site_window"></a>
 
-### Universe/menu.scroll_menu_up()
-Used to scroll the menu up, if possible.
+### Universe/menu._this.get_new_site_window() ⇒ <code>HTML</code>
+Returns the HTML component corresponding to the new site window.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
+**Returns**: <code>HTML</code> - menu  
+**Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/menu.scroll_menu_down"></a>
+<a name="module_Universe/menu._this.get_new_url"></a>
 
-### Universe/menu.scroll_menu_down()
-Used to scroll the menu down, if possible.
+### Universe/menu._this.get_new_url() ⇒ <code>HTML</code>
+Returns the HTML component corresponding to the new URL e,tered by theuser.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
+**Returns**: <code>HTML</code> - menu  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/notification"></a>
 
@@ -315,23 +296,16 @@ This modules contains all operations linked to communication ofinformation to t
 **Author**: Rémy Raes  
 
 * [Universe/notification](#module_Universe/notification)
-    * [.send_notification()](#module_Universe/notification.send_notification)
     * [._this.add_notification_on_site(site)](#module_Universe/notification._this.add_notification_on_site)
     * [._this.remove_notification_from_site(site)](#module_Universe/notification._this.remove_notification_from_site)
 
-<a name="module_Universe/notification.send_notification"></a>
-
-### Universe/notification.send_notification()
-Sends a notification informing the user that a certain website hasreceived news.
-
-**Kind**: static method of [<code>Universe/notification</code>](#module_Universe/notification)  
-**Author**: Rémy Raes  
 <a name="module_Universe/notification._this.add_notification_on_site"></a>
 
 ### Universe/notification._this.add_notification_on_site(site)
 Creates notification on a website button, to signal to the usersomething happened (eg: a new publication).
 
 **Kind**: static method of [<code>Universe/notification</code>](#module_Universe/notification)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -344,6 +318,7 @@ Creates notification on a website button, to signal to the usersomething happen
 Removes the notification object from a website button (eg: when the userhas read everything on the node).
 
 **Kind**: static method of [<code>Universe/notification</code>](#module_Universe/notification)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -358,50 +333,13 @@ This module contains all operations linked to manipulation of usersettings and 
 **Author**: Rémy Raes  
 
 * [Universe/storage](#module_Universe/storage)
-    * [.settings_model](#module_Universe/storage.settings_model)
-    * [.save_sites(data)](#module_Universe/storage.save_sites)
-    * [.site_already_registered(registered, site)](#module_Universe/storage.site_already_registered)
     * [._this.save_site_title(site, title)](#module_Universe/storage._this.save_site_title)
     * [._this.save_site(site)](#module_Universe/storage._this.save_site)
     * [._this.save_language(lang_code)](#module_Universe/storage._this.save_language)
     * [._this.save_parameters(params)](#module_Universe/storage._this.save_parameters)
-    * [.store_parameters(params)](#module_Universe/storage.store_parameters)
     * [._this.get_parameters()](#module_Universe/storage._this.get_parameters) ⇒ <code>JSON</code>
+    * [._this.reset()](#module_Universe/storage._this.reset)
     * [._this.subscribe_to_new_site(url)](#module_Universe/storage._this.subscribe_to_new_site)
-    * [.is_valid_url(url)](#module_Universe/storage.is_valid_url) ⇒ <code>Boolean</code>
-    * [.get_site_name(url)](#module_Universe/storage.get_site_name) ⇒ <code>String</code>
-
-<a name="module_Universe/storage.settings_model"></a>
-
-### Universe/storage.settings_model
-This is the user settings model, used to store all informationrelative to the user preferences.
-
-**Kind**: static property of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Author**: Rémy Raes  
-<a name="module_Universe/storage.save_sites"></a>
-
-### Universe/storage.save_sites(data)
-Saves user settings when its subscripted sites have been changed.
-
-**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| data | <code>Object</code> | Object containing all user websites |
-
-<a name="module_Universe/storage.site_already_registered"></a>
-
-### Universe/storage.site_already_registered(registered, site)
-Does the initialization of a new component, if the site given hasn'tbeen registered yet.
-
-**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| registered | <code>Boolean</code> | is the site already registered ? |
-| site | <code>Object</code> | Website object |
 
 <a name="module_Universe/storage._this.save_site_title"></a>
 
@@ -409,6 +347,7 @@ Does the initialization of a new component, if the site given hasn'tbeen regist
 Allows the application to save the title of a page that have changedits own.Propagates the title change to the tooltip, in the sidebar menu.
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -422,6 +361,7 @@ Allows the application to save the title of a page that have changedits own.Pr
 Saves a single site into the user settings.
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -434,6 +374,7 @@ Saves a single site into the user settings.
 Saves user settings when the application language is changed.
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -446,23 +387,12 @@ Saves user settings when the application language is changed.
 This function is the public method that enables modules to saveuser settings.
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | params | <code>JSON</code> | Object containing the user settings, following the pattern @settings_model |
-
-<a name="module_Universe/storage.store_parameters"></a>
-
-### Universe/storage.store_parameters(params)
-This function saves the user settings on the user local storage.
-
-**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| params | <code>JSON</code> | JSON representing user settings |
 
 <a name="module_Universe/storage._this.get_parameters"></a>
 
@@ -471,6 +401,15 @@ Checks if the user has settings stored on its computer, and returnsthem; if it'
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
 **Returns**: <code>JSON</code> - a JSON object representing user settings  
+**Access**: public  
+**Author**: Rémy Raes  
+<a name="module_Universe/storage._this.reset"></a>
+
+### Universe/storage._this.reset()
+Deletes user parameters.
+
+**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/storage._this.subscribe_to_new_site"></a>
 
@@ -478,37 +417,12 @@ Checks if the user has settings stored on its computer, and returnsthem; if it'
 Realizes all the tests to see if an url can be subscribed to, or not.
 
 **Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | url | <code>String</code> | Website address to check |
-
-<a name="module_Universe/storage.is_valid_url"></a>
-
-### Universe/storage.is_valid_url(url) ⇒ <code>Boolean</code>
-Checks if a string is a valid url.
-
-**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Returns**: <code>Boolean</code> - is the parameter a valid url or not  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>String</code> | String to check |
-
-<a name="module_Universe/storage.get_site_name"></a>
-
-### Universe/storage.get_site_name(url) ⇒ <code>String</code>
-Returns a temporary site name, based on its URL (for example, using'https://www.facebook.com' will return 'Facebook').
-
-**Kind**: static method of [<code>Universe/storage</code>](#module_Universe/storage)  
-**Returns**: <code>String</code> - A human readable string reprensenting the URL  
-**Author**: Rémy Raes  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>String</code> | URL to convert to a readable name |
 
 <a name="module_Universe/subscription"></a>
 
@@ -528,6 +442,7 @@ This module contains all operations linked to manipulation of the"new subscript
 Makes the subscription window appear.
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/subscription._this.reset"></a>
 
@@ -535,6 +450,7 @@ Makes the subscription window appear.
 Initializes the subscription window (style, animation, tooltip text).
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/subscription._this.set_new_site_warning"></a>
 
@@ -542,6 +458,7 @@ Initializes the subscription window (style, animation, tooltip text).
 Sets a warning state on the subscription window.
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
+**Access**: public  
 **Author**: Rémy Raes  
 
 | Param | Type | Description |
@@ -554,24 +471,13 @@ Sets a warning state on the subscription window.
 This module contains all operations linked to the tutorial mode.
 
 **Author**: Rémy Raes  
-
-* [Universe/tutorial](#module_Universe/tutorial)
-    * [.init_tutorial_mode()](#module_Universe/tutorial.init_tutorial_mode)
-    * [._this.launch_tutorial_mode()](#module_Universe/tutorial._this.launch_tutorial_mode)
-
-<a name="module_Universe/tutorial.init_tutorial_mode"></a>
-
-### Universe/tutorial.init_tutorial_mode()
-Initializes spotlight.js with a tutorial configuration.
-
-**Kind**: static method of [<code>Universe/tutorial</code>](#module_Universe/tutorial)  
-**Author**: Rémy Raes  
 <a name="module_Universe/tutorial._this.launch_tutorial_mode"></a>
 
 ### Universe/tutorial._this.launch_tutorial_mode()
 Public method that launches the tutorial mode.Will behave differently if no website has been added to the application.
 
 **Kind**: static method of [<code>Universe/tutorial</code>](#module_Universe/tutorial)  
+**Access**: public  
 **Author**: Rémy Raes  
 <a name="module_Universe/updater"></a>
 
@@ -579,31 +485,12 @@ Public method that launches the tutorial mode.Will behave differently if no web
 This module contains all operations linked the the application versionning.
 
 **Author**: Rémy Raes  
-
-* [Universe/updater](#module_Universe/updater)
-    * [.String#hashCode()](#module_Universe/updater.String+hashCode)
-    * [.updateVersionIndicator()](#module_Universe/updater.updateVersionIndicator)
-    * [._this.updateVersionIndicator()](#module_Universe/updater._this.updateVersionIndicator)
-
-<a name="module_Universe/updater.String+hashCode"></a>
-
-### Universe/updater.String#hashCode()
-Returns a hash value.Used to obtain HTML identifiers for buttons and webviews.
-
-**Kind**: static method of [<code>Universe/updater</code>](#module_Universe/updater)  
-**Author**: Rémy Raes  
-<a name="module_Universe/updater.updateVersionIndicator"></a>
-
-### Universe/updater.updateVersionIndicator()
-Updates the version indicator when the application starts.
-
-**Kind**: static method of [<code>Universe/updater</code>](#module_Universe/updater)  
-**Author**: Rémy Raes  
 <a name="module_Universe/updater._this.updateVersionIndicator"></a>
 
 ### Universe/updater._this.updateVersionIndicator()
 Public getter of the version updating method.
 
 **Kind**: static method of [<code>Universe/updater</code>](#module_Universe/updater)  
+**Access**: public  
 **Author**: Rémy Raes  
 

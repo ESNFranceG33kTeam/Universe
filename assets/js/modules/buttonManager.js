@@ -1,5 +1,5 @@
 /**
-  * This submodule contains all operations linked to manipulation of the site
+  * This submodule contains all operations linked to manipulation of the site 
   * buttons.
   * @module Universe/menu/buttonManager
   * @author Rémy Raes
@@ -31,10 +31,10 @@ Universe.menu.buttonManager = (function () {
 
 
 	/**
-	  * Creates a component representing a website
-	  * on the side menu.
+	  * Creates a component representing a website on the side menu.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/menu/buttonManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.create_new_button = function(site) {
@@ -151,6 +151,7 @@ Universe.menu.buttonManager = (function () {
 	/**
 	  * Inserts a separator into the side menu.
 	  * @memberof module:Universe/menu/buttonManager
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function create_site_menu_separation(){
@@ -161,6 +162,7 @@ Universe.menu.buttonManager = (function () {
 	  * Deletes a button from the menu.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/menu/buttonManager
+	  * @private
 	  * @author Rémy Raes
 	  **/
 	function delete_button(site) {
@@ -182,6 +184,7 @@ Universe.menu.buttonManager = (function () {
 	  * @param {Object} site - Website object
 	  * @param {String} title - new site title to put into its tooltip
 	  * @memberof module:Universe/menu/buttonManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.update_tooltip_title = function(site, title) {
@@ -196,6 +199,7 @@ Universe.menu.buttonManager = (function () {
 	  * @param {Object} site - Website object
 	  * @param {String} image_url - url of the new background image
 	  * @memberof module:Universe/menu/buttonManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.update_button_image = function(site, image_url) {
@@ -208,6 +212,7 @@ Universe.menu.buttonManager = (function () {
 	  * Sets a button state to loading (adds a CSS animation).
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/menu/buttonManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.add_loader = function(site) {
@@ -218,6 +223,7 @@ Universe.menu.buttonManager = (function () {
 	  * Removes the loading state of a button.
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/menu/buttonManager
+	  * @public
 	  * @author Rémy Raes
 	  **/
 	_this.remove_loader = function(site) {

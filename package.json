@@ -12,7 +12,7 @@
     "create-windows-installer": "npm run package-windows && node installers/winstaller.js",
     "create-mac-installer": "npm run package-mac && electron-installer-dmg Universe-darwin-x64 Universe --out=./ --icon=assets/img/icons/star.icns --background=assets/img/icons/star.icns --overwrite",
 
-    "generate-doc": "node documentation/gendoc.js > documentation/readme.md && echo Done!"
+    "generate-doc": "node documentation/gendoc.js --private > documentation/readme.md && echo Done!"
   },
   "author": "G33k Team - ESN France",
   "license": "GPL-3.0",

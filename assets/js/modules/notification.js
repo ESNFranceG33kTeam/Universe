@@ -11,12 +11,10 @@ Universe.notification = (function () {
 
 	var _this = {};
 
-	/**
-	  * Listener that sends notification informing the user that the
-	  * application is running in background.
-	  * @memberof module:Universe/notification
-	  * @author Rémy Raes
-	  **/
+
+	// Listener that sends notification informing the user that the
+	// application is running in background.
+
 	ipc.on('exit-notification' , function(){
 		Universe.frameManager.show_home();
 		if(platform == 'win32') {
@@ -38,6 +36,7 @@ Universe.notification = (function () {
 	  * received news.
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
+	  * @private
 	  **/
 	function send_notification(site) {
 		if(platform === 'win32') {
@@ -62,6 +61,7 @@ Universe.notification = (function () {
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.add_notification_on_site = function(site) {
 
@@ -105,6 +105,7 @@ Universe.notification = (function () {
 	  * @param {Object} site - Website object
 	  * @memberof module:Universe/notification
 	  * @author Rémy Raes
+	  * @public
 	  **/
 	_this.remove_notification_from_site = function(site) {
 		// delete the notification span
