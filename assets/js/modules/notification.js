@@ -1,4 +1,3 @@
-var Universe = Universe || {};
 const dialog = remote.dialog;
 const platform = require('os').platform();
 
@@ -106,4 +105,4 @@ Universe.notification = (function () {
 
 	return _this;
 
-})();
+})(Universe || {});

@@ -1,5 +1,3 @@
-var Universe = Universe || {};
-
 /**
   * This module contains all operations linked to manipulation of the
   * "new subscription" window, which is used for the user to add a new site
@@ -29,7 +27,7 @@ Universe.subscription = (function () {
 	  * @memberof module:Universe/subscription
 	  **/
 	_this.show_new_site_subscription = function() {
-		Universe.commons.main_wrapper.style.filter = 'brightness(0.4)';
+		Universe.main_wrapper.style.filter = 'brightness(0.4)';
 		new_site_window.style.display = 'block';
 		new_site_window.style.animationName = 'bounceIn';
 	};
@@ -40,7 +38,7 @@ Universe.subscription = (function () {
 	  * @author Rémy Raes
 	  **/
 	_this.reset = function() {
-		Universe.commons.main_wrapper.style.filter = 'none';
+		Universe.main_wrapper.style.filter = 'none';
 		new_site_window.style.animationName = 'bounceOut';
 		new_site_error.innerText = Universe.i18n.errorMessages.subscription_default_message;
 		new_site_error.style.color = 'inherit';
@@ -65,4 +63,4 @@ Universe.subscription = (function () {
 
 	return _this;
 
-})();
+})(Universe || {});

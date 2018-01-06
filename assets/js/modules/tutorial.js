@@ -206,4 +206,5 @@ Universe.tutorial = (function(){
 	};
 
 	return _this;
+	
 })(Universe || {});

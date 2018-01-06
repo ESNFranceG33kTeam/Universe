@@ -1,5 +1,3 @@
-var Universe = Universe || {};
-
 /**
   * This module contains all operations linked to manipulation of the setApplicationMenu
   * frames.
@@ -162,7 +160,7 @@ Universe.frameManager = (function(){
 			Universe.menu.buttonManager.remove_loader(site);
 		});
 
-		Universe.commons.main_wrapper.appendChild(frame);
+		Universe.main_wrapper.appendChild(frame);
 		webviews.add(url, frame);
 	};
 
@@ -180,7 +178,7 @@ Universe.frameManager = (function(){
 
 	_this.delete_frame = function(site) {
 		let node = webviews.get(site.url);
-		Universe.commons.main_wrapper.removeChild(node);
+		Universe.main_wrapper.removeChild(node);
 		webviews.remove(site.url);
 		console.info('Deleting ' + site.name + '.');
 	};
@@ -198,4 +196,5 @@ Universe.frameManager = (function(){
 
 
 	return _this;
-})();
+
+})(Universe || {});

@@ -1,5 +1,3 @@
-var Universe = Universe || {};
-
 /**
   * This module contains all operations linked to the side menu of the
   * application.
@@ -149,4 +147,4 @@ Universe.menu = (function() {
 
 	return _this;
 
-})();
+})(Universe || {});

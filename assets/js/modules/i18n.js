@@ -1,5 +1,3 @@
-var Universe = Universe || {};
-
 /**
   *	This module allows the application content to be translated to multiple languages.
   * If you want to introduce translations for another element than those initialized
@@ -165,4 +163,4 @@ Universe.i18n = (function() {
 
 	return _this;
 
-})();
+})(Universe || {});

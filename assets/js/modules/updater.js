@@ -1,5 +1,5 @@
 /**
-  * This module contains all operations and components used by several modules.
+  * This module contains all operations linked the the application versionning.
   * @module Universe/updater
   * @author Rémy Raes
   **/

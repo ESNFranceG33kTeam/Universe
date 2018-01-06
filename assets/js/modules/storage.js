@@ -1,4 +1,3 @@
-var Universe = Universe || {};
 let suggested_sites = [
 	{
 		name: 'Pallospace',
@@ -65,7 +64,7 @@ Universe.storage = (function () {
 			var settings = _this.get_parameters();
 			var sites = settings.sites;
 
-			Universe.commons.build(sites);
+			Universe.build(sites);
 		});
 
 	})();
@@ -336,4 +335,4 @@ Universe.storage = (function () {
 	}
 	return _this;
 
-})();
+})(Universe || {});
