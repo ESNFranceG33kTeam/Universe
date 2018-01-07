@@ -10,6 +10,7 @@
 - [x] Fix notification system (https://github.com/electron/electron/issues/10864)
     - [x] Using Tray Balloons system
 - [ ] Get a new logo
+- [ ] An unknown bug sometimes prevents the application from starting ('ready-to-show' event ?)
 
 
 ### LESS URGENT

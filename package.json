@@ -1,32 +1,32 @@
 {
-  "name": "Universe",
-  "version": "0.4.2",
-  "description": "An application made to gather all ESN information.",
-  "main": "index.js",
-  "appUserModelID": "france.esn.geekteam.universe",
-  "scripts": {
-    "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-linux": "electron-packager . Universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "name": "Universe",
+    "version": "0.4.2",
+    "description": "An application made to gather all ESN information.",
+    "main": "index.js",
+    "appUserModelID": "france.esn.geekteam.universe",
+    "scripts": {
+        "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+        "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+        "package-linux": "electron-packager . Universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
 
-    "create-windows-installer": "npm run package-windows && node installers/winstaller.js",
-    "create-mac-installer": "npm run package-mac && electron-installer-dmg Universe-darwin-x64 Universe --out=./ --icon=assets/img/icons/star.icns --background=assets/img/icons/star.icns --overwrite",
+        "create-windows-installer": "npm run package-windows && node installers/winstaller.js",
+        "create-mac-installer": "npm run package-mac && electron-installer-dmg Universe-darwin-x64 Universe --out=./ --icon=assets/img/icons/star.icns --background=assets/img/icons/star.icns --overwrite",
 
-    "generate-doc": "node documentation/gendoc.js --private > documentation/readme.md && echo Done!"
-  },
-  "author": "G33k Team - ESN France",
-  "license": "GPL-3.0",
-  "devDependencies": {
-    "electron": "^1.7.9",
-    "electron-installer-dmg": "^0.2.1",
-    "electron-packager": "^10.1.0",
-    "electron-winstaller": "^2.6.3",
-    "jsdoc-to-markdown": "^3.1.0-0"
-  },
-  "dependencies": {
-    "electron-is-dev": "^0.3.0",
-    "electron-json-storage-sync": "^1.1.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "konami-code": "^0.2.1"
-  }
+        "generate-doc": "node documentation/gendoc.js --private > documentation/readme.md && echo Done!"
+    },
+    "author": "G33k Team - ESN France",
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "electron": "^1.7.9",
+        "electron-installer-dmg": "^0.2.1",
+        "electron-packager": "^10.1.0",
+        "electron-winstaller": "^2.6.3",
+        "jsdoc-to-markdown": "^3.1.0-0"
+    },
+    "dependencies": {
+        "electron-is-dev": "^0.3.0",
+        "electron-json-storage-sync": "^1.1.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "konami-code": "^0.2.1"
+    }
 }
