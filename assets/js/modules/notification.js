@@ -39,6 +39,7 @@ Universe.notification = (function () {
 	  * @private
 	  **/
 	function send_notification(site) {
+		console.log('Sending notification for site \'' + site.name + '\'.');
 		if(platform === 'win32') {
 			ipc.send('tray_notif', {
 		        //icon: site.image_url, // doesn't work with other image formats
@@ -82,6 +83,8 @@ Universe.notification = (function () {
 			spa.className = 'new_item';
 			component.appendChild(spa);
 		}
+
+		console.log('Adding notification on site \'' + site.name + '\'.');
 
 		/*
 		Disabling notifications count :
