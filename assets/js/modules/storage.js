@@ -1,35 +1,6 @@
-let suggested_sites = [
-	{
-		name: 'Pallospace',
-		url: 'http://pallospace.ixesn.fr',
-		image_url: "http://pallospace.ixesn.fr",
-		muted: false
-	},
-	{
-		name: 'Galaxy',
-		url: 'http://galaxy.esn.org',
-		image_url: 'http://galaxy.esn.org',
-		muted: false
-	},
-	{
-		name: 'Module Bénévole',
-		url: 'http://gestion.ixesn.fr/liste',
-		image_url: 'http://gestion.ixesn.fr/liste',
-		muted: false
-	},
-	{
-		name: 'Excel d\'or',
-		url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
-		image_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
-		muted: false
-	},
-	{
-		name: 'Slack',
-		url: 'https://communauteixesn.slack.com',
-		image_url: 'https://communauteixesn.slack.com',
-		muted: false
-	},
-];
+const Store = require('electron-store');
+const storage = new Store();
+
 
 /**
   * This module contains all operations linked to manipulation of user
@@ -81,7 +52,7 @@ Universe.storage = (function () {
 		},
 
 		// array containing all websites the user has subscribed to
-		sites: suggested_sites,
+		sites: Universe.suggested_sites,
 
 		// is it the first time the user launches the application ?
 		first_launch: true,
@@ -225,8 +196,8 @@ Universe.storage = (function () {
 
 		var settings = storage.get('parameters');
 
-		if(settings !== undefined && settings.status === true) {
-			var parameters = settings.data;
+		if(settings !== undefined) {
+			var parameters = settings;
 			parameters.first_launch = false;
 
 			// if no platforms have been added
@@ -253,7 +224,7 @@ Universe.storage = (function () {
 	  * @public
 	  **/
 	_this.reset = function() {
-		return storage.remove('parameters');
+		return storage.delete('parameters');
 	};
 
 	/**

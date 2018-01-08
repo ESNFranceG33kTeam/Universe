@@ -3,7 +3,6 @@ const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
 const app = require('electron').remote;
 const remote = require('electron').remote;
-const storage = remote.require('electron-json-storage-sync');
 const path = require('path');
 
 
@@ -46,6 +45,39 @@ var Universe = (function() {
 
 		Universe.updater.updateVersionIndicator();
 	};
+
+    _this.suggested_sites = [
+    	{
+    		name: 'Pallospace',
+    		url: 'http://pallospace.ixesn.fr',
+    		image_url: "http://pallospace.ixesn.fr",
+    		muted: false
+    	},
+    	{
+    		name: 'Galaxy',
+    		url: 'http://galaxy.esn.org',
+    		image_url: 'http://galaxy.esn.org',
+    		muted: false
+    	},
+    	{
+    		name: 'Module Bénévole',
+    		url: 'http://gestion.ixesn.fr/liste',
+    		image_url: 'http://gestion.ixesn.fr/liste',
+    		muted: false
+    	},
+    	{
+    		name: 'Excel d\'or',
+    		url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
+    		image_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
+    		muted: false
+    	},
+    	{
+    		name: 'Slack',
+    		url: 'https://communauteixesn.slack.com',
+    		image_url: 'https://communauteixesn.slack.com',
+    		muted: false
+    	},
+    ];
 
     return _this;
 })();

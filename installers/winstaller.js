@@ -18,7 +18,7 @@ function (err, data) {
 
     resultPromise = electronInstaller.createWindowsInstaller({
       appDirectory: './Universe-win32-ia32',
-      name: 'france.esn.geekteam.universe',
+      name: 'esnfrance.geekteam.universe',
       outputDirectory: distDir,
       iconUrl: 'https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/icons/star.ico',
       setupIcon: './assets/img/icons/installerStar.ico',

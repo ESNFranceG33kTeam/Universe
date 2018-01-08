@@ -9,7 +9,6 @@ const Tray = electron.Tray;
 const Menu = electron.Menu;
 const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
-const storage = require('electron-json-storage-sync');
 const isDev = require('electron-is-dev');
 const {appUpdater} = require('./assets/js/autoupdater');
 let tray;
@@ -77,7 +76,8 @@ function handleSquirrelEvent() {
 };
 
 var mainWindow;
-app.setAppUserModelId('france.esn.geekteam.universe');
+app.setAppUserModelId('esnfrance.geekteam.universe');
+
 const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
     // Someone tried to run a second instance, we should focus our window.
     if (mainWindow) {
