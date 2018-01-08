@@ -112,6 +112,8 @@ app.on('activate', () => {
 
 function createWindow () {
 
+    console.log('[BOOT] Beginning window creation');
+
 	// notification icon
 	var trayImage = __dirname + '/assets/img/icons/star.png';
 	tray = new Tray(trayImage);
@@ -173,11 +175,12 @@ function createWindow () {
     // show the window only when it's rendered
     // TODO sometimes the event is not triggered
 	mainWindow.once('ready-to-show', () => {
-
+        console.log('[BOOT] Window is ready to show');
 		// initializing parameters
+        console.time('[BOOT] Parameters transfert');
 		mainWindow.webContents.send('get-params');
 		ipcMain.on('send_params', function(event , data){
-
+            console.timeEnd('[BOOT] Parameters transfert');
 			let parameters = data;
 
 			if(parameters.size.maximized)
