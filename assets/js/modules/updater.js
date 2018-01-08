@@ -4,7 +4,6 @@
   * @author Rémy Raes
   **/
 Universe.updater = (function(){
-	var _this = {};
 
 	// version number indicator
 	let versionIndicator = document.getElementById('version');
@@ -27,15 +26,34 @@ Universe.updater = (function(){
 	};
 
 	/**
-	  * Public getter of the version updating method.
-	  * @memberof module:Universe/updater
-	  * @author Rémy Raes
-	  * @public
+	  * See updateVersionIndicator.
+	  * @private
 	  **/
-    _this.updateVersionIndicator = function() {
+    function _updateVersionIndicator() {
         versionIndicator.innerText = app.app.getVersion();
     };
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Public getter of the version updating method.
+		  * @memberof module:Universe/updater
+		  * @author Rémy Raes
+		  * @public
+		  **/
+	    updateVersionIndicator: () => {
+			_updateVersionIndicator();
+		}
+
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});

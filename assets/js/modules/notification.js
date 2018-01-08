@@ -9,9 +9,6 @@ const platform = require('os').platform();
   **/
 Universe.notification = (function () {
 
-	var _this = {};
-
-
 	// Listener that sends notification informing the user that the
 	// application is running in background.
 
@@ -38,7 +35,7 @@ Universe.notification = (function () {
 	  * @author Rémy Raes
 	  * @private
 	  **/
-	function send_notification(site) {
+	function _send_notification(site) {
 		console.log('Sending notification for site \'' + site.name + '\'.');
 		if(platform === 'win32') {
 			ipc.send('tray_notif', {
@@ -55,16 +52,11 @@ Universe.notification = (function () {
 		}
 	}
 
-
 	/**
-	  * Creates notification on a website button, to signal to the user
-	  * something happened (eg: a new publication).
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/notification
-	  * @author Rémy Raes
-	  * @public
+	  * See public method add_notification_on_site().
+	  * @private
 	  **/
-	_this.add_notification_on_site = function(site) {
+	function _add_notification_on_site(site) {
 
 		let url = site.url.hashCode();
 
@@ -98,19 +90,15 @@ Universe.notification = (function () {
 		}
 		*/
 		if(!site.muted)
-			send_notification(site);
+			_send_notification(site);
 
 	}
 
 	/**
-	  * Removes the notification object from a website button (eg: when the user
-	  * has read everything on the node).
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/notification
-	  * @author Rémy Raes
-	  * @public
+	  * See public method remove_notification_from_site().
+	  * @private
 	  **/
-	_this.remove_notification_from_site = function(site) {
+	function _remove_notification_from_site(site) {
 		// delete the notification span
 		let component = document.getElementById(site.url.hashCode());
 		let spa = component.getElementsByClassName('new_item');
@@ -119,6 +107,40 @@ Universe.notification = (function () {
 			component.removeChild(spa[0]);
 	}
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Creates notification on a website button, to signal to the user
+		  * something happened (eg: a new publication).
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/notification
+		  * @author Rémy Raes
+		  * @public
+		  **/
+		add_notification_on_site: (site) => {
+			_add_notification_on_site(site);
+		},
+
+		/**
+		  * Removes the notification object from a website button (eg: when the user
+		  * has read everything on the node).
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/notification
+		  * @author Rémy Raes
+		  * @public
+		  **/
+		remove_notification_from_site: (site) => {
+			_remove_notification_from_site(site);
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});

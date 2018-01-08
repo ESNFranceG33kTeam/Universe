@@ -11,6 +11,8 @@
     - [x] Using Tray Balloons system
 - [ ] Get a new logo
 - [ ] An unknown bug sometimes prevents the application from starting ('ready-to-show' event ?)
+    - [x] The bug do not come from the event, since it's always fired as planned
+    - [ ] Maybe the bug was coming from the storage lib used? (we changed lib since then)
 
 
 ### LESS URGENT

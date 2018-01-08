@@ -4,7 +4,6 @@
   * @author Rémy Raes
   **/
 Universe.tutorial = (function(){
-	var _this = {};
 
 	// tutorial mode
 	let exampleButton;
@@ -204,13 +203,10 @@ Universe.tutorial = (function(){
 	}
 
 	/**
-	  * Public method that launches the tutorial mode.
-	  * Will behave differently if no website has been added to the application.
-	  * @memberof module:Universe/tutorial
-	  * @author Rémy Raes
-	  * @public
+	  * See launch_tutorial_mode.
+	  * @private
 	  **/
-	_this.launch_tutorial_mode = function() {
+	function _launch_tutorial_mode() {
 		SpotlightJS.clear();
 		init_tutorial_mode();
 
@@ -220,6 +216,28 @@ Universe.tutorial = (function(){
 			SpotlightJS.spotlight('main', 'menu', 'section', 'settingsMode', 'addsite', 'newsite', 'end');
 	};
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Public method that launches the tutorial mode.
+		  * Will behave differently if no website has been added to the application.
+		  * @memberof module:Universe/tutorial
+		  * @author Rémy Raes
+		  * @public
+		  **/
+		launch_tutorial_mode: () => {
+			_launch_tutorial_mode();
+		}
+
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});

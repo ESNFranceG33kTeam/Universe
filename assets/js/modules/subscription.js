@@ -7,53 +7,40 @@
   **/
 Universe.subscription = (function () {
 
-	var _this = {};
-
 	var new_site_window = document.getElementById('new_site');
 	var new_url = document.getElementById('subscription_placeholder');
 	var new_site_error = document.getElementById('subscription_text');
 
 	/**
-	  * Returns the HTML component corresponding to the new site window.
-	  * @return {HTML} menu
-	  * @memberof module:Universe/menu
-	  * @public
-	  * @author Rémy Raes
+	  * See method get_new_site_window().
+	  * @private
 	  **/
-	_this.get_new_site_window = function() {
+	function _get_new_site_window() {
 		return new_site_window;
 	};
 	/**
-	  * Returns the HTML component corresponding to the new URL e,tered by the
-	  * user.
-	  * @return {HTML} menu
-	  * @memberof module:Universe/menu
-	  * @public
-	  * @author Rémy Raes
+	  * See method get_new_url.
+	  * @private
 	  **/
-	_this.get_new_url = function() {
+	function _get_new_url() {
 		return new_url;
 	}
 
 	/**
-	  * Makes the subscription window appear.
-	  * @author Rémy Raes
-	  * @memberof module:Universe/subscription
-	  * @public
+	  * See show_new_site_subscription.
+	  * @private
 	  **/
-	_this.show_new_site_subscription = function() {
+	function _show_new_site_subscription() {
 		Universe.main_wrapper.style.filter = 'brightness(0.4)';
 		new_site_window.style.display = 'block';
 		new_site_window.style.animationName = 'bounceIn';
 	};
 
 	/**
-	  * Initializes the subscription window (style, animation, tooltip text).
-	  * @memberof module:Universe/subscription
-	  * @author Rémy Raes
-	  * @public
+	  * See method reset.
+	  * @private
 	  **/
-	_this.reset = function() {
+	function _reset() {
 		Universe.main_wrapper.style.filter = 'none';
 		new_site_window.style.animationName = 'bounceOut';
 		new_site_error.innerText = Universe.i18n.errorMessages.subscription_default_message;
@@ -62,13 +49,10 @@ Universe.subscription = (function () {
 	};
 
 	/**
-	  * Sets a warning state on the subscription window.
-	  * @param {String} message - The message to display to the user
-	  * @memberof module:Universe/subscription
-	  * @author Rémy Raes
-	  * @public
+	  * See set_new_site_warning.
+	  * @private
 	  **/
-	_this.set_new_site_warning = function(message) {
+	function _set_new_site_warning(message) {
 		new_site_window.style.animationName = 'bounceOut';
 		setTimeout(function() {
 			new_site_window.style.animationName = 'bounceWarning';
@@ -78,6 +62,70 @@ Universe.subscription = (function () {
 		new_site_error.innerText = message;
 	};
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Returns the HTML component corresponding to the new site window.
+		  * @return {HTML} menu
+		  * @memberof module:Universe/menu
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		get_new_site_window: () => {
+			_get_new_site_window();
+		},
+
+		/**
+		  * Returns the HTML component corresponding to the new URL e,tered by the
+		  * user.
+		  * @return {HTML} menu
+		  * @memberof module:Universe/menu
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		get_new_url: function() {
+			_get_new_url();
+		},
+
+		/**
+		  * Makes the subscription window appear.
+		  * @author Rémy Raes
+		  * @memberof module:Universe/subscription
+		  * @public
+		  **/
+		show_new_site_subscription: () => {
+			_show_new_site_subscription();
+		},
+
+		/**
+		  * Initializes the subscription window (style, animation, tooltip text).
+		  * @memberof module:Universe/subscription
+		  * @author Rémy Raes
+		  * @public
+		  **/
+		reset: () => {
+			_reset();
+		},
+
+		/**
+		  * Sets a warning state on the subscription window.
+		  * @param {String} message - The message to display to the user
+		  * @memberof module:Universe/subscription
+		  * @author Rémy Raes
+		  * @public
+		  **/
+		set_new_site_warning: (message) => {
+			_set_new_site_warning(message);
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});

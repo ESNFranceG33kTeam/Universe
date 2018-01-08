@@ -250,8 +250,8 @@ This module contains all operations linked to the side menu of theapplication.
 * [Universe/menu](#module_Universe/menu)
     * [._this.get_home_menu()](#module_Universe/menu._this.get_home_menu) ⇒ <code>HTML</code>
     * [._this.set_overflow_on_menu()](#module_Universe/menu._this.set_overflow_on_menu)
-    * [._this.get_new_site_window()](#module_Universe/menu._this.get_new_site_window) ⇒ <code>HTML</code>
-    * [._this.get_new_url()](#module_Universe/menu._this.get_new_url) ⇒ <code>HTML</code>
+    * [.get_new_site_window()](#module_Universe/menu.get_new_site_window) ⇒ <code>HTML</code>
+    * [.get_new_url()](#module_Universe/menu.get_new_url) ⇒ <code>HTML</code>
 
 <a name="module_Universe/menu._this.get_home_menu"></a>
 
@@ -270,18 +270,18 @@ Checks if the side menu is overflowed; if that's the case, sets thescrolling bu
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
 **Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/menu._this.get_new_site_window"></a>
+<a name="module_Universe/menu.get_new_site_window"></a>
 
-### Universe/menu._this.get_new_site_window() ⇒ <code>HTML</code>
+### Universe/menu.get_new_site_window() ⇒ <code>HTML</code>
 Returns the HTML component corresponding to the new site window.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
 **Returns**: <code>HTML</code> - menu  
 **Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/menu._this.get_new_url"></a>
+<a name="module_Universe/menu.get_new_url"></a>
 
-### Universe/menu._this.get_new_url() ⇒ <code>HTML</code>
+### Universe/menu.get_new_url() ⇒ <code>HTML</code>
 Returns the HTML component corresponding to the new URL e,tered by theuser.
 
 **Kind**: static method of [<code>Universe/menu</code>](#module_Universe/menu)  
@@ -296,12 +296,12 @@ This modules contains all operations linked to communication ofinformation to t
 **Author**: Rémy Raes  
 
 * [Universe/notification](#module_Universe/notification)
-    * [._this.add_notification_on_site(site)](#module_Universe/notification._this.add_notification_on_site)
-    * [._this.remove_notification_from_site(site)](#module_Universe/notification._this.remove_notification_from_site)
+    * [.add_notification_on_site(site)](#module_Universe/notification.add_notification_on_site)
+    * [.remove_notification_from_site(site)](#module_Universe/notification.remove_notification_from_site)
 
-<a name="module_Universe/notification._this.add_notification_on_site"></a>
+<a name="module_Universe/notification.add_notification_on_site"></a>
 
-### Universe/notification._this.add_notification_on_site(site)
+### Universe/notification.add_notification_on_site(site)
 Creates notification on a website button, to signal to the usersomething happened (eg: a new publication).
 
 **Kind**: static method of [<code>Universe/notification</code>](#module_Universe/notification)  
@@ -312,9 +312,9 @@ Creates notification on a website button, to signal to the usersomething happen
 | --- | --- | --- |
 | site | <code>Object</code> | Website object |
 
-<a name="module_Universe/notification._this.remove_notification_from_site"></a>
+<a name="module_Universe/notification.remove_notification_from_site"></a>
 
-### Universe/notification._this.remove_notification_from_site(site)
+### Universe/notification.remove_notification_from_site(site)
 Removes the notification object from a website button (eg: when the userhas read everything on the node).
 
 **Kind**: static method of [<code>Universe/notification</code>](#module_Universe/notification)  
@@ -432,29 +432,29 @@ This module contains all operations linked to manipulation of the"new subscript
 **Author**: Rémy Raes  
 
 * [Universe/subscription](#module_Universe/subscription)
-    * [._this.show_new_site_subscription()](#module_Universe/subscription._this.show_new_site_subscription)
-    * [._this.reset()](#module_Universe/subscription._this.reset)
-    * [._this.set_new_site_warning(message)](#module_Universe/subscription._this.set_new_site_warning)
+    * [.show_new_site_subscription()](#module_Universe/subscription.show_new_site_subscription)
+    * [.reset()](#module_Universe/subscription.reset)
+    * [.set_new_site_warning(message)](#module_Universe/subscription.set_new_site_warning)
 
-<a name="module_Universe/subscription._this.show_new_site_subscription"></a>
+<a name="module_Universe/subscription.show_new_site_subscription"></a>
 
-### Universe/subscription._this.show_new_site_subscription()
+### Universe/subscription.show_new_site_subscription()
 Makes the subscription window appear.
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
 **Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/subscription._this.reset"></a>
+<a name="module_Universe/subscription.reset"></a>
 
-### Universe/subscription._this.reset()
+### Universe/subscription.reset()
 Initializes the subscription window (style, animation, tooltip text).
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
 **Access**: public  
 **Author**: Rémy Raes  
-<a name="module_Universe/subscription._this.set_new_site_warning"></a>
+<a name="module_Universe/subscription.set_new_site_warning"></a>
 
-### Universe/subscription._this.set_new_site_warning(message)
+### Universe/subscription.set_new_site_warning(message)
 Sets a warning state on the subscription window.
 
 **Kind**: static method of [<code>Universe/subscription</code>](#module_Universe/subscription)  
@@ -471,9 +471,9 @@ Sets a warning state on the subscription window.
 This module contains all operations linked to the tutorial mode.
 
 **Author**: Rémy Raes  
-<a name="module_Universe/tutorial._this.launch_tutorial_mode"></a>
+<a name="module_Universe/tutorial.launch_tutorial_mode"></a>
 
-### Universe/tutorial._this.launch_tutorial_mode()
+### Universe/tutorial.launch_tutorial_mode()
 Public method that launches the tutorial mode.Will behave differently if no website has been added to the application.
 
 **Kind**: static method of [<code>Universe/tutorial</code>](#module_Universe/tutorial)  
@@ -485,9 +485,9 @@ Public method that launches the tutorial mode.Will behave differently if no web
 This module contains all operations linked the the application versionning.
 
 **Author**: Rémy Raes  
-<a name="module_Universe/updater._this.updateVersionIndicator"></a>
+<a name="module_Universe/updater.updateVersionIndicator"></a>
 
-### Universe/updater._this.updateVersionIndicator()
+### Universe/updater.updateVersionIndicator()
 Public getter of the version updating method.
 
 **Kind**: static method of [<code>Universe/updater</code>](#module_Universe/updater)  
