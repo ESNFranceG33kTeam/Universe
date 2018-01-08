@@ -50,15 +50,13 @@ Universe.storage = (function () {
 			store_parameters(p);
 		});
 
-		ipc.on('get-params' , function(event , data){
-			var settings = _this.get_parameters();
-			ipc.send('send_params', settings);
-		});
-
 		ipc.on('build-interface' , function(event , data){
 			var settings = _this.get_parameters();
-			var sites = settings.sites;
+			ipc.send('get-params', settings);
+			console.log(settings);
 
+			// building interface
+			var sites = settings.sites;
 			Universe.build(sites);
 		});
 

@@ -9,6 +9,7 @@ const Tray = electron.Tray;
 const Menu = electron.Menu;
 const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
+const storage = require('electron-json-storage-sync');
 const isDev = require('electron-is-dev');
 const {appUpdater} = require('./assets/js/autoupdater');
 let tray;
@@ -175,12 +176,15 @@ function createWindow () {
     // show the window only when it's rendered
     // TODO sometimes the event is not triggered
 	mainWindow.once('ready-to-show', () => {
+
         console.log('[BOOT] Window is ready to show');
+
 		// initializing parameters
-        console.time('[BOOT] Parameters transfert');
-		mainWindow.webContents.send('get-params');
-		ipcMain.on('send_params', function(event , data){
-            console.timeEnd('[BOOT] Parameters transfert');
+        console.time('[BOOT] Parameters transferred');
+		mainWindow.webContents.send('build-interface');
+
+		ipcMain.on('get-params', function(event , data){
+            console.timeEnd('[BOOT] Parameters transferred');
 			let parameters = data;
 
 			if(parameters.size.maximized)
@@ -193,15 +197,8 @@ function createWindow () {
 				mainWindow.center();
 			}
 
-			mainWindow.webContents.send('resized');
+            console.log('[BOOT] Showing window')
 			mainWindow.show();
-
-			// adding the websites
-			var sites = parameters.sites;
-
-
-			// building the interface
-			mainWindow.webContents.send('build-interface');
 
 			if(!isDev)
 				appUpdater(mainWindow);
@@ -232,12 +229,10 @@ function createWindow () {
 
 	// save window size
 	mainWindow.on('resize', () => {
-		mainWindow.webContents.send('resized');
 		send_changed_settings(false);
 	});
 
 	mainWindow.on('maximize', () => {
-		mainWindow.webContents.send('resized');
 		send_changed_settings(true);
 	});
 
