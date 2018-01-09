@@ -431,6 +431,8 @@ hr {
 
 	z-index: 2;
 	background-color: #e0e0e0;
+	background-image: url(../img/space.png);
+	background-size: cover;
 
 	transition: opacity 0.5s;
 }
