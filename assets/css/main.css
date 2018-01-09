@@ -407,10 +407,11 @@ hr {
 
 
 .img_center {
-	width: 400px;
+	width: 100%;
 	position: relative;
-	left: 50%;
-	margin-left: -200px
+	/*left: 50%;
+	margin-left: -200px*/
+	margin-top: -33px;
 }
 .img_center:hover {
 	cursor: pointer;
