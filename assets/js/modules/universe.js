@@ -60,12 +60,6 @@ var Universe = (function() {
     		muted: false
     	},
     	{
-    		name: 'Excel d\'or',
-    		url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
-    		image_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRKN9kuV5KoUJ-ICqRHsM3CYiBBUFEOF09elVyKoiBTjJGrAcs0tcBCmF6KnTiqUhH10u7gQJw1v0tp/pubhtml?widget=true&headers=false',
-    		muted: false
-    	},
-    	{
     		name: 'Slack',
     		url: 'https://communauteixesn.slack.com',
     		image_url: 'https://communauteixesn.slack.com',

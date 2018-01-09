@@ -47,7 +47,7 @@ Universe.tutorial = (function(){
 				element: logo,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
@@ -68,7 +68,7 @@ Universe.tutorial = (function(){
 				element: menu,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -90,7 +90,7 @@ Universe.tutorial = (function(){
 				element: exampleButton,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -113,7 +113,7 @@ Universe.tutorial = (function(){
 				element: targetBtn,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -137,7 +137,7 @@ Universe.tutorial = (function(){
 				element: addSiteButton,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -162,7 +162,7 @@ Universe.tutorial = (function(){
 				element: newSiteWindow,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -186,7 +186,7 @@ Universe.tutorial = (function(){
 				element: logo,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','star.png'),
+					icon: path.join('assets','img','icons','logo.png'),
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
