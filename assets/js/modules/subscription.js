@@ -78,7 +78,7 @@ Universe.subscription = (function () {
 		  * @author Rémy Raes
 		  **/
 		get_new_site_window: () => {
-			_get_new_site_window();
+			return _get_new_site_window();
 		},
 
 		/**
@@ -90,7 +90,7 @@ Universe.subscription = (function () {
 		  * @author Rémy Raes
 		  **/
 		get_new_url: function() {
-			_get_new_url();
+			return _get_new_url();
 		},
 
 		/**

@@ -197,7 +197,7 @@ Universe.tutorial = (function(){
 					title: translations.end.title,
 					body: translations.end.body
 				}
-			},
+			}
 
 		);
 	}
