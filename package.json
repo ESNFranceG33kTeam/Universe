@@ -5,11 +5,11 @@
   "main": "index.js",
   "appUserModelID": "esnfrance.geekteam.universe",
   "scripts": {
-    "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/star.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
-    "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/star.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-windows": "electron-packager . Universe --platform=win32 --arch=ia32 --prune=true --icon=assets/img/icons/logo.ico --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
+    "package-mac": "electron-packager . Universe --platform=darwin --arch=x64 --prune=true --icon=assets/img/icons/logo.icns --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
     "package-linux": "electron-packager . Universe --platform=linux --arch=ia32 --prune=true --appCopyright=\"G33k Team - ESN France - All rights reserved\" --overwrite",
     "create-windows-installer": "npm run package-windows && node installers/winstaller.js",
-    "create-mac-installer": "npm run package-mac && electron-installer-dmg Universe-darwin-x64 Universe --out=./ --icon=assets/img/icons/star.icns --background=assets/img/icons/star.icns --overwrite",
+    "create-mac-installer": "npm run package-mac && electron-installer-dmg Universe-darwin-x64 Universe --out=./ --icon=assets/img/icons/logo.icns --background=assets/img/icons/logo.icns --overwrite",
     "generate-doc": "node documentation/gendoc.js --private > documentation/readme.md && echo Done!"
   },
   "author": "G33k Team - ESN France",

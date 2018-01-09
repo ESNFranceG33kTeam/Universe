@@ -16,14 +16,14 @@ Universe.notification = (function () {
 		Universe.frameManager.show_home();
 		if(platform == 'win32') {
 			ipc.send('tray_notif', {
-		        icon: __dirname + '/assets/img/icons/star.png',
+		        icon: __dirname + '/assets/img/icons/logo.png',
 		        title: Universe.i18n.notificationMessages.notification_running_title,
 		        content: Universe.i18n.notificationMessages.notification_running_text
 		    });
 		} else {
 			new Notification(Universe.i18n.notificationMessages.notification_running_title, {
 				body: Universe.i18n.notificationMessages.notification_running_text,
-				icon: 'assets/img/icons/star.png'
+				icon: 'assets/img/icons/logo.png'
 			});
 		}
 	});
@@ -40,7 +40,7 @@ Universe.notification = (function () {
 		if(platform === 'win32') {
 			ipc.send('tray_notif', {
 		        //icon: site.image_url, // doesn't work with other image formats
-				icon: __dirname + '/assets/img/icons/star.png',
+				icon: __dirname + '/assets/img/icons/logo.png',
 		        title: Universe.i18n.notificationMessages.new_notification_title,
 		        content: Universe.i18n.notificationMessages.new_notification_text + ' ' + site.name
 		    });
