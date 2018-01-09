@@ -5,7 +5,6 @@
   * @author Rémy Raes
   **/
 Universe.menu = (function() {
-	var _this = {};
 
 	var interval = 20;
 	var home_menu = document.getElementById('side_menu');
@@ -19,18 +18,16 @@ Universe.menu = (function() {
 
 
 	/**
-	  * Returns the HTML component corresponding to the side menu.
-	  * @return {HTML} menu
-	  * @memberof module:Universe/menu
-	  * @public
+	  * see public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.get_home_menu = function() {
+	function _get_home_menu() {
 		return home_menu;
 	};
 
 	ipc.on('resized' , function(event , data){
-		_this.set_overflow_on_menu();
+		_set_overflow_on_menu();
 	});
 
 	/**
@@ -47,13 +44,11 @@ Universe.menu = (function() {
 
 
 	/**
-	  * Checks if the side menu is overflowed; if that's the case, sets the
-	  * scrolling buttons state to visible.
-	  * @memberof module:Universe/menu
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.set_overflow_on_menu = function() {
+	function _set_overflow_on_menu() {
 		if(menu_is_overflowed()) {
 			home_menu.className = 'overflowed';
 			btn_up_hover.style.display = 'block';
@@ -87,7 +82,7 @@ Universe.menu = (function() {
 
 		if(home_menu.scrollHeight === home_menu_height) {
 			home_menu.style.marginTop = (cpt - interval) + 'px';
-			_this.set_overflow_on_menu();
+			_set_overflow_on_menu();
 		}
 	}
 
@@ -106,12 +101,12 @@ Universe.menu = (function() {
 
 		if(cpt === 0) {
 			clearInterval(t);
-			_this.set_overflow_on_menu();
+			_set_overflow_on_menu();
 		}
 
 		if(cpt < (-1 *interval)+1 || cpt > 0){
 			home_menu.style.marginTop = parseInt(cpt + interval) + 'px';
-			_this.set_overflow_on_menu();
+			_set_overflow_on_menu();
 		}
 	}
 
@@ -154,6 +149,39 @@ Universe.menu = (function() {
 		});
 	})();
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Returns the HTML component corresponding to the side menu.
+		  * @return {HTML} menu
+		  * @memberof module:Universe/menu
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		get_home_menu: () => {
+			return _get_home_menu();
+		},
+
+		/**
+		  * Checks if the side menu is overflowed; if that's the case, sets the
+		  * scrolling buttons state to visible.
+		  * @memberof module:Universe/menu
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		set_overflow_on_menu: () => {
+			_set_overflow_on_menu();
+		}
+
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});

@@ -7,7 +7,6 @@ const path = require('path');
 
 
 var Universe = (function() {
-    let _this = {};
 
     // listener to access the Dev Tools
     const konami = new KonamiCode();
@@ -27,17 +26,12 @@ var Universe = (function() {
       return 'b' + this.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
     };
 
-    // application components
-	_this.main_wrapper = document.getElementById('main_wrapper');
 
     /**
-	  * Creates HTML components (buttons and webviews) for all websites, and
-      * set the version indicator.
-	  * @memberof module:Universe
-	  * @author Rémy Raes
-      * @public
+	  * See public API
+      * @private
 	  **/
-	_this.build = function(sites) {
+	function _build(sites) {
 		for(let i=0, length=sites.length; i<length; i++) {
 			Universe.menu.buttonManager.create_new_button(sites[i]);
 			Universe.frameManager.create_new_frame(sites[i]);
@@ -46,7 +40,7 @@ var Universe = (function() {
 		Universe.updater.updateVersionIndicator();
 	};
 
-    _this.suggested_sites = [
+    let suggested_sites = [
     	{
     		name: 'Pallospace',
     		url: 'http://pallospace.ixesn.fr',
@@ -79,5 +73,32 @@ var Universe = (function() {
     	},
     ];
 
-    return _this;
+
+
+    // -------------------------------------------------------------------------
+    // Public API
+    // -------------------------------------------------------------------------
+
+    return {
+
+        // application components
+    	main_wrapper: document.getElementById('main_wrapper'),
+        suggested_sites: suggested_sites,
+
+        /**
+    	  * Creates HTML components (buttons and webviews) for all websites, and
+          * set the version indicator.
+    	  * @memberof module:Universe
+    	  * @author Rémy Raes
+          * @public
+    	  **/
+    	build: (sites) => {
+            _build(sites);
+        }
+
+    }
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+
 })();
