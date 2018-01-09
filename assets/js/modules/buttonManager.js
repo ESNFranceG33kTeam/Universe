@@ -1,11 +1,10 @@
 /**
-  * This submodule contains all operations linked to manipulation of the site 
+  * This submodule contains all operations linked to manipulation of the site
   * buttons.
   * @module Universe/menu/buttonManager
   * @author Rémy Raes
   **/
 Universe.menu.buttonManager = (function () {
-	var _this = {};
 
 	var added_sites = 0;
 	var menu = document.getElementById('icons');
@@ -25,19 +24,13 @@ Universe.menu.buttonManager = (function () {
 		delete this[hash];
 	}
 
-	_this.getButtons = function() {
-		return html_buttons;
-	}
-
 
 	/**
-	  * Creates a component representing a website on the side menu.
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/menu/buttonManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_button = function(site) {
+	function _create_new_button(site) {
 
 		let url = site.url;
 		Universe.subscription.reset();
@@ -180,14 +173,11 @@ Universe.menu.buttonManager = (function () {
 	}
 
 	/**
-	  * Updates the tooltip containing the title of a site.
-	  * @param {Object} site - Website object
-	  * @param {String} title - new site title to put into its tooltip
-	  * @memberof module:Universe/menu/buttonManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.update_tooltip_title = function(site, title) {
+	function _update_tooltip_title(site, title) {
 		let tmp = html_buttons.getElement(site.url);
 		let tooltip = tmp.getElementsByTagName('DIV')[0];
 		tooltip.innerHTML = title;
@@ -195,43 +185,104 @@ Universe.menu.buttonManager = (function () {
 	};
 
 	/**
-	  * Updates the image of a site button.
-	  * @param {Object} site - Website object
-	  * @param {String} image_url - url of the new background image
-	  * @memberof module:Universe/menu/buttonManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.update_button_image = function(site, image_url) {
+	function _update_button_image(site, image_url) {
 		let node = html_buttons.getElement(site.url);
 		site.image_url = image_url;
 		node.style.backgroundImage = 'url(\'' + image_url + '\')';
 	};
 
 	/**
-	  * Sets a button state to loading (adds a CSS animation).
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/menu/buttonManager
-	  * @public
+	  * see public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.add_loader = function(site) {
+	function _add_loader(site) {
 		let comp = html_buttons.getElement(site.url);
 		comp.className += ' sectionLoading';
 	};
 	/**
-	  * Removes the loading state of a button.
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/menu/buttonManager
-	  * @public
+	  * see public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.remove_loader = function(site) {
+	function _remove_loader(site) {
 		let comp = html_buttons.getElement(site.url);
 		comp.className = 'section';
 	};
 
 
-	return _this;
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Creates a component representing a website on the side menu.
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/menu/buttonManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		create_new_button: (site) => {
+			_create_new_button(site);
+		},
+
+		/**
+		  * Updates the tooltip containing the title of a site.
+		  * @param {Object} site - Website object
+		  * @param {String} title - new site title to put into its tooltip
+		  * @memberof module:Universe/menu/buttonManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		update_tooltip_title: (site, title) => {
+			_update_tooltip_title(site, title);
+		},
+
+		/**
+		  * Updates the image of a site button.
+		  * @param {Object} site - Website object
+		  * @param {String} image_url - url of the new background image
+		  * @memberof module:Universe/menu/buttonManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		update_button_image: (site, image_url) => {
+			_update_button_image(site, image_url);
+		},
+
+		/**
+		  * Sets a button state to loading (adds a CSS animation).
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/menu/buttonManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		add_loader: (site) => {
+			_add_loader(site);
+		},
+
+		/**
+		  * Removes the loading state of a button.
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/menu/buttonManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		remove_loader: (site) => {
+			_remove_loader(site);
+		}
+
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
+
 
 })(Universe.menu || {});

@@ -5,7 +5,6 @@
   * @author Rémy Raes
   **/
 Universe.frameManager = (function(){
-	let _this = {};
 
 	let home = document.getElementById('home');
 	let loadingBar = new ldBar("#loading_bar");
@@ -45,9 +44,10 @@ Universe.frameManager = (function(){
 	  * @public
 	  * @author Rémy Raes
 	  **/
+	  /*
 	_this.getWebviews = function() {
 		return webviews.getViews();
-	};
+	};/*
 
 	/**
 	  * Increments the number of loaded frames when one has finished loading,
@@ -74,7 +74,7 @@ Universe.frameManager = (function(){
 	function check_loaded_frames() {
 		if(is_ready_to_display()) {
 			console.info('All frames have been loaded, hiding the loading screen.');
-			setTimeout(_this.hide_loading_screen, 1000);
+			setTimeout(_hide_loading_screen, 1000);
 		}
 	};
 
@@ -89,13 +89,11 @@ Universe.frameManager = (function(){
 	}
 
 	/**
-	  * Hides the loading screen, and launch the tutorial mode if the
-	  * application is started for the first time (or reset).
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.hide_loading_screen = function() {
+	function _hide_loading_screen() {
 		loading_logo.style.webkitAnimationPlayState = 'paused';
 		loading_screen.style.opacity = '0';
 		setTimeout(function() {
@@ -122,37 +120,32 @@ Universe.frameManager = (function(){
 	}
 
 	/**
-	  * Hides all frames, and display one.
-	  * @param {String} url - URL of the targeted website
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.show_frame = function(url) {
+	function _show_frame(url) {
 		hide_all_frames();
 		let hash = url.hashCode() + '_frame';
 		webviews.views[hash].className = 'frame frame-show';
-	};
+	}
 
 	/**
-	  * Hides all frames, and display the home one.
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.show_home = function() {
+	function _show_home() {
 		hide_all_frames();
 		home.className = 'homeWrapper frame-show';
-	};
+	}
 
 	/**
-	  * Creates a webview showing a certain website.
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.create_new_frame = function(site) {
+	function _create_new_frame(site) {
 		let url = site.url;
 		let frame = document.createElement('webview');
 
@@ -192,7 +185,7 @@ Universe.frameManager = (function(){
 
 		Universe.main_wrapper.appendChild(frame);
 		webviews.add(url, frame);
-	};
+	}
 
 	/**
 	  * Returns if a webview is focused.
@@ -209,43 +202,124 @@ Universe.frameManager = (function(){
 	}
 
 	/**
-	  * Deletes a webview.
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.delete_frame = function(site) {
+	function _delete_frame(site) {
 		let node = webviews.get(site.url);
 		Universe.main_wrapper.removeChild(node);
 		webviews.remove(site.url);
 		console.info('Deleting ' + site.name + '.');
-	};
+	}
 
 	/**
-	  * Resets a webview to the url it was registered with.
-	  * @param {Object} site - Website object
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See private API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.reset_frame = function(site) {
+	function _reset_frame(site) {
 		let frame = webviews.get(site.url);
 		frame.loadURL(site.url);
 		console.info('Frame ' + site.name + ' is resetting.');
-	};
+	}
 
 	/**
-	  * When called, tells to the frameManager to launch tutorial mode as
-	  * soon as all webviews are loaded and ready to display.
-	  * @memberof module:Universe/frameManager
-	  * @public
+	  * See public API
+	  * @private
 	  * @author Rémy Raes
 	  **/
-	_this.trigger_tutorial_mode = function() {
+	function _trigger_tutorial_mode() {
 		first_launch = true;
-	};
+	}
 
-	return _this;
+
+
+	// -------------------------------------------------------------------------
+	// Public API
+	// -------------------------------------------------------------------------
+
+	return {
+
+		/**
+		  * Hides the loading screen, and launch the tutorial mode if the
+		  * application is started for the first time (or reset).
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		hide_loading_screen: () => {
+			_hide_loading_screen();
+		},
+
+		/**
+		  * Hides all frames, and display one.
+		  * @param {String} url - URL of the targeted website
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		show_frame: (url) => {
+			_show_frame(url);
+		},
+
+		/**
+		  * Hides all frames, and display the home one.
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		show_home: () => {
+			_show_home();
+		},
+
+		/**
+		  * Creates a webview showing a certain website.
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		create_new_frame: (site) => {
+			_create_new_frame(site);
+		},
+
+		/**
+		  * Deletes a webview.
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		delete_frame: (site) => {
+			_delete_frame(site);
+		},
+
+		/**
+		  * Resets a webview to the url it was registered with.
+		  * @param {Object} site - Website object
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		reset_frame: (site) => {
+			_reset_frame(site);
+		},
+
+		/**
+		  * When called, tells to the frameManager to launch tutorial mode as
+		  * soon as all webviews are loaded and ready to display.
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
+		trigger_tutorial_mode: () => {
+			_trigger_tutorial_mode();
+		}
+
+	}
+
+	// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
 })(Universe || {});
