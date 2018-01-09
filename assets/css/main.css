@@ -405,13 +405,17 @@ hr {
 	margin: 20px;
 }
 
+#home_message {
+	padding: 20px;
+	margin: 0;
+}
 
 .img_center {
 	width: 100%;
 	position: relative;
 	/*left: 50%;
-	margin-left: -200px*/
-	margin-top: -33px;
+	margin-left: -200px
+	margin-top: -33px;*/
 }
 .img_center:hover {
 	cursor: pointer;
@@ -459,7 +463,7 @@ h1 {
 
 .home {
 
-	padding: 20px;
+	/*padding: 20px;*/
 	position: absolute;
 	bottom: 20px;
 	top: 20px;
