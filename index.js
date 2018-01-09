@@ -116,7 +116,7 @@ function createWindow () {
     console.log('[BOOT] Beginning window creation');
 
 	// notification icon
-	var trayImage = __dirname + '/assets/img/icons/star.png';
+	var trayImage = __dirname + '/assets/img/icons/logo.png';
 	tray = new Tray(trayImage);
 	tray.setToolTip('Universe');
 
@@ -162,7 +162,7 @@ function createWindow () {
 	// main window
 	mainWindow = new BrowserWindow({
 		title: 'Universe',
-		icon: __dirname + '/assets/img/icons/star.png',
+		icon: __dirname + '/assets/img/icons/logo.png',
 		backgroundColor: '#e0e0e0',
 
 		width: 1050,
