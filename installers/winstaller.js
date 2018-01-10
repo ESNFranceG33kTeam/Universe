@@ -21,7 +21,7 @@ function (err, data) {
       name: 'esnfrance.geekteam.universe',
       outputDirectory: distDir,
       iconUrl: 'https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/icons/star.ico',
-      setupIcon: './assets/img/icons/installerStar.ico',
+      setupIcon: './assets/img/icons/installer.ico',
       loadingGif: './assets/img/loading.gif',
       authors: 'ESN France - G33k Team',
       exe: 'universe.exe',

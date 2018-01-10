@@ -53,6 +53,12 @@ var Universe = (function() {
     		image_url: 'http://galaxy.esn.org',
     		muted: false
     	},
+        {
+            name: 'Kits',
+            url: 'https://drive.google.com/drive/u/0/folders/0AE_vFMIZRg7_Uk9PVA',
+            image_url: 'https://drive.google.com/drive/u/0/folders/0AE_vFMIZRg7_Uk9PVA',
+            muted: false,
+        },
     	{
     		name: 'Module Bénévole',
     		url: 'http://gestion.ixesn.fr/liste',

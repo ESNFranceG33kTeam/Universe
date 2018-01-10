@@ -1,6 +1,6 @@
 {
   "name": "Universe",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "appUserModelID": "esnfrance.geekteam.universe",
