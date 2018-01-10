@@ -1,5 +1,5 @@
 {
-  "home_message": "Bienvenido en Universe, la nueva aplicacion para la familia ESN ! <br /><br /> Este aplicacion hace la centralizacion de los outillos que utilizan diarios los ESNers al mismo espacio, no vas a perder tiempo para recordarte que es el URL de cada sitio web ! <br />Universe puede tambien mandarte notificaziones y informarte cuando esta passando algo en uno de tus sitios web favoritos ! Igualemente, cuando cerras la ventana, la aplicacion no se cerra, perro siempre funcionnando en background, siempre para escuchar novelas :)",
+  "home_message": "Bienvenido en Universe, la nueva aplicacion para la familia ESN ! <br /><br /> Este aplicacion hace la centralizacion de los outillos que utilizan diarios los ESNers al mismo espacio, no vas a perder tiempo para recordarte que es el URL de cada sitio web ! <br />Universe puede tambien mandarte notificaciones y informarte cuando esta passando algo en uno de tus sitios web favoritos ! Igualemente, cuando cerras la ventana, la aplicacion no se cerra, perro siempre funcionnando en background, para escuchar novelas :)",
   "home_tooltip": "Inicio",
   "subscription_tooltip": "Agregar una nueva sitio web",
   "subscription_placeholder": "Direccion web",
@@ -22,14 +22,14 @@
   "tutorial_section_title": "Plateformes",
   "tutorial_section_body": "Este es una plataforma de tu aplicacion. Para visualizarla, solo tienes que dale un click de la izquierda sobre de el.<br>Para ver los parametros dale un click de la derecha.",
   "tutorial_settings_mode_title": "Parametros",
-  "tutorial_settings_mode_body": "Aqui, puedes apagar las notificaciones de tu plataforma, dale un reset (carga el URL cuando la añadiste), o eliminarla.",
+  "tutorial_settings_mode_body": "Aqui, puedes apagar las notificaciones de tu plataforma, dale un reset (carga el URL de cuando la añadiste), o eliminarla.",
   "tutorial_addsite_title": "Añadir una nueavo plataforma",
-  "tutorial_addsite_body": "Si quieres añadir una nuav plataforma, solo dale un click en este boton !",
+  "tutorial_addsite_body": "Si quieres añadir una nueva plataforma, solo dale un click en este boton !",
   "tutorial_newsite_title": "Añadir une nuava plataforma",
   "tutorial_newsite_body": "Luego, copia y pega aqui la URL del sitio que quieres añadir, despues dale un click en el boton \"Seguir\".",
   "tutorial_end_title": "Fin",
-  "tutorial_end_body": "Sabes que todo acerca de Universe !<br>No dudes de contactar tu WPA si necesitas ayuda :)",
-  "tutorial_buttons_exit": "Cerra el modo tutorial",
+  "tutorial_end_body": "Ya sabes todo acerca de Universe !<br>No dudes de contactar tu WPA si necesitas ayuda :)",
+  "tutorial_buttons_exit": "Cerrar el modo tutorial",
   "tutorial_buttons_previous": "Anterior",
   "tutorial_buttons_next": "Proximo"
 }
