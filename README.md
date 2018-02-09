@@ -1,6 +1,7 @@
 # Universe
 
 ![Universe logo](https://raw.githubusercontent.com/ESNFranceG33kTeam/Universe/master/assets/img/logo.png)
+
 This application is meant to be used by ESNers all over the world ! It will enable them to gather all web resources they want in one single location, and to be notified if new content appears on those resources.
 
 * [For developpers](#for-developers)
