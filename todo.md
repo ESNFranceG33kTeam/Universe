@@ -13,6 +13,7 @@
 - [ ] An unknown bug sometimes prevents the application from starting ('ready-to-show' event ?)
     - [x] The bug do not come from the event, since it's always fired as planned
     - [ ] Maybe the bug was coming from the storage lib used? (we changed lib since then)
+        - [ ] Nope, I think it comes from the fact that all application files have not been loaded before building signal is sent, which means it hits nothing 
 
 
 ### LESS URGENT

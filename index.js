@@ -173,37 +173,33 @@ function createWindow () {
 		show: false});
 	app.setApplicationMenu(null);
 
+
+
+    // setting up the window according to user settings
+    ipcMain.on('get-params', function(event , data){
+
+        let parameters = data;
+
+        if(parameters.size.maximized)
+            mainWindow.maximize();
+
+        else {
+
+            // centering the window
+            mainWindow.setSize(parameters.size.width, parameters.size.height);
+            mainWindow.center();
+        }
+
+        if(!isDev)
+            appUpdater(mainWindow);
+    });
+
     // show the window only when it's rendered
-    // TODO sometimes the event is not triggered
 	mainWindow.once('ready-to-show', () => {
-
-        console.log('[BOOT] Window is ready to show');
-
-		// initializing parameters
-        console.time('[BOOT] Parameters transferred');
-		mainWindow.webContents.send('build-interface');
-
-		ipcMain.on('get-params', function(event , data){
-            console.timeEnd('[BOOT] Parameters transferred');
-			let parameters = data;
-
-			if(parameters.size.maximized)
-				mainWindow.maximize();
-
-			else {
-
-				// centering the window
-				mainWindow.setSize(parameters.size.width, parameters.size.height);
-				mainWindow.center();
-			}
-
-            console.log('[BOOT] Showing window')
-			mainWindow.show();
-
-			if(!isDev)
-				appUpdater(mainWindow);
-		});
+        mainWindow.show();
 	});
+
+
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 	// mainWindow.webContents.openDevTools();

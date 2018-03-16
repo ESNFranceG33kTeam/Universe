@@ -21,16 +21,17 @@ Universe.storage = (function () {
 			store_parameters(p);
 		});
 
-		ipc.on('build-interface' , function(event , data){
-			var settings = _this.get_parameters();
-			ipc.send('get-params', settings);
-
-			// building interface
-			var sites = settings.sites;
-			Universe.build(sites);
-		});
-
 	})();
+
+	window.addEventListener('load', function() {
+		console.info('Launching interface building...')
+		var settings = _this.get_parameters();
+		ipc.send('get-params', settings);
+
+		// building interface
+		var sites = settings.sites;
+		Universe.build(sites);
+	})
 
 
 
