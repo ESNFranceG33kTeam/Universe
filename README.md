@@ -60,14 +60,8 @@ If you want to open the dev tools inside the application, you just have to type 
 To install the application, you need to download a version of it that has been compiled for your operating system
 (Windows, Mac or Linux), and execute it.
 
-[Executables are not available yet, because the application is still in development and hasn't reach the version
-`1.0.0`]
-
-| OS | Version | Download Link |
-| :--: | :---: | :-----------: |
-| Windows | `1.0.0` | ... |
-| Mac OS | `1.0.0` | ... |
-| Linux | `1.0.0` | ... |
+Get an installer over there :
+[http://remyraes.com:5014/](http://remyraes.com:5014/)
 
 ### Use Universe!
 

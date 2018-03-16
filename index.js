@@ -113,8 +113,6 @@ app.on('activate', () => {
 
 function createWindow () {
 
-    console.log('[BOOT] Beginning window creation');
-
 	// notification icon
 	var trayImage = __dirname + '/assets/img/icons/logo.png';
 	tray = new Tray(trayImage);
@@ -163,14 +161,15 @@ function createWindow () {
 	mainWindow = new BrowserWindow({
 		title: 'Universe',
 		icon: __dirname + '/assets/img/icons/logo.png',
-		backgroundColor: '#e0e0e0',
+		backgroundColor: '#282E76',
 
 		width: 1050,
 		height: 535,
 		minWidth: 1050,
 		minHeight: 535,
 
-		show: false});
+		show: false
+    });
 	app.setApplicationMenu(null);
 
 
@@ -192,11 +191,13 @@ function createWindow () {
 
         if(!isDev)
             appUpdater(mainWindow);
+
+        mainWindow.show();
     });
 
     // show the window only when it's rendered
 	mainWindow.once('ready-to-show', () => {
-        mainWindow.show();
+        // mainWindow.show();
 	});
 
 
