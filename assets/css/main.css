@@ -30,9 +30,10 @@ input {
 	cursor: text;
 }
 button {
-	border: 5px solid white;
+	border: 2px solid white;
+	border-radius: 10px;
 	color: white;
-	background-color: lightgray;
+	background-color: transparent;
 
 	font-size: 1em;
     text-transform: uppercase;
@@ -43,9 +44,8 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background-color: white;
-	color: gray;
-	border-color: gray;
+	background-color: rgba(255, 255, 255, 0.3);
+	color: white;
 }
 
 
@@ -417,9 +417,7 @@ hr {
 	margin-left: -200px
 	margin-top: -33px;*/
 }
-.img_center:hover {
-	cursor: pointer;
-}
+
 
 #loading {
 	position: absolute;
@@ -509,8 +507,15 @@ h1 {
 
 #lang-select {
 	position:absolute;
-	top:10px;
+	top:12px;
 	left:10px;
+	z-index: 1;
+}
+
+#tuto-btn {
+	position: absolute;
+	top: 13px;
+	left: 65px;
 }
 
 .frame {

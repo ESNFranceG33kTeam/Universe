@@ -1,6 +1,7 @@
 {
   "home_message": "Bienvenue sur Universe, la nouvelle application pour les membres de la grande famille de ESN ! <br /><br /> Cette application rassemble les outils utilisés tous les jours par les ESNers au même endroit, plus besoin de perdre du temps à retrouver les URL ! <br />Universe peut aussi t'envoyer des notifications et t'informer lorsque quelque chose arrive sur un de tes sites préférés ! De plus, quand tu fermes la fenêtre, l'application ne se ferme pas, mais continue à tourner en arrière-plan, toujours à l'écoute de nouvelles :)",
   "home_tooltip": "Accueil",
+  "home_tutorial_button": "Tutoriel",
   "subscription_tooltip": "Ajouter une nouvelle source",
   "subscription_placeholder": "Adresse du site",
   "subscription_text": "Ecris ici l'adresse d'un site que tu veux suivre.",

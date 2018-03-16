@@ -1,6 +1,7 @@
 {
   "home_message": "Bienvenido en Universe, la nueva aplicacion para la familia ESN ! <br /><br /> Este aplicacion hace la centralizacion de los outillos que utilizan diarios los ESNers al mismo espacio, no vas a perder tiempo para recordarte que es el URL de cada sitio web ! <br />Universe puede tambien mandarte notificaciones y informarte cuando esta passando algo en uno de tus sitios web favoritos ! Igualemente, cuando cerras la ventana, la aplicacion no se cerra, perro siempre funcionnando en background, para escuchar novelas :)",
   "home_tooltip": "Inicio",
+  "home_tutorial_button": "Tutorial",
   "subscription_tooltip": "Agregar una nueva sitio web",
   "subscription_placeholder": "Direccion web",
   "subscription_text": "Entra aqui la direccion de tu sitio web",

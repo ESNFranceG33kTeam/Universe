@@ -68,6 +68,7 @@ Universe.i18n = (function() {
 	let subscription_placeholder = document.getElementById('subscription_placeholder');
 	let subscription_text = document.getElementById('subscription_text');
 	let subscription_button_text = document.getElementById('subscription_button_text');
+	let tutorial_button = document.getElementById('tuto-btn');
 
 
 	/**
@@ -95,7 +96,7 @@ Universe.i18n = (function() {
 
 	/**
 	  * Allows the application to switch the text of certain elements to
-	  * enable the understanding of it for differents languages. 
+	  * enable the understanding of it for differents languages.
 	  * @param {JSON} json - Object containing all variables translated in a certain language
 	  * @private
 	  * @author Rémy Raes
@@ -106,6 +107,7 @@ Universe.i18n = (function() {
 		// loading the translations into the application
 		home_message.innerHTML = json['home_message'];
 		home_tooltip.innerText = json['home_tooltip'];
+		tutorial_button.innerText = json['home_tutorial_button'];
 		subscription_tooltip.innerText = json['subscription_tooltip'];
 		subscription_placeholder.placeholder = json['subscription_placeholder'];
 		subscription_text.innerText = json['subscription_text'];
