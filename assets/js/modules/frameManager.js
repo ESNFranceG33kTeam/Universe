@@ -161,8 +161,12 @@ Universe.frameManager = (function(){
 			// reset the notification indicator
 			Universe.notification.remove_notification_from_site(site);
 		});
+		frame.addEventListener('will-navigate', () => {
+			console.log('cc')
+			Universe.notification.remove_notification_from_site(site);
+		});
 		frame.addEventListener('page-title-updated', () => {
-			if(!frame_is_focused(site.url) && is_ready_to_display())
+			if(!frame_is_focused(site.url) && is_ready_to_display() || document.hidden)
 				Universe.notification.add_notification_on_site(site);
 
 			// updates the application tooltip

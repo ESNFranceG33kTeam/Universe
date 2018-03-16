@@ -13,7 +13,7 @@ Universe.notification = (function () {
 	// application is running in background.
 
 	ipc.on('exit-notification' , function(){
-		Universe.frameManager.show_home();
+		// Universe.frameManager.show_home();
 		if(platform == 'win32') {
 			ipc.send('tray_notif', {
 		        icon: __dirname + '/assets/img/icons/logo.png',
