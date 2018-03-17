@@ -22,8 +22,10 @@
 		</div>
 
 		<div id="new_site">
-			<input id="subscription_placeholder" type="text" placeholder=""></input>
-			<button id="subscription_button_text" onclick="Universe.storage.subscribe_to_new_site(document.getElementById('subscription_placeholder').value)"></button>
+			<div id="new_site_parent">
+				<input id="subscription_placeholder" type="text" placeholder=""></input>
+				<button id="subscription_button_text" onclick="Universe.storage.subscribe_to_new_site(document.getElementById('subscription_placeholder').value)"></button>
+			</div>
 			<p id="subscription_text"></p>
 		</div>
 

@@ -22,6 +22,11 @@
 	font-size: 16px;
 }
 
+body {
+	width: 100%;
+	margin: 0;
+}
+
 input {
 	padding: 5px;
 	margin-right: 17px;
@@ -29,9 +34,30 @@ input {
 
 	border: 1px solid black;
 	border-radius: 5px;
-	
+
 	cursor: text;
 }
+
+#subscription_button_text {
+	color: black;
+	border: 1px solid black;
+	padding: 8px;
+	background-color: white;
+}
+#subscription_button_text:hover {
+	background-color: rgb(45, 53, 145);
+	color: white;
+}
+
+#new_site_parent {
+	width: 100%;
+	white-space: nowrap;
+}
+
+#new_site_parent > * {
+	display: inline-block;
+}
+
 button {
 	border: 2px solid white;
 	border-radius: 5px;
@@ -47,7 +73,7 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.6);
 	color: white;
 }
 
@@ -519,6 +545,7 @@ h1 {
 	position: absolute;
 	top: 13px;
 	left: 65px;
+	text-shadow: 0 0 7.5px rgba(0, 0, 0, 1);
 }
 
 .frame {
@@ -551,6 +578,11 @@ h1 {
 	border: 1px solid gray;
 	border-radius: 5px;
 
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+/*
 	position: relative;
 	margin: auto;
 	margin-top: 20%;
@@ -558,13 +590,13 @@ h1 {
 	width: 340px;
 	height: auto;
 	display: none;
-
+*/
 	padding: 20px;
-	z-index: 2;
+	z-index: 1;
 
 
 	opacity: 0;
-	animation-name: bounceIn;
+	animation-name: bounceInSub;
 	animation-duration: 450ms;
 	animation-timing-function: linear;
 	animation-fill-mode: forwards;
@@ -597,44 +629,63 @@ h1 {
 @keyframes bounceOut {
 	0%{
 		opacity: 1;
-		transform: scale(1) translate3d(0,0,0);
+		transform: scale(1) translate3d(-50% ,-50% ,0);
 	}
 	50%{
 		opacity: 0.9;
-		transform: scale(0.3);
+		transform: scale(0.3) translate3d(-50% ,-50% ,0);
 	}
 	80%{
 		opacity: 0.3;
-		transform: scale(0.1);
+		transform: scale(0.1) translate3d(-50% ,-50% ,0);
 	}
 	100%{
 		opacity: 0;
-		transform: scale(0.01) translate3d(0,0,0);
+		transform: scale(0.01) translate3d(-50% ,-50% ,0);
 	}
 }
 
 @keyframes bounceWarning {
 	0%{
 		opacity: 1;
-		transform: translate3d(-10px,0,0);
+		transform: translate3d(-45% ,-50% ,0);
 	}
 	25%{
 		opacity: 1;
-		transform: translate3d(10px,0,0);
+		transform: translate3d(-55% ,-50% ,0);
 	}
 	50%{
 		opacity: 1;
-		transform: translate3d(-10px,0,0);
+		transform: translate3d(-45% ,-50% ,0);
 	}
 	75%{
 		opacity: 1;
-		transform: translate3d(10px,0,0);
+		transform: translate3d(-55% ,-50% ,0);
 	}
 	100%{
 		opacity: 1;
-		transform: translate3d(0,0,0);
+		transform: translate3d(-50% ,-50% ,0);
 
 		border: 2px solid red;
 		background-color: #ffcccc;
+	}
+}
+
+@keyframes bounceInSub {
+	0%{
+		opacity: 0;
+		transform: scale(0.3) translate3d(-50%, -50%,0);
+	}
+	50%{
+		opacity: 0.9;
+		transform: scale(1) translate3d(-50%, -50%,0);
+	}
+	80%{
+		opacity: 1;
+		transform: scale(0.89) translate3d(-50%, -50%,0);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1) translate3d(-50%, -50%, 0);
 	}
 }

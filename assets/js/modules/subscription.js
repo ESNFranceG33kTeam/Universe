@@ -33,7 +33,7 @@ Universe.subscription = (function () {
 	function _show_new_site_subscription() {
 		Universe.main_wrapper.style.filter = 'brightness(0.4)';
 		new_site_window.style.display = 'block';
-		new_site_window.style.animationName = 'bounceIn';
+		new_site_window.style.animationName = 'bounceInSub';
 	};
 
 	/**
