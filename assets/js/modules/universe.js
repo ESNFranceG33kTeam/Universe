@@ -4,6 +4,7 @@ const fs = require('fs');
 const app = require('electron').remote;
 const remote = require('electron').remote;
 const path = require('path');
+const CountUp = require('countup.js');
 
 
 var Universe = (function() {

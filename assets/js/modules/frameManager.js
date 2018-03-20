@@ -7,11 +7,22 @@
 Universe.frameManager = (function(){
 
 	let home = document.getElementById('home');
+	let loadingPercentage = document.getElementById('percentageLoader');
 	let loadingBar = new ldBar("#loading_bar");
 	var loading_screen = document.getElementById('loading');
 	var loading_logo = document.getElementById('loading_logo');
 	let frames_loaded = 0;
 	let first_launch = false;
+
+	// percentage indicator
+	var options = {
+	  useEasing: true,
+	  useGrouping: true,
+	  separator: ',',
+	  decimal: '.',
+	  suffix: '%'
+	};
+	var counter = new CountUp(percentageLoader, 0, 0, 0, 1, options);
 
 	let webviews = {
 		views: {}
@@ -58,9 +69,9 @@ Universe.frameManager = (function(){
 	  **/
 	function increment_loaded_frames() {
 		frames_loaded++;
-		loadingBar.set(
-			(frames_loaded/webviews.getViewsCount())*100
-		);
+		let percentage = (frames_loaded/webviews.getViewsCount())*100;
+		loadingBar.set(percentage);
+		counter.update(percentage);
 	};
 
 

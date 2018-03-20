@@ -499,6 +499,16 @@ h1 {
 	margin-bottom: 0;
 }
 
+#percentageLoader {
+	position: absolute;
+	left: 50%;
+	width: 20px;
+	margin-left: -10px;
+	top: 50%;
+	margin-top: 67px;
+	color: white;
+}
+
 .home {
 
 	/*padding: 20px;*/

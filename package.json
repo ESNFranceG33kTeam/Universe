@@ -1,6 +1,6 @@
 {
   "name": "Universe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An application made to gather all ESN information.",
   "main": "index.js",
   "appUserModelID": "esnfrance.geekteam.universe",
@@ -24,6 +24,7 @@
     "jsdoc-to-markdown": "^3.1.0-0"
   },
   "dependencies": {
+    "countup.js": "^1.9.3",
     "electron-is-dev": "^0.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^1.3.0",
