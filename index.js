@@ -162,7 +162,7 @@ function createWindow () {
 	mainWindow = new BrowserWindow({
 		title: 'Universe',
 		icon: __dirname + '/assets/img/icons/logo.png',
-		backgroundColor: '#282E76',
+		backgroundColor: '#e0e0e0',
 
 		width: 1050,
 		height: 535,
