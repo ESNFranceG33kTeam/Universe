@@ -11,6 +11,7 @@ const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 const isDev = require('electron-is-dev');
 const {appUpdater} = require('./assets/js/autoupdater');
+const path = require('path');
 let tray;
 
 function handleSquirrelEvent() {
@@ -110,11 +111,11 @@ app.on('activate', () => {
 	}
 });
 
-
+let iconpath = path.join('assets','img','icons','boussole.png');
 function createWindow () {
 
 	// notification icon
-	var trayImage = __dirname + '/assets/img/icons/logo.png';
+	var trayImage = path.join(__dirname, iconpath);
 	tray = new Tray(trayImage);
 	tray.setToolTip('Universe');
 

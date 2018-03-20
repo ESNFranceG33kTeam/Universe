@@ -281,13 +281,17 @@ button:hover {
 	height: 50px;
 	margin: 10px;
 
-	background-color: rgb(255, 255, 255);
 	border-radius: 7px;
 	list-style: none;
 
 
-	background-image: url('../img/sections/logo.png');
-	background-size: cover;
+	/* background-image: url('../img/sections/logo.png'); */
+	background-image: url('../img/icons/boussole.png');
+	background-size: 80%;
+	border: 1px solid white;
+
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 #home_btn div {

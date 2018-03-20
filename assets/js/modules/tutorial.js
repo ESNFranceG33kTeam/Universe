@@ -8,6 +8,7 @@ Universe.tutorial = (function(){
 	// tutorial mode
 	let exampleButton;
 	let no_added_platforms = false;
+	let iconpath = path.join('assets','img','icons','boussole.png');
 
 
 	/**
@@ -47,7 +48,7 @@ Universe.tutorial = (function(){
 				element: logo,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
@@ -68,7 +69,7 @@ Universe.tutorial = (function(){
 				element: menu,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -90,7 +91,7 @@ Universe.tutorial = (function(){
 				element: exampleButton,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -113,7 +114,7 @@ Universe.tutorial = (function(){
 				element: targetBtn,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -137,7 +138,7 @@ Universe.tutorial = (function(){
 				element: addSiteButton,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -162,7 +163,7 @@ Universe.tutorial = (function(){
 				element: newSiteWindow,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.previous,
 						click: function () {
@@ -186,7 +187,7 @@ Universe.tutorial = (function(){
 				element: logo,
 				speed: 600,
 				message: {
-					icon: path.join('assets','img','icons','logo.png'),
+					icon: iconpath,
 					buttons: [{
 						text: translations.buttons.exit,
 						click: function () {
