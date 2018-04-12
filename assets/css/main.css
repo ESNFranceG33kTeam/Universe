@@ -564,7 +564,7 @@ h1 {
 
 #lang-select {
 	position:absolute;
-	top:12px;
+	bottom:12px;
 	left:10px;
 	z-index: 1;
 }
@@ -578,10 +578,44 @@ h1 {
 
 #settings-btn {
 	position: absolute;
-	top: 60px;
-	left: 13px;
+	top: 13px;
+	right: 13px;
+	width: 33px;
+	height: 33px;
 	text-shadow: 0 0 7.5px rgba(0, 0, 0, 1);
+	background-image: url('../img/settings.png');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
+
+#home-view-btn {
+	position: relative;
+	width: 33px;
+	height: 33px;
+	margin: 13px;
+	border-color: black;
+	background-image: url('../img/home.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	transform: rotate(-90deg);
+}
+
+#settingsTitle {
+	display: inline;
+    font-size: 26px;
+}
+
+#settingsList {
+	padding-left: 0;
+	margin: 0;
+}
+
+.settingsItem {
+	list-style: none;
+	padding: 13px;
+}
+
+
 
 .frame {
 	position: absolute;
