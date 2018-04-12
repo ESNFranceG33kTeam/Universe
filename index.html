@@ -9,6 +9,8 @@
 			<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		</head>
 
+
+		<!-- Loading screen -->
 		<div id="loading">
 			<h1>
 				<!--<img src="assets/img/loader/logofull.png">-->
@@ -22,6 +24,8 @@
 			</h1>
 		</div>
 
+
+		<!-- Subscription-to-a-new-website pop-up window -->
 		<div id="new_site">
 			<div id="new_site_parent">
 				<input id="subscription_placeholder" type="text" placeholder=""></input>
@@ -30,8 +34,14 @@
 			<p id="subscription_text"></p>
 		</div>
 
+
+		<!-- Wrapper containing all webframes -->
 		<div id="main_wrapper" onclick="Universe.subscription.reset()">
+
+			<!-- Home tab -->
 			<div id="home" class="homeCarousel frame-show">
+
+				<!-- Home view-->
 				<nav id="homeView" class="carousel-module homeView">
 					<img class="img_center" src="assets/img/logo.png" draggable="false">
 					<p id="home_message"></p>
@@ -40,11 +50,14 @@
 					<button id="tuto-btn" onclick="Universe.tutorial.launch_tutorial_mode()"></button>
 					<div id="version">42.0.0</div>
 				</nav>
-				<nav id="settingsView" class="carousel-module settingsView">
-				</nav>
+
+				<!-- Settings View-->
+				<nav id="settingsView" class="carousel-module settingsView"></nav>
 			</div>
 		</div>
 
+
+		<!-- Side menu, containing all websites icons -->
 		<nav id="side_menu">
 			<nav id="icons">
 				<li id="home_btn" onclick="Universe.frameManager.show_home()">

@@ -155,11 +155,21 @@ Universe.frameManager = (function(){
 		home.className = 'homeCarousel frame-show';
 	}
 
+	/**
+	  * See public API
+	  * @private
+	  * @author Rémy Raes
+	  **/
 	function _show_settings_view() {
 		homeView.classList.add('carousel-module-hidden');
 		settingsView.classList.remove('settingsView');
 	}
 
+	/**
+	  * See public API
+	  * @private
+	  * @author Rémy Raes
+	  **/
 	function _show_home_view() {
 		homeView.classList.remove('carousel-module-hidden');
 		settingsView.classList.add('settingsView');
@@ -342,10 +352,22 @@ Universe.frameManager = (function(){
 			_trigger_tutorial_mode();
 		},
 
+		/**
+		  * Displays the home view to the user.
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
 		show_home_view: () => {
 			_show_home_view()
 		},
 
+		/**
+		  * Displays the settings view to the user.
+		  * @memberof module:Universe/frameManager
+		  * @public
+		  * @author Rémy Raes
+		  **/
 		show_settings_view: () => {
 			_show_settings_view()
 		}
