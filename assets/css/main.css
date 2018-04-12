@@ -509,9 +509,7 @@ h1 {
 	color: white;
 }
 
-.home {
-
-	/*padding: 20px;*/
+.carousel-module {
 	position: absolute;
 	bottom: 20px;
 	top: 20px;
@@ -520,21 +518,38 @@ h1 {
 
 	background-color: white;
 	border: 1px solid #c0c0c0;
-	transition: none;
-	/*box-shadow: 0px 0px 50px -10px black;*/
+	transition: all 700ms ease-in-out;
 
+	/*box-shadow: 0px 0px 50px -10px black;*/
+}
+
+.carousel-module-hidden {
+	left: -100%;
+	right: 100%;
+}
+
+.homeView {
 	overflow: hidden;
 }
 
-.homeWrapper {
+.settingsView {
+	left: 100%;
+	right: -100%;
+}
+
+
+
+.homeCarousel {
 	background-color: #e0e0e0;
 
 	position: absolute;
 	bottom: 0px;
 	top: 0px;
 	left: 0px;
-	right: 00px;
+	right: 0px;
 	opacity: 1;
+
+	overflow: hidden;
 }
 
 #version {

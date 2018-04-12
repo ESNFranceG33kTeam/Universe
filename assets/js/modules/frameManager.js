@@ -11,6 +11,10 @@ Universe.frameManager = (function(){
 	let loadingBar = new ldBar("#loading_bar");
 	var loading_screen = document.getElementById('loading');
 	var loading_logo = document.getElementById('loading_logo');
+
+	let homeView = document.getElementById('homeView');
+	let settingsView = document.getElementById('settingsView');
+
 	let frames_loaded = 0;
 	let first_launch = false;
 
@@ -123,7 +127,7 @@ Universe.frameManager = (function(){
 	  * @author Rémy Raes
 	  **/
 	function hide_all_frames () {
-		home.className = 'category frame';
+		home.className = 'homeCarousel frame';
 		let views = webviews.views;
 		for (let key in views) {
 			views[key].className = 'frame';
@@ -148,7 +152,17 @@ Universe.frameManager = (function(){
 	  **/
 	function _show_home() {
 		hide_all_frames();
-		home.className = 'homeWrapper frame-show';
+		home.className = 'homeCarousel frame-show';
+	}
+
+	function _show_settings_view() {
+		homeView.classList.add('carousel-module-hidden');
+		settingsView.classList.remove('settingsView');
+	}
+
+	function _show_home_view() {
+		homeView.classList.remove('carousel-module-hidden');
+		settingsView.classList.add('settingsView');
 	}
 
 	/**
@@ -326,6 +340,14 @@ Universe.frameManager = (function(){
 		  **/
 		trigger_tutorial_mode: () => {
 			_trigger_tutorial_mode();
+		},
+
+		show_home_view: () => {
+			_show_home_view()
+		},
+
+		show_settings_view: () => {
+			_show_settings_view()
 		}
 
 	}
