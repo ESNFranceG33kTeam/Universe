@@ -572,7 +572,14 @@ h1 {
 #tuto-btn {
 	position: absolute;
 	top: 13px;
-	left: 65px;
+	left: 13px;
+	text-shadow: 0 0 7.5px rgba(0, 0, 0, 1);
+}
+
+#settings-btn {
+	position: absolute;
+	top: 60px;
+	left: 13px;
 	text-shadow: 0 0 7.5px rgba(0, 0, 0, 1);
 }
 

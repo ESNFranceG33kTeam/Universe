@@ -20,11 +20,12 @@
     - [ ] Language selection
     - [ ] Import/Export settings
     - [ ] Delete settings
-     
+    
 
 ### LESS URGENT
 - [x] Make a tutorial mode
 - [x] Add a loading indicator on platforms
 - [x] Launch tutorial mode when executed for the first time
-- [ ] Review the function checking if the side menu is overflowed
 - [x] Modify translation listener
+- [ ] Review the function checking if the side menu is overflowed
+- [ ] "What's new?" pop-up window
